@@ -9,7 +9,7 @@ release.properties
 .DS_Store
 */.DS_Store
 xcuserdata
-Pods/*
+# Pods/*
 build/
 *.pbxuser
 DerivedData
