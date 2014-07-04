@@ -12,8 +12,6 @@
 
 @interface UNMUniversitiesController ()
 
-//@property (strong, nonatomic) NSArray* universitiesData; // array of UNMUniversityData*
-
 @end
 
 @implementation UNMUniversitiesController
@@ -44,10 +42,6 @@
 	
 		self.title = @"(Unknown)"; // e.g. @"Limousin/Poitou-Charentes";
 	}
-	
-//	NSMutableArray* const array = [[NSMutableArray alloc] init];
-	
-//	self.universitiesData = array; // empty
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,16 +58,6 @@
 	_regionData = regionData;
 	
 	[self.tableView reloadData];
-	
-//	NSMutableArray* const array = [[NSMutableArray alloc] init];
-	
-//	[array addObject:@"Université de la Rochelle"];
-//	[array addObject:@"Université de Limoges"];
-//	[array addObject:@"Université de Poitiers"];
-//	[array addObject:@"ISAE-ENSMA"];
-//	[array addObject:@"CROUS PCL"];
-	
-//	self.universitiesData = array;
 }
 
 #pragma mark - Table view data source
@@ -121,15 +105,9 @@
 		cell.detailTextLabel.textColor = [UIColor blackColor];
 	}
     
-	cell.textLabel.font = //[UIFont fontWithName:@"HelveticaNeue-Light" size:18];
-	[UIFont systemFontOfSize:18.0];
-    //cell.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:18];
-    //cell.textLabel.text = [self.hourlyFormatter stringFromDate:weather.date];
+	cell.textLabel.font = [UIFont systemFontOfSize:18.0];
 	
 	cell.textLabel.text = universityData.title;
-	//    cell.detailTextLabel.text = [NSString stringWithFormat:@"%.0f°",weather.temperature.floatValue];
-	//    cell.detailTextLabel.text = @"xxx";
-	//  cell.imageView.image = [UIImage imageNamed:[weather imageName]];
     cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
 	
 	[cell.backgroundView setNeedsDisplay];
@@ -147,21 +125,13 @@
 
 	self.selectedUniversityId = universityData.id;
 	
-//	[self.tableView reloadData];
-
 	if (self.callback) {
 		
 		self.callback.selectedRegionId = self.regionData.id;
 		self.callback.selectedUniversityId = universityData.id;
 
-		//[[self tableView:tableView cellForRowAtIndexPath:indexPath] setNeedsDisplay];
-
 		[self.callback goBackFromRegions];
 	}
-	
-//	NSLog(@"We did select univ=%d", row);
-	
-//	[self.navigationController pushViewController:self.universitiesController animated:true];
 }
 
 - (void)setSelectedUniversityId:(NSString*)selectedUniversityId {

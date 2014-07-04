@@ -26,9 +26,6 @@
 @property (nonatomic, weak) UIView* navView;
 @property (nonatomic, weak) UNMRegionsController* regionsController;
 
-//@property (nonatomic, copy) NSString* selectedRegionId;
-//@property (nonatomic, copy) NSString* selectedUniversityId;
-
 @end
 
 @implementation UNMHomeController
@@ -77,7 +74,6 @@
 	// HOME VIEW
 
 	self.homeView = [[UIView alloc] initWithFrame:bounds];
-	// self.homeView.hidden = YES;
 
 	[self.view addSubview:self.homeView];
 	
@@ -139,9 +135,6 @@
 	
 	[self.homeView addSubview:self.chooseButton];
 	
-//	self.regionsController.homeView = self.homeView;
-//	self.regionsController.regionsView = self.regionsView;
-	
 	self.regionsController.callback = self;
 
 	@weakify(self)
@@ -152,21 +145,11 @@
 		
 		if (self.selectedRegionId) {
 			
-			NSLog(@"ok0");
-			
 			self.regionsController.selectedRegionId = self.selectedRegionId;
 			
 			if (self.selectedUniversityId) {
-				
-				NSLog(@"ok2");
 
 				self.regionsController.selectedUniversityId = self.selectedUniversityId;
-				
-				NSLog(@"vis:%@",self.navigationController.visibleViewController);
-				
-				//[self.navigationController popToViewController:self.regionsController animated:NO];
-									
-				//[self.navigationController pushViewController:self.regionsController.universitiesController animated:NO];
 			}
 		}
 		

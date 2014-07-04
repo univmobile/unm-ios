@@ -12,8 +12,6 @@
 
 @interface UNMRegionsController : UITableViewController
 
-//@property (weak, nonatomic) UIView* homeView;
-//@property (weak, nonatomic) UIView* regionsView;
 @property (weak, nonatomic) NSObject<UNMHomeCallback>* callback;
 @property (strong, nonatomic) UNMUniversitiesController* universitiesController;
 

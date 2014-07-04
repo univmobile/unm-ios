@@ -45,6 +45,8 @@
 	
 	NSMutableArray* const array = [[NSMutableArray alloc] init];
 	
+	// TODO hardcoded values
+	
 	[array addObject:[[UNMRegionData alloc] initWithId:@"bretagne" label:@"Bretagne"]];
 	[array addObject:[[UNMRegionData alloc] initWithId:@"unrpcl" label:@"Limousin/Poitou-Charentes"]];
 	[array addObject:[[UNMRegionData alloc] initWithId:@"ile_de_france" label:@"Île de France"]];
@@ -203,7 +205,6 @@
 	if (isSelected) {
 		cell.selectionStyle = UITableViewCellSelectionStyleGray;
 		cell.backgroundColor = [UNMConstants RGB_79b8d9];
-//		cell.backgroundColor = [UNMConstants RGBA_79b8d9];
 		cell.textLabel.textColor = [UIColor blackColor];
 		cell.detailTextLabel.textColor = [UIColor redColor];
 	} else {
@@ -215,20 +216,10 @@
 
 	
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-  //  cell.backgroundColor = [UNMConstants RGBA_79b8d9];
-//	[UNMConstants RGBA_9bc9e1];
-    //cell.textLabel.textColor = [UIColor blackColor];
-    //cell.detailTextLabel.textColor = [UIColor blackColor];
     
-	cell.textLabel.font = //[UIFont fontWithName:@"HelveticaNeue-Light" size:18];
-	[UIFont systemFontOfSize:18.0];
-    //cell.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:18];
-    //cell.textLabel.text = [self.hourlyFormatter stringFromDate:weather.date];
+	cell.textLabel.font = [UIFont systemFontOfSize:18.0];
 	
 	cell.textLabel.text = regionData.label;
-//    cell.detailTextLabel.text = [NSString stringWithFormat:@"%.0f°",weather.temperature.floatValue];
-	//    cell.detailTextLabel.text = @"xxx";
-  //  cell.imageView.image = [UIImage imageNamed:[weather imageName]];
     cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
 
     return cell;
@@ -247,10 +238,6 @@
 	if (![regionData.id isEqualToString:oldSelectedRegionId]) {
 		self.universitiesController.selectedUniversityId = NULL;
 	}
-	
-	//[self.tableView reloadData];
-	
-	// NSLog(@"We did select row=%d", row);
 	
 	self.universitiesController.regionData = regionData;
 

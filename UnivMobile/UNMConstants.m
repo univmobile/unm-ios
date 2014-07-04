@@ -32,8 +32,9 @@
 
 + (CGFloat) TRANSITION_DURATION {
 	
-	//return 0.5f;
-	return 3.0f;
+	return 0.5f;
+	
+	// return 3.0f;
 }
 
 @end
