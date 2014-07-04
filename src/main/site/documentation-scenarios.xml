@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<scenarios>
+
+<scenario id="001" title="Choix d’une université">
+	<begin screenshot="001.png"
+		shortLabel="Accueil"
+		label="Aucune université sélectionnée"/>
+	<next screenshot="002.png"
+		shortLabel="Régions"
+		transitionScreenshot="001tr002-choisir.png"
+		transitionShortLabel="clic"
+		transitionLabel="clic sur « Choisir… »"/>
+	<next screenshot="003.png" 
+		shortLabel="Universités"
+		transitionScreenshot="002tr003-clic.png"
+		transitionShortLabel="clic"
+		transitionLabel="clic sur une région"/>
+	<next screenshot="004.png" 
+		shortLabel="Accueil"
+		transitionScreenshot="003tr004-clic.png"
+		transitionShortLabel="clic"
+		transitionLabel="clic sur une université"/>	
+</scenario>
+
+</scenarios>

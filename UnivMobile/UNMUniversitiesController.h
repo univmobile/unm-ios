@@ -1,0 +1,13 @@
+//
+//  UNMUniversitiesController.h
+//  UnivMobile
+//
+//  Created by David on 04/07/2014.
+//  Copyright (c) 2014 David. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface UNMUniversitiesController : UITableViewController
+
+@end

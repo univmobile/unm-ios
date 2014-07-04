@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="unm-ios" default="generate-documentation">
+
+	<target name="generate-documentation"
+		description="Generate documentation for the UnivMobile iOS application">
+
+		<xslt style="src/main/xslt/generate-documentation.html.xsl"
+			in="src/main/site/documentation-scenarios.xml"
+			out="target/site/scenarios.html"/>
+
+		<copy todir="target/site/img">
+			<fileset dir="src/site/img"/>
+		</copy>
+		
+	</target>
+
+</project>

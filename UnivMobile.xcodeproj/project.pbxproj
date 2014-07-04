@@ -1,0 +1,548 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CF2E7B12A50E49B194DADC5F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA53C43C5EAF4E879E452BE4 /* libPods.a */; };
+		DF7EC2CA19657D83004730C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7EC2C919657D83004730C4 /* Foundation.framework */; };
+		DF7EC2CC19657D83004730C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7EC2CB19657D83004730C4 /* CoreGraphics.framework */; };
+		DF7EC2CE19657D83004730C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7EC2CD19657D83004730C4 /* UIKit.framework */; };
+		DF7EC2D419657D83004730C4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DF7EC2D219657D83004730C4 /* InfoPlist.strings */; };
+		DF7EC2D619657D83004730C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7EC2D519657D83004730C4 /* main.m */; };
+		DF7EC2DA19657D83004730C4 /* UNMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7EC2D919657D83004730C4 /* UNMAppDelegate.m */; };
+		DF7EC2DC19657D83004730C4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF7EC2DB19657D83004730C4 /* Images.xcassets */; };
+		DF7EC2E319657D83004730C4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7EC2E219657D83004730C4 /* XCTest.framework */; };
+		DF7EC2E419657D83004730C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7EC2C919657D83004730C4 /* Foundation.framework */; };
+		DF7EC2E519657D83004730C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7EC2CD19657D83004730C4 /* UIKit.framework */; };
+		DF7EC2ED19657D83004730C4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DF7EC2EB19657D83004730C4 /* InfoPlist.strings */; };
+		DF7EC2EF19657D83004730C4 /* UnivMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7EC2EE19657D83004730C4 /* UnivMobileTests.m */; };
+		DF7EC3001965FF88004730C4 /* UNMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7EC2FF1965FF88004730C4 /* UNMConstants.m */; };
+		DF7EC30919667A19004730C4 /* UNMRegionData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7EC30819667A19004730C4 /* UNMRegionData.m */; };
+		DF7EC31219667A7C004730C4 /* UNMHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7EC30D19667A7C004730C4 /* UNMHomeController.m */; };
+		DF7EC31319667A7C004730C4 /* UNMRegionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7EC30F19667A7C004730C4 /* UNMRegionsController.m */; };
+		DF7EC31419667A7C004730C4 /* UNMUniversitiesController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7EC31119667A7C004730C4 /* UNMUniversitiesController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DF7EC2E619657D83004730C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF7EC2BE19657D83004730C4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF7EC2C519657D83004730C4;
+			remoteInfo = UnivMobile;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5888B702DECB4FA385056812 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		DA53C43C5EAF4E879E452BE4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF2C57AC19668D220023B8D2 /* UNMHomeCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMHomeCallback.h; path = Controller/UNMHomeCallback.h; sourceTree = "<group>"; };
+		DF7EC2C619657D83004730C4 /* UnivMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnivMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF7EC2C919657D83004730C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DF7EC2CB19657D83004730C4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DF7EC2CD19657D83004730C4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DF7EC2D119657D83004730C4 /* UnivMobile-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnivMobile-Info.plist"; sourceTree = "<group>"; };
+		DF7EC2D319657D83004730C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DF7EC2D519657D83004730C4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DF7EC2D719657D83004730C4 /* UnivMobile-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnivMobile-Prefix.pch"; sourceTree = "<group>"; };
+		DF7EC2D819657D83004730C4 /* UNMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNMAppDelegate.h; sourceTree = "<group>"; };
+		DF7EC2D919657D83004730C4 /* UNMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNMAppDelegate.m; sourceTree = "<group>"; };
+		DF7EC2DB19657D83004730C4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		DF7EC2E119657D83004730C4 /* UnivMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnivMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF7EC2E219657D83004730C4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		DF7EC2EA19657D83004730C4 /* UnivMobileTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnivMobileTests-Info.plist"; sourceTree = "<group>"; };
+		DF7EC2EC19657D83004730C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DF7EC2EE19657D83004730C4 /* UnivMobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnivMobileTests.m; sourceTree = "<group>"; };
+		DF7EC2FE1965FF88004730C4 /* UNMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNMConstants.h; sourceTree = "<group>"; };
+		DF7EC2FF1965FF88004730C4 /* UNMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNMConstants.m; sourceTree = "<group>"; };
+		DF7EC30719667A19004730C4 /* UNMRegionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMRegionData.h; path = Model/UNMRegionData.h; sourceTree = "<group>"; };
+		DF7EC30819667A19004730C4 /* UNMRegionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMRegionData.m; path = Model/UNMRegionData.m; sourceTree = "<group>"; };
+		DF7EC30C19667A7C004730C4 /* UNMHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMHomeController.h; path = Controller/UNMHomeController.h; sourceTree = "<group>"; };
+		DF7EC30D19667A7C004730C4 /* UNMHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMHomeController.m; path = Controller/UNMHomeController.m; sourceTree = "<group>"; };
+		DF7EC30E19667A7C004730C4 /* UNMRegionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMRegionsController.h; path = Controller/UNMRegionsController.h; sourceTree = "<group>"; };
+		DF7EC30F19667A7C004730C4 /* UNMRegionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMRegionsController.m; path = Controller/UNMRegionsController.m; sourceTree = "<group>"; };
+		DF7EC31019667A7C004730C4 /* UNMUniversitiesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMUniversitiesController.h; path = Controller/UNMUniversitiesController.h; sourceTree = "<group>"; };
+		DF7EC31119667A7C004730C4 /* UNMUniversitiesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMUniversitiesController.m; path = Controller/UNMUniversitiesController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DF7EC2C319657D83004730C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF7EC2CC19657D83004730C4 /* CoreGraphics.framework in Frameworks */,
+				DF7EC2CE19657D83004730C4 /* UIKit.framework in Frameworks */,
+				DF7EC2CA19657D83004730C4 /* Foundation.framework in Frameworks */,
+				CF2E7B12A50E49B194DADC5F /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF7EC2DE19657D83004730C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF7EC2E319657D83004730C4 /* XCTest.framework in Frameworks */,
+				DF7EC2E519657D83004730C4 /* UIKit.framework in Frameworks */,
+				DF7EC2E419657D83004730C4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DF7EC2BD19657D83004730C4 = {
+			isa = PBXGroup;
+			children = (
+				DF7EC2CF19657D83004730C4 /* UnivMobile */,
+				DF7EC2E819657D83004730C4 /* UnivMobileTests */,
+				DF7EC2C819657D83004730C4 /* Frameworks */,
+				DF7EC2C719657D83004730C4 /* Products */,
+				5888B702DECB4FA385056812 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		DF7EC2C719657D83004730C4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DF7EC2C619657D83004730C4 /* UnivMobile.app */,
+				DF7EC2E119657D83004730C4 /* UnivMobileTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DF7EC2C819657D83004730C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DF7EC2C919657D83004730C4 /* Foundation.framework */,
+				DF7EC2CB19657D83004730C4 /* CoreGraphics.framework */,
+				DF7EC2CD19657D83004730C4 /* UIKit.framework */,
+				DF7EC2E219657D83004730C4 /* XCTest.framework */,
+				DA53C43C5EAF4E879E452BE4 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DF7EC2CF19657D83004730C4 /* UnivMobile */ = {
+			isa = PBXGroup;
+			children = (
+				DF7EC30A19667A20004730C4 /* Model */,
+				DF7EC30B19667A30004730C4 /* Controller */,
+				DF7EC2D819657D83004730C4 /* UNMAppDelegate.h */,
+				DF7EC2D919657D83004730C4 /* UNMAppDelegate.m */,
+				DF7EC2DB19657D83004730C4 /* Images.xcassets */,
+				DF7EC2D019657D83004730C4 /* Supporting Files */,
+				DF7EC2FE1965FF88004730C4 /* UNMConstants.h */,
+				DF7EC2FF1965FF88004730C4 /* UNMConstants.m */,
+			);
+			path = UnivMobile;
+			sourceTree = "<group>";
+		};
+		DF7EC2D019657D83004730C4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DF7EC2D119657D83004730C4 /* UnivMobile-Info.plist */,
+				DF7EC2D219657D83004730C4 /* InfoPlist.strings */,
+				DF7EC2D519657D83004730C4 /* main.m */,
+				DF7EC2D719657D83004730C4 /* UnivMobile-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DF7EC2E819657D83004730C4 /* UnivMobileTests */ = {
+			isa = PBXGroup;
+			children = (
+				DF7EC2EE19657D83004730C4 /* UnivMobileTests.m */,
+				DF7EC2E919657D83004730C4 /* Supporting Files */,
+			);
+			path = UnivMobileTests;
+			sourceTree = "<group>";
+		};
+		DF7EC2E919657D83004730C4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DF7EC2EA19657D83004730C4 /* UnivMobileTests-Info.plist */,
+				DF7EC2EB19657D83004730C4 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DF7EC30A19667A20004730C4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DF7EC30719667A19004730C4 /* UNMRegionData.h */,
+				DF7EC30819667A19004730C4 /* UNMRegionData.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		DF7EC30B19667A30004730C4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DF7EC30C19667A7C004730C4 /* UNMHomeController.h */,
+				DF7EC30D19667A7C004730C4 /* UNMHomeController.m */,
+				DF7EC30E19667A7C004730C4 /* UNMRegionsController.h */,
+				DF7EC30F19667A7C004730C4 /* UNMRegionsController.m */,
+				DF7EC31019667A7C004730C4 /* UNMUniversitiesController.h */,
+				DF7EC31119667A7C004730C4 /* UNMUniversitiesController.m */,
+				DF2C57AC19668D220023B8D2 /* UNMHomeCallback.h */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DF7EC2C519657D83004730C4 /* UnivMobile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF7EC2F219657D83004730C4 /* Build configuration list for PBXNativeTarget "UnivMobile" */;
+			buildPhases = (
+				938858C20A554AD08749CBB9 /* Check Pods Manifest.lock */,
+				DF7EC2C219657D83004730C4 /* Sources */,
+				DF7EC2C319657D83004730C4 /* Frameworks */,
+				DF7EC2C419657D83004730C4 /* Resources */,
+				51E43C54847A450C9AB538B8 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UnivMobile;
+			productName = UnivMobile;
+			productReference = DF7EC2C619657D83004730C4 /* UnivMobile.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DF7EC2E019657D83004730C4 /* UnivMobileTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF7EC2F519657D83004730C4 /* Build configuration list for PBXNativeTarget "UnivMobileTests" */;
+			buildPhases = (
+				DF7EC2DD19657D83004730C4 /* Sources */,
+				DF7EC2DE19657D83004730C4 /* Frameworks */,
+				DF7EC2DF19657D83004730C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DF7EC2E719657D83004730C4 /* PBXTargetDependency */,
+			);
+			name = UnivMobileTests;
+			productName = UnivMobileTests;
+			productReference = DF7EC2E119657D83004730C4 /* UnivMobileTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DF7EC2BE19657D83004730C4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = UNM;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = David;
+				TargetAttributes = {
+					DF7EC2E019657D83004730C4 = {
+						TestTargetID = DF7EC2C519657D83004730C4;
+					};
+				};
+			};
+			buildConfigurationList = DF7EC2C119657D83004730C4 /* Build configuration list for PBXProject "UnivMobile" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DF7EC2BD19657D83004730C4;
+			productRefGroup = DF7EC2C719657D83004730C4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DF7EC2C519657D83004730C4 /* UnivMobile */,
+				DF7EC2E019657D83004730C4 /* UnivMobileTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DF7EC2C419657D83004730C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF7EC2D419657D83004730C4 /* InfoPlist.strings in Resources */,
+				DF7EC2DC19657D83004730C4 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF7EC2DF19657D83004730C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF7EC2ED19657D83004730C4 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		51E43C54847A450C9AB538B8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		938858C20A554AD08749CBB9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DF7EC2C219657D83004730C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF7EC2D619657D83004730C4 /* main.m in Sources */,
+				DF7EC2DA19657D83004730C4 /* UNMAppDelegate.m in Sources */,
+				DF7EC31219667A7C004730C4 /* UNMHomeController.m in Sources */,
+				DF7EC3001965FF88004730C4 /* UNMConstants.m in Sources */,
+				DF7EC31419667A7C004730C4 /* UNMUniversitiesController.m in Sources */,
+				DF7EC31319667A7C004730C4 /* UNMRegionsController.m in Sources */,
+				DF7EC30919667A19004730C4 /* UNMRegionData.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF7EC2DD19657D83004730C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF7EC2EF19657D83004730C4 /* UnivMobileTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DF7EC2E719657D83004730C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DF7EC2C519657D83004730C4 /* UnivMobile */;
+			targetProxy = DF7EC2E619657D83004730C4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DF7EC2D219657D83004730C4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DF7EC2D319657D83004730C4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DF7EC2EB19657D83004730C4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DF7EC2EC19657D83004730C4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DF7EC2F019657D83004730C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DF7EC2F119657D83004730C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DF7EC2F319657D83004730C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5888B702DECB4FA385056812 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UnivMobile/UnivMobile-Prefix.pch";
+				INFOPLIST_FILE = "UnivMobile/UnivMobile-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DF7EC2F419657D83004730C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5888B702DECB4FA385056812 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UnivMobile/UnivMobile-Prefix.pch";
+				INFOPLIST_FILE = "UnivMobile/UnivMobile-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		DF7EC2F619657D83004730C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/UnivMobile.app/UnivMobile";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UnivMobile/UnivMobile-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "UnivMobileTests/UnivMobileTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		DF7EC2F719657D83004730C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/UnivMobile.app/UnivMobile";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UnivMobile/UnivMobile-Prefix.pch";
+				INFOPLIST_FILE = "UnivMobileTests/UnivMobileTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DF7EC2C119657D83004730C4 /* Build configuration list for PBXProject "UnivMobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF7EC2F019657D83004730C4 /* Debug */,
+				DF7EC2F119657D83004730C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DF7EC2F219657D83004730C4 /* Build configuration list for PBXNativeTarget "UnivMobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF7EC2F319657D83004730C4 /* Debug */,
+				DF7EC2F419657D83004730C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DF7EC2F519657D83004730C4 /* Build configuration list for PBXNativeTarget "UnivMobileTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF7EC2F619657D83004730C4 /* Debug */,
+				DF7EC2F719657D83004730C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DF7EC2BE19657D83004730C4 /* Project object */;
+}
