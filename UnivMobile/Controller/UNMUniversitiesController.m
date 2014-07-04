@@ -91,8 +91,6 @@
 	
 	const UNMUniversityData* const universityData = [self.regionData.universities objectAtIndex:row];
 	
-	NSLog(@"uid:%@", self.callback.selectedUniversityId);
-	
 	const BOOL isSelected = [universityData.id isEqualToString:self.selectedUniversityId];
 	
 	if (isSelected) {
