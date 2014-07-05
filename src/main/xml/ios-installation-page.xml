@@ -1,6 +1,11 @@
 <ios-installation-page>
 
 <ios-installation
+	date="2014-07-05 11:48"
+	git-commit="55ffc3f207cd9ce8c65ee0639f71e0bfba47c918"
+	label="Ajout de devices (PRI et DAN)"/>
+
+<ios-installation
 	date="2014-07-05 08:49"
 	git-commit="277fb60dbca7483691847769aec3c6d2f01d44b9"
 	label="Premier déploiement"/>
