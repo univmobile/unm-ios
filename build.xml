@@ -4,13 +4,24 @@
 	<target name="generate-documentation"
 		description="Generate documentation for the UnivMobile iOS application">
 
-		<xslt style="src/main/xslt/generate-documentation.html.xsl"
-			in="src/main/site/documentation-scenarios.xml"
+		<xslt force="true"
+			style="src/main/xslt/scenarios.html.xsl"
+			in="src/main/site/scenarios.xml"
 			out="target/site/scenarios.html"/>
 
 		<copy todir="target/site/img">
 			<fileset dir="src/site/img"/>
 		</copy>
+		
+	</target>
+
+	<target name="generate-ios-installation-page"
+		description="Generate an installation page for different versions of the UnivMobile iOS application">
+
+		<xslt force="true"
+			style="src/main/xslt/ios-installation-page.html.xsl"
+			in="src/main/xml/ios-installation-page.xml"
+			out="target/ios-installation-page/index.html"/>
 		
 	</target>
 
