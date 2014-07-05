@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <meta http-equiv="Content-Language" content="fr"/>
-<title>unm-ios Scenarios</title>
+<title>UnivMobile iOS — Scénarios</title>
 <style type="text/css">
 body {
 	position: relative;
@@ -191,7 +191,7 @@ window.onload = function() {
 <a href="index.html">Back to the Maven Generated Site</a>
 </div>
 
-<h1>Scénarios</h1>
+<h1>UnivMobile iOS — Scénarios</h1>
 <div id="div-scenarios">
 <xsl:for-each select="scenario">
 
