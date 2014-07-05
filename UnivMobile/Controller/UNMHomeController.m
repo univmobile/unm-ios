@@ -13,7 +13,8 @@
 
 @interface UNMHomeController ()
 
-@property (nonatomic, assign) CGFloat screenHeight;
+// @property (nonatomic, assign) CGFloat screenHeight;
+@property (nonatomic, assign) CGFloat screenMiddle;
 
 @property (nonatomic, strong) UIView* homeView;
 @property (nonatomic, strong) UILabel* titleLabel;
@@ -65,7 +66,7 @@
 	
 	const CGRect bounds = [UIScreen mainScreen].bounds;
 	
-	self.screenHeight = bounds.size.height;
+	[self calcScreenHeight];
 	
 	// COLORS
 	
@@ -87,7 +88,7 @@
 	// TITLE LABEL
 	
 	self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(
-						50.0, self.screenHeight / 2 - 200.0, 220.0, 60.0)
+						50.0, self.screenMiddle - 200.0, 220.0, 60.0)
 					   ];
 	self.titleLabel.text = @"UnivMobile";
 	self.titleLabel.textColor = [UNMConstants RGB_79b8d9];
@@ -100,7 +101,7 @@
 	// UNIVERSITY NAME LABEL
 
 	self.universityLabel = [[UILabel alloc] initWithFrame:CGRectMake(
-							0.0, self.screenHeight / 2 + 20.0, 320.0, 40.0)
+							0.0, self.screenMiddle + 20.0, 320.0, 40.0)
 							];
 	self.universityLabel.text = @"Aucune université sélectionnée";
 	self.universityLabel.textColor = [UIColor blackColor];
@@ -113,7 +114,7 @@
 	// REGIONS LABEL
 	
 	self.regionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(
-																50.0, self.screenHeight / 2 - 200.0, 220.0, 60.0)
+																50.0, self.screenMiddle - 200.0, 220.0, 60.0)
 					   ];
 	self.regionsLabel.text = @"Régions";
 	self.regionsLabel.textColor = [UNMConstants RGB_79b8d9];
@@ -126,7 +127,7 @@
 	// CHOOSE BUTTON
 	
 	self.chooseButton = [[UIButton alloc] initWithFrame:CGRectMake(
-						120.0, self.screenHeight / 2 + 100.0, 80.0, 20.0)
+						120.0, self.screenMiddle + 100.0, 80.0, 20.0)
 						 ];
 	
 	[self.chooseButton setTitle:@"Choisir…" forState:UIControlStateNormal];
@@ -180,14 +181,35 @@
 	[self doLayoutSubviews];
 }
 
+- (void)calcScreenHeight {
+	
+	const CGFloat viewHeight = self.view.bounds.size.height;
+	
+	const BOOL IS_IOS6 = (viewHeight == 548.0f || viewHeight == 460.0f);
+	
+	if (IS_IOS6) {
+		
+		// self.screenHeight = viewHeight + 20.0f;
+		
+		self.screenMiddle = viewHeight / 2 - 10.0f;
+		
+	} else {
+		
+		// self.screenHeight = viewHeight;
+		
+		self.screenMiddle = viewHeight / 2;
+	}
+}
+
 - (void)doLayoutSubviews {
 	
-    const CGRect bounds = self.view.bounds;
-	
-	self.screenHeight = bounds.size.height;
+	[self calcScreenHeight];
+
+	const CGRect bounds = self.view.bounds;
 	
     self.regionsView.frame = bounds;
-	self.navView.frame = CGRectMake(0.0, 0.0, 320.0, self.screenHeight);
+	
+	self.navView.frame = bounds;
 }
 
 #pragma mark - Callback
