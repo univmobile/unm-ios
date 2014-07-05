@@ -87,11 +87,24 @@ table {
 
 <xsl:variable name="git-commit" select="@git-commit"/>
 
+<!--
+<xsl:variable name="plistHref" select="concat(
+	'http://univmobile.vswip.com/ios/', $git-commit, '/UnivMobile.plist'
+)"/>
+-->
+
+<xsl:variable name="plistHref" select="@plistHref"/>
+
+<xsl:if test="not($plistHref) or normalize-space($plistHref) = ''">
+<xsl:message terminate="yes">Cannot find @plistHref for ios-installation:
+Git commit=<xsl:value-of select="$git-commit"/>
+</xsl:message>
+</xsl:if>
+
 <xsl:variable name="href" select="concat(
 	'itms-services://?action=download-manifest',
 	'&amp;url=itms-services://?action=download-manifest',
-	'&amp;url=http://univmobile.vswip.com/ios/',
-		$git-commit, '/UnivMobile.plist'
+	'&amp;url=', $plistHref
 )"/>
 
 <tr>

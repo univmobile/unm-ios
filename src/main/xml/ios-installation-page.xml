@@ -3,11 +3,13 @@
 <ios-installation
 	date="2014-07-05 11:48"
 	git-commit="55ffc3f207cd9ce8c65ee0639f71e0bfba47c918"
+	plistHref="https://dl.dropboxusercontent.com/s/l2scwp1kse0btlg/UnivMobile.plist"
 	label="Ajout de devices (PRI et DAN)"/>
 
 <ios-installation
 	date="2014-07-05 08:49"
 	git-commit="277fb60dbca7483691847769aec3c6d2f01d44b9"
+	plistHref="https://dl.dropboxusercontent.com/s/9v9ohiqsjp5bl58/UnivMobile.plist"
 	label="Premier déploiement"/>
 
 </ios-installation-page>
