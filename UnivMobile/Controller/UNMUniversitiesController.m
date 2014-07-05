@@ -9,6 +9,7 @@
 #import "UNMUniversitiesController.h"
 #import "UNMRegionData.h"
 #import "UNMConstants.h"
+#import <EXTScope.h>
 
 @interface UNMUniversitiesController ()
 
@@ -87,30 +88,24 @@
 	
 	const NSUInteger row = [indexPath row];
 	
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
 	
 	const UNMUniversityData* const universityData = [self.regionData.universities objectAtIndex:row];
 	
 	const BOOL isSelected = [universityData.id isEqualToString:self.selectedUniversityId];
-	
+
 	if (isSelected) {
 		cell.backgroundColor = [UNMConstants RGB_79b8d9];
-		cell.textLabel.textColor = [UIColor blackColor];
-		cell.detailTextLabel.textColor = [UIColor redColor];
 	} else {
 		cell.backgroundColor = [UNMConstants RGBA_79b8d9];
-		cell.textLabel.textColor = [UIColor blackColor];
-		cell.detailTextLabel.textColor = [UIColor blackColor];
 	}
-    
+
+	cell.textLabel.textColor = [UIColor blackColor];
+	cell.detailTextLabel.textColor = [UIColor blackColor];
+	
 	cell.textLabel.font = [UIFont systemFontOfSize:18.0];
 	
 	cell.textLabel.text = universityData.title;
-    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
-	
-	[cell.backgroundView setNeedsDisplay];
-	
-	[cell setNeedsDisplay];
 	
     return cell;
 }
@@ -124,11 +119,18 @@
 	self.selectedUniversityId = universityData.id;
 	
 	if (self.callback) {
-		
+
 		self.callback.selectedRegionId = self.regionData.id;
 		self.callback.selectedUniversityId = universityData.id;
-
-		[self.callback goBackFromRegions];
+		
+		@weakify(self)
+	
+		dispatch_async(dispatch_get_main_queue(), ^{
+			
+			@strongify(self)
+			
+			[self.callback goBackFromRegions];
+        });
 	}
 }
 
@@ -137,6 +139,8 @@
 	_selectedUniversityId = selectedUniversityId;
 	
 	[self.tableView reloadData];
+
+	[self.tableView setNeedsDisplay];
 }
 
 /*

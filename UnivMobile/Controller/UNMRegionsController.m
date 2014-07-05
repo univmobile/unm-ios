@@ -201,26 +201,23 @@
 	const UNMRegionData* const regionData = [self.regionsData objectAtIndex:row];
 
 	const BOOL isSelected = [regionData.id isEqualToString:self.selectedRegionId];
-	
+
 	if (isSelected) {
-		cell.selectionStyle = UITableViewCellSelectionStyleGray;
 		cell.backgroundColor = [UNMConstants RGB_79b8d9];
-		cell.textLabel.textColor = [UIColor blackColor];
-		cell.detailTextLabel.textColor = [UIColor redColor];
 	} else {
-		cell.selectionStyle = UITableViewCellSelectionStyleNone;
 		cell.backgroundColor = [UNMConstants RGBA_79b8d9];
-		cell.textLabel.textColor = [UIColor blackColor];
-		cell.detailTextLabel.textColor = [UIColor blackColor];
 	}
 
+	cell.textLabel.textColor = [UIColor blackColor];
+	cell.detailTextLabel.textColor = [UIColor redColor];
 	
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; // TODO use a custom PNG image
+
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     
 	cell.textLabel.font = [UIFont systemFontOfSize:18.0];
 	
 	cell.textLabel.text = regionData.label;
-    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
 
     return cell;
 }
@@ -232,7 +229,7 @@
 	const UNMRegionData* const regionData = [self.regionsData objectAtIndex:row];
 
 	NSString* const oldSelectedRegionId = self.selectedRegionId;
-
+	
 	self.selectedRegionId = regionData.id;
 	
 	if (![regionData.id isEqualToString:oldSelectedRegionId]) {
@@ -240,8 +237,15 @@
 	}
 	
 	self.universitiesController.regionData = regionData;
-
-	[self.navigationController pushViewController:self.universitiesController animated:true];
+	
+	@weakify(self)
+	
+	dispatch_async(dispatch_get_main_queue(), ^{
+		
+		@strongify(self)
+		
+		[self.navigationController pushViewController:self.universitiesController animated:YES];
+	});
 }
 
 /*
