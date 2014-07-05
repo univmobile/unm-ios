@@ -1,0 +1,8 @@
+<ios-installation-page>
+
+<ios-installation
+	date="2014-07-05 08:49"
+	git-commit="277fb60dbca7483691847769aec3c6d2f01d44b9"
+	label="Premier déploiement"/>
+
+</ios-installation-page>
