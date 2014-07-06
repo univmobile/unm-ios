@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CF2E7B12A50E49B194DADC5F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA53C43C5EAF4E879E452BE4 /* libPods.a */; };
+		DF6000311968DC7D00A72D24 /* UNMAppLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DF6000301968DC7D00A72D24 /* UNMAppLayer.m */; };
 		DF7EC2CA19657D83004730C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7EC2C919657D83004730C4 /* Foundation.framework */; };
 		DF7EC2CC19657D83004730C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7EC2CB19657D83004730C4 /* CoreGraphics.framework */; };
 		DF7EC2CE19657D83004730C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7EC2CD19657D83004730C4 /* UIKit.framework */; };
@@ -40,7 +41,9 @@
 /* Begin PBXFileReference section */
 		5888B702DECB4FA385056812 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		DA53C43C5EAF4E879E452BE4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF2C57AC19668D220023B8D2 /* UNMHomeCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMHomeCallback.h; path = Controller/UNMHomeCallback.h; sourceTree = "<group>"; };
+		DF60002F1968DC7D00A72D24 /* UNMAppLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMAppLayer.h; path = AppLayer/UNMAppLayer.h; sourceTree = "<group>"; };
+		DF6000301968DC7D00A72D24 /* UNMAppLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMAppLayer.m; path = AppLayer/UNMAppLayer.m; sourceTree = "<group>"; };
+		DF6000351968DF8700A72D24 /* UNMAppLayered.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMAppLayered.h; path = AppLayer/UNMAppLayered.h; sourceTree = "<group>"; };
 		DF7EC2C619657D83004730C4 /* UnivMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnivMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF7EC2C919657D83004730C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DF7EC2CB19657D83004730C4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -94,6 +97,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF60002E1968DC6100A72D24 /* AppLayer */ = {
+			isa = PBXGroup;
+			children = (
+				DF60002F1968DC7D00A72D24 /* UNMAppLayer.h */,
+				DF6000301968DC7D00A72D24 /* UNMAppLayer.m */,
+				DF6000351968DF8700A72D24 /* UNMAppLayered.h */,
+			);
+			name = AppLayer;
+			sourceTree = "<group>";
+		};
 		DF7EC2BD19657D83004730C4 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +142,7 @@
 		DF7EC2CF19657D83004730C4 /* UnivMobile */ = {
 			isa = PBXGroup;
 			children = (
+				DF60002E1968DC6100A72D24 /* AppLayer */,
 				DF7EC30A19667A20004730C4 /* Model */,
 				DF7EC30B19667A30004730C4 /* Controller */,
 				DF7EC2D819657D83004730C4 /* UNMAppDelegate.h */,
@@ -188,7 +202,6 @@
 				DF7EC30F19667A7C004730C4 /* UNMRegionsController.m */,
 				DF7EC31019667A7C004730C4 /* UNMUniversitiesController.h */,
 				DF7EC31119667A7C004730C4 /* UNMUniversitiesController.m */,
-				DF2C57AC19668D220023B8D2 /* UNMHomeCallback.h */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -333,6 +346,7 @@
 				DF7EC3001965FF88004730C4 /* UNMConstants.m in Sources */,
 				DF7EC31419667A7C004730C4 /* UNMUniversitiesController.m in Sources */,
 				DF7EC31319667A7C004730C4 /* UNMRegionsController.m in Sources */,
+				DF6000311968DC7D00A72D24 /* UNMAppLayer.m in Sources */,
 				DF7EC30919667A19004730C4 /* UNMRegionData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

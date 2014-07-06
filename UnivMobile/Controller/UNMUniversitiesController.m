@@ -17,11 +17,18 @@
 
 @implementation UNMUniversitiesController
 
-- (id)initWithStyle:(UITableViewStyle)style {
+@synthesize appLayer = _appLayer;
+
+- (id)initWithAppLayer:(UNMAppLayer*)appLayer
+				 style:(UITableViewStyle)style {
+	
     self = [super initWithStyle:style];
     
 	if (self) {
 
+		self.appLayer = appLayer;
+		
+		[self.appLayer addCallback:self];		
     }
     
 	return self;
@@ -49,8 +56,6 @@
     [super didReceiveMemoryWarning];
 
 }
-
-#pragma mark - Internal data
 
 - (void) setRegionData:(UNMRegionData*)regionData {
 		
@@ -118,20 +123,17 @@
 
 	self.selectedUniversityId = universityData.id;
 	
-	if (self.callback) {
-
-		self.callback.selectedRegionId = self.regionData.id;
-		self.callback.selectedUniversityId = universityData.id;
-		
-		@weakify(self)
+	self.appLayer.selectedRegionId = self.regionData.id;
+	self.appLayer.selectedUniversityId = universityData.id;
 	
-		dispatch_async(dispatch_get_main_queue(), ^{
-			
-			@strongify(self)
-			
-			[self.callback goBackFromRegions];
-        });
-	}
+	@weakify(self)
+	
+	dispatch_async(dispatch_get_main_queue(), ^{
+		
+		@strongify(self)
+		
+		[self.appLayer goBackFromRegions];
+	});
 }
 
 - (void)setSelectedUniversityId:(NSString*)selectedUniversityId {
@@ -141,6 +143,13 @@
 	[self.tableView reloadData];
 
 	[self.tableView setNeedsDisplay];
+}
+
+#pragma mark - AppLayer Callbacks
+
+- (void) callback_setSelectedUniversityIdInList:(NSString*)universityId {
+	
+	self.selectedUniversityId = universityId;
 }
 
 /*

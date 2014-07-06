@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UNMAppLayered.h"
 #import "UNMRegionsController.h"
-#import "UNMHomeCallback.h"
+#import "UNMUniversitiesController.h"
 
-@interface UNMHomeController : UIViewController <UNMHomeCallback>
+@interface UNMHomeController : UIViewController <UNMAppLayered>
 
-- (id) initWithNav:(UIView*) navView regionsController:(UNMRegionsController*)regionsController;
+- (id) initWithAppLayer:(UNMAppLayer*)appLayer
+				navView:(UIView*)navView;
 
 @end

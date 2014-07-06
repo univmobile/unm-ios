@@ -13,7 +13,6 @@
 
 @interface UNMHomeController ()
 
-// @property (nonatomic, assign) CGFloat screenHeight;
 @property (nonatomic, assign) CGFloat screenMiddle;
 
 @property (nonatomic, strong) UIView* homeView;
@@ -25,15 +24,14 @@
 @property (nonatomic, strong) UILabel* regionsLabel;
 
 @property (nonatomic, weak) UIView* navView;
-@property (nonatomic, weak) UNMRegionsController* regionsController;
 
 @end
 
 @implementation UNMHomeController
 
-@synthesize selectedRegionId = _selectedRegionId;
-@synthesize selectedUniversityId = _selectedUniversityId;
+@synthesize appLayer = _appLayer;
 
+/*
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil {
 	
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -44,15 +42,20 @@
 	
     return self;
 }
+*/
 
-- (id) initWithNav:(UIView*) navView regionsController:(UNMRegionsController*)regionsController {
-	
+- (id) initWithAppLayer:(UNMAppLayer*)appLayer
+				navView:(UIView*)navView {
+
 	self = [super init];
 	
 	if (self) {
 		
+		self.appLayer = appLayer;
+		
+		[self.appLayer addCallback:self];
+		
 		self.navView = navView;
-		self.regionsController = regionsController;
 	}
 	
 	return self;
@@ -135,8 +138,6 @@
 	[self.chooseButton setTitleColor:[UIColor greenColor] forState:UIControlStateHighlighted];
 	
 	[self.homeView addSubview:self.chooseButton];
-	
-	self.regionsController.callback = self;
 
 	@weakify(self)
 	
@@ -144,13 +145,15 @@
 		
 		@strongify(self)
 		
-		if (self.selectedRegionId) {
+		if (self.appLayer.selectedRegionId) {
 			
-			self.regionsController.selectedRegionId = self.selectedRegionId;
+			[self.appLayer setSelectedRegionIdInList:self.appLayer.selectedRegionId];
 			
-			if (self.selectedUniversityId) {
+			if (self.appLayer.selectedUniversityId) {
 
-				self.regionsController.selectedUniversityId = self.selectedUniversityId;
+				[self.appLayer setSelectedUniversityIdInList:self.appLayer.selectedUniversityId];
+				
+				[self.appLayer showUniversityList];
 			}
 		}
 		
@@ -212,14 +215,17 @@
 	self.navView.frame = bounds;
 }
 
-#pragma mark - Callback
+#pragma mark - AppLayer Callbacks
 
-- (void)goBackFromRegions {
+- (void)callback_goBackFromRegions {
 	
-	if (self.selectedUniversityId) {
+	if (self.appLayer.selectedUniversityId) {
 		
 		self.universityLabel.font = [UIFont systemFontOfSize:18];
-		UNMUniversityData* const universityData = [self.regionsController getUniversityDataById:self.selectedUniversityId];
+		
+		UNMUniversityData* const universityData =
+			[self.appLayer getUniversityDataById:self.appLayer.selectedUniversityId];
+		
 		self.universityLabel.text = universityData.title;
 	
 	} else {

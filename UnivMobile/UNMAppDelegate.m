@@ -13,17 +13,29 @@
 #import "UNMRegionsController.h"
 #import "UNMUniversitiesController.h"
 
+@interface UNMAppDelegate ()
+
+@property (strong, nonatomic) UNMAppLayer* appLayer;
+
+@end
+
 @implementation UNMAppDelegate
 
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
     
+	// APPLICATION LAYER
+	
+	_appLayer = [[UNMAppLayer alloc] init];
+	
 	// NAVIGATION CONTROLLER
-
+	
 	UNMUniversitiesController* const universitiesController = [[UNMUniversitiesController alloc]
-													 initWithStyle:UITableViewStylePlain];
+															   initWithAppLayer:_appLayer
+															   style:UITableViewStylePlain];
 	
 	UNMRegionsController* const regionsController = [[UNMRegionsController alloc]
-													 initWithStyle:UITableViewStylePlain
+													 initWithAppLayer:_appLayer
+													 style:UITableViewStylePlain
 													 universitiesController:universitiesController];
 	
 	self.navController = [[UINavigationController alloc]
@@ -33,11 +45,12 @@
 	
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
-    self.window.rootViewController = [[UNMHomeController alloc] initWithNav:self.navController.view
-									  regionsController:regionsController];
+    self.window.rootViewController = [[UNMHomeController alloc] initWithAppLayer:_appLayer
+																		 navView:self.navController.view
+									  ];
 	
 	self.window.backgroundColor = [UNMConstants RGB_79b8d9]; // This background will show during animations
-
+	
     [self.window makeKeyAndVisible];
 	
 	// TSMESSAGE
@@ -57,7 +70,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication*)application {
 	
-	// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+	// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
 	// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 

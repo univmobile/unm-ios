@@ -8,14 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "UNMRegionData.h"
-#import "UNMHomeCallback.h"
+#import "UNMAppLayered.h"
 
-@interface UNMUniversitiesController : UITableViewController
-
-@property (weak, nonatomic) NSObject<UNMHomeCallback>* callback;
+@interface UNMUniversitiesController : UITableViewController <UNMAppLayered>
 
 @property (weak, nonatomic) const UNMRegionData* regionData;
 
 @property (copy, nonatomic) NSString* selectedUniversityId;
+
+- (id)initWithAppLayer:(UNMAppLayer*)appLayer
+				 style:(UITableViewStyle)style;
 
 @end
