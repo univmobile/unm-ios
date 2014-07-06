@@ -19,9 +19,9 @@
 		description="Generate an installation page for different versions of the UnivMobile iOS application">
 
 		<xslt force="true"
-			style="src/main/xslt/ios-installation-page.html.xsl"
+			style="src/main/xslt/ios-installation-page.php.xsl"
 			in="src/main/xml/ios-installation-page.xml"
-			out="target/ios-installation-page/index.html"/>
+			out="target/ios-installation-page/index.php"/>
 		
 	</target>
 
