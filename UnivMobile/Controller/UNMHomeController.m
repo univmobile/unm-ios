@@ -217,7 +217,7 @@
 
 #pragma mark - AppLayer Callbacks
 
-- (void)callback_goBackFromRegions {
+- (void)callbackGoBackFromRegions {
 	
 	if (self.appLayer.selectedUniversityId) {
 		

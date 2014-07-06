@@ -175,13 +175,13 @@
 
 #pragma mark - AppLayer Callbacks
 
-- (void) callback_setSelectedRegionIdInList:(NSString*)regionId {
+- (void) callbackSetSelectedRegionIdInList:(NSString*)regionId {
 	
 	self.selectedRegionId = regionId;
 }
 
 
-- (void) callback_showUniversityList {
+- (void) callbackShowUniversityList {
 	
 	[self.navigationController popToRootViewControllerAnimated:NO];
 	

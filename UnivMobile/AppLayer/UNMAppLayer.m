@@ -158,37 +158,42 @@
 	[self invokeCallbacksForSelector:@selector(showUniversityList)];
 }
 
-// Add a @"callback_" prefix to a selector name,
+// Add a @"callback" prefix to a (capitalized-) selector name,
 // to find what callback method must be called.
 + (SEL) calcCallbackSelector:(SEL)selector {
 	
 	NSString* const selectorAsString = NSStringFromSelector(selector);
 	
-	return NSSelectorFromString([@"callback_" stringByAppendingString:selectorAsString]);
+	NSString* const callbackSelectorAsString = [@"callback" stringByAppendingString:
+												[[[selectorAsString substringToIndex:1] capitalizedString]
+												 stringByAppendingString:[selectorAsString substringFromIndex:1]]
+												];
+	
+	return NSSelectorFromString(callbackSelectorAsString);
 }
 
 // This method fires all callbacks for the given selector.
 // Example: If the selector is @(doSomething),
-// all methods named @(callback_doSomething) in the registered callback objects
+// all methods named @(callbackDoSomething) in the registered callback objects
 // will be invoked.
 - (void) invokeCallbacksForSelector:(SEL)selector {
 	
-	const SEL callback_selector = [UNMAppLayer calcCallbackSelector:selector];
+	const SEL callbackSelector = [UNMAppLayer calcCallbackSelector:selector];
 	
 	for (NSObject* const callback in _callbacks) {
 		
-		if ([callback respondsToSelector:callback_selector]) {
+		if ([callback respondsToSelector:callbackSelector]) {
 			
 #pragma clang push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-			[callback performSelector:callback_selector];
+			[callback performSelector:callbackSelector];
 #pragma clang pop
 			
 			/*
 			 // Or, without any warning:
-			 const IMP implementation = [callback methodForSelector:callback_selector];
+			 const IMP implementation = [callback methodForSelector:callbackSelector];
 			 void (*function)(id, SEL) = (void*)implementation;
-			 function(callback, callback_selector);
+			 function(callback, callbackSelector);
 			 */
 		}
 	}
@@ -196,26 +201,26 @@
 
 // This method fires all callbacks for the given selector.
 // Example: If the selector is @(doSomething:),
-// all methods named @(callback_doSomething:) in the registered callback objects
+// all methods named @(callbackDoSomething:) in the registered callback objects
 // will be invoked.
 - (void) invokeCallbacksForSelector:(SEL)selector withObject:(id)arg {
 	
-	const SEL callback_selector = [UNMAppLayer calcCallbackSelector:selector];
+	const SEL callbackSelector = [UNMAppLayer calcCallbackSelector:selector];
 	
 	for (NSObject* const callback in _callbacks) {
 		
-		if ([callback respondsToSelector:callback_selector]) {
+		if ([callback respondsToSelector:callbackSelector]) {
 			
 #pragma clang push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-			[callback performSelector:callback_selector withObject:arg];
+			[callback performSelector:callbackSelector withObject:arg];
 #pragma clang pop
 			
 			/*
 			 // Or, without any warning: (arg should then explicitly be a NSString*):
-			 const IMP implementation = [callback methodForSelector:callback_selector];
+			 const IMP implementation = [callback methodForSelector:callbackSelector];
 			 void (*function)(id, SEL, NSString*) = (void*)implementation;
-			 function(callback, callback_selector, arg);
+			 function(callback, callbackSelector, arg);
 			 */
 		}
 	}

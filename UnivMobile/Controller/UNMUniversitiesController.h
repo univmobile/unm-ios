@@ -10,7 +10,7 @@
 #import "UNMRegionData.h"
 #import "UNMAppLayered.h"
 
-@interface UNMUniversitiesController : UITableViewController <UNMAppLayered>
+@interface UNMUniversitiesController : UITableViewController <UNMAppLayered, UNMAppViewCallback>
 
 @property (weak, nonatomic) const UNMRegionData* regionData;
 

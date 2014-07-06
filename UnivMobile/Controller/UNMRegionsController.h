@@ -10,7 +10,7 @@
 #import "UNMUniversitiesController.h"
 #import "UNMAppLayered.h"
 
-@interface UNMRegionsController : UITableViewController <UNMAppLayered>
+@interface UNMRegionsController : UITableViewController <UNMAppLayered, UNMAppViewCallback>
 
 @property (strong, nonatomic) UNMUniversitiesController* universitiesController;
 

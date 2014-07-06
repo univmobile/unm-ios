@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "UNMRegionData.h"
+#import "UNMAppViewCallback.h"
 
 // Objects in the App Layer (applicative layer) are responsible for
 // the data and the coordination between View Controllers.
@@ -36,6 +37,6 @@
 // Allow callbacks
 - (void) showUniversityList;
 
-- (void) addCallback:(NSObject*)callback;
+- (void) addCallback:(NSObject<UNMAppViewCallback>*)callback;
 
 @end

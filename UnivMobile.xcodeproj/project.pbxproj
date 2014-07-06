@@ -41,6 +41,7 @@
 /* Begin PBXFileReference section */
 		5888B702DECB4FA385056812 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		DA53C43C5EAF4E879E452BE4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF103EE71969E65100AC123A /* UNMAppViewCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMAppViewCallback.h; path = AppLayer/UNMAppViewCallback.h; sourceTree = "<group>"; };
 		DF60002F1968DC7D00A72D24 /* UNMAppLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMAppLayer.h; path = AppLayer/UNMAppLayer.h; sourceTree = "<group>"; };
 		DF6000301968DC7D00A72D24 /* UNMAppLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMAppLayer.m; path = AppLayer/UNMAppLayer.m; sourceTree = "<group>"; };
 		DF6000351968DF8700A72D24 /* UNMAppLayered.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMAppLayered.h; path = AppLayer/UNMAppLayered.h; sourceTree = "<group>"; };
@@ -103,6 +104,7 @@
 				DF60002F1968DC7D00A72D24 /* UNMAppLayer.h */,
 				DF6000301968DC7D00A72D24 /* UNMAppLayer.m */,
 				DF6000351968DF8700A72D24 /* UNMAppLayered.h */,
+				DF103EE71969E65100AC123A /* UNMAppViewCallback.h */,
 			);
 			name = AppLayer;
 			sourceTree = "<group>";

@@ -147,7 +147,7 @@
 
 #pragma mark - AppLayer Callbacks
 
-- (void) callback_setSelectedUniversityIdInList:(NSString*)universityId {
+- (void) callbackSetSelectedUniversityIdInList:(NSString*)universityId {
 	
 	self.selectedUniversityId = universityId;
 }
