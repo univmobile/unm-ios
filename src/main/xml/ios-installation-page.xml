@@ -1,4 +1,25 @@
+<!-- 
+
+In Xcode:
+	- Product, Archive
+	- Organizer, Distribute…: Save for Enterprise or Ad Hoc Deployment
+	- Save for Enterprise Distribution
+	
+For Application URL, use:
+http://univmobile.vswip.com/ios/<git-commit>/UnivMobile.ipa
+	
+For Title, use:
+UnivMobileAlpha
+
+-->
+
 <ios-installation-page>
+
+<ios-installation
+	date="2014-07-06 09:21"
+	git-commit="b88a34e7d1af5142a399b36364d1caadfc5ca2eb"
+	plistHref="https://dl.dropboxusercontent.com/s/b3hv203bmg227t7/UnivMobile.plist"
+	label="Refactoring"/>
 
 <ios-installation
 	date="2014-07-05 11:48"
