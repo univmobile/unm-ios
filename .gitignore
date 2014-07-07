@@ -13,3 +13,4 @@ xcuserdata
 build/
 *.pbxuser
 DerivedData
+*.xccheckout
