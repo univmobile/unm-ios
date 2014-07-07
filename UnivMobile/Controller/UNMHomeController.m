@@ -10,13 +10,19 @@
 #import <ReactiveCocoa/ReactiveCocoa/ReactiveCocoa.h>
 #import <EXTScope.h>
 #import "UNMConstants.h"
+#import "UNMViewFx.h"
 
 @interface UNMHomeController ()
 
 @property (nonatomic, assign) CGFloat screenMiddle;
 
 @property (nonatomic, strong) UIView* homeView;
+@property (nonatomic, strong) UIView* homeTitleView;
 @property (nonatomic, strong) UILabel* titleLabel;
+@property (nonatomic, weak) UNMViewFxVerticalSliderFromTo* aboutPageTransition;
+@property (nonatomic, strong) UIView* homeAboutView;
+@property (nonatomic, strong) UITextView* aboutTextView;
+@property (nonatomic, strong) UIButton* aboutCloseButton;
 @property (nonatomic, strong) UILabel* universityLabel;
 @property (nonatomic, strong) UIButton* chooseButton;
 
@@ -80,6 +86,23 @@
 	self.homeView = [[UIView alloc] initWithFrame:bounds];
 
 	[self.view addSubview:self.homeView];
+
+	self.homeAboutView = [[UIView alloc] initWithFrame:bounds];
+	
+	self.homeAboutView.backgroundColor = [UNMConstants RGB_9bc9e1];
+	
+	[self.homeView addSubview:self.homeAboutView];
+	
+	self.homeTitleView = [[UIView alloc] initWithFrame:bounds];
+	
+	self.homeTitleView.backgroundColor = [UNMConstants RGB_79b8d9];
+	
+	[self.homeView addSubview:self.homeTitleView];
+
+	self.aboutPageTransition = [UNMViewFx createPageTransition:UNMPageTransitionTypeSliding
+						fromView:self.homeTitleView
+						  toView:self.homeAboutView
+							edge:UNMPageTransitionEdgeTop];
 	
 	// REGIONS VIEW
 	
@@ -99,7 +122,47 @@
 	self.titleLabel.textAlignment = NSTextAlignmentCenter;
 	self.titleLabel.backgroundColor = [UIColor whiteColor];
 	
-	[self.homeView addSubview:self.titleLabel];
+	[self.homeTitleView addSubview:self.titleLabel];
+	
+	// ABOUT: TITLE LABEL
+	
+	self.aboutTextView = //[[UILabel alloc] initWithFrame:CGRectMake(
+							//									50.0, self.screenMiddle - 200.0, 220.0, 60.0)
+					   //];
+	[[UITextView alloc]initWithFrame:CGRectMake(20.0,40.0,280.0,200.0)];
+
+	self.aboutTextView.text = @"\nUnivMobile\n\n©2014 UNPIdF\n\nBuild: xxx\nhttps://github.com/univmobile/unm-ios";
+	self.aboutTextView.textColor = [UIColor blackColor];//[UNMConstants RGB_79b8d9];
+	self.aboutTextView.font = [UIFont systemFontOfSize:12];
+	self.aboutTextView.textAlignment = NSTextAlignmentLeft;
+	self.aboutTextView.backgroundColor = [UIColor whiteColor];
+	self.aboutTextView.alpha = 0.8f;
+//	self.aboutTitleLabel.contentInset = UIEdgeInsetsMake(10.0, 40.0, 40.0, 40.0);
+	
+	[self.homeAboutView addSubview:self.aboutTextView];
+	
+	// CLOSE ABOUT BUTTON
+	
+	self.aboutCloseButton = [[UIButton alloc] initWithFrame:CGRectMake(
+																   120.0, self.screenMiddle + 100.0, 80.0, 20.0)
+						 ];
+	
+	[self.aboutCloseButton setTitle:@"OK" forState:UIControlStateNormal];
+	
+	[self.aboutCloseButton setTitleColor:[UIColor greenColor] forState:UIControlStateHighlighted];
+	
+	[self.homeAboutView addSubview:self.aboutCloseButton];
+	
+	@weakify(self)
+	
+	self.aboutCloseButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
+	
+		@strongify(self)
+		
+		[self.aboutPageTransition scrollBackFrontView];
+		
+		return [RACSignal empty];
+	}];
 	
 	// UNIVERSITY NAME LABEL
 
@@ -112,7 +175,7 @@
 	self.universityLabel.textAlignment = NSTextAlignmentCenter;
 	self.universityLabel.backgroundColor = [UNMConstants RGB_79b8d9]; // When not set, takes white if under iOS 6.0
 	
-	[self.homeView addSubview:self.universityLabel];
+	[self.homeTitleView addSubview:self.universityLabel];
 	
 	// REGIONS LABEL
 	
@@ -137,9 +200,7 @@
 
 	[self.chooseButton setTitleColor:[UIColor greenColor] forState:UIControlStateHighlighted];
 	
-	[self.homeView addSubview:self.chooseButton];
-
-	@weakify(self)
+	[self.homeTitleView addSubview:self.chooseButton];
 	
 	self.chooseButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
 		

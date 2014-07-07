@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CF2E7B12A50E49B194DADC5F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA53C43C5EAF4E879E452BE4 /* libPods.a */; };
+		DF103EEB1969F23200AC123A /* UNMViewFx.m in Sources */ = {isa = PBXBuildFile; fileRef = DF103EEA1969F23200AC123A /* UNMViewFx.m */; };
 		DF6000311968DC7D00A72D24 /* UNMAppLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DF6000301968DC7D00A72D24 /* UNMAppLayer.m */; };
 		DF7EC2CA19657D83004730C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7EC2C919657D83004730C4 /* Foundation.framework */; };
 		DF7EC2CC19657D83004730C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7EC2CB19657D83004730C4 /* CoreGraphics.framework */; };
@@ -42,6 +43,8 @@
 		5888B702DECB4FA385056812 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		DA53C43C5EAF4E879E452BE4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF103EE71969E65100AC123A /* UNMAppViewCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMAppViewCallback.h; path = AppLayer/UNMAppViewCallback.h; sourceTree = "<group>"; };
+		DF103EE91969F23200AC123A /* UNMViewFx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMViewFx.h; path = Utilities/UNMViewFx.h; sourceTree = "<group>"; };
+		DF103EEA1969F23200AC123A /* UNMViewFx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMViewFx.m; path = Utilities/UNMViewFx.m; sourceTree = "<group>"; };
 		DF60002F1968DC7D00A72D24 /* UNMAppLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMAppLayer.h; path = AppLayer/UNMAppLayer.h; sourceTree = "<group>"; };
 		DF6000301968DC7D00A72D24 /* UNMAppLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMAppLayer.m; path = AppLayer/UNMAppLayer.m; sourceTree = "<group>"; };
 		DF6000351968DF8700A72D24 /* UNMAppLayered.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMAppLayered.h; path = AppLayer/UNMAppLayered.h; sourceTree = "<group>"; };
@@ -98,6 +101,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF103EE81969F21300AC123A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				DF103EE91969F23200AC123A /* UNMViewFx.h */,
+				DF103EEA1969F23200AC123A /* UNMViewFx.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		DF60002E1968DC6100A72D24 /* AppLayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +162,7 @@
 				DF7EC2D819657D83004730C4 /* UNMAppDelegate.h */,
 				DF7EC2D919657D83004730C4 /* UNMAppDelegate.m */,
 				DF7EC2DB19657D83004730C4 /* Images.xcassets */,
+				DF103EE81969F21300AC123A /* Utilities */,
 				DF7EC2D019657D83004730C4 /* Supporting Files */,
 				DF7EC2FE1965FF88004730C4 /* UNMConstants.h */,
 				DF7EC2FF1965FF88004730C4 /* UNMConstants.m */,
@@ -350,6 +363,7 @@
 				DF7EC31319667A7C004730C4 /* UNMRegionsController.m in Sources */,
 				DF6000311968DC7D00A72D24 /* UNMAppLayer.m in Sources */,
 				DF7EC30919667A19004730C4 /* UNMRegionData.m in Sources */,
+				DF103EEB1969F23200AC123A /* UNMViewFx.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
