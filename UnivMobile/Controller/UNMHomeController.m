@@ -38,21 +38,21 @@
 @synthesize appLayer = _appLayer;
 
 /*
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil {
-	
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    
-	if (self) {
+ - (instancetype)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil {
  
-	}
+ self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+ 
+ if (self) {
+ 
+ }
+ 
+ return self;
+ }
+ */
+
+- (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer
+						  navView:(UIView*)navView {
 	
-    return self;
-}
-*/
-
-- (id) initWithAppLayer:(UNMAppLayer*)appLayer
-				navView:(UIView*)navView {
-
 	self = [super init];
 	
 	if (self) {
@@ -80,13 +80,13 @@
 	// COLORS
 	
 	self.view.backgroundColor = [UNMConstants RGB_79b8d9];
-
+	
 	// HOME VIEW
-
+	
 	self.homeView = [[UIView alloc] initWithFrame:bounds];
-
+	
 	[self.view addSubview:self.homeView];
-
+	
 	self.homeAboutView = [[UIView alloc] initWithFrame:bounds];
 	
 	self.homeAboutView.backgroundColor = [UNMConstants RGB_9bc9e1];
@@ -98,11 +98,11 @@
 	self.homeTitleView.backgroundColor = [UNMConstants RGB_79b8d9];
 	
 	[self.homeView addSubview:self.homeTitleView];
-
+	
 	self.aboutPageTransition = [UNMViewFx createPageTransition:UNMPageTransitionTypeSliding
-						fromView:self.homeTitleView
-						  toView:self.homeAboutView
-							edge:UNMPageTransitionEdgeTop];
+													  fromView:self.homeTitleView
+														toView:self.homeAboutView
+														  edge:UNMPageTransitionEdgeTop];
 	
 	// REGIONS VIEW
 	
@@ -110,11 +110,10 @@
 	self.regionsView.hidden = YES;
 	
 	[self.view addSubview:self.regionsView];
-
+	
 	// TITLE LABEL
 	
-	self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(
-						50.0, self.screenMiddle - 200.0, 220.0, 60.0)
+	self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0, self.screenMiddle - 200.0, 220.0, 60.0)
 					   ];
 	self.titleLabel.text = @"UnivMobile";
 	self.titleLabel.textColor = [UNMConstants RGB_79b8d9];
@@ -127,25 +126,25 @@
 	// ABOUT: TITLE LABEL
 	
 	self.aboutTextView = //[[UILabel alloc] initWithFrame:CGRectMake(
-							//									50.0, self.screenMiddle - 200.0, 220.0, 60.0)
-					   //];
+	//									50.0, self.screenMiddle - 200.0, 220.0, 60.0)
+	//];
 	[[UITextView alloc]initWithFrame:CGRectMake(20.0,40.0,280.0,200.0)];
-
+	
 	self.aboutTextView.text = @"\nUnivMobile\n\n©2014 UNPIdF\n\nBuild: xxx\nhttps://github.com/univmobile/unm-ios";
 	self.aboutTextView.textColor = [UIColor blackColor];//[UNMConstants RGB_79b8d9];
 	self.aboutTextView.font = [UIFont systemFontOfSize:12];
 	self.aboutTextView.textAlignment = NSTextAlignmentLeft;
 	self.aboutTextView.backgroundColor = [UIColor whiteColor];
 	self.aboutTextView.alpha = 0.8f;
-//	self.aboutTitleLabel.contentInset = UIEdgeInsetsMake(10.0, 40.0, 40.0, 40.0);
+	//	self.aboutTitleLabel.contentInset = UIEdgeInsetsMake(10.0, 40.0, 40.0, 40.0);
 	
 	[self.homeAboutView addSubview:self.aboutTextView];
 	
 	// CLOSE ABOUT BUTTON
 	
 	self.aboutCloseButton = [[UIButton alloc] initWithFrame:CGRectMake(
-																   120.0, self.screenMiddle + 100.0, 80.0, 20.0)
-						 ];
+																	   120.0, self.screenMiddle + 100.0, 80.0, 20.0)
+							 ];
 	
 	[self.aboutCloseButton setTitle:@"OK" forState:UIControlStateNormal];
 	
@@ -156,7 +155,7 @@
 	@weakify(self)
 	
 	self.aboutCloseButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
-	
+		
 		@strongify(self)
 		
 		[self.aboutPageTransition scrollBackFrontView];
@@ -165,10 +164,8 @@
 	}];
 	
 	// UNIVERSITY NAME LABEL
-
-	self.universityLabel = [[UILabel alloc] initWithFrame:CGRectMake(
-							0.0, self.screenMiddle + 20.0, 320.0, 40.0)
-							];
+	
+	self.universityLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.screenMiddle + 20.0, 320.0, 40.0)];
 	self.universityLabel.text = @"Aucune université sélectionnée";
 	self.universityLabel.textColor = [UIColor blackColor];
 	self.universityLabel.font = [UIFont italicSystemFontOfSize:18];
@@ -179,9 +176,7 @@
 	
 	// REGIONS LABEL
 	
-	self.regionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(
-																50.0, self.screenMiddle - 200.0, 220.0, 60.0)
-					   ];
+	self.regionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0, self.screenMiddle - 200.0, 220.0, 60.0)];
 	self.regionsLabel.text = @"Régions";
 	self.regionsLabel.textColor = [UNMConstants RGB_79b8d9];
 	self.regionsLabel.font = [UIFont systemFontOfSize:36];
@@ -192,12 +187,10 @@
 	
 	// CHOOSE BUTTON
 	
-	self.chooseButton = [[UIButton alloc] initWithFrame:CGRectMake(
-						120.0, self.screenMiddle + 100.0, 80.0, 20.0)
-						 ];
+	self.chooseButton = [[UIButton alloc] initWithFrame:CGRectMake(120.0, self.screenMiddle + 100.0, 80.0, 20.0)];
 	
 	[self.chooseButton setTitle:@"Choisir…" forState:UIControlStateNormal];
-
+	
 	[self.chooseButton setTitleColor:[UIColor greenColor] forState:UIControlStateHighlighted];
 	
 	[self.homeTitleView addSubview:self.chooseButton];
@@ -211,7 +204,7 @@
 			[self.appLayer setSelectedRegionIdInList:self.appLayer.selectedRegionId];
 			
 			if (self.appLayer.selectedUniversityId) {
-
+				
 				[self.appLayer setSelectedUniversityIdInList:self.appLayer.selectedUniversityId];
 				
 				[self.appLayer showUniversityList];
@@ -221,7 +214,8 @@
 		[UIView transitionFromView:self.homeView
 							toView:self.regionsView
 						  duration:[UNMConstants TRANSITION_DURATION]
-						   options:UIViewAnimationOptionTransitionFlipFromRight + UIViewAnimationOptionShowHideTransitionViews
+						   options:UIViewAnimationOptionTransitionFlipFromRight //
+										+ UIViewAnimationOptionShowHideTransitionViews
 						completion:^(BOOL done) {
 							// nothing here
 						}];
@@ -268,7 +262,7 @@
 - (void)doLayoutSubviews {
 	
 	[self calcScreenHeight];
-
+	
 	const CGRect bounds = self.view.bounds;
 	
     self.regionsView.frame = bounds;
@@ -285,10 +279,10 @@
 		self.universityLabel.font = [UIFont systemFontOfSize:18];
 		
 		UNMUniversityData* const universityData =
-			[self.appLayer getUniversityDataById:self.appLayer.selectedUniversityId];
+		[self.appLayer getUniversityDataById:self.appLayer.selectedUniversityId];
 		
 		self.universityLabel.text = universityData.title;
-	
+		
 	} else {
 		
 		self.universityLabel.text = @"Aucune université sélectionnée";
@@ -298,7 +292,8 @@
 	[UIView transitionFromView:self.regionsView
 						toView:self.homeView
 					  duration:[UNMConstants TRANSITION_DURATION]
-					   options:UIViewAnimationOptionTransitionFlipFromLeft + UIViewAnimationOptionShowHideTransitionViews
+					   options:UIViewAnimationOptionTransitionFlipFromLeft //
+									+ UIViewAnimationOptionShowHideTransitionViews
 					completion:^(BOOL done) {
 						// nothing here
 					}];

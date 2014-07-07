@@ -18,7 +18,7 @@
 
 @property (weak, nonatomic, readonly) NSArray* universities; // array of UNMUniversityData*
 
-- (id)initWithId:(NSString*)id label:(NSString*)label;
+- (instancetype)initWithId:(NSString*)id label:(NSString*)label;
 - (void)addUniversityWithId:(NSString*)id title:(NSString*)title;
 
 @end
@@ -31,6 +31,6 @@
 @property (copy, nonatomic, readonly) NSString* id; // e.g. @"paris1"
 @property (copy, nonatomic, readonly) NSString* title; // e.g. @"Paris 1 Panthéon-Sorbonne"
 
-- (id)initWithId:(NSString*)id title:(NSString*)title;
+- (instancetype)initWithId:(NSString*)id title:(NSString*)title;
 
 @end

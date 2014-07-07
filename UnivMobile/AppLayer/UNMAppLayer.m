@@ -18,7 +18,7 @@
 
 @implementation UNMAppLayer
 
-- (id) init {
+- (instancetype) init {
 	
 	self = [super init];
 	

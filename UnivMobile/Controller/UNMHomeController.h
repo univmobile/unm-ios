@@ -13,7 +13,7 @@
 
 @interface UNMHomeController : UIViewController <UNMAppLayered, UNMAppViewCallback>
 
-- (id) initWithAppLayer:(UNMAppLayer*)appLayer
-				navView:(UIView*)navView;
+- (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer
+						  navView:(UIView*)navView;
 
 @end

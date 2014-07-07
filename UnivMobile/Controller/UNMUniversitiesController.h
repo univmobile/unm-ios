@@ -16,7 +16,7 @@
 
 @property (copy, nonatomic) NSString* selectedUniversityId;
 
-- (id)initWithAppLayer:(UNMAppLayer*)appLayer
-				 style:(UITableViewStyle)style;
+- (instancetype)initWithAppLayer:(UNMAppLayer*)appLayer
+						   style:(UITableViewStyle)style;
 
 @end

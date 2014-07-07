@@ -16,7 +16,7 @@
 
 @implementation UNMRegionData
 
-- (id)initWithId:(NSString*)id label:(NSString*)label {
+- (instancetype)initWithId:(NSString*)id label:(NSString*)label {
 	
     self = [super init];
     
@@ -44,7 +44,7 @@
 
 @implementation UNMUniversityData
 
-- (id)initWithId:(NSString*)id title:(NSString*)title {
+- (instancetype)initWithId:(NSString*)id title:(NSString*)title {
 	
     self = [super init];
     

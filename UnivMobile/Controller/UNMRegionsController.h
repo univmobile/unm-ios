@@ -16,8 +16,8 @@
 
 @property (copy, nonatomic) NSString* selectedRegionId;
 
-- (id) initWithAppLayer:(UNMAppLayer*)appLayer
-				  style:(UITableViewStyle)style
- universitiesController:(UNMUniversitiesController*)universitiesController;
+- (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer
+							style:(UITableViewStyle)style
+		   universitiesController:(UNMUniversitiesController*)universitiesController;
 
 @end

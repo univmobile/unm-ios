@@ -19,8 +19,8 @@
 
 @synthesize appLayer = _appLayer;
 
-- (id)initWithAppLayer:(UNMAppLayer*)appLayer
-				 style:(UITableViewStyle)style {
+- (instancetype)initWithAppLayer:(UNMAppLayer*)appLayer
+						   style:(UITableViewStyle)style {
 	
     self = [super initWithStyle:style];
     

@@ -20,9 +20,9 @@
 
 @synthesize appLayer = _appLayer;
 
-- (id) initWithAppLayer:(UNMAppLayer*)appLayer
-				   style:(UITableViewStyle)style
- universitiesController:(UNMUniversitiesController*)universitiesController {
+- (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer
+							style:(UITableViewStyle)style
+		   universitiesController:(UNMUniversitiesController*)universitiesController {
 
     self = [super initWithStyle:style];
 	
