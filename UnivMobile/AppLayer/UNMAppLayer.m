@@ -10,7 +10,7 @@
 
 @interface UNMAppLayer ()
 
-@property (strong, nonatomic, readonly) NSArray* regionsData; // array of UNMRegionData*
+@property (retain, nonatomic, readonly) NSArray* regionsData; // array of UNMRegionData*
 
 @property (strong, nonatomic) NSMutableArray* callbacks; // array of NSObject*
 
@@ -102,7 +102,7 @@
 		}
 	}
 	
-	return NULL;
+	return nil;
 }
 
 - (UNMUniversityData*)getUniversityDataById:(NSString*)universityId {
@@ -118,7 +118,7 @@
 		}
 	}
 	
-	return NULL;
+	return nil;
 }
 
 - (void)addUniversityId:(NSString*)id title:(NSString*)title toRegionId:(NSString*)regionId {
