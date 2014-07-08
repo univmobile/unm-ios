@@ -16,6 +16,12 @@ UnivMobileAlpha
 <ios-installation-page>
 
 <ios-installation
+	date="2014-07-08 23:02"
+	git-commit="7b8c383c53740a1be85e5376666d2fee6b17e972"
+	plistHref="https://dl.dropboxusercontent.com/s/r0o59ub45dcy81i/UnivMobile.plist"
+	label="Continuous Integration"/>
+
+<ios-installation
 	date="2014-07-07 18:27"
 	git-commit="c4a265fd1d29281e4357e80673527036320e4a92"
 	plistHref="https://dl.dropboxusercontent.com/s/l4dd09ctt2yul4e/UnivMobile.plist"
