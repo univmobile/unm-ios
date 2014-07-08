@@ -11,6 +11,6 @@
 
 @protocol UNMAppLayered <NSObject>
 
-@property (weak, nonatomic) UNMAppLayer* appLayer;
+@property (weak, nonatomic, readonly) UNMAppLayer* appLayer;
 
 @end
