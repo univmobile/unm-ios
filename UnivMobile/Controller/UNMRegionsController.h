@@ -12,7 +12,7 @@
 
 @interface UNMRegionsController : UITableViewController <UNMAppLayered, UNMAppViewCallback>
 
-@property (strong, nonatomic) UNMUniversitiesController* universitiesController;
+@property (retain, nonatomic, readonly) UNMUniversitiesController* universitiesController;
 
 @property (copy, nonatomic) NSString* selectedRegionId;
 

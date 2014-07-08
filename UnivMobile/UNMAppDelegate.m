@@ -12,6 +12,7 @@
 #import "UNMConstants.h"
 #import "UNMRegionsController.h"
 #import "UNMUniversitiesController.h"
+#import "UNMDebug.h"
 
 @interface UNMAppDelegate ()
 
@@ -38,7 +39,7 @@
 													 style:UITableViewStylePlain
 													 universitiesController:universitiesController];
 	
-	self.navController = [[UINavigationController alloc]
+	_navController = [[UINavigationController alloc]
 						  initWithRootViewController:regionsController];
 	
 	// WINDOW
@@ -58,6 +59,8 @@
 	[TSMessage setDefaultViewController:self.window.rootViewController];
     
 	// END
+	
+	[UNMDebug debug_recursiveNSLogWithLabel:@"UNMAppDelegate" associationsForObject:self];
 	
     return YES;
 }

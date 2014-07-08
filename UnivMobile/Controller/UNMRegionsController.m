@@ -28,11 +28,11 @@
 	
     if (self) {
 		
-		self.appLayer = appLayer;
+		_appLayer = appLayer;
 		
 		[self.appLayer addCallback:self];
 		
-		self.universitiesController = universitiesController;
+		_universitiesController = universitiesController;
     }
 	
     return self;
@@ -157,7 +157,7 @@
 
 		} else {
 		
-			self.universitiesController.selectedUniversityId = NULL;
+			self.universitiesController.selectedUniversityId = nil;
 		}
 	}
 	

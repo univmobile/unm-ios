@@ -27,6 +27,8 @@
 		DF7EC31219667A7C004730C4 /* UNMHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7EC30D19667A7C004730C4 /* UNMHomeController.m */; };
 		DF7EC31319667A7C004730C4 /* UNMRegionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7EC30F19667A7C004730C4 /* UNMRegionsController.m */; };
 		DF7EC31419667A7C004730C4 /* UNMUniversitiesController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7EC31119667A7C004730C4 /* UNMUniversitiesController.m */; };
+		DF9945C3196B850800AE125E /* UNMDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9945C2196B850800AE125E /* UNMDebug.m */; };
+		DF9945C6196B9DAE00AE125E /* UNMRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9945C5196B9DAE00AE125E /* UNMRuntime.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,10 @@
 		DF7EC30F19667A7C004730C4 /* UNMRegionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMRegionsController.m; path = Controller/UNMRegionsController.m; sourceTree = "<group>"; };
 		DF7EC31019667A7C004730C4 /* UNMUniversitiesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMUniversitiesController.h; path = Controller/UNMUniversitiesController.h; sourceTree = "<group>"; };
 		DF7EC31119667A7C004730C4 /* UNMUniversitiesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMUniversitiesController.m; path = Controller/UNMUniversitiesController.m; sourceTree = "<group>"; };
+		DF9945C1196B850800AE125E /* UNMDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMDebug.h; path = Utilities/UNMDebug.h; sourceTree = "<group>"; };
+		DF9945C2196B850800AE125E /* UNMDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMDebug.m; path = Utilities/UNMDebug.m; sourceTree = "<group>"; };
+		DF9945C4196B9DAE00AE125E /* UNMRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMRuntime.h; path = Utilities/UNMRuntime.h; sourceTree = "<group>"; };
+		DF9945C5196B9DAE00AE125E /* UNMRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMRuntime.m; path = Utilities/UNMRuntime.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,10 @@
 			children = (
 				DF103EE91969F23200AC123A /* UNMViewFx.h */,
 				DF103EEA1969F23200AC123A /* UNMViewFx.m */,
+				DF9945C1196B850800AE125E /* UNMDebug.h */,
+				DF9945C2196B850800AE125E /* UNMDebug.m */,
+				DF9945C4196B9DAE00AE125E /* UNMRuntime.h */,
+				DF9945C5196B9DAE00AE125E /* UNMRuntime.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -355,10 +365,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF9945C3196B850800AE125E /* UNMDebug.m in Sources */,
 				DF7EC2D619657D83004730C4 /* main.m in Sources */,
 				DF7EC2DA19657D83004730C4 /* UNMAppDelegate.m in Sources */,
 				DF7EC31219667A7C004730C4 /* UNMHomeController.m in Sources */,
 				DF7EC3001965FF88004730C4 /* UNMConstants.m in Sources */,
+				DF9945C6196B9DAE00AE125E /* UNMRuntime.m in Sources */,
 				DF7EC31419667A7C004730C4 /* UNMUniversitiesController.m in Sources */,
 				DF7EC31319667A7C004730C4 /* UNMRegionsController.m in Sources */,
 				DF6000311968DC7D00A72D24 /* UNMAppLayer.m in Sources */,
@@ -490,7 +502,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "19D5B141-6B50-47A1-8039-B315EF9FEA42";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -509,7 +521,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "19D5B141-6B50-47A1-8039-B315EF9FEA42";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -601,7 +613,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "19D5B141-6B50-47A1-8039-B315EF9FEA42";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;

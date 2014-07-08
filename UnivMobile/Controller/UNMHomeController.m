@@ -19,7 +19,7 @@
 @property (nonatomic, strong) UIView* homeView;
 @property (nonatomic, strong) UIView* homeTitleView;
 @property (nonatomic, strong) UILabel* titleLabel;
-@property (nonatomic, weak) UNMViewFxVerticalSliderFromTo* aboutPageTransition;
+@property (weak) UNMViewFxVerticalSliderFromTo* aboutPageTransition;
 @property (nonatomic, strong) UIView* homeAboutView;
 @property (nonatomic, strong) UITextView* aboutTextView;
 @property (nonatomic, strong) UIButton* aboutCloseButton;
@@ -57,7 +57,7 @@
 	
 	if (self) {
 		
-		self.appLayer = appLayer;
+		_appLayer = appLayer;
 		
 		[self.appLayer addCallback:self];
 		
@@ -99,10 +99,10 @@
 	
 	[self.homeView addSubview:self.homeTitleView];
 	
-	self.aboutPageTransition = [UNMViewFx createPageTransition:UNMPageTransitionTypeSliding
-													  fromView:self.homeTitleView
-														toView:self.homeAboutView
-														  edge:UNMPageTransitionEdgeTop];
+	self.aboutPageTransition = [UNMViewFx autorelease_viewFx:UNMPageTransitionTypeSliding
+													fromView:self.homeTitleView
+													  toView:self.homeAboutView
+														edge:UNMPageTransitionEdgeTop];
 	
 	// REGIONS VIEW
 	

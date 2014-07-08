@@ -2,12 +2,12 @@
 //  UNMViewFx.m
 //  UnivMobile
 //
-//  Created by David on 06/07/2014.
-//  Copyright (c) 2014 David. All rights reserved.
+//  Created by David Andrianavalontsalama on 06/07/2014.
+//  Copyright (c) 2014 UNPIdF. All rights reserved.
 //
 
 #import "UNMViewFx.h"
-#import <objc/runtime.h>
+#import "UNMRuntime.h"
 
 @interface UNMViewFx ()
 
@@ -23,32 +23,34 @@
 
 @implementation UNMViewFx
 
-+ (UNMViewFxVerticalSliderFromTo*)createPageTransition:(UNMPageTransitionType)UNMPageTransitionSliding
-				 fromView:(UIView*)fromView
-				   toView:(UIView*)toView
-					 edge:(UNMPageTransitionEdge)edge {
++ (UNMViewFxVerticalSliderFromTo*)autorelease_viewFx:(UNMPageTransitionType)UNMPageTransitionSliding
+											fromView:(UIView*)fromView
+											  toView:(UIView*)toView
+												edge:(UNMPageTransitionEdge)edge {
 	
 	UNMViewFxVerticalSliderFromTo* const viewFx = [[UNMViewFxVerticalSliderFromTo alloc] initWithFromView:fromView
 																								   toView:toView];
 	
-	objc_setAssociatedObject(fromView, @selector(createPageTransition:fromView:toView:edge:),
-							 viewFx, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+	[UNMRuntime objc_setAssociatedObject:fromView
+									 key:@selector(autorelease_viewFx:fromView:toView:edge:)
+								   value:viewFx
+								  policy:OBJC_ASSOCIATION_RETAIN_NONATOMIC];
 	
 	return viewFx;
 }
 
 /*
-- (instancetype) init {
-	
-	self = [super init];
-	
-	if (self) {
-		
-		
-	}
-	
-	return self;
-}
+ - (instancetype) init {
+ 
+ self = [super init];
+ 
+ if (self) {
+ 
+ 
+ }
+ 
+ return self;
+ }
  */
 
 @end
@@ -63,16 +65,21 @@
 
 @end
 
-@interface UNMViewFxVerticalSliderFromTo()
+@interface UNMViewFxVerticalSliderFromTo ()
 
 @property (strong, nonatomic) UNMViewFxVerticalSlider* fromSlider;
 @property (strong, nonatomic) UNMViewFxVerticalSlider* toSlider;
 
 @end
 
+@interface UNMViewFxVerticalSlider ()
+
+@property (weak, readonly) UIView* frontView;
+
+@end
+
 @implementation UNMViewFxVerticalSlider {
 	
-	UIView* _frontView;
 	BOOL _moveHasBegun;
 	CGRect _initFrame;
 	CGRect _currentFrame;
@@ -100,14 +107,14 @@
 		_frontView = frontView;
 		
 		self.gestureRecognizer = [[UIPanGestureRecognizer alloc]
-										 initWithTarget:self
-										 action:@selector(handleGestureRecognizer:)];
+								  initWithTarget:self
+								  action:@selector(handleGestureRecognizer:)];
 		
 		// panGestureRecognizer.minimumNumberOfTouches = 1;
 		// panGestureRecognizer.maximumNumberOfTouches = UINT_MAX;
 		
 		[view addGestureRecognizer:self.gestureRecognizer];
-
+		
 		_moveHasBegun = NO;
 		
 		_allowGesture = YES;
@@ -130,7 +137,7 @@
 				if (_currentlyScrolling) return; // cancel
 				_allowGesture = YES; // reallow
 			}
-
+			
 			_moveBeganAt = CACurrentMediaTime();
 			_moveHasBegun = NO;
 			_shouldCompleteMove = NO;
@@ -179,7 +186,7 @@
 			_lastTranslationY = translationY;
 			
 			if (_initFrame.origin.y + translationY < _offsetY) {
-			
+				
 				_offsetY = _initFrame.origin.y + translationY;
 			}
 			
@@ -199,7 +206,7 @@
 			[_frontView setNeedsDisplay];
 			
 			break;
-
+			
 		case UIGestureRecognizerStateCancelled:
 		case UIGestureRecognizerStateEnded:
 			if (!_allowGesture) {
@@ -262,7 +269,7 @@
 	
 	_currentlyScrolling = YES;
 	_allowGesture = NO; // Note: Set _allowGesture = NO after _currentScrolling = YES
-
+	
 	const CGRect bounds = view.superview.frame;
 	
 	[UIView animateWithDuration:fminf(1.0, duration) animations:^{
@@ -280,7 +287,7 @@
 - (void) scrollOutView:(UIView*)view duration:(NSTimeInterval)duration {
 	
 	[self setCurrentlyScrolling];
-
+	
 	const CGRect bounds = CGRectOffset(view.superview.frame, 0, view.superview.frame.size.height);
 	
 	[UIView animateWithDuration:fminf(1.0, duration) animations:^{

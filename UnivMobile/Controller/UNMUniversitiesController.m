@@ -26,7 +26,7 @@
     
 	if (self) {
 
-		self.appLayer = appLayer;
+		_appLayer = appLayer;
 		
 		[self.appLayer addCallback:self];		
     }
