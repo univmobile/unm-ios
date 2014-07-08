@@ -10,7 +10,7 @@
 
 @interface UNMRegionData ()
 
-@property (strong, nonatomic, readonly) NSMutableArray* universitiesMutable; // mutable array of UNMUniversityData*
+@property (retain, nonatomic, readonly) NSMutableArray* universitiesMutable; // mutable array of UNMUniversityData*
 
 @end
 
