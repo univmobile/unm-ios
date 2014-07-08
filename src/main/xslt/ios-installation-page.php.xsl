@@ -246,6 +246,9 @@ td.git-commit {
 <div class="nav">
 <a href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-ios/0.0.1-SNAPSHOT/scenarios.html">UnivMobile iOS — Scénarios</a>
 </div>
+<div class="nav">
+<a href="http://univmobile.vswip.com/">Jenkins — Intégration continue</a>
+</div>
 
 <h1>
 <span>
