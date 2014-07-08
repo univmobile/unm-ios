@@ -12,6 +12,12 @@
 #import "UNMConstants.h"
 #import "UNMViewFx.h"
 
+@interface NSBundle (String)
+
++ (NSString*) stringForKey:(NSString*)key defaultValue:(NSString*)defaultValue;
+
+@end
+
 @interface UNMHomeController ()
 
 @property (nonatomic, assign) CGFloat screenMiddle;
@@ -125,12 +131,23 @@
 	
 	// ABOUT: TITLE LABEL
 	
-	self.aboutTextView = //[[UILabel alloc] initWithFrame:CGRectMake(
-	//									50.0, self.screenMiddle - 200.0, 220.0, 60.0)
-	//];
-	[[UITextView alloc]initWithFrame:CGRectMake(20.0,40.0,280.0,200.0)];
+	self.aboutTextView = [[UITextView alloc]initWithFrame:CGRectMake(15.0,30.0,290.0,200.0)];
 	
-	self.aboutTextView.text = @"\nUnivMobile\n\n©2014 UNPIdF\n\nBuild: xxx\nhttps://github.com/univmobile/unm-ios";
+	// e.g. @"153"
+	// NSString* const BUILD_NUMBER = [NSBundle stringForKey:@"BUILD_NUMBER" defaultValue:@"???"];
+
+	// e.g. @"2014-07-08_13_19_00"
+	//NSString* const BUILD_ID = [NSBundle stringForKey:@"BUILD_ID" defaultValue:@"???"];
+	
+	// e.g. @"#153"
+	NSString* const BUILD_DISPLAY_NAME = [NSBundle stringForKey:@"BUILD_DISPLAY_NAME" defaultValue:@"???"];
+	
+	// e.g. @"c159768e3c52b27bb15e4b8c9d865a3debe667e0"
+	NSString* const GIT_COMMIT = [NSBundle stringForKey:@"GIT_COMMIT" defaultValue:@"???"];
+
+	self.aboutTextView.text = [NSString stringWithFormat:
+							   @"\nUnivMobile\n\n©2014 UNPIdF\n\nBuild: %@\n\n\nhttps://github.com/univmobile/unm-ios\n\n%@",
+							   BUILD_DISPLAY_NAME, GIT_COMMIT];
 	self.aboutTextView.textColor = [UIColor blackColor];//[UNMConstants RGB_79b8d9];
 	self.aboutTextView.font = [UIFont systemFontOfSize:12];
 	self.aboutTextView.textAlignment = NSTextAlignmentLeft;
@@ -300,3 +317,21 @@
 }
 
 @end
+
+@implementation NSBundle (String)
+
++ (NSString*) stringForKey:(NSString*)key defaultValue:(NSString*)defaultValue {
+	
+	
+	NSBundle* const mainBundle = [NSBundle mainBundle];
+	
+	id object = [mainBundle objectForInfoDictionaryKey:key];
+	
+	if (object == nil) return defaultValue;
+	
+	return [NSString stringWithFormat:@"%@", object];
+}
+
+@end
+
+
