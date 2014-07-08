@@ -137,17 +137,24 @@
 	// NSString* const BUILD_NUMBER = [NSBundle stringForKey:@"BUILD_NUMBER" defaultValue:@"???"];
 
 	// e.g. @"2014-07-08_13_19_00"
-	//NSString* const BUILD_ID = [NSBundle stringForKey:@"BUILD_ID" defaultValue:@"???"];
+	NSString* const BUILD_ID = [NSBundle stringForKey:@"BUILD_ID" defaultValue:@"???"];
 	
 	// e.g. @"#153"
 	NSString* const BUILD_DISPLAY_NAME = [NSBundle stringForKey:@"BUILD_DISPLAY_NAME" defaultValue:@"???"];
 	
 	// e.g. @"c159768e3c52b27bb15e4b8c9d865a3debe667e0"
 	NSString* const GIT_COMMIT = [NSBundle stringForKey:@"GIT_COMMIT" defaultValue:@"???"];
-
+	
 	self.aboutTextView.text = [NSString stringWithFormat:
-							   @"\nUnivMobile\n\n©2014 UNPIdF\n\nBuild: %@\n\n\nhttps://github.com/univmobile/unm-ios\n\n%@",
-							   BUILD_DISPLAY_NAME, GIT_COMMIT];
+							   @"\nUnivMobile\n\n©2014 UNPIdF\n\nBuild: %@ — %@\n\n\nhttps://github.com/univmobile/unm-ios\n\n%@",
+							   BUILD_DISPLAY_NAME,
+							   [[[[[BUILD_ID stringByReplacingCharactersInRange:NSMakeRange(4, 1) withString:@"/"]
+								  stringByReplacingCharactersInRange:NSMakeRange(7, 1) withString:@"/"]
+								 stringByReplacingCharactersInRange:NSMakeRange(10, 1) withString:@" "]
+								 stringByReplacingCharactersInRange:NSMakeRange(13, 1) withString:@":"]
+								stringByReplacingCharactersInRange:NSMakeRange(16, 3) withString:@""],
+							   GIT_COMMIT
+							   ];
 	self.aboutTextView.textColor = [UIColor blackColor];//[UNMConstants RGB_79b8d9];
 	self.aboutTextView.font = [UIFont systemFontOfSize:12];
 	self.aboutTextView.textAlignment = NSTextAlignmentLeft;
