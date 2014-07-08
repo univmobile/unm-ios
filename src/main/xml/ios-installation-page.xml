@@ -16,6 +16,12 @@ UnivMobileAlpha
 <ios-installation-page>
 
 <ios-installation
+	date="2014-07-07 18:27"
+	git-commit="c4a265fd1d29281e4357e80673527036320e4a92"
+	plistHref="https://dl.dropboxusercontent.com/s/l4dd09ctt2yul4e/UnivMobile.plist"
+	label="Internal Deployment"/>
+
+<ios-installation
 	date="2014-07-06 09:21"
 	git-commit="b88a34e7d1af5142a399b36364d1caadfc5ca2eb"
 	plistHref="https://dl.dropboxusercontent.com/s/b3hv203bmg227t7/UnivMobile.plist"
