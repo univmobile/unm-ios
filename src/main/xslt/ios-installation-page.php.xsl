@@ -4,6 +4,28 @@
 
 <xsl:template match="/ios-installation-page">
 
+<!-- XML VALIDATION -->
+
+<xsl:variable name="duplicate-dates"
+	select="ios-installation/@date[. = preceding::ios-installation/@date]"/>
+<xsl:variable name="duplicate-git-commits"
+	select="ios-installation/@git-commit[. = preceding::ios-installation/@git-commit]"/>
+<xsl:variable name="duplicate-plistHrefs"
+	select="ios-installation/@plistHref[. = preceding::ios-installation/@plistHref]"/>
+
+<xsl:if test="$duplicate-dates or $duplicate-git-commits or $duplicate-plistHrefs">
+<xsl:message terminate="yes">Duplicate elements:
+<xsl:for-each select="$duplicate-dates">Date: <xsl:value-of select="."/>
+</xsl:for-each>
+<xsl:for-each select="$duplicate-git-commits">Git Commit: <xsl:value-of select="."/>
+</xsl:for-each>
+<xsl:for-each select="$duplicate-plistHrefs">plistHref: <xsl:value-of select="."/>
+</xsl:for-each>
+</xsl:message>
+</xsl:if>
+
+<!-- HTML OUTPUT -->	
+
 <xsl:text disable-output-escaping="yes">
 <![CDATA[
 <?php
