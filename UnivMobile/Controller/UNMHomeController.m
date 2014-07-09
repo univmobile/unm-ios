@@ -146,7 +146,7 @@
 	NSString* const GIT_COMMIT = [NSBundle stringForKey:@"GIT_COMMIT" defaultValue:@"???"];
 	
 	self.aboutTextView.text = [NSString stringWithFormat:
-							   @"\nUnivMobile\n\n©2014 UNPIdF\n\nBuild: %@ — %@\n\n\nhttps://github.com/univmobile/unm-ios\n\n%@",
+							   @"\nUnivMobile\n\n©2014 UNPIdF\n\nBuild %@ — %@\n\n\nhttps://github.com/univmobile/unm-ios\n\n%@",
 							   BUILD_DISPLAY_NAME,
 							   [[[[[BUILD_ID stringByReplacingCharactersInRange:NSMakeRange(4, 1) withString:@"/"]
 								  stringByReplacingCharactersInRange:NSMakeRange(7, 1) withString:@"/"]
