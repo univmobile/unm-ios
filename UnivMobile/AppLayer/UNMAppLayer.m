@@ -147,11 +147,9 @@
 	if (regionsData != nil) {
 		
 		_regionsData = regionsData;
-		
-		return self.regionsData;
 	}
 	
-	return nil;
+	return _regionsData;
 }
 
 - (void) refreshRegionsData {
@@ -178,6 +176,8 @@
 	if (regionsData != nil) {
 		
 		_regionsData = regionsData;
+		
+		_regionsData.refreshedAt = [NSDate date];
 	}
 }
 

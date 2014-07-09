@@ -7,6 +7,7 @@
 //
 
 #import "UNMJsonFetcherWeb.h"
+#import "UNMJsonSerializer.h"
 
 @implementation UNMJsonFetcherWeb
 
@@ -31,32 +32,7 @@
 		return nil;
 	}
 	
-	if (!data) {
-		
-		NSLog(@"Error: data == nill");
-		
-		if (onError) onError([NSError errorWithDomain:@"UNMJsonRegionsData" code:1 userInfo:nil]);
-		
-		return nil;
-	}
-	
-	id const json = [NSJSONSerialization
-					 JSONObjectWithData:data
-					 options:kNilOptions
-					 error:&error];
-	
-	if (error) {
-		
-		NSLog(@"Error: %@", error);
-		
-		if (onError) onError(error);
-		
-		return nil;
-	}
-	
-	NSLog(@"json:%@",json);
-	
-	return json;
+	return [UNMJsonSerializer jsonDeserialize:data withErrorHandler:onError];
 	
 	/*
 	 NSURLSessionConfiguration* const config = [NSURLSessionConfiguration defaultSessionConfiguration];

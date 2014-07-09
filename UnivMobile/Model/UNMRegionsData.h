@@ -10,18 +10,18 @@
 #import "UNMRegionData.h"
 #import <Mantle/Mantle.h>
 
-@interface UNMRegionsData : NSObject <MTLJSONSerializing>
+@interface UNMRegionsData : MTLModel <MTLJSONSerializing>
 
 @property (strong, nonatomic) NSDate* refreshedAt;
 @property (strong, nonatomic) NSArray* regions; // array of UNMRegionData*
 
 - (NSUInteger) sizeOfRegionData;
 
-- (UNMRegionData*) getRegionDataAtIndex:(NSUInteger)row;
+- (UNMRegionData*) regionDataAtIndex:(NSUInteger)row;
 
-- (UNMRegionData*) getRegionDataById:(NSString*)regionId;
+- (UNMRegionData*) regionDataById:(NSString*)regionId;
 
-- (UNMUniversityData*) getUniversityDataById:(NSString*)universityId;
+- (UNMUniversityData*) universityDataById:(NSString*)universityId;
 
 - (void)addRegionWithId:(NSString*)id label:(NSString*)label;
 

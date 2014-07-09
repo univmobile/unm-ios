@@ -12,7 +12,7 @@
 //
 //	A struct to hold a region data used in initial choosing
 //
-@interface UNMRegionData : NSObject <MTLJSONSerializing>
+@interface UNMRegionData : MTLModel <MTLJSONSerializing>
 
 @property (copy, nonatomic) NSString* id; // e.g. @"ile_de_france"
 @property (copy, nonatomic) NSString* label; // e.g. @"Île de France"
@@ -27,7 +27,7 @@
 //
 //	A struct to hold an university data used in initial choosing
 //
-@interface UNMUniversityData : NSObject <MTLJSONSerializing>
+@interface UNMUniversityData : MTLModel <MTLJSONSerializing>
 
 @property (copy, nonatomic) NSString* id; // e.g. @"paris1"
 @property (copy, nonatomic) NSString* title; // e.g. @"Paris 1 Panthéon-Sorbonne"

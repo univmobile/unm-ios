@@ -41,7 +41,7 @@
 
 - (void)addUniversityId:(NSString*)id title:(NSString*)title toRegionId:(NSString*)regionId {
 	
-	UNMRegionData* const regionData = [self getRegionDataById:regionId];
+	UNMRegionData* const regionData = [self regionDataById:regionId];
 	
 	if (regionData) {
 		
@@ -68,7 +68,7 @@
 	dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"fr_FR"];
 	
 	dateFormatter.dateStyle = NSDateFormatterNoStyle;
-	dateFormatter.timeStyle = NSDateFormatterShortStyle;
+	dateFormatter.timeStyle = NSDateFormatterMediumStyle;
 	
 	return [dateFormatter stringFromDate:self.refreshedAt];
 }
@@ -78,12 +78,12 @@
 	return [self.regions count];
 }
 
-- (UNMRegionData*) getRegionDataAtIndex:(NSUInteger)row {
+- (UNMRegionData*) regionDataAtIndex:(NSUInteger)row {
 	
 	return [self.regions objectAtIndex:row];
 }
 
-- (UNMRegionData*)getRegionDataById:(NSString*)regionId {
+- (UNMRegionData*)regionDataById:(NSString*)regionId {
 	
 	for (UNMRegionData* const regionData in self.regions) {
 		
@@ -96,7 +96,7 @@
 	return nil;
 }
 
-- (UNMUniversityData*)getUniversityDataById:(NSString*)universityId {
+- (UNMUniversityData*)universityDataById:(NSString*)universityId {
 	
 	for (UNMRegionData* const regionData in self.regions) {
 		
@@ -124,6 +124,12 @@
 									}];
 	
 	return map;
+}
+
+// Override: MTLJSONSerializing
++ (NSValueTransformer*)regionsJSONTransformer {
+	
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[UNMRegionData class]];
 }
 
 @end

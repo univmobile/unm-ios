@@ -26,9 +26,17 @@
 
 // Override: UIApplicationDelegate<NSObject>
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
-    	
-	NSLog(@"ok start");
-
+	
+#if DEBUG
+	
+	// If tests are currently running, exit the method and do not create a rootViewController
+	if ([[[NSProcessInfo processInfo] processName] isEqualToString:@"xctest"] || getenv("RUNNING_TESTS")) {
+		
+		return YES;
+	}
+	
+#endif
+	
 	// APPLICATION LAYER
 	
 	NSObject <UNMJsonFetcher>* const jsonFetcher = [UNMJsonFetcherFileSystem new];

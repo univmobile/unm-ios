@@ -48,7 +48,8 @@
 	// add: [super JSONKeyPathsByPropertyKey];
 	
 	[map addEntriesFromDictionary:@{
-									//@"regions": @"region"
+									@"id": @"id",
+									@"label":@"label"
 									}];
 	
 	return map;
@@ -79,7 +80,8 @@
 	// add: [super JSONKeyPathsByPropertyKey];
 	
 	[map addEntriesFromDictionary:@{
-									//@"regions": @"region"
+									@"id": @"id",
+									@"title": @"title"
 									}];
 	
 	return map;

@@ -171,7 +171,7 @@
 
 	// self.aboutDataRefreshButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
 	
-	//self.aboutDataRefreshButton.backgroundColor = [UIColor redColor];
+	// self.aboutDataRefreshButton.backgroundColor = [UIColor redColor];
 	
 	[self.aboutDataRefreshButton setTitle:@"Récupérer les données" forState:UIControlStateNormal];
 	
@@ -188,6 +188,10 @@
 		@strongify(self)
 		
 		[self.appLayer refreshRegionsData];
+		
+		self.aboutLastDataRefreshLabel.text = [NSString stringWithFormat:@"Données récupérées le %@ à %@",
+											   self.appLayer.regionsData.lastDataRefreshDayAsString,
+											   self.appLayer.regionsData.lastDataRefreshTimeAsString];
 		
 		return [RACSignal empty];
 	}];
@@ -334,7 +338,7 @@
 		self.universityLabel.font = [UIFont systemFontOfSize:18];
 		
 		UNMUniversityData* const universityData =
-		[self.appLayer.regionsData getUniversityDataById:self.appLayer.selectedUniversityId];
+		[self.appLayer.regionsData universityDataById:self.appLayer.selectedUniversityId];
 		
 		self.universityLabel.text = universityData.title;
 		
