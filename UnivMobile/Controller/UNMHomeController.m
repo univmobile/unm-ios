@@ -11,6 +11,7 @@
 #import <EXTScope.h>
 #import "UNMConstants.h"
 #import "UNMViewFx.h"
+#import "UNMRegionsData.h"
 
 @interface NSBundle (String)
 
@@ -28,6 +29,8 @@
 @property (weak) UNMViewFxVerticalSliderFromTo* aboutPageTransition;
 @property (nonatomic, strong) UIView* homeAboutView;
 @property (nonatomic, strong) UITextView* aboutTextView;
+@property (nonatomic, strong) UILabel* aboutLastDataRefreshLabel;
+@property (nonatomic, strong) UIButton* aboutDataRefreshButton;
 @property (nonatomic, strong) UIButton* aboutCloseButton;
 @property (nonatomic, strong) UILabel* universityLabel;
 @property (nonatomic, strong) UIButton* chooseButton;
@@ -87,24 +90,24 @@
 	
 	self.view.backgroundColor = [UNMConstants RGB_79b8d9];
 	
-	// HOME VIEW
+	// LOAD AND ADD MAIN VIEWS
 	
 	self.homeView = [[UIView alloc] initWithFrame:bounds];
-	
-	[self.view addSubview:self.homeView];
-	
 	self.homeAboutView = [[UIView alloc] initWithFrame:bounds];
-	
-	self.homeAboutView.backgroundColor = [UNMConstants RGB_9bc9e1];
-	
-	[self.homeView addSubview:self.homeAboutView];
-	
 	self.homeTitleView = [[UIView alloc] initWithFrame:bounds];
 	
-	self.homeTitleView.backgroundColor = [UNMConstants RGB_79b8d9];
+	[self.view addSubview:self.homeView];
+
+	[self.homeView addSubview:self.homeAboutView];
 	
 	[self.homeView addSubview:self.homeTitleView];
-	
+
+	// HOME VIEW
+		
+	self.homeAboutView.backgroundColor = [UNMConstants RGB_9bc9e1];
+		
+	self.homeTitleView.backgroundColor = [UNMConstants RGB_79b8d9];
+		
 	self.aboutPageTransition = [UNMViewFx autorelease_viewFx:UNMPageTransitionTypeSliding
 													fromView:self.homeTitleView
 													  toView:self.homeAboutView
@@ -129,21 +132,22 @@
 	
 	[self.homeTitleView addSubview:self.titleLabel];
 	
-	// ABOUT: TITLE LABEL
+	// ABOUT: TEXT VIEW
 	
-	self.aboutTextView = [[UITextView alloc]initWithFrame:CGRectMake(15.0,30.0,290.0,200.0)];
+	self.aboutTextView = [[UITextView alloc]initWithFrame:CGRectMake(15.0, self.screenMiddle - 200.0, 290.0, 190.0)];
 	
 	// e.g. @"153"
 	// NSString* const BUILD_NUMBER = [NSBundle stringForKey:@"BUILD_NUMBER" defaultValue:@"???"];
 
 	// e.g. @"2014-07-08_13_19_00"
-	NSString* const BUILD_ID = [NSBundle stringForKey:@"BUILD_ID" defaultValue:@"???"];
+	NSString* const BUILD_ID = [NSBundle stringForKey:@"BUILD_ID" defaultValue:@"????/??/?? ??:??:??"];
 	
 	// e.g. @"#153"
-	NSString* const BUILD_DISPLAY_NAME = [NSBundle stringForKey:@"BUILD_DISPLAY_NAME" defaultValue:@"???"];
+	NSString* const BUILD_DISPLAY_NAME = [NSBundle stringForKey:@"BUILD_DISPLAY_NAME" defaultValue:@"#???"];
 	
 	// e.g. @"c159768e3c52b27bb15e4b8c9d865a3debe667e0"
-	NSString* const GIT_COMMIT = [NSBundle stringForKey:@"GIT_COMMIT" defaultValue:@"???"];
+	NSString* const GIT_COMMIT = [NSBundle stringForKey:@"GIT_COMMIT"
+										   defaultValue:@"????????????????????????????????????????"];
 	
 	self.aboutTextView.text = [NSString stringWithFormat:
 							   @"\nUnivMobile\n\n©2014 UNPIdF\n\nBuild %@ — %@\n\n\nhttps://github.com/univmobile/unm-ios\n\n%@",
@@ -161,13 +165,42 @@
 	self.aboutTextView.backgroundColor = [UIColor whiteColor];
 	self.aboutTextView.alpha = 0.8f;
 	//	self.aboutTitleLabel.contentInset = UIEdgeInsetsMake(10.0, 40.0, 40.0, 40.0);
-	
+
 	[self.homeAboutView addSubview:self.aboutTextView];
+
+	// ABOUT: DATA REFRESH
+	
+	self.aboutLastDataRefreshLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0, self.screenMiddle + 5.0, 290.0, 30.0)];
+
+	UNMRegionsData* const regionsData = [self.appLayer loadInitialData];
+	
+	self.aboutLastDataRefreshLabel.text = [NSString stringWithFormat:@"Données récupérées le %@ à %@",
+										   regionsData.lastDataRefreshDayAsString,
+										   regionsData.lastDataRefreshTimeAsString];
+	
+	self.aboutLastDataRefreshLabel.font = [UIFont systemFontOfSize:12];
+	self.aboutLastDataRefreshLabel.textAlignment = NSTextAlignmentCenter;
+	
+	//self.aboutLastDataRefreshLabel.backgroundColor = [UIColor redColor];
+
+	self.aboutDataRefreshButton = [[UIButton alloc] initWithFrame:CGRectMake(
+																	   15.0, self.screenMiddle + 40.0, 290.0, 20.0)];
+
+	// self.aboutDataRefreshButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+	
+	//self.aboutDataRefreshButton.backgroundColor = [UIColor redColor];
+	
+	[self.aboutDataRefreshButton setTitle:@"Récupérer les données" forState:UIControlStateNormal];
+	
+	[self.chooseButton setTitleColor:[UIColor greenColor] forState:UIControlStateHighlighted];
+
+	[self.homeAboutView addSubview:self.aboutLastDataRefreshLabel];
+	[self.homeAboutView addSubview:self.aboutDataRefreshButton];
 	
 	// CLOSE ABOUT BUTTON
 	
 	self.aboutCloseButton = [[UIButton alloc] initWithFrame:CGRectMake(
-																	   120.0, self.screenMiddle + 100.0, 80.0, 20.0)
+																	   120.0, self.screenMiddle + 126.0, 80.0, 20.0)
 							 ];
 	
 	[self.aboutCloseButton setTitle:@"OK" forState:UIControlStateNormal];
@@ -303,7 +336,7 @@
 		self.universityLabel.font = [UIFont systemFontOfSize:18];
 		
 		UNMUniversityData* const universityData =
-		[self.appLayer getUniversityDataById:self.appLayer.selectedUniversityId];
+		[self.appLayer.regionsData getUniversityDataById:self.appLayer.selectedUniversityId];
 		
 		self.universityLabel.text = universityData.title;
 		
@@ -328,7 +361,6 @@
 @implementation NSBundle (String)
 
 + (NSString*) stringForKey:(NSString*)key defaultValue:(NSString*)defaultValue {
-	
 	
 	NSBundle* const mainBundle = [NSBundle mainBundle];
 	

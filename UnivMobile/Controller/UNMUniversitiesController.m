@@ -59,7 +59,7 @@
 
 - (void) setRegionData:(UNMRegionData*)regionData {
 		
-	self.title = regionData.label;// e.g. @"Limousin/Poitou-Charentes";
+	self.title = regionData.label; // e.g. @"Limousin/Poitou-Charentes";
 
 	_regionData = regionData;
 	
@@ -79,7 +79,7 @@
 
 		return [self.regionData.universities count];
 	}
-	
+
 	return 0;
 }
 

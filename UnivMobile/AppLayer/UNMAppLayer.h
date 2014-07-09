@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "UNMRegionData.h"
+#import "UNMRegionsData.h"
 #import "UNMAppViewCallback.h"
 
 // Objects in the App Layer (applicative layer) are responsible for
@@ -16,14 +16,9 @@
 
 @property (copy, nonatomic) NSString* selectedRegionId;
 @property (copy, nonatomic) NSString* selectedUniversityId;
+@property (retain, nonatomic, readonly) UNMRegionsData* regionsData;
 
-- (NSUInteger) sizeOfRegionData;
-
-- (UNMRegionData*) getRegionDataAtIndex:(NSUInteger)row;
-
-- (UNMRegionData*) getRegionDataById:(NSString*)regionId;
-
-- (UNMUniversityData*) getUniversityDataById:(NSString*)universityId;
+- (UNMRegionsData*) loadInitialData;
 
 // Allow callbacks
 - (void) setSelectedRegionIdInList:(NSString*)regionId;

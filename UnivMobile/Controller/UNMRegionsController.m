@@ -83,7 +83,7 @@
 	
 	[self.tableView reloadData];
 	
-	const UNMRegionData* const regionData = [self.appLayer getRegionDataById:selectedRegionId];
+	const UNMRegionData* const regionData = [self.appLayer.regionsData getRegionDataById:selectedRegionId];
 	
 	self.universitiesController.regionData = regionData;
 }
@@ -102,7 +102,7 @@
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
 	
-    return section == 0 ? [self.appLayer sizeOfRegionData] : 0;
+    return section == 0 ? [self.appLayer.regionsData sizeOfRegionData] : 0;
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
@@ -115,7 +115,7 @@
 	
 	const NSUInteger row = [indexPath row];
 	
-	const UNMRegionData* const regionData = [self.appLayer getRegionDataAtIndex:row];
+	const UNMRegionData* const regionData = [self.appLayer.regionsData getRegionDataAtIndex:row];
 
 	const BOOL isSelected = [regionData.id isEqualToString:self.selectedRegionId];
 
@@ -143,7 +143,7 @@
 	
 	const NSUInteger row = [indexPath row];
 
-	const UNMRegionData* const regionData = [self.appLayer getRegionDataAtIndex:row];
+	const UNMRegionData* const regionData = [self.appLayer.regionsData getRegionDataAtIndex:row];
 
 	NSString* const oldSelectedRegionId = self.selectedRegionId;
 	

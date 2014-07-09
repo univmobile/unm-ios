@@ -10,8 +10,6 @@
 
 @interface UNMAppLayer ()
 
-@property (retain, nonatomic, readonly) NSArray* regionsData; // array of UNMRegionData*
-
 @property (strong, nonatomic) NSMutableArray* callbacks; // array of NSObject*
 
 @end
@@ -24,45 +22,7 @@
 	
 	if (self) {
 		
-		NSMutableArray* const array = [[NSMutableArray alloc] init];
-		
-		// TODO hardcoded values
-		
-		[array addObject:[[UNMRegionData alloc] initWithId:@"bretagne" label:@"Bretagne"]];
-		[array addObject:[[UNMRegionData alloc] initWithId:@"unrpcl" label:@"Limousin/Poitou-Charentes"]];
-		[array addObject:[[UNMRegionData alloc] initWithId:@"ile_de_france" label:@"Île de France"]];
-		
-		_regionsData = array;
-		
-		[self addUniversityId:@"ubo" title:@"Université de Bretagne Occidentale" toRegionId:@"bretagne"];
-		[self addUniversityId:@"rennes1" title:@"Université de Rennes 1" toRegionId:@"bretagne"];
-		[self addUniversityId:@"rennes2" title:@"Université Rennes 2" toRegionId:@"bretagne"];
-		[self addUniversityId:@"enscr" title:@"École Nationale Supérieure de Chimie de Rennes" toRegionId:@"bretagne"];
-		
-		[self addUniversityId:@"ulr" title:@"Université de La Rochelle" toRegionId:@"unrpcl"];
-		[self addUniversityId:@"ul" title:@"Université de Limoges" toRegionId:@"unrpcl"];
-		[self addUniversityId:@"up" title:@"Université de Poitiers" toRegionId:@"unrpcl"];
-		[self addUniversityId:@"ensma" title:@"ISAE-ENSMA" toRegionId:@"unrpcl"];
-		[self addUniversityId:@"crousp" title:@"CROUS PCL" toRegionId:@"unrpcl"];
-		
-		[self addUniversityId:@"paris1" title:@"Paris 1 Panthéon-Sorbonne" toRegionId:@"ile_de_france"];
-		[self addUniversityId:@"paris3" title:@"Paris 3 Sorbonne Nouvelle" toRegionId:@"ile_de_france"];
-		[self addUniversityId:@"paris13" title:@"Paris Nord" toRegionId:@"ile_de_france"];
-		[self addUniversityId:@"uvsq" title:@"UVSQ" toRegionId:@"ile_de_france"];
-		[self addUniversityId:@"museum" title:@"Muséum national d'Histoire naturelle" toRegionId:@"ile_de_france"];
-		[self addUniversityId:@"evry" title:@"Evry-Val d'Essonne" toRegionId:@"ile_de_france"];
-		[self addUniversityId:@"paris6" title:@"UPMC" toRegionId:@"ile_de_france"];
-		[self addUniversityId:@"paris7" title:@"Paris Diderot" toRegionId:@"ile_de_france"];
-		[self addUniversityId:@"paris8" title:@"Paris 8" toRegionId:@"ile_de_france"];
-		[self addUniversityId:@"paris10" title:@"Paris Ouest Nanterre la Défense" toRegionId:@"ile_de_france"];
-		[self addUniversityId:@"paris11" title:@"Paris-Sud" toRegionId:@"ile_de_france"];
-		[self addUniversityId:@"upec" title:@"UPEC" toRegionId:@"ile_de_france"];
-		[self addUniversityId:@"crousVersailles" title:@"Cergy-Pontoise" toRegionId:@"ile_de_france"];
-		[self addUniversityId:@"paris1" title:@"CROUS Versailles" toRegionId:@"ile_de_france"];
-		[self addUniversityId:@"enscachan" title:@"ENS Cachan" toRegionId:@"ile_de_france"];
-		[self addUniversityId:@"ensiie" title:@"ENSIIE" toRegionId:@"ile_de_france"];
-		[self addUniversityId:@"unpidf" title:@"UNPIdF" toRegionId:@"ile_de_france"];
-		[self addUniversityId:@"enc" title:@"École nationale des chartes" toRegionId:@"ile_de_france"];
+		[self loadInitialData];
 		
 		_callbacks = [[NSMutableArray alloc] init];
 	}
@@ -78,57 +38,6 @@
 - (void) setSelectedUniversityId:(NSString*)selectedUniversityId {
 	
 	_selectedUniversityId = selectedUniversityId;
-}
-
-#pragma mark - Internal data
-
-- (NSUInteger) sizeOfRegionData {
-	
-	return [_regionsData count];
-}
-
-- (UNMRegionData*) getRegionDataAtIndex:(NSUInteger)row {
-	
-	return [_regionsData objectAtIndex:row];
-}
-
-- (UNMRegionData*)getRegionDataById:(NSString*)regionId {
-	
-	for (UNMRegionData* const regionData in _regionsData) {
-		
-		if ([regionData.id isEqualToString:regionId]) {
-			
-			return regionData;
-		}
-	}
-	
-	return nil;
-}
-
-- (UNMUniversityData*)getUniversityDataById:(NSString*)universityId {
-	
-	for (UNMRegionData* const regionData in _regionsData) {
-		
-		for (UNMUniversityData* const universityData in regionData.universities) {
-			
-			if ([universityData.id isEqualToString:universityId]) {
-				
-				return universityData;
-			}
-		}
-	}
-	
-	return nil;
-}
-
-- (void)addUniversityId:(NSString*)id title:(NSString*)title toRegionId:(NSString*)regionId {
-	
-	UNMRegionData* const regionData = [self getRegionDataById:regionId];
-	
-	if (regionData) {
-		
-		[regionData addUniversityWithId:id title:title];
-	}
 }
 
 #pragma mark - AppLayer Callbacks
@@ -224,6 +133,55 @@
 			 */
 		}
 	}
+}
+
+- (UNMRegionsData*)loadInitialData {
+		
+	UNMRegionsData* const regionsData =[[UNMRegionsData alloc] init];
+	
+	// TODO hardcoded values
+	
+	[regionsData addRegionWithId:@"bretagne" label:@"Bretagne"];
+	[regionsData addRegionWithId:@"unrpcl" label:@"Limousin/Poitou-Charentes"];
+	[regionsData addRegionWithId:@"ile_de_france" label:@"Île de France"];
+	
+	[regionsData addUniversityId:@"ubo" title:@"Université de Bretagne Occidentale" toRegionId:@"bretagne"];
+	[regionsData addUniversityId:@"rennes1" title:@"Université de Rennes 1" toRegionId:@"bretagne"];
+	[regionsData addUniversityId:@"rennes2" title:@"Université Rennes 2" toRegionId:@"bretagne"];
+	[regionsData addUniversityId:@"enscr" title:@"École Nationale Supérieure de Chimie de Rennes" toRegionId:@"bretagne"];
+	
+	[regionsData addUniversityId:@"ulr" title:@"Université de La Rochelle" toRegionId:@"unrpcl"];
+	[regionsData addUniversityId:@"ul" title:@"Université de Limoges" toRegionId:@"unrpcl"];
+	[regionsData addUniversityId:@"up" title:@"Université de Poitiers" toRegionId:@"unrpcl"];
+	[regionsData addUniversityId:@"ensma" title:@"ISAE-ENSMA" toRegionId:@"unrpcl"];
+	[regionsData addUniversityId:@"crousp" title:@"CROUS PCL" toRegionId:@"unrpcl"];
+	
+	[regionsData addUniversityId:@"paris1" title:@"Paris 1 Panthéon-Sorbonne" toRegionId:@"ile_de_france"];
+	[regionsData addUniversityId:@"paris3" title:@"Paris 3 Sorbonne Nouvelle" toRegionId:@"ile_de_france"];
+	[regionsData addUniversityId:@"paris13" title:@"Paris Nord" toRegionId:@"ile_de_france"];
+	[regionsData addUniversityId:@"uvsq" title:@"UVSQ" toRegionId:@"ile_de_france"];
+	[regionsData addUniversityId:@"museum" title:@"Muséum national d'Histoire naturelle" toRegionId:@"ile_de_france"];
+	[regionsData addUniversityId:@"evry" title:@"Evry-Val d'Essonne" toRegionId:@"ile_de_france"];
+	[regionsData addUniversityId:@"paris6" title:@"UPMC" toRegionId:@"ile_de_france"];
+	[regionsData addUniversityId:@"paris7" title:@"Paris Diderot" toRegionId:@"ile_de_france"];
+	[regionsData addUniversityId:@"paris8" title:@"Paris 8" toRegionId:@"ile_de_france"];
+	[regionsData addUniversityId:@"paris10" title:@"Paris Ouest Nanterre la Défense" toRegionId:@"ile_de_france"];
+	[regionsData addUniversityId:@"paris11" title:@"Paris-Sud" toRegionId:@"ile_de_france"];
+	[regionsData addUniversityId:@"upec" title:@"UPEC" toRegionId:@"ile_de_france"];
+	[regionsData addUniversityId:@"crousVersailles" title:@"Cergy-Pontoise" toRegionId:@"ile_de_france"];
+	[regionsData addUniversityId:@"paris1" title:@"CROUS Versailles" toRegionId:@"ile_de_france"];
+	[regionsData addUniversityId:@"enscachan" title:@"ENS Cachan" toRegionId:@"ile_de_france"];
+	[regionsData addUniversityId:@"ensiie" title:@"ENSIIE" toRegionId:@"ile_de_france"];
+	[regionsData addUniversityId:@"unpidf" title:@"UNPIdF" toRegionId:@"ile_de_france"];
+	[regionsData addUniversityId:@"enc" title:@"École nationale des chartes" toRegionId:@"ile_de_france"];
+	
+	regionsData.refreshedAt = [NSDate date];
+	
+	// Do not assign at first, in case something goes wrong during the loading
+	
+	_regionsData = regionsData;
+
+	return _regionsData;
 }
 
 @end
