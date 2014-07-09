@@ -10,7 +10,7 @@
 
 @interface UNMRegionData ()
 
-@property (retain, nonatomic, readonly) NSMutableArray* universitiesMutable; // mutable array of UNMUniversityData*
+@property (strong, nonatomic) NSMutableArray* universitiesMutable; // mutable array of UNMUniversityData*
 
 @end
 
@@ -40,6 +40,20 @@
 	[self.universitiesMutable addObject:university];
 }
 
+// Override: MTLJSONSerializing
++ (NSDictionary*) JSONKeyPathsByPropertyKey {
+	
+	NSMutableDictionary* const map = [NSMutableDictionary new];
+	
+	// add: [super JSONKeyPathsByPropertyKey];
+	
+	[map addEntriesFromDictionary:@{
+									//@"regions": @"region"
+									}];
+	
+	return map;
+}
+
 @end
 
 @implementation UNMUniversityData
@@ -55,6 +69,20 @@
 	}
 	
     return self;
+}
+
+// Override: MTLJSONSerializing
++ (NSDictionary*) JSONKeyPathsByPropertyKey {
+	
+	NSMutableDictionary* const map = [NSMutableDictionary new];
+	
+	// add: [super JSONKeyPathsByPropertyKey];
+	
+	[map addEntriesFromDictionary:@{
+									//@"regions": @"region"
+									}];
+	
+	return map;
 }
 
 @end

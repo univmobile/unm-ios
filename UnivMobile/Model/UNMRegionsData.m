@@ -10,21 +10,19 @@
 
 @interface UNMRegionsData ()
 
-@property (retain, nonatomic, readonly) NSMutableArray* regionsMutable; // Mutable array of UNMRegionData*
-
 @end
 
 @implementation UNMRegionsData
 
 - (instancetype)init {
-		
+	
 	self = [super init];
 	
 	if (self) {
 		
-		_regionsMutable = [[NSMutableArray alloc] init];
+	//	_regionsMutable = [[NSMutableArray alloc] init];
 		
-		_regions = _regionsMutable;
+	//	_regions = _regionsMutable;
 	}
 	
 	return self;
@@ -34,7 +32,11 @@
 	
 	UNMRegionData* const regionData = [[UNMRegionData alloc] initWithId:id label:label];
 	
-	[self.regionsMutable addObject:regionData];
+	NSMutableArray* const regionsMutable = [[NSMutableArray alloc] initWithArray:_regions];
+	
+	[regionsMutable addObject:regionData];
+	
+	_regions = regionsMutable;
 }
 
 - (void)addUniversityId:(NSString*)id title:(NSString*)title toRegionId:(NSString*)regionId {
@@ -62,12 +64,12 @@
 - (NSString*)lastDataRefreshTimeAsString {
 	
 	NSDateFormatter* const dateFormatter = [NSDateFormatter new];
-
+	
 	dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"fr_FR"];
-
+	
 	dateFormatter.dateStyle = NSDateFormatterNoStyle;
 	dateFormatter.timeStyle = NSDateFormatterShortStyle;
-
+	
 	return [dateFormatter stringFromDate:self.refreshedAt];
 }
 
@@ -108,6 +110,20 @@
 	}
 	
 	return nil;
+}
+
+// Override: MTLJSONSerializing
++ (NSDictionary*) JSONKeyPathsByPropertyKey {
+	
+	NSMutableDictionary* const map = [NSMutableDictionary new];
+	
+	// add: [super JSONKeyPathsByPropertyKey];
+	
+	[map addEntriesFromDictionary:@{
+									@"regions": @"region"
+									}];
+	
+	return map;
 }
 
 @end

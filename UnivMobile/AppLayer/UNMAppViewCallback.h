@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 UNPIdF. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @protocol UNMAppViewCallback <NSObject>
 
@@ -19,5 +19,7 @@
 - (void) callbackGoBackFromRegions;
 
 - (void) callbackShowUniversityList;
+
+- (void) callbackRefreshRegionsData;
 
 @end

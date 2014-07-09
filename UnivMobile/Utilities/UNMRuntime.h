@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 UNPIdF. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import <objc/runtime.h>
 
 // #define UNM_DEBUG

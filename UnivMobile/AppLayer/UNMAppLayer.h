@@ -6,9 +6,11 @@
 //  Copyright (c) 2014 UNPIdF. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import "UNMRegionsData.h"
 #import "UNMAppViewCallback.h"
+#import "UNMBuildInfo.h"
+#import "UNMJsonFetcher.h"
 
 // Objects in the App Layer (applicative layer) are responsible for
 // the data and the coordination between View Controllers.
@@ -16,9 +18,12 @@
 
 @property (copy, nonatomic) NSString* selectedRegionId;
 @property (copy, nonatomic) NSString* selectedUniversityId;
-@property (retain, nonatomic, readonly) UNMRegionsData* regionsData;
+@property (strong, nonatomic, readonly) UNMRegionsData* regionsData;
+@property (strong, nonatomic, readonly) UNMBuildInfo* buildInfo;
 
-- (UNMRegionsData*) loadInitialData;
+- (instancetype) initWithJsonFetcher:(NSObject<UNMJsonFetcher>*) jsonFetcher;
+
+- (UNMRegionsData*) loadInitialRegionsData;
 
 // Allow callbacks
 - (void) setSelectedRegionIdInList:(NSString*)regionId;
@@ -31,6 +36,9 @@
 
 // Allow callbacks
 - (void) showUniversityList;
+
+// Allow callbacks
+- (void) refreshRegionsData;
 
 - (void) addCallback:(NSObject<UNMAppViewCallback>*)callback;
 

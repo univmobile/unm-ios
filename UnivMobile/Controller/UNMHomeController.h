@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 UNPIdF. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "UNMAppLayered.h"
 #import "UNMRegionsController.h"
 #import "UNMUniversitiesController.h"

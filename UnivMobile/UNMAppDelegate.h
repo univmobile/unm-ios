@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 UNPIdF. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface UNMAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow* window;
-@property (retain, nonatomic, readonly) UINavigationController* navController;
+@property (strong, nonatomic, readonly) UINavigationController* navController;
 
 @end

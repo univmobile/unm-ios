@@ -13,12 +13,6 @@
 #import "UNMViewFx.h"
 #import "UNMRegionsData.h"
 
-@interface NSBundle (String)
-
-+ (NSString*) stringForKey:(NSString*)key defaultValue:(NSString*)defaultValue;
-
-@end
-
 @interface UNMHomeController ()
 
 @property (nonatomic, assign) CGFloat screenMiddle;
@@ -76,6 +70,7 @@
 	return self;
 }
 
+// Override: UIViewController
 - (void)viewDidLoad {
 	
     [super viewDidLoad];
@@ -97,9 +92,7 @@
 	self.homeTitleView = [[UIView alloc] initWithFrame:bounds];
 	
 	[self.view addSubview:self.homeView];
-
 	[self.homeView addSubview:self.homeAboutView];
-	
 	[self.homeView addSubview:self.homeTitleView];
 
 	// HOME VIEW
@@ -136,28 +129,18 @@
 	
 	self.aboutTextView = [[UITextView alloc]initWithFrame:CGRectMake(15.0, self.screenMiddle - 200.0, 290.0, 190.0)];
 	
-	// e.g. @"153"
-	// NSString* const BUILD_NUMBER = [NSBundle stringForKey:@"BUILD_NUMBER" defaultValue:@"???"];
-
-	// e.g. @"2014-07-08_13_19_00"
-	NSString* const BUILD_ID = [NSBundle stringForKey:@"BUILD_ID" defaultValue:@"????/??/?? ??:??:??"];
-	
-	// e.g. @"#153"
-	NSString* const BUILD_DISPLAY_NAME = [NSBundle stringForKey:@"BUILD_DISPLAY_NAME" defaultValue:@"#???"];
-	
-	// e.g. @"c159768e3c52b27bb15e4b8c9d865a3debe667e0"
-	NSString* const GIT_COMMIT = [NSBundle stringForKey:@"GIT_COMMIT"
-										   defaultValue:@"????????????????????????????????????????"];
+	const UNMBuildInfo* const buildInfo = self.appLayer.buildInfo;
 	
 	self.aboutTextView.text = [NSString stringWithFormat:
 							   @"\nUnivMobile\n\n©2014 UNPIdF\n\nBuild %@ — %@\n\n\nhttps://github.com/univmobile/unm-ios\n\n%@",
-							   BUILD_DISPLAY_NAME,
-							   [[[[[BUILD_ID stringByReplacingCharactersInRange:NSMakeRange(4, 1) withString:@"/"]
+							   buildInfo.BUILD_DISPLAY_NAME,
+							   [[[[[buildInfo.BUILD_ID
+									stringByReplacingCharactersInRange:NSMakeRange(4, 1) withString:@"/"]
 								  stringByReplacingCharactersInRange:NSMakeRange(7, 1) withString:@"/"]
 								 stringByReplacingCharactersInRange:NSMakeRange(10, 1) withString:@" "]
 								 stringByReplacingCharactersInRange:NSMakeRange(13, 1) withString:@":"]
 								stringByReplacingCharactersInRange:NSMakeRange(16, 3) withString:@""],
-							   GIT_COMMIT
+							   buildInfo.GIT_COMMIT
 							   ];
 	self.aboutTextView.textColor = [UIColor blackColor];//[UNMConstants RGB_79b8d9];
 	self.aboutTextView.font = [UIFont systemFontOfSize:12];
@@ -172,7 +155,7 @@
 	
 	self.aboutLastDataRefreshLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0, self.screenMiddle + 5.0, 290.0, 30.0)];
 
-	UNMRegionsData* const regionsData = [self.appLayer loadInitialData];
+	UNMRegionsData* const regionsData = [self.appLayer loadInitialRegionsData];
 	
 	self.aboutLastDataRefreshLabel.text = [NSString stringWithFormat:@"Données récupérées le %@ à %@",
 										   regionsData.lastDataRefreshDayAsString,
@@ -181,7 +164,7 @@
 	self.aboutLastDataRefreshLabel.font = [UIFont systemFontOfSize:12];
 	self.aboutLastDataRefreshLabel.textAlignment = NSTextAlignmentCenter;
 	
-	//self.aboutLastDataRefreshLabel.backgroundColor = [UIColor redColor];
+	self.aboutLastDataRefreshLabel.backgroundColor = [UNMConstants RGB_9bc9e1];
 
 	self.aboutDataRefreshButton = [[UIButton alloc] initWithFrame:CGRectMake(
 																	   15.0, self.screenMiddle + 40.0, 290.0, 20.0)];
@@ -192,11 +175,23 @@
 	
 	[self.aboutDataRefreshButton setTitle:@"Récupérer les données" forState:UIControlStateNormal];
 	
-	[self.chooseButton setTitleColor:[UIColor greenColor] forState:UIControlStateHighlighted];
+	[self.aboutDataRefreshButton setTitleColor:[UIColor greenColor] forState:UIControlStateHighlighted];
 
 	[self.homeAboutView addSubview:self.aboutLastDataRefreshLabel];
 	[self.homeAboutView addSubview:self.aboutDataRefreshButton];
 	
+	
+	@weakify(self)
+	
+	self.aboutDataRefreshButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
+		
+		@strongify(self)
+		
+		[self.appLayer refreshRegionsData];
+		
+		return [RACSignal empty];
+	}];
+
 	// CLOSE ABOUT BUTTON
 	
 	self.aboutCloseButton = [[UIButton alloc] initWithFrame:CGRectMake(
@@ -209,7 +204,7 @@
 	
 	[self.homeAboutView addSubview:self.aboutCloseButton];
 	
-	@weakify(self)
+	// @weakify(self)
 	
 	self.aboutCloseButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
 		
@@ -285,11 +280,13 @@
 	[self doLayoutSubviews];
 }
 
+// Override
 - (void)didReceiveMemoryWarning {
 	
     [super didReceiveMemoryWarning];
 }
 
+// Override
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
 	
@@ -329,6 +326,7 @@
 
 #pragma mark - AppLayer Callbacks
 
+// Override: UNMAppViewCallback
 - (void)callbackGoBackFromRegions {
 	
 	if (self.appLayer.selectedUniversityId) {
@@ -354,21 +352,6 @@
 					completion:^(BOOL done) {
 						// nothing here
 					}];
-}
-
-@end
-
-@implementation NSBundle (String)
-
-+ (NSString*) stringForKey:(NSString*)key defaultValue:(NSString*)defaultValue {
-	
-	NSBundle* const mainBundle = [NSBundle mainBundle];
-	
-	id object = [mainBundle objectForInfoDictionaryKey:key];
-	
-	if (object == nil) return defaultValue;
-	
-	return [NSString stringWithFormat:@"%@", object];
 }
 
 @end

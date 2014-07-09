@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 UNPIdF. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import "UNMRegionData.h"
+#import <Mantle/Mantle.h>
 
-@interface UNMRegionsData : NSObject
+@interface UNMRegionsData : NSObject <MTLJSONSerializing>
 
 @property (strong, nonatomic) NSDate* refreshedAt;
-
-@property (weak, nonatomic, readonly) NSArray* regions; // array of UNMRegionData*
+@property (strong, nonatomic) NSArray* regions; // array of UNMRegionData*
 
 - (NSUInteger) sizeOfRegionData;
 

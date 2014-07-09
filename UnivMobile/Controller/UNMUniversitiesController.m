@@ -34,6 +34,7 @@
 	return self;
 }
 
+// Override: UIViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -52,6 +53,7 @@
 	}
 }
 
+// Override
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 
@@ -68,11 +70,13 @@
 
 #pragma mark - Table view data source
 
+// Override: UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView {
 	
     return 1;
 }
 
+// Override: UITableViewDataSource
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
 
 	if (section == 0 && self.regionData) {
@@ -83,6 +87,7 @@
 	return 0;
 }
 
+// Override: UITableViewDataSource
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
 
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"university"];
@@ -115,6 +120,7 @@
     return cell;
 }
 
+// Override: UITableViewDelegate
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
 	
 	const NSUInteger row = [indexPath row];
@@ -147,9 +153,16 @@
 
 #pragma mark - AppLayer Callbacks
 
+// Override: UNMAppViewCallback
 - (void) callbackSetSelectedUniversityIdInList:(NSString*)universityId {
 	
 	self.selectedUniversityId = universityId;
+}
+
+// Override: UNMAppViewCallback
+- (void) callbackRefreshRegionsData {
+	
+	[self.tableView reloadData];
 }
 
 /*

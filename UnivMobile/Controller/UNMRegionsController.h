@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 UNPIdF. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "UNMUniversitiesController.h"
 #import "UNMAppLayered.h"
 
 @interface UNMRegionsController : UITableViewController <UNMAppLayered, UNMAppViewCallback>
 
-@property (retain, nonatomic, readonly) UNMUniversitiesController* universitiesController;
+@property (strong, nonatomic, readonly) UNMUniversitiesController* universitiesController;
 
 @property (copy, nonatomic) NSString* selectedRegionId;
 

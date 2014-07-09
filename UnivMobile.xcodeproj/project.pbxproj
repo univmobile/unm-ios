@@ -9,6 +9,31 @@
 /* Begin PBXBuildFile section */
 		CF2E7B12A50E49B194DADC5F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA53C43C5EAF4E879E452BE4 /* libPods.a */; };
 		DF103EEB1969F23200AC123A /* UNMViewFx.m in Sources */ = {isa = PBXBuildFile; fileRef = DF103EEA1969F23200AC123A /* UNMViewFx.m */; };
+		DF36535E196DC9BA00BD98A4 /* UNMAppLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DF6000301968DC7D00A72D24 /* UNMAppLayer.m */; };
+		DF36535F196DC9BA00BD98A4 /* UNMRegionData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7EC30819667A19004730C4 /* UNMRegionData.m */; };
+		DF365360196DC9BA00BD98A4 /* UNMRegionsData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5EDF99196D075E00C1AE1D /* UNMRegionsData.m */; };
+		DF365361196DC9BA00BD98A4 /* UNMDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9945C2196B850800AE125E /* UNMDebug.m */; };
+		DF365362196DC9BA00BD98A4 /* UNMRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9945C5196B9DAE00AE125E /* UNMRuntime.m */; };
+		DF365363196DC9BA00BD98A4 /* UNMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7EC2FF1965FF88004730C4 /* UNMConstants.m */; };
+		DF365372196DC9F600BD98A4 /* EXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DF365364196DC9F600BD98A4 /* EXTRuntimeExtensions.m */; };
+		DF365373196DC9F600BD98A4 /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = DF365365196DC9F600BD98A4 /* EXTScope.m */; };
+		DF365374196DC9F600BD98A4 /* MTLJSONAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = DF365366196DC9F600BD98A4 /* MTLJSONAdapter.m */; };
+		DF365375196DC9F600BD98A4 /* MTLManagedObjectAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = DF365367196DC9F600BD98A4 /* MTLManagedObjectAdapter.m */; };
+		DF365376196DC9F600BD98A4 /* MTLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF365368196DC9F600BD98A4 /* MTLModel.m */; };
+		DF365377196DC9F600BD98A4 /* MTLModel+NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = DF365369196DC9F600BD98A4 /* MTLModel+NSCoding.m */; };
+		DF365378196DC9F600BD98A4 /* MTLReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = DF36536A196DC9F600BD98A4 /* MTLReflection.m */; };
+		DF365379196DC9F600BD98A4 /* MTLValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = DF36536B196DC9F600BD98A4 /* MTLValueTransformer.m */; };
+		DF36537A196DC9F600BD98A4 /* NSArray+MTLManipulationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DF36536C196DC9F600BD98A4 /* NSArray+MTLManipulationAdditions.m */; };
+		DF36537B196DC9F600BD98A4 /* NSDictionary+MTLManipulationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DF36536D196DC9F600BD98A4 /* NSDictionary+MTLManipulationAdditions.m */; };
+		DF36537C196DC9F600BD98A4 /* NSError+MTLModelException.m in Sources */ = {isa = PBXBuildFile; fileRef = DF36536E196DC9F600BD98A4 /* NSError+MTLModelException.m */; };
+		DF36537D196DC9F600BD98A4 /* NSObject+MTLComparisonAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DF36536F196DC9F600BD98A4 /* NSObject+MTLComparisonAdditions.m */; };
+		DF36537E196DC9F600BD98A4 /* NSValueTransformer+MTLInversionAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DF365370196DC9F600BD98A4 /* NSValueTransformer+MTLInversionAdditions.m */; };
+		DF36537F196DC9F600BD98A4 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DF365371196DC9F600BD98A4 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m */; };
+		DF365383196DCA4800BD98A4 /* UNMBuildInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DF365382196DCA4800BD98A4 /* UNMBuildInfo.m */; };
+		DF36538E196DCA5E00BD98A4 /* UNMInitialRegionsData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF365386196DCA5E00BD98A4 /* UNMInitialRegionsData.m */; };
+		DF36538F196DCA5E00BD98A4 /* UNMJsonFetcherFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = DF365389196DCA5E00BD98A4 /* UNMJsonFetcherFileSystem.m */; };
+		DF365390196DCA5E00BD98A4 /* UNMJsonFetcherWeb.m in Sources */ = {isa = PBXBuildFile; fileRef = DF36538B196DCA5E00BD98A4 /* UNMJsonFetcherWeb.m */; };
+		DF365391196DCA5E00BD98A4 /* UNMJsonRegionsData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF36538D196DCA5E00BD98A4 /* UNMJsonRegionsData.m */; };
 		DF5EDF9A196D075E00C1AE1D /* UNMRegionsData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5EDF99196D075E00C1AE1D /* UNMRegionsData.m */; };
 		DF6000311968DC7D00A72D24 /* UNMAppLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DF6000301968DC7D00A72D24 /* UNMAppLayer.m */; };
 		DF7EC2CA19657D83004730C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7EC2C919657D83004730C4 /* Foundation.framework */; };
@@ -48,6 +73,31 @@
 		DF103EE71969E65100AC123A /* UNMAppViewCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMAppViewCallback.h; path = AppLayer/UNMAppViewCallback.h; sourceTree = "<group>"; };
 		DF103EE91969F23200AC123A /* UNMViewFx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMViewFx.h; path = Utilities/UNMViewFx.h; sourceTree = "<group>"; };
 		DF103EEA1969F23200AC123A /* UNMViewFx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMViewFx.m; path = Utilities/UNMViewFx.m; sourceTree = "<group>"; };
+		DF365364196DC9F600BD98A4 /* EXTRuntimeExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = EXTRuntimeExtensions.m; path = Pods/Mantle/Mantle/extobjc/EXTRuntimeExtensions.m; sourceTree = "<group>"; };
+		DF365365196DC9F600BD98A4 /* EXTScope.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = EXTScope.m; path = Pods/Mantle/Mantle/extobjc/EXTScope.m; sourceTree = "<group>"; };
+		DF365366196DC9F600BD98A4 /* MTLJSONAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MTLJSONAdapter.m; path = Pods/Mantle/Mantle/MTLJSONAdapter.m; sourceTree = "<group>"; };
+		DF365367196DC9F600BD98A4 /* MTLManagedObjectAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MTLManagedObjectAdapter.m; path = Pods/Mantle/Mantle/MTLManagedObjectAdapter.m; sourceTree = "<group>"; };
+		DF365368196DC9F600BD98A4 /* MTLModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MTLModel.m; path = Pods/Mantle/Mantle/MTLModel.m; sourceTree = "<group>"; };
+		DF365369196DC9F600BD98A4 /* MTLModel+NSCoding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "MTLModel+NSCoding.m"; path = "Pods/Mantle/Mantle/MTLModel+NSCoding.m"; sourceTree = "<group>"; };
+		DF36536A196DC9F600BD98A4 /* MTLReflection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MTLReflection.m; path = Pods/Mantle/Mantle/MTLReflection.m; sourceTree = "<group>"; };
+		DF36536B196DC9F600BD98A4 /* MTLValueTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MTLValueTransformer.m; path = Pods/Mantle/Mantle/MTLValueTransformer.m; sourceTree = "<group>"; };
+		DF36536C196DC9F600BD98A4 /* NSArray+MTLManipulationAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSArray+MTLManipulationAdditions.m"; path = "Pods/Mantle/Mantle/NSArray+MTLManipulationAdditions.m"; sourceTree = "<group>"; };
+		DF36536D196DC9F600BD98A4 /* NSDictionary+MTLManipulationAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+MTLManipulationAdditions.m"; path = "Pods/Mantle/Mantle/NSDictionary+MTLManipulationAdditions.m"; sourceTree = "<group>"; };
+		DF36536E196DC9F600BD98A4 /* NSError+MTLModelException.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSError+MTLModelException.m"; path = "Pods/Mantle/Mantle/NSError+MTLModelException.m"; sourceTree = "<group>"; };
+		DF36536F196DC9F600BD98A4 /* NSObject+MTLComparisonAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSObject+MTLComparisonAdditions.m"; path = "Pods/Mantle/Mantle/NSObject+MTLComparisonAdditions.m"; sourceTree = "<group>"; };
+		DF365370196DC9F600BD98A4 /* NSValueTransformer+MTLInversionAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSValueTransformer+MTLInversionAdditions.m"; path = "Pods/Mantle/Mantle/NSValueTransformer+MTLInversionAdditions.m"; sourceTree = "<group>"; };
+		DF365371196DC9F600BD98A4 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSValueTransformer+MTLPredefinedTransformerAdditions.m"; path = "Pods/Mantle/Mantle/NSValueTransformer+MTLPredefinedTransformerAdditions.m"; sourceTree = "<group>"; };
+		DF365381196DCA4800BD98A4 /* UNMBuildInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMBuildInfo.h; path = Utilities/UNMBuildInfo.h; sourceTree = "<group>"; };
+		DF365382196DCA4800BD98A4 /* UNMBuildInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMBuildInfo.m; path = Utilities/UNMBuildInfo.m; sourceTree = "<group>"; };
+		DF365385196DCA5E00BD98A4 /* UNMInitialRegionsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMInitialRegionsData.h; path = DataAccess/UNMInitialRegionsData.h; sourceTree = "<group>"; };
+		DF365386196DCA5E00BD98A4 /* UNMInitialRegionsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMInitialRegionsData.m; path = DataAccess/UNMInitialRegionsData.m; sourceTree = "<group>"; };
+		DF365387196DCA5E00BD98A4 /* UNMJsonFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMJsonFetcher.h; path = DataAccess/UNMJsonFetcher.h; sourceTree = "<group>"; };
+		DF365388196DCA5E00BD98A4 /* UNMJsonFetcherFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMJsonFetcherFileSystem.h; path = DataAccess/UNMJsonFetcherFileSystem.h; sourceTree = "<group>"; };
+		DF365389196DCA5E00BD98A4 /* UNMJsonFetcherFileSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMJsonFetcherFileSystem.m; path = DataAccess/UNMJsonFetcherFileSystem.m; sourceTree = "<group>"; };
+		DF36538A196DCA5E00BD98A4 /* UNMJsonFetcherWeb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMJsonFetcherWeb.h; path = DataAccess/UNMJsonFetcherWeb.h; sourceTree = "<group>"; };
+		DF36538B196DCA5E00BD98A4 /* UNMJsonFetcherWeb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMJsonFetcherWeb.m; path = DataAccess/UNMJsonFetcherWeb.m; sourceTree = "<group>"; };
+		DF36538C196DCA5E00BD98A4 /* UNMJsonRegionsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMJsonRegionsData.h; path = DataAccess/UNMJsonRegionsData.h; sourceTree = "<group>"; };
+		DF36538D196DCA5E00BD98A4 /* UNMJsonRegionsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMJsonRegionsData.m; path = DataAccess/UNMJsonRegionsData.m; sourceTree = "<group>"; };
 		DF5EDF98196D075E00C1AE1D /* UNMRegionsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMRegionsData.h; path = Model/UNMRegionsData.h; sourceTree = "<group>"; };
 		DF5EDF99196D075E00C1AE1D /* UNMRegionsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMRegionsData.m; path = Model/UNMRegionsData.m; sourceTree = "<group>"; };
 		DF60002F1968DC7D00A72D24 /* UNMAppLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMAppLayer.h; path = AppLayer/UNMAppLayer.h; sourceTree = "<group>"; };
@@ -113,6 +163,8 @@
 		DF103EE81969F21300AC123A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				DF365381196DCA4800BD98A4 /* UNMBuildInfo.h */,
+				DF365382196DCA4800BD98A4 /* UNMBuildInfo.m */,
 				DF103EE91969F23200AC123A /* UNMViewFx.h */,
 				DF103EEA1969F23200AC123A /* UNMViewFx.m */,
 				DF9945C1196B850800AE125E /* UNMDebug.h */,
@@ -121,6 +173,43 @@
 				DF9945C5196B9DAE00AE125E /* UNMRuntime.m */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		DF365380196DCA0400BD98A4 /* Pods Sources */ = {
+			isa = PBXGroup;
+			children = (
+				DF365364196DC9F600BD98A4 /* EXTRuntimeExtensions.m */,
+				DF365365196DC9F600BD98A4 /* EXTScope.m */,
+				DF365366196DC9F600BD98A4 /* MTLJSONAdapter.m */,
+				DF365367196DC9F600BD98A4 /* MTLManagedObjectAdapter.m */,
+				DF365368196DC9F600BD98A4 /* MTLModel.m */,
+				DF365369196DC9F600BD98A4 /* MTLModel+NSCoding.m */,
+				DF36536A196DC9F600BD98A4 /* MTLReflection.m */,
+				DF36536B196DC9F600BD98A4 /* MTLValueTransformer.m */,
+				DF36536C196DC9F600BD98A4 /* NSArray+MTLManipulationAdditions.m */,
+				DF36536D196DC9F600BD98A4 /* NSDictionary+MTLManipulationAdditions.m */,
+				DF36536E196DC9F600BD98A4 /* NSError+MTLModelException.m */,
+				DF36536F196DC9F600BD98A4 /* NSObject+MTLComparisonAdditions.m */,
+				DF365370196DC9F600BD98A4 /* NSValueTransformer+MTLInversionAdditions.m */,
+				DF365371196DC9F600BD98A4 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m */,
+			);
+			name = "Pods Sources";
+			sourceTree = "<group>";
+		};
+		DF365384196DCA5100BD98A4 /* DataAccess */ = {
+			isa = PBXGroup;
+			children = (
+				DF365385196DCA5E00BD98A4 /* UNMInitialRegionsData.h */,
+				DF365386196DCA5E00BD98A4 /* UNMInitialRegionsData.m */,
+				DF365387196DCA5E00BD98A4 /* UNMJsonFetcher.h */,
+				DF365388196DCA5E00BD98A4 /* UNMJsonFetcherFileSystem.h */,
+				DF365389196DCA5E00BD98A4 /* UNMJsonFetcherFileSystem.m */,
+				DF36538A196DCA5E00BD98A4 /* UNMJsonFetcherWeb.h */,
+				DF36538B196DCA5E00BD98A4 /* UNMJsonFetcherWeb.m */,
+				DF36538C196DCA5E00BD98A4 /* UNMJsonRegionsData.h */,
+				DF36538D196DCA5E00BD98A4 /* UNMJsonRegionsData.m */,
+			);
+			name = DataAccess;
 			sourceTree = "<group>";
 		};
 		DF60002E1968DC6100A72D24 /* AppLayer */ = {
@@ -137,6 +226,7 @@
 		DF7EC2BD19657D83004730C4 = {
 			isa = PBXGroup;
 			children = (
+				DF365380196DCA0400BD98A4 /* Pods Sources */,
 				DF7EC2CF19657D83004730C4 /* UnivMobile */,
 				DF7EC2E819657D83004730C4 /* UnivMobileTests */,
 				DF7EC2C819657D83004730C4 /* Frameworks */,
@@ -169,6 +259,7 @@
 		DF7EC2CF19657D83004730C4 /* UnivMobile */ = {
 			isa = PBXGroup;
 			children = (
+				DF365384196DCA5100BD98A4 /* DataAccess */,
 				DF60002E1968DC6100A72D24 /* AppLayer */,
 				DF7EC30A19667A20004730C4 /* Model */,
 				DF7EC30B19667A30004730C4 /* Controller */,
@@ -376,12 +467,17 @@
 				DF7EC2DA19657D83004730C4 /* UNMAppDelegate.m in Sources */,
 				DF7EC31219667A7C004730C4 /* UNMHomeController.m in Sources */,
 				DF7EC3001965FF88004730C4 /* UNMConstants.m in Sources */,
+				DF365391196DCA5E00BD98A4 /* UNMJsonRegionsData.m in Sources */,
+				DF365383196DCA4800BD98A4 /* UNMBuildInfo.m in Sources */,
+				DF365390196DCA5E00BD98A4 /* UNMJsonFetcherWeb.m in Sources */,
 				DF9945C6196B9DAE00AE125E /* UNMRuntime.m in Sources */,
 				DF7EC31419667A7C004730C4 /* UNMUniversitiesController.m in Sources */,
+				DF36538E196DCA5E00BD98A4 /* UNMInitialRegionsData.m in Sources */,
 				DF7EC31319667A7C004730C4 /* UNMRegionsController.m in Sources */,
 				DF6000311968DC7D00A72D24 /* UNMAppLayer.m in Sources */,
 				DF7EC30919667A19004730C4 /* UNMRegionData.m in Sources */,
 				DF103EEB1969F23200AC123A /* UNMViewFx.m in Sources */,
+				DF36538F196DCA5E00BD98A4 /* UNMJsonFetcherFileSystem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +485,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF365372196DC9F600BD98A4 /* EXTRuntimeExtensions.m in Sources */,
+				DF365373196DC9F600BD98A4 /* EXTScope.m in Sources */,
+				DF365374196DC9F600BD98A4 /* MTLJSONAdapter.m in Sources */,
+				DF365375196DC9F600BD98A4 /* MTLManagedObjectAdapter.m in Sources */,
+				DF365376196DC9F600BD98A4 /* MTLModel.m in Sources */,
+				DF365377196DC9F600BD98A4 /* MTLModel+NSCoding.m in Sources */,
+				DF365378196DC9F600BD98A4 /* MTLReflection.m in Sources */,
+				DF365379196DC9F600BD98A4 /* MTLValueTransformer.m in Sources */,
+				DF36537A196DC9F600BD98A4 /* NSArray+MTLManipulationAdditions.m in Sources */,
+				DF36537B196DC9F600BD98A4 /* NSDictionary+MTLManipulationAdditions.m in Sources */,
+				DF36537C196DC9F600BD98A4 /* NSError+MTLModelException.m in Sources */,
+				DF36537D196DC9F600BD98A4 /* NSObject+MTLComparisonAdditions.m in Sources */,
+				DF36537E196DC9F600BD98A4 /* NSValueTransformer+MTLInversionAdditions.m in Sources */,
+				DF36537F196DC9F600BD98A4 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */,
+				DF36535E196DC9BA00BD98A4 /* UNMAppLayer.m in Sources */,
+				DF36535F196DC9BA00BD98A4 /* UNMRegionData.m in Sources */,
+				DF365360196DC9BA00BD98A4 /* UNMRegionsData.m in Sources */,
+				DF365361196DC9BA00BD98A4 /* UNMDebug.m in Sources */,
+				DF365362196DC9BA00BD98A4 /* UNMRuntime.m in Sources */,
+				DF365363196DC9BA00BD98A4 /* UNMConstants.m in Sources */,
 				DF7EC2EF19657D83004730C4 /* UnivMobileTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
