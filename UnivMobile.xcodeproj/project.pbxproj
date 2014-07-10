@@ -60,6 +60,7 @@
 		DF8024C9196DEB3A00852CC8 /* UNMJsonSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8024C8196DEB3A00852CC8 /* UNMJsonSerializer.m */; };
 		DF8024CA196DEC3D00852CC8 /* UNMJsonSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8024C8196DEB3A00852CC8 /* UNMJsonSerializer.m */; };
 		DF8024CB196DEC3D00852CC8 /* UNMBuildInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DF365382196DCA4800BD98A4 /* UNMBuildInfo.m */; };
+		DF8024CE196E0FFF00852CC8 /* TestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8024CD196E0FFF00852CC8 /* TestAppDelegate.m */; };
 		DF95538F196DCF690083D61E /* UNMAppLayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DF95538E196DCF690083D61E /* UNMAppLayerTests.m */; };
 		DF9945C3196B850800AE125E /* UNMDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9945C2196B850800AE125E /* UNMDebug.m */; };
 		DF9945C6196B9DAE00AE125E /* UNMRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9945C5196B9DAE00AE125E /* UNMRuntime.m */; };
@@ -129,6 +130,8 @@
 		DF7EC31119667A7C004730C4 /* UNMUniversitiesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMUniversitiesController.m; path = Controller/UNMUniversitiesController.m; sourceTree = "<group>"; };
 		DF8024C7196DEB3A00852CC8 /* UNMJsonSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMJsonSerializer.h; path = DataAccess/UNMJsonSerializer.h; sourceTree = "<group>"; };
 		DF8024C8196DEB3A00852CC8 /* UNMJsonSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMJsonSerializer.m; path = DataAccess/UNMJsonSerializer.m; sourceTree = "<group>"; };
+		DF8024CC196E0FFF00852CC8 /* TestAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestAppDelegate.h; path = Utilities/TestAppDelegate.h; sourceTree = "<group>"; };
+		DF8024CD196E0FFF00852CC8 /* TestAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestAppDelegate.m; path = Utilities/TestAppDelegate.m; sourceTree = "<group>"; };
 		DF95538E196DCF690083D61E /* UNMAppLayerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNMAppLayerTests.m; sourceTree = "<group>"; };
 		DF9945C1196B850800AE125E /* UNMDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMDebug.h; path = Utilities/UNMDebug.h; sourceTree = "<group>"; };
 		DF9945C2196B850800AE125E /* UNMDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMDebug.m; path = Utilities/UNMDebug.m; sourceTree = "<group>"; };
@@ -172,6 +175,8 @@
 				DF9945C2196B850800AE125E /* UNMDebug.m */,
 				DF9945C4196B9DAE00AE125E /* UNMRuntime.h */,
 				DF9945C5196B9DAE00AE125E /* UNMRuntime.m */,
+				DF8024CC196E0FFF00852CC8 /* TestAppDelegate.h */,
+				DF8024CD196E0FFF00852CC8 /* TestAppDelegate.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -472,6 +477,7 @@
 				DF365383196DCA4800BD98A4 /* UNMBuildInfo.m in Sources */,
 				DF365390196DCA5E00BD98A4 /* UNMJsonFetcherWeb.m in Sources */,
 				DF9945C6196B9DAE00AE125E /* UNMRuntime.m in Sources */,
+				DF8024CE196E0FFF00852CC8 /* TestAppDelegate.m in Sources */,
 				DF7EC31419667A7C004730C4 /* UNMUniversitiesController.m in Sources */,
 				DF36538E196DCA5E00BD98A4 /* UNMInitialRegionsData.m in Sources */,
 				DF7EC31319667A7C004730C4 /* UNMRegionsController.m in Sources */,

@@ -9,10 +9,21 @@
 #import <UIKit/UIKit.h>
 
 #import "UNMAppDelegate.h"
+#import "TestAppDelegate.h"
 
-int main(int argc, char * argv[])
-{
+int main(int argc, char* argv[]) {
+	
 	@autoreleasepool {
-	    return UIApplicationMain(argc, argv, nil, NSStringFromClass([UNMAppDelegate class]));
-	}
+		
+        const BOOL RUNNING_TESTS = (NSClassFromString(@"XCTest") != nil);
+		
+        if (RUNNING_TESTS) {
+			
+            return UIApplicationMain(argc, argv, nil, @"TestsAppDelegate");
+			
+        } else {
+			
+			return UIApplicationMain(argc, argv, nil, NSStringFromClass([UNMAppDelegate class]));
+        }
+    }
 }

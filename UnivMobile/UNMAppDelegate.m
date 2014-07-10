@@ -27,15 +27,15 @@
 // Override: UIApplicationDelegate<NSObject>
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
 	
-#if DEBUG
+//#if DEBUG
 	
 	// If tests are currently running, exit the method and do not create a rootViewController
-	if ([[[NSProcessInfo processInfo] processName] isEqualToString:@"xctest"] || getenv("RUNNING_TESTS")) {
+//	if ([[[NSProcessInfo processInfo] processName] isEqualToString:@"xctest"] || getenv("RUNNING_TESTS")) {
 		
-		return YES;
-	}
+//		return YES;
+//	}
 	
-#endif
+//#endif
 	
 	// APPLICATION LAYER
 	
