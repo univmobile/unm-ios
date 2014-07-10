@@ -51,7 +51,6 @@
 		DF7EC2E419657D83004730C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7EC2C919657D83004730C4 /* Foundation.framework */; };
 		DF7EC2E519657D83004730C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7EC2CD19657D83004730C4 /* UIKit.framework */; };
 		DF7EC2ED19657D83004730C4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DF7EC2EB19657D83004730C4 /* InfoPlist.strings */; };
-		DF7EC2EF19657D83004730C4 /* UnivMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7EC2EE19657D83004730C4 /* UnivMobileTests.m */; };
 		DF7EC3001965FF88004730C4 /* UNMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7EC2FF1965FF88004730C4 /* UNMConstants.m */; };
 		DF7EC30919667A19004730C4 /* UNMRegionData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7EC30819667A19004730C4 /* UNMRegionData.m */; };
 		DF7EC31219667A7C004730C4 /* UNMHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7EC30D19667A7C004730C4 /* UNMHomeController.m */; };
@@ -117,7 +116,6 @@
 		DF7EC2E219657D83004730C4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		DF7EC2EA19657D83004730C4 /* UnivMobileTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnivMobileTests-Info.plist"; sourceTree = "<group>"; };
 		DF7EC2EC19657D83004730C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DF7EC2EE19657D83004730C4 /* UnivMobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnivMobileTests.m; sourceTree = "<group>"; };
 		DF7EC2FE1965FF88004730C4 /* UNMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNMConstants.h; sourceTree = "<group>"; };
 		DF7EC2FF1965FF88004730C4 /* UNMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNMConstants.m; sourceTree = "<group>"; };
 		DF7EC30719667A19004730C4 /* UNMRegionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMRegionData.h; path = Model/UNMRegionData.h; sourceTree = "<group>"; };
@@ -296,7 +294,6 @@
 		DF7EC2E819657D83004730C4 /* UnivMobileTests */ = {
 			isa = PBXGroup;
 			children = (
-				DF7EC2EE19657D83004730C4 /* UnivMobileTests.m */,
 				DF95538E196DCF690083D61E /* UNMAppLayerTests.m */,
 				DF7EC2E919657D83004730C4 /* Supporting Files */,
 			);
@@ -519,7 +516,6 @@
 				DF365361196DC9BA00BD98A4 /* UNMDebug.m in Sources */,
 				DF365362196DC9BA00BD98A4 /* UNMRuntime.m in Sources */,
 				DF365363196DC9BA00BD98A4 /* UNMConstants.m in Sources */,
-				DF7EC2EF19657D83004730C4 /* UnivMobileTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
