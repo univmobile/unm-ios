@@ -17,15 +17,22 @@
 	
 	NSString* filePath = nil;
 	
+	// e.g. @"/Users/dandriana/Documents/xcode/unm-ios/UnivMobile/DataAccess/UNMJsonFetcherFileSystem.m"
+	NSString* const THIS_SRCFILE_PATH = [NSString stringWithFormat:@"%s", __FILE__];
+	
+	// e.g. @"/Users/dandriana/Documents/xcode/unm-ios/"
+	NSString* const THIS_PROJECT_PATH = [THIS_SRCFILE_PATH
+										 substringWithRange:NSMakeRange(0, THIS_SRCFILE_PATH.length - 48)];
+	
 	if (path.length > 8 && [[path substringFromIndex:[path length] - 8] isEqual:@"/regions"]) {
 		
-		filePath = @"/Users/dandriana/Documents/xcode/unm-ios/src/test/json/regions.json";
+		filePath = [THIS_PROJECT_PATH stringByAppendingString:@"src/test/json/regions.json"];
 		
 	} else if (![[path substringWithRange:NSMakeRange(0, 4)] isEqualToString:@"http"]) {
 		
 		filePath = [NSString
 					stringWithFormat:
-					@"/Users/dandriana/Documents/xcode/unm-ios/src/test/json/listUniversities_%@.json",path];
+					@"%@src/test/json/listUniversities_%@.json",THIS_PROJECT_PATH,path];
 	}
 	
 	if (!filePath) return nil;
