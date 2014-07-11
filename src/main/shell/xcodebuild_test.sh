@@ -41,7 +41,7 @@ if [ ! -d "${WORKSPACE}/target" ]; then mkdir -p "${WORKSPACE}/target"; fi
 
 rm -rf "${TEST_REPORT_REPO}"
 
-git clone https://github.com/univmobile/unm-ios-ut-results "${TEST_REPORT_REPO}"
+git clone https://dandriana-jenkins@github.com/univmobile/unm-ios-ut-results "${TEST_REPORT_REPO}"
 
 if [ -z "${TEST_REPORT}" ]; then
   echo "** Error: TEST_REPORT must be set and must be in a git repo. e.g. ../unm-ios-test-results/data/unm-ios-xcodebuild-test.log"
@@ -151,6 +151,14 @@ echo "End Date: $(date)" >> "${TEST_REPORT}"
 cd "${TEST_REPORT_REPO}"
 
 TEST_REPORT_FILENAME="data/$(basename "${TEST_REPORT}")"
+
+mkdir -p target/
+
+echo "cat ~/.config/github-dandriana-jenkins" > target/git_pass.sh
+
+chmod 700 target/git_pass.sh
+
+export GIT_ASKPASS=target/git_askpass.sh
 
 git add "${TEST_REPORT_FILENAME}"
 
