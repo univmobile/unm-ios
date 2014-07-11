@@ -65,7 +65,7 @@ public abstract class AbstractUnivMobileAppiumTest {
 	protected final void takeScreenshot(final String filename)
 			throws IOException {
 
-		System.out.println("Taking screenshot: " + filename);
+		System.out.println("Taking screenshot: " + filename + "...");
 
 		final WebDriver augmentedDriver = new Augmenter().augment(driver);
 
@@ -90,6 +90,8 @@ public abstract class AbstractUnivMobileAppiumTest {
 
 	protected final void savePageSource(final String filename)
 			throws IOException {
+
+		System.out.println("Saving pageSource: " + filename + "...");
 
 		final String xml = driver.getPageSource();
 
