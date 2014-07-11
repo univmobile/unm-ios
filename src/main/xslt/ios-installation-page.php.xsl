@@ -63,12 +63,18 @@ body {
 	background-color: #fff;
 	font-family: 'Helvetica Neue';
 	font-size: 100%;
+	margin: 0;
+	padding: 0;
 }
 div.nav {
 	display: none;
 }
 table {
 	font-size: 100%;
+	border-collapse: collapse;
+}
+td {
+	padding: 0;
 }
 td.date {
 	white-space: nowrap;
@@ -76,11 +82,11 @@ td.date {
 #table-installations tr {
 	border-top: 1px solid #000;
 }
-#table-installations tr.git-commit {
+#table-installations tr.cell-bottom {
 	border-top: none;
 }
 #table-installations,
-#table-installations tr.git-commit {
+#table-installations tr.cell-bottom {
 	border-top: none;
 	border-bottom: 1px solid #000;
 }
@@ -89,7 +95,7 @@ h2,
 body {
 }
 h1 {
-	margin: 0;
+	margin: 8px 0 0;
 	text-align: center;
 }
 h1 span {
@@ -101,6 +107,13 @@ h1 span.dash {
 }
 td.git-commit,
 th.git-commit {
+	xdisplay: none;
+}
+td.label,
+th.label {
+	xdisplay: none;
+}
+thead {
 	display: none;
 }
 thead th {
@@ -113,11 +126,13 @@ thead th {
 #table-body {
 	margin: auto;
 }
-tr.git-commit td.git-commit {
-	display: table-cell;
+tr.cell-bottom td.git-commit {
+	xdisplay: table-cell;
 	padding-top: 0.5em;
 }
-td.git-commit {
+td.git-commit,
+div.git-commit,
+li.git-commit {
 	font-size: 75%;
 	color: #999;
 }
@@ -127,6 +142,30 @@ div.mention {
 	font-size: small;
 	text-align: center;
 	color: #aaa;
+}
+#table-installations ul {
+	background-image:
+	 -webkit-linear-gradient(bottom, #fff, #ccf);
+	list-style-type: none;
+	padding: 0 10px;
+	margin: 0;
+}
+#table-installations li {
+	padding: 0;
+	margin: 0;
+}
+li.build-displayName.empty {
+	display: none;
+}
+li.build-displayName,
+li.date {
+	xdisplay: inline-block;
+}
+li.build-displayName span.label {
+	xpadding-left: 1em;
+}
+#table-installations td {
+	padding: 0;
 }
 </style>
 <meta name="viewport"
@@ -189,19 +228,25 @@ table {
 #table-installations a {
 	background-color: #eef;
 	text-decoration: none;
+	display: block;
 }
 #table-installations thead {
 	background-color: #ddd;
 	color: #333;
 	font-size: small;
 }
-tr.git-commit {
+tr.cell-bottom {
 	display: none;
 }
-td.git-commit {
+td.git-commit,
+div.git-commit,
+li.git-commit {
 	font-size: small;
 }
 div.mention {
+	display: none;
+}
+td.build-displayName span.label {
 	display: none;
 }
 </style>
@@ -220,13 +265,15 @@ table {
 	border-collapse: collapse;
 }
 #table-installations a {
-	background-color: #eef;
+	xbackground-color: #eef;
 	text-decoration: none;
 }
 #table-installations td {
 	vertical-align: top;
 }
-td.git-commit {
+td.git-commit,
+div.git-commit,
+li.git-commit {
 	font-family: Monaco, 'Courier New', monospace;
 }
 </style>
@@ -267,6 +314,7 @@ installer l’application en mode test.
 <thead>
 <tr>
 <th class="date">Date</th>
+<th class="build-displayName">Build</th>
 <th class="label">Label</th>
 <th class="git-commit">Git commit</th>
 </tr>
@@ -298,23 +346,43 @@ Git commit=<xsl:value-of select="$git-commit"/>
 )"/>
 
 <tr>
-	<td class="date">
-	<a href="{$href}">
-	<xsl:value-of select="@date"/>
-	</a>
-	</td>
-	<td class="label">
-	<xsl:value-of select="@label"/>
-	</td>
-	<td class="git-commit">
+<xsl:text disable-output-escaping="yes">
+<![CDATA[<?php if ($ios) { ?>]]>
+</xsl:text>
+
+<td>
+<ul>
+<xsl:call-template name="cells">
+<xsl:with-param name="item-element" select="'li'"/>
+<xsl:with-param name="href" select="$href"/>
+</xsl:call-template>
+</ul>
+</td>
+
+<xsl:text disable-output-escaping="yes">
+<![CDATA[<?php } else { ?>]]>
+</xsl:text>
+
+<xsl:call-template name="cells">
+<xsl:with-param name="item-element" select="'td'"/>
+<xsl:with-param name="href" select="$href"/>
+</xsl:call-template>
+
+<xsl:text disable-output-escaping="yes">
+<![CDATA[<?php } ?>]]>
+</xsl:text>
+	
+</tr>
+<!--  
+<tr class="cell-bottom">
+	<td colspan="3">
+	<xsl:value-of select="@label"/>	
+	<div class="git-commit">
 	<xsl:value-of select="$git-commit"/>
+	</div>
 	</td>
 </tr>
-<tr class="git-commit">
-	<td colspan="2" class="git-commit">
-	<xsl:value-of select="$git-commit"/>
-	</td>
-</tr>
+-->
 </xsl:for-each>
 </tbody>
 </table>
@@ -325,6 +393,42 @@ Git commit=<xsl:value-of select="$git-commit"/>
 </table>
 </body>
 </html>
+
+</xsl:template>
+
+<xsl:template name="cells">
+<xsl:param name="item-element" select="'td'"/>
+<xsl:param name="href"/>
+	
+	<xsl:element name="{$item-element}">
+	<xsl:attribute name="class">date</xsl:attribute>
+		<a href="{$href}">
+		<xsl:value-of select="@date"/>
+		</a>
+	</xsl:element>
+
+	<xsl:element name="{$item-element}">
+	<xsl:choose>
+	<xsl:when test="@build-displayName">
+		<xsl:attribute name="class">build-displayName</xsl:attribute>
+		<span class="label">Build </span>
+		<xsl:value-of select="@build-displayName"/>
+	</xsl:when>
+	<xsl:otherwise>
+		<xsl:attribute name="class">build-displayName empty</xsl:attribute>
+	</xsl:otherwise>
+	</xsl:choose>
+	</xsl:element>
+	
+	<xsl:element name="{$item-element}">
+	<xsl:attribute name="class">label</xsl:attribute>
+		<xsl:value-of select="@label"/>
+	</xsl:element>
+	
+	<xsl:element name="{$item-element}">
+	<xsl:attribute name="class">git-commit</xsl:attribute>
+		<xsl:value-of select="@git-commit"/>
+	</xsl:element>
 
 </xsl:template>
 
