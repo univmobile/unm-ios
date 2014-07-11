@@ -26,6 +26,8 @@
 	
 	if (self) {
 		
+		_buildInfo = [UNMBuildInfo new];
+		
 		[self loadInitialRegionsData];
 		
 		_callbacks = [[NSMutableArray alloc] init];
