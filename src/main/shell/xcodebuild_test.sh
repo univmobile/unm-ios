@@ -94,6 +94,7 @@ SEP="----------------------------------------"
 
 echo "Begin Date: $(date)" > "${TEST_REPORT}"
 echo "Hostname: $(hostname)" >> "${TEST_REPORT}"
+echo "User: ${USER}" >> "${TEST_REPORT}"
 echo "Script: $(basename "${0}") ${1} ${2}" >> "${TEST_REPORT}"
 echo "Current Directory: $(pwd)" >> "${TEST_REPORT}"
 echo "Test Report: ${TEST_REPORT}" >> "${TEST_REPORT}"
