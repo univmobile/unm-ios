@@ -271,17 +271,20 @@
 		<profile>
 			<id>dandriana</id>
 			<properties>
-				<Xcode-DerivedData>
-					/Users/dandriana/Library/Developer/Xcode/DerivedData/UnivMobile-hkgpereuqofjldgxrixppsvcdulv/
-				</Xcode-DerivedData>
+				<AppPath>
+					/Users/dandriana/Library/Developer/Xcode/DerivedData/UnivMobile-hkgpereuqofjldgxrixppsvcdulv/Build/Products/Debug-iphonesimulator/UnivMobile.app
+				</AppPath>
 			</properties>
 		</profile>
 		<profile>
 			<id>jenkins</id>
 			<properties>
-				<Xcode-DerivedData>
+				<AppPath>
+				/Users/dandriana/tmp/UnivMobile.app
+				<!--  
 					/Users/dandriana/Library/Developer/Xcode/DerivedData/UnivMobile-dqackzxozqlcsucpdumjeumuptav/
-				</Xcode-DerivedData>
+					-->
+				</AppPath>
 			</properties>
 		</profile>
 	</profiles>
