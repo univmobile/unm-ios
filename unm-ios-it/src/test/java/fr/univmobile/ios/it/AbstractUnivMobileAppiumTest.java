@@ -4,8 +4,10 @@ import static fr.univmobile.ios.it.AbstractUnivMobileAppiumTest.AppiumCapability
 import static fr.univmobile.ios.it.AbstractUnivMobileAppiumTest.AppiumCapabilityType.DEVICE;
 import static fr.univmobile.ios.it.AbstractUnivMobileAppiumTest.AppiumCapabilityType.DEVICE_NAME;
 import static fr.univmobile.ios.it.AbstractUnivMobileAppiumTest.AppiumCapabilityType.PLATFORM_NAME;
+import static org.apache.commons.lang3.CharEncoding.UTF_8;
 import static org.openqa.selenium.remote.CapabilityType.BROWSER_NAME;
 import static org.openqa.selenium.remote.CapabilityType.PLATFORM;
+import io.appium.java_client.AppiumDriver;
 
 import java.io.File;
 import java.io.IOException;
@@ -78,4 +80,26 @@ public abstract class AbstractUnivMobileAppiumTest {
 
 		FileUtils.copyFile(srcFile, new File(dir, filename), true);
 	}
+
+	protected final void swipe(final int startX, final int startY,
+			final int endX, final int endY, final int durationMs)
+			throws IOException {
+
+		((AppiumDriver) driver).swipe(30, 30, 40, 130, 500);
+	}
+
+	protected final void savePageSource(final String filename)
+			throws IOException {
+
+		final String xml = driver.getPageSource();
+
+		final File dir = new File("target", "screenshots");
+
+		if (!dir.exists()) {
+			dir.mkdir();
+		}
+
+		FileUtils.write(new File(dir, filename), xml, UTF_8);
+	}
+
 }
