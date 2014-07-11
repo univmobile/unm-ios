@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# TODO remove the corresponding code in macos_job-xcodebuild_test.sh
-
 #
 # File: xcodebuild-test.sh
 #
