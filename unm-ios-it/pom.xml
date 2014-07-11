@@ -271,6 +271,14 @@
 				</Xcode-DerivedData>
 			</properties>
 		</profile>
+		<profile>
+			<id>jenkins</id>
+			<properties>
+				<Xcode-DerivedData>
+					/Users/dandriana/Library/Developer/Xcode/DerivedData/UnivMobile-hirdvnunixawhxancdgftalxduow/
+				</Xcode-DerivedData>
+			</properties>
+		</profile>
 	</profiles>
 
 </project>
