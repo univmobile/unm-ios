@@ -40,8 +40,8 @@ public abstract class AbstractUnivMobileAppiumTest {
 		// final String BUNDLE_ID = "fr.univmobile.UnivMobile";
 
 		final File app = new File(
-				PropertiesUtils.getTestProperty("Xcode-DerivedData")
-						+ "/Build/Products/Debug-iphonesimulator/UnivMobile.app");
+				PropertiesUtils.getTestProperty("AppPath")
+						);
 
 		final DesiredCapabilities capabilities = new DesiredCapabilities();
 
