@@ -104,7 +104,18 @@ echo "${SEP}" >> "${TEST_REPORT}"
 
 echo >> "${TEST_REPORT}"
 
-# ======== 4. RUN ========
+# ======== 4. EMBED BUILD INFO IN PLIST ========
+
+PLIST="${UNM_IOS_REPO}/UnivMobile/UnivMobile-Info.plist"
+
+BUILD_ID=`date "+%Y-%m-%d %H:%M:%S"`
+
+/usr/libexec/Plistbuddy -c "Add BUILD_DISPLAY_NAME string '#(test)'" "${PLIST}" 
+/usr/libexec/Plistbuddy -c "Add BUILD_ID string '${BUILD_ID}'" "${PLIST}" 
+/usr/libexec/Plistbuddy -c "Add BUILD_NUMBER string '(test)'" "${PLIST}"
+/usr/libexec/Plistbuddy -c "Add GIT_COMMIT string '${GIT_COMMIT}'" "${PLIST}" 
+
+# ======== 5. RUN ========
 
 echo "Building..."
 
