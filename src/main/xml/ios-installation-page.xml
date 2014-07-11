@@ -16,6 +16,13 @@ UnivMobileAlpha
 <ios-installation-page>
 
 <ios-installation
+	date="2014-07-11 13:07"
+	git-commit="1e4ba31266c1fd2db238aa8047b0c5bfd1c27418"
+	plistHref="https://dl.dropboxusercontent.com/s/gzthvjay8b4g9f1/UnivMobile.plist"
+	build-displayName="#29"
+	label="Ajout de devices (BCO et ALP)"/>
+
+<ios-installation
 	date="2014-07-08 23:02"
 	git-commit="7b8c383c53740a1be85e5376666d2fee6b17e972"
 	plistHref="https://dl.dropboxusercontent.com/s/r0o59ub45dcy81i/UnivMobile.plist"
