@@ -154,11 +154,11 @@ TEST_REPORT_FILENAME="data/$(basename "${TEST_REPORT}")"
 
 mkdir -p target/
 
-echo "cat ~/.config/github-dandriana-jenkins" > target/git_pass.sh
+export GIT_ASKPASS="${TEST_REPORT_REPO}/target/git_askpass.sh"
 
-chmod 700 target/git_pass.sh
+echo "cat ~/.config/github-dandriana-jenkins" > "${GIT_ASKPASS}"
 
-export GIT_ASKPASS=target/git_askpass.sh
+chmod 700 "${GIT_ASKPASS}"
 
 git add "${TEST_REPORT_FILENAME}"
 
