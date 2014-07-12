@@ -5,8 +5,8 @@
 #
 # This script must be run on a Mac OS X system with Xcode installed.
 # It aims at running the iOS logic tests of "unm-ios", and export the test
-# results to an other git repositoru, named alike, "unm-ios-ut-results" GitHub
-# repository.
+# results to an other git repository, named alike, "unm-integration" GitHub
+# repository (subfolder: unm-ios-ut-results).
 # ("-ut-" means: "Unit Tests")
 #
 # The script works like this:
@@ -15,7 +15,8 @@
 #       capturing the standard output and error into a file.
 #
 #  4. Once this is done, add the test results file to another GitHub repository,
-#       "unm-ios-ut-results", commit and push to GitHub.
+#       "unm-integration" (subfolder: unm-iot-ut-results),
+#       commit and push to GitHub.
 #
 
 # ======== 1. ENVIRONMENT ========
@@ -30,8 +31,8 @@ echo "WORKSPACE: ${WORKSPACE}"
 
 BUILD_LOG="${WORKSPACE}/target/xcodebuild_test.log"
 CMD_FILE="${WORKSPACE}/target/xcodebuild_test_cmd.sh"
-TEST_REPORT_REPO="${WORKSPACE}/target/unm-ios-ut-results"
-TEST_REPORT="${TEST_REPORT_REPO}/data/xcodebuild_test.log"
+TEST_REPORT_REPO="${WORKSPACE}/target/unm-integration/"
+TEST_REPORT="${TEST_REPORT_REPO}/unm-ios-ut-results/data/xcodebuild_test.log"
 
 if [ ! -d "${WORKSPACE}/target" ]; then mkdir -p "${WORKSPACE}/target"; fi
 
@@ -39,7 +40,7 @@ if [ ! -d "${WORKSPACE}/target" ]; then mkdir -p "${WORKSPACE}/target"; fi
 
 rm -rf "${TEST_REPORT_REPO}"
 
-git clone https://dandriana-jenkins@github.com/univmobile/unm-ios-ut-results "${TEST_REPORT_REPO}"
+git clone https://dandriana-jenkins@github.com/univmobile/unm-integration "${TEST_REPORT_REPO}"
 
 if [ -z "${TEST_REPORT}" ]; then
   echo "** Error: TEST_REPORT must be set and must be in a git repo. e.g. ../unm-ios-test-results/data/unm-ios-xcodebuild-test.log"
@@ -160,7 +161,7 @@ echo "End Date: $(date)" >> "${TEST_REPORT}"
 
 cd "${TEST_REPORT_REPO}"
 
-TEST_REPORT_FILENAME="data/$(basename "${TEST_REPORT}")"
+TEST_REPORT_FILENAME="unm-ios-ut-results/data/$(basename "${TEST_REPORT}")"
 
 mkdir -p target/
 
