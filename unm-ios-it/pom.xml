@@ -27,7 +27,7 @@
 			<version>0.0.1-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
--		<dependency>
+		<dependency>
 			<artifactId>httpclient</artifactId>
 			<groupId>org.apache.httpcomponents</groupId>
 			<version>4.3.4</version>
