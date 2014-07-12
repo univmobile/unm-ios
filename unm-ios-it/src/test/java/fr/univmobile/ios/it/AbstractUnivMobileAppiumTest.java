@@ -18,6 +18,7 @@ import java.net.URL;
 import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
+import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -172,6 +173,17 @@ public abstract class AbstractUnivMobileAppiumTest {
 
 		driver = new RemoteWebDriver(new URL("http://localhost:4723/wd/hub"),
 				capabilities);
+	}
+
+	@After
+	public final void tearDown() throws Exception {
+
+		if (driver != null) {
+
+			driver.quit();
+			
+			driver = null;
+		}
 	}
 
 	protected WebDriver driver;
