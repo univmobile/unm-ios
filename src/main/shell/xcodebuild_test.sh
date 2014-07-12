@@ -50,6 +50,17 @@ if [ ! -d "${WORKSPACE}/target" ]; then mkdir -p "${WORKSPACE}/target"; fi
 
 rm -rf "${TEST_REPORT_REPO}"
 
+# TODO test_report_repo is being pulled before the tests, during which someone
+# else would be able to perform commits to the git repo. Then, when this script
+# attempts to push after the tests were run, a conflict may occur.
+# A better approach would be to: 
+# 1. check that test_report_repo is a git repo (OK with that)
+# 2. rm test_report_repo
+# 3. save test_report_tmp during tests
+# 4. git clone test_report_repo
+# 5. cp test_report_tmp (elsewhere) into test_report (in test_report_repo)
+# 6. commit && push 
+ 
 git clone https://dandriana-jenkins@github.com/univmobile/unm-integration "${TEST_REPORT_REPO}"
 
 if [ -z "${TEST_REPORT}" ]; then
