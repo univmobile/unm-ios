@@ -196,7 +196,7 @@ DERIVED_DATA=`grep PhaseScriptExecution "${TEST_REPORT_FILENAME}" | head -1 | gr
 
 APP_PATH="${DERIVED_DATA}/Build/Products/Debug-iphonesimulator/UnivMobile.app"
 
-APP_DEST="${APP_REPO}/UnivMobile.app-${APP_ID}"
+APP_DEST="${APP_REPO}/UnivMobile-${APP_ID}.app"
 
 # touch /var/xcodebuild_test-apps/touched_after_lastcp after we copy the
 # UnivMobile.app directory, so other users can now our UnivMobile.app, updated
