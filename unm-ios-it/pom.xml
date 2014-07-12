@@ -228,29 +228,29 @@
 	</reporting>
 	<repositories>
 		<repository>
-			<id>vswip-snapshots</id>
+			<id>vswip</id>
 			<name>Viewniverse Studio WIP Repository for releases</name>
 			<url>
                 http://univmobile.vswip.com/nexus/content/repositories/releases
             </url>
 			<snapshots>
-				<enabled>true</enabled>
+				<enabled>false</enabled>
 			</snapshots>
 			<releases>
-				<enabled>false</enabled>
+				<enabled>true</enabled>
 			</releases>
 		</repository>
 		<repository>
-			<id>vswip</id>
-			<name>Viewniverse Studio WIP Repository for releases</name>
+			<id>vswip-snapshots</id>
+			<name>Viewniverse Studio WIP Repository for snapshots</name>
 			<url>
                 http://univmobile.vswip.com/nexus/content/repositories/snapshots
             </url>
 			<snapshots>
-				<enabled>false</enabled>
+				<enabled>true</enabled>
 			</snapshots>
 			<releases>
-				<enabled>true</enabled>
+				<enabled>false</enabled>
 			</releases>
 		</repository>
 		<repository>
