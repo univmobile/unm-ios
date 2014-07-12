@@ -5,15 +5,19 @@ import static fr.univmobile.ios.it.AbstractUnivMobileAppiumTest.AppiumCapability
 import static fr.univmobile.ios.it.AbstractUnivMobileAppiumTest.AppiumCapabilityType.DEVICE_NAME;
 import static fr.univmobile.ios.it.AbstractUnivMobileAppiumTest.AppiumCapabilityType.PLATFORM_NAME;
 import static org.apache.commons.lang3.CharEncoding.UTF_8;
+import static org.apache.commons.lang3.StringUtils.substringBeforeLast;
 import static org.openqa.selenium.remote.CapabilityType.BROWSER_NAME;
 import static org.openqa.selenium.remote.CapabilityType.PLATFORM;
 import io.appium.java_client.AppiumDriver;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 
 import org.apache.commons.io.FileUtils;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 import org.junit.Before;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -32,6 +36,8 @@ public abstract class AbstractUnivMobileAppiumTest {
 		String PLATFORM_NAME = "platformName";
 	}
 
+	private static File app; // the "UnivMobile.app" local directory
+
 	@Before
 	public final void setUp() throws Exception {
 
@@ -39,9 +45,92 @@ public abstract class AbstractUnivMobileAppiumTest {
 
 		// final String BUNDLE_ID = "fr.univmobile.UnivMobile";
 
-		final File app = new File(
-				PropertiesUtils.getTestProperty("AppPath")
-						);
+		if (app == null) {
+
+			final String appPath;
+
+			final String appPathProperty = PropertiesUtils
+					.getTestProperty("AppPath");
+
+			if (!appPathProperty.contains("UnivMobile.app-(lastimport)")) {
+
+				appPath = appPathProperty;
+
+			} else {
+
+				// e.g. "/var/xcodebuild_test-apps/UnivMobile.app-(lastimport)"
+
+				System.out.println("Using UnivMobile.app-(lastimport): "
+						+ appPathProperty + "...");
+
+				final File appRepo = new File(substringBeforeLast(
+						appPathProperty, "/"));
+
+				if (!appRepo.isDirectory()) {
+					throw new FileNotFoundException(
+							"Cannot find APP_REPO for: " + appPathProperty);
+				}
+
+				final File touched_after_lastimport = new File(appRepo,
+						"touched_after_lastimport");
+
+				if (!touched_after_lastimport.exists()) {
+					throw new FileNotFoundException(appRepo.getCanonicalPath()
+							+ "/" + touched_after_lastimport.getName());
+				}
+
+				final long touchedAt = touched_after_lastimport.lastModified();
+
+				final String touchedAtAsString = new DateTime(touchedAt)
+						.toString(DateTimeFormat.forPattern("YYYYMMdd-HHmmss"));
+
+				System.out.println(touched_after_lastimport + ".modified: "
+						+ touchedAtAsString);
+
+				String mostRecentAppDirName = null;
+
+				// e.g. "UnivMobile.app-20140712-090711"
+
+				for (final File appDir : appRepo.listFiles()) {
+
+					final String appDirName = appDir.getName();
+
+					System.out.println("  appDir.name: " + appDirName);
+
+					final String dirModifiedAtString = appDirName
+							.substring(appDirName.length() - 15);
+
+					System.out.println("        .modified: "
+							+ dirModifiedAtString);
+
+					if (touchedAtAsString.compareTo(dirModifiedAtString) >= 0) {
+
+						if (mostRecentAppDirName == null
+								|| mostRecentAppDirName
+										.compareTo(dirModifiedAtString) < 0) {
+
+							mostRecentAppDirName = dirModifiedAtString;
+						}
+					}
+
+					// if (dirModifiedAsString.
+					// final long dirModifiedAt = appDir.lastModified();
+
+				}
+
+				if (mostRecentAppDirName == null) {
+					throw new FileNotFoundException(appRepo.getCanonicalPath()
+							+ "/UnivMobile.app-(lastimport)");
+				}
+
+				appPath = appRepo.getCanonicalPath() + "/"
+						+ mostRecentAppDirName;
+			}
+
+			app = new File(appPath);
+
+			System.out.println("Using: " + app.getCanonicalPath() + "...");
+		}
 
 		final DesiredCapabilities capabilities = new DesiredCapabilities();
 
