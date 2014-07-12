@@ -280,7 +280,7 @@
 			<id>jenkins</id>
 			<properties>
 				<AppPath>
-				/Users/dandriana/tmp/UnivMobile.app
+					/var/xcodebuild_test-apps/UnivMobile.app-(lastimport)
 				<!--  
 					/Users/dandriana/Library/Developer/Xcode/DerivedData/UnivMobile-dqackzxozqlcsucpdumjeumuptav/
 					-->
