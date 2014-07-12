@@ -104,7 +104,7 @@ public abstract class AbstractUnivMobileAppiumTest {
 					System.out.println("  appDir.name: " + appDirName);
 
 					final String dirModifiedAtString = appDirName.substring(
-							appDirName.length() - 19, 15);
+							appDirName.length() - 19, appDirName.length() - 4);
 
 					System.out.println("        .modified: "
 							+ dirModifiedAtString);
