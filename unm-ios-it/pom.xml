@@ -228,6 +228,32 @@
 	</reporting>
 	<repositories>
 		<repository>
+			<id>vswip-snapshots</id>
+			<name>Viewniverse Studio WIP Repository for releases</name>
+			<url>
+                http://univmobile.vswip.com/nexus/content/repositories/releases
+            </url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+		<repository>
+			<id>vswip</id>
+			<name>Viewniverse Studio WIP Repository for releases</name>
+			<url>
+                http://univmobile.vswip.com/nexus/content/repositories/snapshots
+            </url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+		<repository>
 			<id>avcompris-snapshots</id>
 			<name>Avantage Compris' Snapshot Repository</name>
 			<url>http://repo.avcompris.net/content/groups/public-snapshots</url>
