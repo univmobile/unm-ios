@@ -58,7 +58,8 @@ public abstract class AbstractUnivMobileAppiumTest {
 
 			} else {
 
-				// e.g. "/var/xcodebuild_test-apps/UnivMobile-20140712-090711.app"
+				// e.g.
+				// "/var/xcodebuild_test-apps/UnivMobile-20140712-090711.app"
 
 				System.out.println("Using UnivMobile-(lastimport).app: "
 						+ appPathProperty + "...");
@@ -99,11 +100,11 @@ public abstract class AbstractUnivMobileAppiumTest {
 							|| !appDirName.endsWith(".app")) {
 						continue;
 					}
-					
+
 					System.out.println("  appDir.name: " + appDirName);
 
-					final String dirModifiedAtString = appDirName
-							.substring(appDirName.length() - 15);
+					final String dirModifiedAtString = appDirName.substring(
+							appDirName.length() - 19, 15);
 
 					System.out.println("        .modified: "
 							+ dirModifiedAtString);
@@ -128,13 +129,32 @@ public abstract class AbstractUnivMobileAppiumTest {
 							+ "/UnivMobile-(lastimport).app");
 				}
 
-				appPath = appRepo.getCanonicalPath() + "/"
-						+ mostRecentAppDirName;
+				final String mostRecentAppPath = appRepo.getCanonicalPath()
+						+ "/" + mostRecentAppDirName;
+
+				System.out.println("Found most recent: " + mostRecentAppPath);
+
+				final File mostRecentApp = new File(mostRecentAppPath);
+
+				final String HOME = System.getenv("HOME");
+
+				appPath = HOME + "/tmp/UnivMobile.app";
+
+				final File appDest = new File(appPath);
+
+				if (appDest.exists()) {
+
+					FileUtils.deleteDirectory(appDest);
+				}
+
+				System.out.println("Copying into: " + appPath + "...");
+
+				FileUtils.copyDirectory(mostRecentApp, appDest);
 			}
 
 			app = new File(appPath);
 
-			System.out.println("Using: " + app.getCanonicalPath() + "...");
+			System.out.println("Using: " + app.getCanonicalPath());
 		}
 
 		final DesiredCapabilities capabilities = new DesiredCapabilities();
