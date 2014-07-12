@@ -52,15 +52,15 @@ public abstract class AbstractUnivMobileAppiumTest {
 			final String appPathProperty = PropertiesUtils
 					.getTestProperty("AppPath");
 
-			if (!appPathProperty.contains("UnivMobile.app-(lastimport)")) {
+			if (!appPathProperty.contains("UnivMobile-(lastimport).app")) {
 
 				appPath = appPathProperty;
 
 			} else {
 
-				// e.g. "/var/xcodebuild_test-apps/UnivMobile.app-(lastimport)"
+				// e.g. "/var/xcodebuild_test-apps/UnivMobile-20140712-090711.app"
 
-				System.out.println("Using UnivMobile.app-(lastimport): "
+				System.out.println("Using UnivMobile-(lastimport).app: "
 						+ appPathProperty + "...");
 
 				final File appRepo = new File(substringBeforeLast(
@@ -89,12 +89,17 @@ public abstract class AbstractUnivMobileAppiumTest {
 
 				String mostRecentAppDirName = null;
 
-				// e.g. "UnivMobile.app-20140712-090711"
+				// e.g. "UnivMobile-20140712-090711.app"
 
 				for (final File appDir : appRepo.listFiles()) {
 
 					final String appDirName = appDir.getName();
 
+					if (!appDirName.startsWith("UnivMobile-")
+							|| !appDirName.endsWith(".app")) {
+						continue;
+					}
+					
 					System.out.println("  appDir.name: " + appDirName);
 
 					final String dirModifiedAtString = appDirName
@@ -120,7 +125,7 @@ public abstract class AbstractUnivMobileAppiumTest {
 
 				if (mostRecentAppDirName == null) {
 					throw new FileNotFoundException(appRepo.getCanonicalPath()
-							+ "/UnivMobile.app-(lastimport)");
+							+ "/UnivMobile-(lastimport).app");
 				}
 
 				appPath = appRepo.getCanonicalPath() + "/"
