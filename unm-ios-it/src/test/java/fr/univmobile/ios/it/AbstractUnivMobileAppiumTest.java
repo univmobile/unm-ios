@@ -8,6 +8,7 @@ import static org.apache.commons.lang3.CharEncoding.UTF_8;
 import static org.apache.commons.lang3.StringUtils.substringBeforeLast;
 import static org.openqa.selenium.remote.CapabilityType.BROWSER_NAME;
 import static org.openqa.selenium.remote.CapabilityType.PLATFORM;
+import fr.univmobile.testutil.PropertiesUtils;
 import io.appium.java_client.AppiumDriver;
 
 import java.io.File;
