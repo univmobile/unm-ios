@@ -18,10 +18,20 @@
 #       "unm-integration" (subfolder: unm-iot-ut-results),
 #       commit and push to GitHub.
 #
+# Parameters:
+#    "${1}": APP_REPO: Where to put the .app archive.
+#               Defaults to /var/xcodebuild_test-apps/ 
+#
 
 # ======== 1. ENVIRONMENT ========
 
 UNM_IOS_REPO="$(cd "$(dirname "${0}")/../../../"; pwd)"
+
+APP_REPO="${1}"
+
+if [ -z "${APP_REPO}" ]; then
+	APP_REPO=/var/xcodebuild_test-apps
+fi
 
 # ======== 1.1. ENVIRONMENT: WORKSPACE ========
 
@@ -110,6 +120,7 @@ echo >> "${TEST_REPORT}"
 PLIST="${UNM_IOS_REPO}/UnivMobile/UnivMobile-Info.plist"
 
 BUILD_ID=`date "+%Y-%m-%d %H:%M:%S"`
+APP_ID=`date "+%Y%m%d-%H%M%S"`
 
 /usr/libexec/Plistbuddy -c "Add BUILD_DISPLAY_NAME string '#(test)'" "${PLIST}" 
 /usr/libexec/Plistbuddy -c "Add BUILD_ID string '${BUILD_ID}'" "${PLIST}" 
@@ -176,4 +187,28 @@ git add "${TEST_REPORT_FILENAME}"
 git commit -m "xcodebuild test, git commit: ${GIT_COMMIT}" "${TEST_REPORT_FILENAME}"
 
 git push
+
+# ======== 7. ALLOW ACCESS TO LOCAL DEBUG-IPHONESIMULATOR APP ========
+
+# e.g. /Users/avcompris/Library/Developer/Xcode/DerivedData/UnivMobile-bthazihbxymfelcqywwhsugbfzmd/
+
+DERIVED_DATA=`grep PhaseScriptExecution "${TEST_REPORT_FILENAME}" | head -1 | grep -o [^\ ]*UnivMobile-[^/]*/`
+
+APP_PATH="${DERIVED_DATA}/Build/Products/Debug-iphonesimulator/UnivMobile.app"
+
+APP_DEST="${APP_REPO}/UnivMobile.app-${APP_ID}"
+
+# touch /var/xcodebuild_test-apps/touched_after_lastcp after we copy the
+# UnivMobile.app directory, so other users can now our UnivMobile.app, updated
+# before the touched_after_lastimport file, is valid.
+
+if cp -r "${APP_PATH}" "${APP_DEST}"; then
+
+	if chmod -R a+r "${APP_DEST}"; then
+	
+		touch "${APP_REPO}/touched_after_lastimport"
+		
+		echo "UnivMobile.app copied to public directory: ${APP_DEST}"
+	fi
+fi
 
