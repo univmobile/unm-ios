@@ -79,7 +79,7 @@ fi
 
 TEST_REPORT="$(pwd)/$(basename "${TEST_REPORT}")"
 
-echo "pwd: $(pwd)" >> "${BUILD_LOG}"
+echo "pwd: $(pwd)" > "${BUILD_LOG}"
 
 git status  >> "${BUILD_LOG}" 2>&1
 if [ $? -ne 0 ]; then
@@ -134,6 +134,8 @@ PLIST="${UNM_IOS_REPO}/UnivMobile/UnivMobile-Info.plist"
 
 BUILD_ID=`date "+%Y-%m-%d %H:%M:%S"`
 APP_ID=`date "+%Y%m%d-%H%M%S"`
+
+git checkout "${PLIST}"
 
 /usr/libexec/Plistbuddy -c "Add BUILD_DISPLAY_NAME string '#(test)'" "${PLIST}" 
 /usr/libexec/Plistbuddy -c "Add BUILD_ID string '${BUILD_ID}'" "${PLIST}" 
