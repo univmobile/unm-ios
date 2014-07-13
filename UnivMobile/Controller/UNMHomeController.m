@@ -118,7 +118,7 @@
 	self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0, self.screenMiddle - 200.0, 220.0, 60.0)
 					   ];
 	self.titleLabel.accessibilityIdentifier = @"label-homePageTitle";
-	self.titleLabel.text = @"UnivxxMobile";
+	self.titleLabel.text = @"UnivMobile";
 	self.titleLabel.textColor = [UNMConstants RGB_79b8d9];
 	self.titleLabel.font = [UIFont systemFontOfSize:36];
 	self.titleLabel.textAlignment = NSTextAlignmentCenter;
