@@ -150,7 +150,7 @@ echo "${BUILD_CMD}" >> "${BUILD_LOG}"
 
 # "${CMD_FILE}" >> "${TEST_REPORT}" 2>&1 // xcodebuild clean build
 
-"${CMD_FILE}" // xcodebuild clean build
+"${CMD_FILE}" >> "${BUILD_LOG}" 2>&1 // xcodebuild clean build
 
 RET=$?
 
