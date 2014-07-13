@@ -196,6 +196,12 @@ class ElementCheckerWithAttributes implements ElementChecker {
 				!"true".equals(attributes.get("visible")),
 				"Element is visible.");
 	}
+
+	@Override
+	public void click() {
+
+		// do nothing: Rely on previous capture
+	}
 }
 
 interface ElementCheckObserver {

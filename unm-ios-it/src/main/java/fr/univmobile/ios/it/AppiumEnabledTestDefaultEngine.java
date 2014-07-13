@@ -333,4 +333,10 @@ final class WebElementChecker implements ElementChecker {
 
 		assertFalse(id + ".visible", element.isDisplayed());
 	}
+	
+	@Override
+	public void click() {
+		
+		element.click();
+	}
 }
