@@ -128,6 +128,8 @@
 	// ABOUT: TEXT VIEW
 	
 	self.aboutTextView = [[UITextView alloc]initWithFrame:CGRectMake(15.0, self.screenMiddle - 200.0, 290.0, 190.0)];
+
+	self.aboutTextView.editable = NO;
 	
 	const UNMBuildInfo* const buildInfo = self.appLayer.buildInfo;
 	
