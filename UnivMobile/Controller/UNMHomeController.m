@@ -250,6 +250,7 @@
 	// CHOOSE BUTTON
 	
 	self.chooseButton = [[UIButton alloc] initWithFrame:CGRectMake(120.0, self.screenMiddle + 100.0, 80.0, 20.0)];
+	self.chooseButton.accessibilityIdentifier = @"button-choisirUniversité";
 	
 	[self.chooseButton setTitle:@"Choisir…" forState:UIControlStateNormal];
 	
