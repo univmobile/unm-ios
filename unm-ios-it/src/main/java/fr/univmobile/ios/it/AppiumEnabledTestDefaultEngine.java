@@ -201,13 +201,11 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 		final File srcFile = // ((TakesScreenshot) augmentedDriver)
 		driver.getScreenshotAs(OutputType.FILE);
 
-		final File dir = new File("target", "screenshots");
+		final File file = new File(new File("target", "screenshots"), filename);
 
-		if (!dir.exists()) {
-			dir.mkdir();
-		}
+		FileUtils.forceMkdir(file.getParentFile());
 
-		FileUtils.copyFile(srcFile, new File(dir, filename), true);
+		FileUtils.copyFile(srcFile, file, true);
 	}
 
 	@Override
@@ -237,13 +235,11 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 
 		final String xml = driver.getPageSource();
 
-		final File dir = new File("target", "screenshots");
+		final File file = new File(new File("target", "screenshots"), filename);
 
-		if (!dir.exists()) {
-			dir.mkdir();
-		}
+		FileUtils.forceMkdir(file.getParentFile());
 
-		FileUtils.write(new File(dir, filename), xml, UTF_8);
+		FileUtils.write(file, xml, UTF_8);
 	}
 
 	@Override
