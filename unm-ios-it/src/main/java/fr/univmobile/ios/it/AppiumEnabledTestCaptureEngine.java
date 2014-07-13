@@ -102,6 +102,19 @@ final class AppiumEnabledTestCaptureEngine extends
 
 		return false;
 	}
+
+	@Override
+	public final void pause(final int ms) throws InterruptedException {
+
+		defaultEngine.pause(ms);
+	}
+	
+	@Override
+	public final void futureScreenshot(final int ms, final String filename) 
+	throws IOException {
+		
+		defaultEngine.futureScreenshot(ms, filename);
+	}
 }
 
 final class WebElementCapturer implements ElementChecker {

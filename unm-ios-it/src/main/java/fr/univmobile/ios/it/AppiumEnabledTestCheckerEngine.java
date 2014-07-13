@@ -54,6 +54,19 @@ public class AppiumEnabledTestCheckerEngine extends
 	}
 
 	@Override
+	public final void pause(final int ms) throws InterruptedException {
+
+		// do nothing
+	}
+
+	@Override
+	public final void futureScreenshot(final int ms, final String filename)
+			throws IOException {
+
+		// do nothing: Rely on previous capture
+	}
+
+	@Override
 	public void swipe(final int startX, final int startY, final int endX,
 			final int endY, final int durationMs) throws IOException {
 
