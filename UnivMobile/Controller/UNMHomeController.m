@@ -117,17 +117,21 @@
 	
 	self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0, self.screenMiddle - 200.0, 220.0, 60.0)
 					   ];
-	self.titleLabel.text = @"UnivMobile";
+	self.titleLabel.accessibilityIdentifier = @"label-homePageTitle";
+	self.titleLabel.text = @"UnivxxMobile";
 	self.titleLabel.textColor = [UNMConstants RGB_79b8d9];
 	self.titleLabel.font = [UIFont systemFontOfSize:36];
 	self.titleLabel.textAlignment = NSTextAlignmentCenter;
 	self.titleLabel.backgroundColor = [UIColor whiteColor];
+	// self.titleLabel.accessibilityLabel = @"myLabel";
+	// self.titleLabel.accessibilityHint = @"myHint";
 	
 	[self.homeTitleView addSubview:self.titleLabel];
 	
 	// ABOUT: TEXT VIEW
 	
 	self.aboutTextView = [[UITextView alloc]initWithFrame:CGRectMake(15.0, self.screenMiddle - 200.0, 290.0, 190.0)];
+	self.aboutTextView.accessibilityIdentifier = @"textView-buildInfo";
 
 	self.aboutTextView.editable = NO;
 	
