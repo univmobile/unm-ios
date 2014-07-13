@@ -13,6 +13,7 @@ import java.io.PrintWriter;
 
 import javax.annotation.Nullable;
 
+import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.openqa.selenium.WebElement;
 
@@ -26,14 +27,18 @@ final class AppiumEnabledTestCaptureEngine extends
 
 		defaultEngine.setUp();
 
-		os = new FileOutputStream(new File("target/screenshots",
-				customizeFilename("capture.log")));
+		final File file = new File("target/screenshots",
+				customizeFilename("capture.log"));
+
+		FileUtils.forceMkdir(file.getParentFile());
+
+		os = new FileOutputStream(file);
 
 		pw = new PrintWriter(new OutputStreamWriter(os, UTF_8));
 
 		pw.println("# " + getScenarioId());
-		pw.println("# "+new DateTime());
-		
+		pw.println("# " + new DateTime());
+
 		pw.println();
 	}
 
@@ -85,16 +90,16 @@ final class AppiumEnabledTestCaptureEngine extends
 
 		return "capture";
 	}
-	
+
 	@Override
 	public void clearErrors() {
-		
+
 		// do nothing
 	}
-	
+
 	@Override
 	public boolean hasErrors() {
-		
+
 		return false;
 	}
 }
