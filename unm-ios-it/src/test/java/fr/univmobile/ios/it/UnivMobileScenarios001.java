@@ -37,4 +37,19 @@ public class UnivMobileScenarios001 extends AppiumEnabledTest {
 		elementById("label-homePageTitle").shouldBeVisible();
 		elementById("textView-buildInfo").shouldBeHidden();
 	}
+	
+	@Scenario("Aller-retour sur la liste des Régions")
+	@Test
+	public void sc002() throws Exception {
+		
+		takeScreenshot("home_beforeRegions.png");
+
+		futureScreenshot(200, "home_swappingToRegions.png");
+
+		findElementById("button-choisirUniversité").click();
+
+		pause(2000);
+
+		takeScreenshot("regions.png");
+	}
 }
