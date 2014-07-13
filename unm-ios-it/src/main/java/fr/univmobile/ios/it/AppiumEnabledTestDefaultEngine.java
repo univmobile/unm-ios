@@ -1,12 +1,16 @@
 package fr.univmobile.ios.it;
 
-import static fr.univmobile.ios.it.AbstractUnivMobileAppiumTest.AppiumCapabilityType.APP;
-import static fr.univmobile.ios.it.AbstractUnivMobileAppiumTest.AppiumCapabilityType.DEVICE;
-import static fr.univmobile.ios.it.AbstractUnivMobileAppiumTest.AppiumCapabilityType.DEVICE_NAME;
-import static fr.univmobile.ios.it.AbstractUnivMobileAppiumTest.AppiumCapabilityType.PLATFORM_NAME;
-import static fr.univmobile.ios.it.AbstractUnivMobileAppiumTest.AppiumCapabilityType.PLATFORM_VERSION;
+import static com.google.common.base.Preconditions.checkNotNull;
+import static fr.univmobile.ios.it.AppiumCapabilityType.APP;
+import static fr.univmobile.ios.it.AppiumCapabilityType.DEVICE;
+import static fr.univmobile.ios.it.AppiumCapabilityType.DEVICE_NAME;
+import static fr.univmobile.ios.it.AppiumCapabilityType.PLATFORM_NAME;
+import static fr.univmobile.ios.it.AppiumCapabilityType.PLATFORM_VERSION;
 import static org.apache.commons.lang3.CharEncoding.UTF_8;
 import static org.apache.commons.lang3.StringUtils.substringBeforeLast;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.openqa.selenium.remote.CapabilityType.BROWSER_NAME;
 import static org.openqa.selenium.remote.CapabilityType.PLATFORM;
 import io.appium.java_client.AppiumDriver;
@@ -24,29 +28,20 @@ import org.joda.time.format.DateTimeFormat;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.Augmenter;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import fr.univmobile.testutil.PropertiesUtils;
 
-public abstract class AbstractUnivMobileAppiumTest {
-
-	public interface AppiumCapabilityType {
-
-		String APP = "app";
-		String DEVICE = "device";
-		String DEVICE_NAME = "deviceName";
-		String PLATFORM_NAME = "platformName";
-		String PLATFORM_VERSION = "platformVersion";
-	}
+final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 
 	private static File app; // the "UnivMobile.app" local directory
 
 	@Before
-	public final void setUp() throws Exception {
+	@Override
+	public void setUp() throws Exception {
 
 		// 1. LAUNCH THE iOS APP
 
@@ -183,7 +178,8 @@ public abstract class AbstractUnivMobileAppiumTest {
 	}
 
 	@After
-	public final void tearDown() throws Exception {
+	@Override
+	public void tearDown() throws Exception {
 
 		if (driver != null) {
 
@@ -193,17 +189,17 @@ public abstract class AbstractUnivMobileAppiumTest {
 		}
 	}
 
-	protected WebDriver driver;
+	private AppiumDriver driver;
 
-	protected final void takeScreenshot(final String filename)
-			throws IOException {
+	@Override
+	public void takeScreenshot(final String filename) throws IOException {
 
 		System.out.println("Taking screenshot: " + filename + "...");
 
-		final WebDriver augmentedDriver = new Augmenter().augment(driver);
+		// final WebDriver augmentedDriver = new Augmenter().augment(driver);
 
-		final File srcFile = ((TakesScreenshot) augmentedDriver)
-				.getScreenshotAs(OutputType.FILE);
+		final File srcFile = // ((TakesScreenshot) augmentedDriver)
+		driver.getScreenshotAs(OutputType.FILE);
 
 		final File dir = new File("target", "screenshots");
 
@@ -214,9 +210,9 @@ public abstract class AbstractUnivMobileAppiumTest {
 		FileUtils.copyFile(srcFile, new File(dir, filename), true);
 	}
 
-	protected final void swipe(final int startX, final int startY,
-			final int endX, final int endY, final int durationMs)
-			throws IOException {
+	@Override
+	public void swipe(final int startX, final int startY, final int endX,
+			final int endY, final int durationMs) throws IOException {
 
 		final JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
 
@@ -234,8 +230,8 @@ public abstract class AbstractUnivMobileAppiumTest {
 		javascriptExecutor.executeScript("mobile: swipe", swipe);
 	}
 
-	protected final void savePageSource(final String filename)
-			throws IOException {
+	@Override
+	public void savePageSource(final String filename) throws IOException {
 
 		System.out.println("Saving pageSource: " + filename + "...");
 
@@ -250,4 +246,59 @@ public abstract class AbstractUnivMobileAppiumTest {
 		FileUtils.write(new File(dir, filename), xml, UTF_8);
 	}
 
+	@Override
+	public WebElement findElementById(final String id) throws IOException {
+
+		try {
+
+			return driver.findElementById(id);
+
+		} catch (final NoSuchElementException e) {
+
+			throw new NoSuchElementException("Could not find element for id: "
+					+ id, e);
+		}
+	}
+
+	@Override
+	public ElementChecker elementById(final String id) throws IOException {
+
+		return new WebElementChecker(id, findElementById(id));
+	}
+
+	@Override
+	public AppiumDriver getDriver() {
+
+		return driver;
+	}
+}
+
+final class WebElementChecker implements ElementChecker {
+
+	public WebElementChecker(final String id, final WebElement element) {
+
+		this.id = checkNotNull(id, "id");
+		this.element = checkNotNull(element, "element");
+	}
+
+	private final String id;
+	private final WebElement element;
+
+	@Override
+	public void textShouldBe(final String ref) {
+
+		assertEquals(id + ".text", ref, element.getText());
+	}
+
+	@Override
+	public void shouldBeVisible() {
+
+		assertTrue("!" + id + ".visible", element.isDisplayed());
+	}
+
+	@Override
+	public void shouldBeHidden() {
+
+		assertFalse(id + ".visible", element.isDisplayed());
+	}
 }
