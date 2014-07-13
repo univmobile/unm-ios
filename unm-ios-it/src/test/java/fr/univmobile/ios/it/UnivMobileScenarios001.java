@@ -3,6 +3,7 @@ package fr.univmobile.ios.it;
 import org.junit.Test;
 
 @Scenarios("Scénarios simples")
+@DeviceNames({ "iPhone Retina (3.5-inch)", "iPhone Retina (4-inch)" })
 public class UnivMobileScenarios001 extends AppiumEnabledTest {
 
 	@Scenario("Aller-retour sur la page « À Propos »")
@@ -10,9 +11,9 @@ public class UnivMobileScenarios001 extends AppiumEnabledTest {
 	public void sc001() throws Exception {
 
 		takeScreenshot("home.png");
-		
+
 		elementById("label-homePageTitle").shouldBeVisible();
-		elementById("label-homePageTitle").textShouldBe("UnivMobile");
+		elementById("label-homePageTitle").textShouldEqualTo("UnivMobile");
 		elementById("textView-buildInfo").shouldBeHidden();
 
 		// Don’t ask me why running only one swipe doesn’t work.
@@ -37,14 +38,16 @@ public class UnivMobileScenarios001 extends AppiumEnabledTest {
 		elementById("label-homePageTitle").shouldBeVisible();
 		elementById("textView-buildInfo").shouldBeHidden();
 	}
-	
+
 	@Scenario("Aller-retour sur la liste des Régions")
 	@Test
 	public void sc002() throws Exception {
-		
+
 		takeScreenshot("home_beforeRegions.png");
 
-		futureScreenshot(200, "home_swappingToRegions.png");
+		pause(2000);
+
+		futureScreenshot(380, "home_swappingToRegions.png");
 
 		elementById("button-choisirUniversité").click();
 

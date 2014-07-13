@@ -3,7 +3,6 @@ package fr.univmobile.ios.it;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static org.junit.Assert.assertFalse;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,7 +15,7 @@ import org.junit.runners.Parameterized;
 @RunWith(Parameterized.class)
 public abstract class AbstractScenariosTest {
 
-	protected static Iterable<Object[]> loadParameters(
+	protected static Iterable<Object[]> loadParametersForScenarioClasses(
 			final Class<?>... classes) throws Exception {
 
 		final List<Object[]> parameters = new ArrayList<Object[]>();
@@ -43,7 +42,7 @@ public abstract class AbstractScenariosTest {
 								+ ": " + clazz);
 			}
 
-			final Annotation scenariosAnnotation = clazz
+			final Scenarios scenariosAnnotation = clazz
 					.getAnnotation(Scenarios.class);
 
 			if (scenariosAnnotation == null) {
@@ -53,11 +52,31 @@ public abstract class AbstractScenariosTest {
 								+ clazz);
 			}
 
+			final DeviceNames deviceNamesAnnotation = clazz
+					.getAnnotation(DeviceNames.class);
+
+			final String[] deviceNames;
+
+			if (deviceNamesAnnotation == null) {
+
+				final String IPHONE_RETINA_4_INCH = "iPhone Retina (4-inch)";
+
+				System.err
+						.println("No @DeviceNames annotation was specified on "
+								+ clazz + ". Using " + IPHONE_RETINA_4_INCH);
+
+				deviceNames = new String[] { IPHONE_RETINA_4_INCH };
+
+			} else {
+
+				deviceNames = deviceNamesAnnotation.value();
+			}
+
 			final String classSimpleName = clazz.getSimpleName();
 
 			for (final Method method : clazz.getMethods()) {
 
-				final Annotation scenarioAnnotation = method
+				final Scenario scenarioAnnotation = method
 						.getAnnotation(Scenario.class);
 
 				if (scenarioAnnotation == null) {
@@ -66,28 +85,60 @@ public abstract class AbstractScenariosTest {
 
 				final String methodName = method.getName();
 
-				parameters.add(new Object[] { classSimpleName, //
-						methodName, //
-						engine.getSimpleName(), //
-						clazz.asSubclass(AppiumEnabledTest.class), //
-						method, //
-						engine });
+				for (final String deviceName : deviceNames) {
+
+					final String normalizedDeviceName = normalizeDeviceName(deviceName);
+
+					parameters.add(new Object[] { normalizedDeviceName, //
+							classSimpleName, //
+							methodName, //
+							engine.getSimpleName(), //
+							deviceName, //
+							clazz.asSubclass(AppiumEnabledTest.class), //
+							method, //
+							engine });
+				}
 			}
 		}
 	}
 
-	protected AbstractScenariosTest(final String scenarioClassSimpleName, //
+	public static String normalizeDeviceName(final String deviceName) {
+
+		// e.g. "iPhone Retina (3.5-inch)" -> "iPhone_Retina_3.5-inch"
+
+		String normalizedDeviceName = deviceName.replace(' ', '_') //
+				.replace('(', '_').replace(')', '_') //
+				.replace("__", "_");
+
+		if (normalizedDeviceName.startsWith("_")) {
+			normalizedDeviceName = normalizedDeviceName.substring(1);
+		}
+
+		if (normalizedDeviceName.endsWith("_")) {
+			normalizedDeviceName = normalizedDeviceName.substring(0,
+					normalizedDeviceName.length() - 1);
+		}
+
+		return normalizedDeviceName;
+	}
+
+	protected AbstractScenariosTest(final String normalizedDeviceName, //
+			final String scenarioClassSimpleName, //
 			final String scenarioMethodName, //
 			final String engineSimpleName, //
+			final String deviceName, //
 			final Class<? extends AppiumEnabledTest> scenariosClass, //
 			final Method scenarioMethod, //
 			final AppiumEnabledTestPhasedEngine engine) {
 
+		this.deviceName = checkNotNull(normalizedDeviceName, "deviceName");
 		this.scenariosClass = checkNotNull(scenariosClass, "scenariosClass");
 		this.scenarioMethod = checkNotNull(scenarioMethod, "scenarioMethod");
 		this.engine = checkNotNull(engine, "engine");
+
 	}
 
+	private final String deviceName;
 	private final Class<? extends AppiumEnabledTest> scenariosClass;
 	private final Method scenarioMethod;
 	private final AppiumEnabledTestPhasedEngine engine;
@@ -95,19 +146,32 @@ public abstract class AbstractScenariosTest {
 	@Test
 	public void run() throws Exception {
 
+		System.out.println();
+		
+		System.out.println("Running test: " + scenariosClass.getSimpleName()
+				+ "." + scenarioMethod.getName() + engine.getSimpleName() //
+				+ "(" + deviceName + ")...");
+
 		// 0. OBJECT INSTANCE
 
 		final AppiumEnabledTest instance = scenariosClass.newInstance();
 
+		engine.setPlatformName(AppiumEnabledTestDefaultEngine
+				.getCurrentPlatformName());
+		engine.setPlatformVersion(AppiumEnabledTestDefaultEngine
+				.getCurrentPlatformVersion());
+		engine.setDeviceName(deviceName);
 		engine.setScenariosClass(scenariosClass);
 		engine.setScenarioMethod(scenarioMethod);
 
+		AppiumEnabledTestDefaultEngine.setCurrentDeviceName(deviceName);
+		
 		instance.setEngine(engine);
 
 		// 1. SETUP
 
-		engine.clearErrors();
-		
+//		engine.clearErrors();
+
 		instance.setUp();
 
 		try {

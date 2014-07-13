@@ -76,11 +76,12 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 		capabilities.setCapability(BROWSER_NAME, "iOS");
 
 		capabilities.setCapability(PLATFORM, "Mac");
-		capabilities.setCapability(PLATFORM_NAME, "iOS");
-		capabilities.setCapability(PLATFORM_VERSION, "7.1");
+		capabilities.setCapability(PLATFORM_NAME, getCurrentPlatformName());
+		capabilities.setCapability(PLATFORM_VERSION,
+				getCurrentPlatformVersion());
 
 		capabilities.setCapability(DEVICE, "iPhone Simulator");
-		capabilities.setCapability(DEVICE_NAME, "iPhone Retina (4-inch)");
+		capabilities.setCapability(DEVICE_NAME, getCurrentDeviceName());
 
 		capabilities.setCapability(APP, app.getAbsolutePath());
 
@@ -135,7 +136,7 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 			final String dirModifiedAtString = appDirName.substring(
 					appDirName.length() - 19, appDirName.length() - 4);
 
-			System.out.println("        .modified: " + dirModifiedAtString);
+			System.out.println("         modified: " + dirModifiedAtString);
 
 			if (touchedAtAsString.compareTo(dirModifiedAtString) >= 0) {
 
@@ -273,35 +274,60 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 
 		Thread.sleep(ms);
 	}
-	
+
 	@Override
-	public void futureScreenshot(final int ms, final String filename) 
-	throws IOException {
-		
+	public void futureScreenshot(final int ms, final String filename)
+			throws IOException {
+
 		new Thread() {
-			
+
 			@Override
 			public void run() {
-				
+
 				try {
-					
+
 					Thread.sleep(ms);
-					
+
 					takeScreenshot(filename);
-					
+
 				} catch (final IOException e) {
-					
+
 					e.printStackTrace();
-					
+
 					// do nothing
-					
+
 				} catch (final InterruptedException e) {
-					
+
 					// do nothing
 				}
 			}
-			
+
 		}.start();
+	}
+
+	public static String getCurrentPlatformName() {
+
+		return "iOS";
+	}
+
+	public static String getCurrentPlatformVersion() {
+
+		return "7.1";
+	}
+
+	private static String currentDeviceName = "iPhone Retina (4-inch)";
+
+	public static void setCurrentDeviceName(final String deviceName) {
+
+		currentDeviceName = checkNotNull(deviceName, "deviceName");
+	}
+
+	/**
+	 * defaults to ""iPhone Retina (4-inch)"
+	 */
+	public static String getCurrentDeviceName() {
+
+		return currentDeviceName;
 	}
 }
 
@@ -317,7 +343,7 @@ final class WebElementChecker implements ElementChecker {
 	private final WebElement element;
 
 	@Override
-	public void textShouldBe(final String ref) {
+	public void textShouldEqualTo(final String ref) {
 
 		assertEquals(id + ".text", ref, element.getText());
 	}
@@ -333,10 +359,10 @@ final class WebElementChecker implements ElementChecker {
 
 		assertFalse(id + ".visible", element.isDisplayed());
 	}
-	
+
 	@Override
 	public void click() {
-		
+
 		element.click();
 	}
 }

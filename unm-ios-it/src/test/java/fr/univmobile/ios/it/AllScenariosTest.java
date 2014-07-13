@@ -9,21 +9,29 @@ import org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class AllScenariosTest extends AbstractScenariosTest {
 
-	@Parameters(name = "{0}.{1}.{2}")
+	@Parameters(name = "{1}.{2}.{3}_{0}")
 	public static Iterable<Object[]> parameters() throws Exception {
 
-		return AbstractScenariosTest
-				.loadParameters(UnivMobileScenarios001.class);
+		return AbstractScenariosTest.loadParametersForScenarioClasses( //
+				UnivMobileScenarios001.class);
 	}
 
-	public AllScenariosTest(final String scenarioClassSimpleName, //
+	public AllScenariosTest(final String normalizedDeviceName, //
+			final String scenarioClassSimpleName, //
 			final String scenarioMethodName, //
 			final String engineSimpleName, //
+			final String deviceName, //
 			final Class<? extends AppiumEnabledTest> scenariosClass, //
 			final Method scenarioMethod, //
 			final AppiumEnabledTestPhasedEngine engine) {
 
-		super(scenarioClassSimpleName, scenarioMethodName, engineSimpleName, //
-				scenariosClass, scenarioMethod, engine);
+		super(normalizedDeviceName, //
+				scenarioClassSimpleName, //
+				scenarioMethodName, //
+				engineSimpleName, //
+				deviceName, //
+				scenariosClass, //
+				scenarioMethod, //
+				engine);
 	}
 }
