@@ -60,6 +60,8 @@ rm -rf "${TEST_REPORT_REPO}"
 # 4. git clone test_report_repo
 # 5. cp test_report_tmp (elsewhere) into test_report (in test_report_repo)
 # 6. commit && push 
+#
+# EDIT just use "git pull --quiet --commit --no-edit"
  
 git clone https://dandriana-jenkins@github.com/univmobile/unm-integration "${TEST_REPORT_REPO}"
 
@@ -197,6 +199,8 @@ git add "${TEST_REPORT_FILENAME}"
 
 git commit -m "xcodebuild test, git commit (unm-ios): ${GIT_COMMIT}" "${TEST_REPORT_FILENAME}"
 
+git pull --quiet --commit --no-edit
+ 
 git push
 
 # ======== 7. ALLOW ACCESS TO LOCAL DEBUG-IPHONESIMULATOR APP ========
