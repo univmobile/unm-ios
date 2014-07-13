@@ -12,7 +12,7 @@ public class UnivMobileScenarios001 extends AppiumEnabledTest {
 		takeScreenshot("home.png");
 		
 		elementById("label-homePageTitle").shouldBeVisible();
-		elementById("label-homePageTitle").textShouldBe("UnixxxvxxMobile");
+		elementById("label-homePageTitle").textShouldBe("UnivMobile");
 		elementById("textView-buildInfo").shouldBeHidden();
 
 		// Don’t ask me why running only one swipe doesn’t work.
