@@ -193,4 +193,10 @@ final class WebElementCapturer implements ElementChecker {
 
 		pw.println();
 	}
+	
+	@Override
+	public void click() {
+		
+		element.click();
+	}
 }

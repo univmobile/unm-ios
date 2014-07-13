@@ -41,4 +41,6 @@ interface ElementChecker {
 	void shouldBeVisible() throws IOException;
 
 	void shouldBeHidden() throws IOException;
+	
+	void click();
 }

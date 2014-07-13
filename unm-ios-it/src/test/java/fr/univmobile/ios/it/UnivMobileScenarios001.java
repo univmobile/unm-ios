@@ -46,7 +46,7 @@ public class UnivMobileScenarios001 extends AppiumEnabledTest {
 
 		futureScreenshot(200, "home_swappingToRegions.png");
 
-		findElementById("button-choisirUniversité").click();
+		elementById("button-choisirUniversité").click();
 
 		pause(2000);
 
