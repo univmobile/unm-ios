@@ -115,15 +115,11 @@ public abstract class AbstractUnivMobileAppiumTest {
 
 						if (mostRecentAppDirName == null
 								|| mostRecentAppDirName
-										.compareTo(dirModifiedAtString) < 0) {
+										.compareTo(appDirName) < 0) {
 
 							mostRecentAppDirName = appDirName;
 						}
 					}
-
-					// if (dirModifiedAsString.
-					// final long dirModifiedAt = appDir.lastModified();
-
 				}
 
 				if (mostRecentAppDirName == null) {
