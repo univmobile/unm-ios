@@ -195,7 +195,7 @@ chmod 700 "${GIT_ASKPASS}"
 
 git add "${TEST_REPORT_FILENAME}"
 
-git commit -m "xcodebuild test, git commit: ${GIT_COMMIT}" "${TEST_REPORT_FILENAME}"
+git commit -m "xcodebuild test, git commit (unm-ios): ${GIT_COMMIT}" "${TEST_REPORT_FILENAME}"
 
 git push
 
