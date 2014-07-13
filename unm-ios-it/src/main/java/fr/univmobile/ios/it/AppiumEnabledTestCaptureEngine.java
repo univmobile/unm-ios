@@ -91,11 +91,13 @@ final class AppiumEnabledTestCaptureEngine extends
 		return "capture";
 	}
 
+	/*
 	@Override
 	public void clearErrors() {
 
 		// do nothing
 	}
+	*/
 
 	@Override
 	public boolean hasErrors() {
@@ -143,9 +145,9 @@ final class WebElementCapturer implements ElementChecker {
 	private final PrintWriter pw;
 
 	@Override
-	public void textShouldBe(@Nullable final String ref) throws IOException {
+	public void textShouldEqualTo(@Nullable final String ref) throws IOException {
 
-		pw.println("# " + id + ".textShouldBe: " + ref);
+		pw.println("# " + id + ".text.shouldEqualTo: " + ref);
 
 		if (ref == null) {
 			return; // swallow the NPE

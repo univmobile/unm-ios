@@ -36,11 +36,11 @@ interface AppiumEnabledTestEngine {
 
 interface ElementChecker {
 
-	void textShouldBe(String ref) throws IOException;
+	void textShouldEqualTo(String ref) throws IOException;
 
 	void shouldBeVisible() throws IOException;
 
 	void shouldBeHidden() throws IOException;
-	
-	void click();
+
+	void click() throws IOException;
 }
