@@ -27,4 +27,18 @@ public class HomePageTest extends AppiumEnabledTest {
 
 		takeScreenshot("home2.png");
 	}
+
+	@Test
+	public void testHomePage_goToRegionsPage() throws Exception {
+
+		takeScreenshot("home_beforeRegions.png");
+
+		futureScreenshot(200, "home_swappingToRegions.png");
+
+		findElementById("button-choisirUniversité").click();
+
+		pause(2000);
+
+		takeScreenshot("regions.png");
+	}
 }
