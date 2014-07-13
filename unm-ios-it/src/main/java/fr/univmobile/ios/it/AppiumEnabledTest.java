@@ -11,8 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebElement;
 
-public abstract class AppiumEnabledTest implements
-		AppiumEnabledTestEngine {
+public abstract class AppiumEnabledTest implements AppiumEnabledTestEngine {
 
 	@Override
 	public AppiumDriver getDriver() {
@@ -85,5 +84,41 @@ public abstract class AppiumEnabledTest implements
 	public final ElementChecker elementById(final String id) throws IOException {
 
 		return checkedEngine().elementById(id);
+	}
+
+	@Override
+	public final void pause(final int ms) throws InterruptedException {
+
+		Thread.sleep(ms);
+	}
+	
+	@Override
+	public final void futureScreenshot(final int ms, final String filename) 
+	throws IOException {
+		
+		new Thread() {
+			
+			@Override
+			public void run() {
+				
+				try {
+					
+					Thread.sleep(ms);
+					
+					takeScreenshot(filename);
+					
+				} catch (final IOException e) {
+					
+					e.printStackTrace();
+					
+					// do nothing
+					
+				} catch (final InterruptedException e) {
+					
+					// do nothing
+				}
+			}
+			
+		}.start();
 	}
 }

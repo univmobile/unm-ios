@@ -267,6 +267,42 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 
 		return driver;
 	}
+
+	@Override
+	public void pause(final int ms) throws InterruptedException {
+
+		Thread.sleep(ms);
+	}
+	
+	@Override
+	public void futureScreenshot(final int ms, final String filename) 
+	throws IOException {
+		
+		new Thread() {
+			
+			@Override
+			public void run() {
+				
+				try {
+					
+					Thread.sleep(ms);
+					
+					takeScreenshot(filename);
+					
+				} catch (final IOException e) {
+					
+					e.printStackTrace();
+					
+					// do nothing
+					
+				} catch (final InterruptedException e) {
+					
+					// do nothing
+				}
+			}
+			
+		}.start();
+	}
 }
 
 final class WebElementChecker implements ElementChecker {

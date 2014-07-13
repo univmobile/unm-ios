@@ -28,6 +28,10 @@ interface AppiumEnabledTestEngine {
 	ElementChecker elementById(String id) throws IOException;
 
 	AppiumDriver getDriver();
+
+	void pause(int ms) throws InterruptedException;
+
+	void futureScreenshot(int ms, String filename) throws IOException;
 }
 
 interface ElementChecker {
