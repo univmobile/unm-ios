@@ -43,6 +43,15 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 	@Override
 	public void setUp() throws Exception {
 
+		if (driver != null) {
+
+			System.out.println("??? driver != null => driver.quit()...");
+			
+			driver.quit();
+			
+			driver = null;
+		}
+		
 		// 1. LAUNCH THE iOS APP
 
 		// final String BUNDLE_ID = "fr.univmobile.UnivMobile";
@@ -84,6 +93,8 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 		capabilities.setCapability(DEVICE_NAME, getCurrentDeviceName());
 
 		capabilities.setCapability(APP, app.getAbsolutePath());
+
+		System.out.println("new AppiumDriver()...");
 
 		driver = new AppiumDriver(new URL("http://localhost:4723/wd/hub"),
 				capabilities);
@@ -182,8 +193,12 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 	@Override
 	public void tearDown() throws Exception {
 
+		cleanExistingFuture();
+		
 		if (driver != null) {
 
+			System.out.println("driver.quit()...");
+			
 			driver.quit();
 
 			driver = null;
@@ -275,11 +290,35 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 		Thread.sleep(ms);
 	}
 
+	private Thread future;
+
+	private void cleanExistingFuture() {
+		
+		if (future != null) {
+			
+			try {
+				
+				future.join(10000);
+				
+			} catch (final InterruptedException e) {
+				// do nothing
+			}
+			
+			if (future.isAlive()) {
+				future.interrupt();
+			}
+			
+			future = null;
+		}
+	}
+	
 	@Override
 	public void futureScreenshot(final int ms, final String filename)
 			throws IOException {
 
-		new Thread() {
+		cleanExistingFuture();
+		
+		future = new Thread() {
 
 			@Override
 			public void run() {
@@ -301,8 +340,9 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 					// do nothing
 				}
 			}
-
-		}.start();
+		};
+		
+		future.start();
 	}
 
 	public static String getCurrentPlatformName() {
