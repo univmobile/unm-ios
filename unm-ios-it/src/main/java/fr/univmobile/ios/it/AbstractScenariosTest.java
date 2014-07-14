@@ -147,9 +147,10 @@ public abstract class AbstractScenariosTest {
 	public void run() throws Exception {
 
 		System.out.println();
-		
+
 		System.out.println("Running test: " + scenariosClass.getSimpleName()
-				+ "." + scenarioMethod.getName() + engine.getSimpleName() //
+				+ "." + scenarioMethod.getName() //
+				+ "." + engine.getSimpleName() //
 				+ "(" + deviceName + ")...");
 
 		// 0. OBJECT INSTANCE
@@ -165,12 +166,10 @@ public abstract class AbstractScenariosTest {
 		engine.setScenarioMethod(scenarioMethod);
 
 		AppiumEnabledTestDefaultEngine.setCurrentDeviceName(deviceName);
-		
+
 		instance.setEngine(engine);
 
 		// 1. SETUP
-
-//		engine.clearErrors();
 
 		instance.setUp();
 
@@ -178,13 +177,13 @@ public abstract class AbstractScenariosTest {
 
 			scenarioMethod.invoke(instance);
 
-			assertFalse("There were errors.", engine.hasErrors());
-
 		} finally {
 
 			// 9. TEARDOWN
 
 			instance.tearDown();
 		}
+
+		assertFalse("There were errors.", engine.hasErrors());
 	}
 }
