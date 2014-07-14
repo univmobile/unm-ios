@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# File: xcodebuild-test.sh
+# File: xcodebuild_test.sh
 #
 # This script must be run on a Mac OS X system with Xcode installed.
 # It aims at running the iOS logic tests of "unm-ios", and export the test
