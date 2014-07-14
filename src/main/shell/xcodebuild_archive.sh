@@ -14,7 +14,7 @@ PLIST=UnivMobile/UnivMobile-Info.plist
 
 KEYCHAIN=/Users/dandriana/Library/Keychains/MyKeichain.keychain
 KEYCHAIN_PASS=`cat /Users/dandriana/.config/security-unlock-keychain-MyKeichain`
-PROVISIONING_PROFILE_UnivMobileAlphaProfile
+PROVISIONING_PROFILE=UnivMobileAlphaProfile
 
 # 1. CLEAN UP OLD BUILD
 
