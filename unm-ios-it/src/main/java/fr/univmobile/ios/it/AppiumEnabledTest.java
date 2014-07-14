@@ -89,36 +89,13 @@ public abstract class AppiumEnabledTest implements AppiumEnabledTestEngine {
 	@Override
 	public final void pause(final int ms) throws InterruptedException {
 
-		Thread.sleep(ms);
+		checkedEngine().pause(ms);
 	}
 	
 	@Override
 	public final void futureScreenshot(final int ms, final String filename) 
 	throws IOException {
-		
-		new Thread() {
-			
-			@Override
-			public void run() {
-				
-				try {
-					
-					Thread.sleep(ms);
-					
-					takeScreenshot(filename);
-					
-				} catch (final IOException e) {
-					
-					e.printStackTrace();
-					
-					// do nothing
-					
-				} catch (final InterruptedException e) {
-					
-					// do nothing
-				}
-			}
-			
-		}.start();
+
+		checkedEngine().futureScreenshot(ms, filename);
 	}
 }
