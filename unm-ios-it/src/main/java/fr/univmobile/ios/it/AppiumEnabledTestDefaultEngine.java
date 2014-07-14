@@ -45,7 +45,7 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 
 		if (driver != null) {
 
-			System.out.println("??? driver != null => driver.quit()...");
+			System.out.println("DEBUG: ??? driver != null => driver.quit()...");
 			
 			driver.quit();
 			
@@ -94,7 +94,7 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 
 		capabilities.setCapability(APP, app.getAbsolutePath());
 
-		System.out.println("new AppiumDriver()...");
+		System.out.println("DEBUG: new AppiumDriver()...");
 
 		driver = new AppiumDriver(new URL("http://localhost:4723/wd/hub"),
 				capabilities);
@@ -197,7 +197,7 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 		
 		if (driver != null) {
 
-			System.out.println("driver.quit()...");
+			System.out.println("DEBUG: driver.quit()...");
 			
 			driver.quit();
 
