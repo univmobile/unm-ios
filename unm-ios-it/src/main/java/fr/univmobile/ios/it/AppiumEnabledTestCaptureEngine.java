@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebElement;
 
 final class AppiumEnabledTestCaptureEngine extends
 		AppiumEnabledTestPhasedEngine {
@@ -122,26 +122,22 @@ final class AppiumEnabledTestCaptureEngine extends
 final class WebElementCapturer implements ElementChecker {
 
 	public WebElementCapturer(final PrintWriter pw, final String id,
-			final WebElement element) {
+			final RemoteWebElement element) {
 
 		this.id = checkNotNull(id, "id");
 		this.element = checkNotNull(element, "element");
 		this.pw = checkNotNull(pw, "pw");
 
-		// pw.println(id + ".text: \"" + element.getText() //
-		// .replace("\\", "\\\\") //
-		// .replace("\"", "\\\"") //
-		// + "\"");
-
 		pw.println(id + ":");
 		pw.println("  text: " + normalizeSpace(element.getText()));
 		pw.println("  visible: " + element.isDisplayed());
+		pw.println("  id: " + element.getId());
 
 		pw.println();
 	}
 
 	private final String id;
-	private final WebElement element;
+	private final RemoteWebElement element;
 	private final PrintWriter pw;
 
 	@Override

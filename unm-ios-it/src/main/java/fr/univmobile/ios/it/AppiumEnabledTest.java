@@ -9,7 +9,7 @@ import javax.annotation.Nullable;
 
 import org.junit.After;
 import org.junit.Before;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebElement;
 
 public abstract class AppiumEnabledTest implements AppiumEnabledTestEngine {
 
@@ -75,7 +75,8 @@ public abstract class AppiumEnabledTest implements AppiumEnabledTestEngine {
 	}
 
 	@Override
-	public final WebElement findElementById(final String id) throws IOException {
+	public final RemoteWebElement findElementById(final String id)
+			throws IOException {
 
 		return checkedEngine().findElementById(id);
 	}
@@ -91,10 +92,10 @@ public abstract class AppiumEnabledTest implements AppiumEnabledTestEngine {
 
 		checkedEngine().pause(ms);
 	}
-	
+
 	@Override
-	public final void futureScreenshot(final int ms, final String filename) 
-	throws IOException {
+	public final void futureScreenshot(final int ms, final String filename)
+			throws IOException {
 
 		checkedEngine().futureScreenshot(ms, filename);
 	}
