@@ -55,11 +55,11 @@ public abstract class AbstractScenariosTest {
 			final AppiumEnabledTestPhasedEngine engine, //
 			final Class<?>... classes) throws IOException {
 
-		Dumper d = dumper;
-
 		for (final Class<?> clazz : classes) {
 
-			d = d.addElement("scenariosClass") //
+			// 1. SCENARIOS CLASS
+
+			final Dumper scenarioDumper = dumper.addElement("scenariosClass") //
 					.addAttribute("className", clazz.getName()) //
 					.addAttribute("classSimpleName", clazz.getSimpleName());
 
@@ -80,7 +80,10 @@ public abstract class AbstractScenariosTest {
 								+ clazz);
 			}
 
-			d.addAttribute("scenariosLabel", scenariosAnnotation.value());
+			scenarioDumper.addAttribute("scenariosLabel",
+					scenariosAnnotation.value());
+
+			// 2. DEVICE NAMES
 
 			final DeviceNames deviceNamesAnnotation = clazz
 					.getAnnotation(DeviceNames.class);
@@ -104,6 +107,21 @@ public abstract class AbstractScenariosTest {
 				deviceNames = deviceNamesAnnotation.value();
 			}
 
+			// 2.5. DUMP DEVICE NAMES BEFORE SCENARIO METHODS
+
+			for (final String deviceName : deviceNames) {
+
+				final String normalizedDeviceName = normalizeDeviceName(deviceName);
+
+				scenarioDumper
+						.addElement("device")
+						.addAttribute("deviceName", deviceName)
+						.addAttribute("normalizedDeviceName",
+								normalizedDeviceName);
+			}
+
+			// 3. SCENARIO METHODS
+
 			final String classSimpleName = clazz.getSimpleName();
 
 			for (final Method method : clazz.getMethods()) {
@@ -117,7 +135,8 @@ public abstract class AbstractScenariosTest {
 
 				final String methodName = method.getName();
 
-				d = d.addElement("scenarioMethod")
+				scenarioDumper
+						.addElement("scenarioMethod")
 						.addAttribute("methodName", methodName)
 						.addAttribute("scenarioLabel",
 								scenarioAnnotation.value());
@@ -125,11 +144,6 @@ public abstract class AbstractScenariosTest {
 				for (final String deviceName : deviceNames) {
 
 					final String normalizedDeviceName = normalizeDeviceName(deviceName);
-
-					d.addElement("device")
-							.addAttribute("deviceName", deviceName)
-							.addAttribute("normalizedDeviceName",
-									normalizedDeviceName);
 
 					parameters.add(new Object[] { normalizedDeviceName, //
 							classSimpleName, //
