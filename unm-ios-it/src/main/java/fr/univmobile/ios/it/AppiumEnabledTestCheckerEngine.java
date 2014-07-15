@@ -75,7 +75,7 @@ public class AppiumEnabledTestCheckerEngine extends
 	public final void futureScreenshot(final int ms, final String filename)
 			throws IOException {
 
-		// do nothing: Rely on previous capture
+		observer.notifyScreenshot(filename, ms);
 	}
 
 	@Override

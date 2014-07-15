@@ -20,6 +20,8 @@ interface ElementCheckObserver {
 	void notifyAction(String label) throws IOException;
 
 	void notifyScreenshot(String filename) throws IOException;
+
+	void notifyScreenshot(String filename, int ms) throws IOException;
 }
 
 class ElementCheckObserverComposite implements ElementCheckObserver {
@@ -59,6 +61,16 @@ class ElementCheckObserverComposite implements ElementCheckObserver {
 			observer.notifyScreenshot(filename);
 		}
 	}
+
+	@Override
+	public void notifyScreenshot(final String filename, final int ms)
+			throws IOException {
+
+		for (final ElementCheckObserver observer : observers) {
+
+			observer.notifyScreenshot(filename, ms);
+		}
+	}
 }
 
 class ElementCheckObserverStdout implements ElementCheckObserver {
@@ -91,6 +103,13 @@ class ElementCheckObserverStdout implements ElementCheckObserver {
 	public void notifyScreenshot(final String filename) throws IOException {
 
 		System.out.println("[screenshot: " + filename + "]");
+	}
+
+	@Override
+	public void notifyScreenshot(final String filename, final int ms)
+			throws IOException {
+
+		System.out.println("[screenshot: " + filename + "] in " + ms + " ms");
 	}
 
 	public void clearErrors() {
@@ -154,6 +173,15 @@ class ElementCheckObserverXMLDump implements ElementCheckObserver {
 
 		dumper.addElement("screenshot") //
 				.addAttribute("filename", filename);
+	}
+
+	@Override
+	public void notifyScreenshot(final String filename, final int ms)
+			throws IOException {
+
+		dumper.addElement("screenshot") //
+				.addAttribute("filename", filename) //
+				.addAttribute("ms", ms);
 	}
 
 	public void close() throws IOException {
