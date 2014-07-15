@@ -115,7 +115,7 @@ final class AppiumEnabledTestCaptureEngine extends
 	public final void futureScreenshot(final int ms, final String filename) 
 	throws IOException {
 		
-		defaultEngine.futureScreenshot(ms, filename);
+		defaultEngine.futureScreenshot(ms, customizeFilename(filename));
 	}
 }
 
