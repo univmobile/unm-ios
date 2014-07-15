@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -38,6 +39,8 @@ public abstract class AbstractScenariosTest {
 	private static void loadParameters(final Collection<Object[]> parameters,
 			final AppiumEnabledTestPhasedEngine engine, //
 			final Class<?>... classes) throws IOException {
+
+		FileUtils.forceMkdir(new File("target", "screenshots"));
 
 		final Dumper dumper = XMLDumper.newXMLDumper("scenarios", new File(
 				"target/screenshots/scenarios.xml"));
