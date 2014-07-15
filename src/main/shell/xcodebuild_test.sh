@@ -33,13 +33,32 @@ if [ -z "${APP_REPO}" ]; then
 	APP_REPO=/var/xcodebuild_test-apps
 fi
 
+XCODE_VERSION=`xcodebuild -version | head -1`
+
+PLATFORM_VERSION="7.1"
+
+# ======== 1.0. ENVIRONMENT: VALIDATION ========
+
+if [ "${XCODE_VERSION}" = "Xcode 5.1.1" ]; then 
+#	SUFFIX=
+#	PLATFORM_VERSION="7.1"
+#elif  [ "${XCODE_VERSION}" = "Xcode 4.6.3" ]; then
+#	SUFFIX="_ios6"
+#	PLATFORM_VERSION="6.1"
+else
+#	echo "** Xcode is neither 5.1.1 or 4.6.3: ${XCODE_VERSION}"
+	echo "** Xcode is not 5.1.1: ${XCODE_VERSION}"
+	echo "Exiting."
+	exit 1 
+fi
+
 # ======== 1.1. ENVIRONMENT: WORKSPACE ========
 
 WORKSPACE="${UNM_IOS_REPO}"
 
 echo "WORKSPACE: ${WORKSPACE}"
 
-BUILD_LOG="${WORKSPACE}/target/xcodebuild_test.log"
+BUILD_LOG="${WORKSPACE}/target/xcodebuild.log"
 CMD_FILE="${WORKSPACE}/target/xcodebuild_test_cmd.sh"
 TEST_REPORT_REPO="${WORKSPACE}/target/unm-integration/"
 TEST_REPORT="${TEST_REPORT_REPO}/unm-ios-ut-results/data/xcodebuild_test.log"
@@ -66,7 +85,7 @@ rm -rf "${TEST_REPORT_REPO}"
 git clone https://dandriana-jenkins@github.com/univmobile/unm-integration "${TEST_REPORT_REPO}"
 
 if [ -z "${TEST_REPORT}" ]; then
-  echo "** Error: TEST_REPORT must be set and must be in a git repo. e.g. ../unm-ios-test-results/data/unm-ios-xcodebuild-test.log"
+  echo "** Error: TEST_REPORT must be set and must be in a git repo. e.g. ../unm-ios-test-results/data/xcodebuild-test.log"
   echo "Exiting"
   exit 1
 fi
@@ -83,7 +102,7 @@ echo "pwd: $(pwd)" > "${BUILD_LOG}"
 
 git status  >> "${BUILD_LOG}" 2>&1
 if [ $? -ne 0 ]; then
-  echo "** Error: TEST_REPORT=${TEST_REPORT} is not in a git repo. e.g. ../unm-ios-test-results/data/unm-ios-xcodebuild-test.log"
+  echo "** Error: TEST_REPORT=${TEST_REPORT} is not in a git repo. e.g. ../unm-ios-test-results/data/xcodebuild-test.log"
   echo "Exiting"
   exit 1
 fi
@@ -105,8 +124,8 @@ cd "${UNM_IOS_REPO}"
 BUILD_OPTS="-workspace UnivMobile.xcworkspace \
   -scheme UnivMobileTests \
   -configuration Debug \
-  -sdk iphonesimulator7.1 \
-  -destination OS=7.1,name=\"iPhone Retina (4-inch)\""
+  -sdk iphonesimulator${PLATFORM_VERSION} \
+  -destination OS=${PLATFORM_VERSION},name=\"iPhone Retina (4-inch)\""
 BUILD_CMD="/usr/bin/xcodebuild clean build ${BUILD_OPTS}"  
 TEST_CMD="/usr/bin/xcodebuild test ${BUILD_OPTS}"
 
