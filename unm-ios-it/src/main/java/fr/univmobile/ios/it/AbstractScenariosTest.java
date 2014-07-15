@@ -3,6 +3,7 @@ package fr.univmobile.ios.it;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static org.junit.Assert.assertFalse;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -144,7 +145,7 @@ public abstract class AbstractScenariosTest {
 	private final AppiumEnabledTestPhasedEngine engine;
 
 	@Test
-	public void run() throws Exception {
+	public void run() throws Throwable {
 
 		System.out.println();
 
@@ -174,9 +175,13 @@ public abstract class AbstractScenariosTest {
 		instance.setUp();
 
 		try {
-
+			
 			scenarioMethod.invoke(instance);
 
+		} catch (final InvocationTargetException e) {
+			
+			throw e.getTargetException();
+			
 		} finally {
 
 			// 9. TEARDOWN
