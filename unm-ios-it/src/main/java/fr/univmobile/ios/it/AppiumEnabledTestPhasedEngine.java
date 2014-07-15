@@ -8,14 +8,14 @@ import java.lang.reflect.Method;
 
 import javax.annotation.Nullable;
 
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebElement;
 
 abstract class AppiumEnabledTestPhasedEngine implements AppiumEnabledTestEngine {
 
 	public abstract String getSimpleName();
 
 	@Override
-	public final WebElement findElementById(String id) throws IOException {
+	public final RemoteWebElement findElementById(String id) throws IOException {
 
 		throw new IllegalStateException(
 				"Because it’s using a phased engine, a scenario test should not call findElementById().");
@@ -30,7 +30,7 @@ abstract class AppiumEnabledTestPhasedEngine implements AppiumEnabledTestEngine 
 
 	@Nullable
 	public final String getPlatformName() {
-		
+
 		return platformName;
 	}
 
@@ -41,7 +41,7 @@ abstract class AppiumEnabledTestPhasedEngine implements AppiumEnabledTestEngine 
 
 	@Nullable
 	public final String getPlatformVersion() {
-		
+
 		return platformVersion;
 	}
 
@@ -52,7 +52,7 @@ abstract class AppiumEnabledTestPhasedEngine implements AppiumEnabledTestEngine 
 	}
 
 	public final String getDeviceName() {
-		
+
 		return deviceName;
 	}
 
@@ -62,7 +62,7 @@ abstract class AppiumEnabledTestPhasedEngine implements AppiumEnabledTestEngine 
 	}
 
 	public final Class<? extends AppiumEnabledTest> getScenariosClass() {
-		
+
 		return scenariosClass;
 	}
 
@@ -73,10 +73,10 @@ abstract class AppiumEnabledTestPhasedEngine implements AppiumEnabledTestEngine 
 	}
 
 	public final Method getScenarioMethod() {
-		
+
 		return scenarioMethod;
 	}
-	
+
 	public final void setScenarioMethod(final Method scenarioMethod) {
 
 		this.scenarioMethod = checkNotNull(scenarioMethod, "scenarioMethod");
@@ -109,8 +109,6 @@ abstract class AppiumEnabledTestPhasedEngine implements AppiumEnabledTestEngine 
 				+ getSimpleName() + "_" //
 				+ AbstractScenariosTest.normalizeDeviceName(deviceName);
 	}
-
-	//public abstract void clearErrors();
 
 	abstract boolean hasErrors();
 }

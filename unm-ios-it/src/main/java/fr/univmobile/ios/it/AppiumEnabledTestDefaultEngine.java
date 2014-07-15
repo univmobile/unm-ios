@@ -32,6 +32,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebElement;
 
 import fr.univmobile.testutil.PropertiesUtils;
 
@@ -45,13 +46,13 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 
 		if (driver != null) {
 
-			System.out.println("DEBUG: ??? driver != null => driver.quit()...");
-			
+			// System.out.println("DEBUG: ??? driver != null => driver.quit()...");
+
 			driver.quit();
-			
+
 			driver = null;
 		}
-		
+
 		// 1. LAUNCH THE iOS APP
 
 		// final String BUNDLE_ID = "fr.univmobile.UnivMobile";
@@ -94,7 +95,7 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 
 		capabilities.setCapability(APP, app.getAbsolutePath());
 
-		System.out.println("DEBUG: new AppiumDriver()...");
+		// System.out.println("DEBUG: new AppiumDriver()...");
 
 		driver = new AppiumDriver(new URL("http://localhost:4723/wd/hub"),
 				capabilities);
@@ -194,11 +195,11 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 	public void tearDown() throws Exception {
 
 		cleanExistingFuture();
-		
+
 		if (driver != null) {
 
-			System.out.println("DEBUG: driver.quit()...");
-			
+			// System.out.println("DEBUG: driver.quit()...");
+
 			driver.quit();
 
 			driver = null;
@@ -259,11 +260,11 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 	}
 
 	@Override
-	public WebElement findElementById(final String id) throws IOException {
+	public RemoteWebElement findElementById(final String id) throws IOException {
 
 		try {
 
-			return driver.findElementById(id);
+			return (RemoteWebElement) driver.findElementById(id);
 
 		} catch (final NoSuchElementException e) {
 
@@ -293,31 +294,31 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 	private Thread future;
 
 	private void cleanExistingFuture() {
-		
+
 		if (future != null) {
-			
+
 			try {
-				
+
 				future.join(10000);
-				
+
 			} catch (final InterruptedException e) {
 				// do nothing
 			}
-			
+
 			if (future.isAlive()) {
 				future.interrupt();
 			}
-			
+
 			future = null;
 		}
 	}
-	
+
 	@Override
 	public void futureScreenshot(final int ms, final String filename)
 			throws IOException {
 
 		cleanExistingFuture();
-		
+
 		future = new Thread() {
 
 			@Override
@@ -341,7 +342,7 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 				}
 			}
 		};
-		
+
 		future.start();
 	}
 

@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import org.junit.After;
 import org.junit.Before;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebElement;
 
 interface AppiumEnabledTestEngine {
 
@@ -23,7 +23,7 @@ interface AppiumEnabledTestEngine {
 	void swipe(int startX, int startY, int endX, int endY, int durationMs)
 			throws IOException;
 
-	WebElement findElementById(String id) throws IOException;
+	RemoteWebElement findElementById(String id) throws IOException;
 
 	ElementChecker elementById(String id) throws IOException;
 
