@@ -4,7 +4,7 @@ import org.junit.Test;
 
 @Scenarios("Scénarios simples")
 @DeviceNames({ "iPhone Retina (3.5-inch)", "iPhone Retina (4-inch)" })
-public class UnivMobileScenarios001 extends AppiumEnabledTest {
+public class Scenarios001 extends AppiumEnabledTest {
 
 	@Scenario("Aller-retour sur la page « À Propos »")
 	@Test
