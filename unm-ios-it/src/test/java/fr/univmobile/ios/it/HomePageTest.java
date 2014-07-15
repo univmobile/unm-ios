@@ -33,7 +33,9 @@ public class HomePageTest extends AppiumEnabledTest {
 
 		takeScreenshot("home_beforeRegions.png");
 
-		futureScreenshot(200, "home_swappingToRegions.png");
+		pause(2000);
+
+		futureScreenshot(600, "home_swappingToRegions.png");
 
 		findElementById("button-choisirUniversité").click();
 

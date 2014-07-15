@@ -13,7 +13,7 @@ public class AllScenariosTest extends AbstractScenariosTest {
 	public static Iterable<Object[]> parameters() throws Exception {
 
 		return AbstractScenariosTest.loadParametersForScenarioClasses( //
-				UnivMobileScenarios001.class);
+				Scenarios001.class);
 	}
 
 	public AllScenariosTest(final String normalizedDeviceName, //
