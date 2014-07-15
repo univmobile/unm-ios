@@ -3,6 +3,8 @@ package fr.univmobile.ios.it;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static org.junit.Assert.assertFalse;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -12,6 +14,9 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import fr.univmobile.testutil.Dumper;
+import fr.univmobile.testutil.XMLDumper;
 
 @RunWith(Parameterized.class)
 public abstract class AbstractScenariosTest {
@@ -32,9 +37,31 @@ public abstract class AbstractScenariosTest {
 
 	private static void loadParameters(final Collection<Object[]> parameters,
 			final AppiumEnabledTestPhasedEngine engine, //
-			final Class<?>... classes) {
+			final Class<?>... classes) throws IOException {
+
+		final Dumper dumper = XMLDumper.newXMLDumper("scenarios", new File(
+				"target/scenarios.xml"));
+		try {
+
+			loadParameters(dumper, parameters, engine, classes);
+
+		} finally {
+			dumper.close();
+		}
+	}
+
+	private static void loadParameters(final Dumper dumper,
+			final Collection<Object[]> parameters,
+			final AppiumEnabledTestPhasedEngine engine, //
+			final Class<?>... classes) throws IOException {
+
+		Dumper d = dumper;
 
 		for (final Class<?> clazz : classes) {
+
+			d = d.addElement("scenariosClass") //
+					.addAttribute("className", clazz.getName()) //
+					.addAttribute("classSimpleName", clazz.getSimpleName());
 
 			if (!AppiumEnabledTest.class.isAssignableFrom(clazz)) {
 				throw new IllegalArgumentException(
@@ -53,6 +80,8 @@ public abstract class AbstractScenariosTest {
 								+ clazz);
 			}
 
+			d.addAttribute("scenariosLabel", scenariosAnnotation.value());
+
 			final DeviceNames deviceNamesAnnotation = clazz
 					.getAnnotation(DeviceNames.class);
 
@@ -60,11 +89,13 @@ public abstract class AbstractScenariosTest {
 
 			if (deviceNamesAnnotation == null) {
 
+				// default
+
 				final String IPHONE_RETINA_4_INCH = "iPhone Retina (4-inch)";
 
-				System.err
-						.println("No @DeviceNames annotation was specified on "
-								+ clazz + ". Using " + IPHONE_RETINA_4_INCH);
+				System.err.println( //
+						"No @DeviceNames annotation was specified on " + clazz
+								+ ". Using " + IPHONE_RETINA_4_INCH);
 
 				deviceNames = new String[] { IPHONE_RETINA_4_INCH };
 
@@ -86,9 +117,19 @@ public abstract class AbstractScenariosTest {
 
 				final String methodName = method.getName();
 
+				d = d.addElement("scenarioMethod")
+						.addAttribute("methodName", methodName)
+						.addAttribute("scenarioLabel",
+								scenarioAnnotation.value());
+
 				for (final String deviceName : deviceNames) {
 
 					final String normalizedDeviceName = normalizeDeviceName(deviceName);
+
+					d.addElement("device")
+							.addAttribute("deviceName", deviceName)
+							.addAttribute("normalizedDeviceName",
+									normalizedDeviceName);
 
 					parameters.add(new Object[] { normalizedDeviceName, //
 							classSimpleName, //
@@ -175,13 +216,13 @@ public abstract class AbstractScenariosTest {
 		instance.setUp();
 
 		try {
-			
+
 			scenarioMethod.invoke(instance);
 
 		} catch (final InvocationTargetException e) {
-			
+
 			throw e.getTargetException();
-			
+
 		} finally {
 
 			// 9. TEARDOWN
