@@ -40,7 +40,7 @@ public abstract class AbstractScenariosTest {
 			final Class<?>... classes) throws IOException {
 
 		final Dumper dumper = XMLDumper.newXMLDumper("scenarios", new File(
-				"target/scenarios.xml"));
+				"target/screenshots/scenarios.xml"));
 		try {
 
 			loadParameters(dumper, parameters, engine, classes);
