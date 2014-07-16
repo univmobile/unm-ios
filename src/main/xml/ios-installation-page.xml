@@ -15,6 +15,29 @@ UnivMobileAlpha
 
 <ios-installation-page>
 
+<!--  
+<ios-installation
+	date="2014-07-16 10:27"
+	git-commit="426c1b312333297a2e87bfe6c45c3ccaf183d327"
+	plistHref="https://www.dropbox.com/s/plqypt6cszfvxfd/UnivMobile_ipa_sur_https.plist"
+	build-displayName="#82"
+	label="Essai .ipa sur HTTPS"/>
+-->
+
+<ios-installation
+	date="2014-07-16 10:05"
+	git-commit="426c1b312333297a2e87bfe6c45c3ccaf183d327"
+	plistHref="https://dl.dropboxusercontent.com/s/qd84u4hu20iuyav/UnivMobile.plist"
+	build-displayName="#82"
+	label="Bug fix : accès JSON"/>
+
+<ios-installation
+	date="2014-07-16 09:46"
+	git-commit="31ac0d6515fbac8d0ee73301bf5b3536489c4129"
+	plistHref="https://dl.dropboxusercontent.com/s/91khhp2u5evo4fp/UnivMobile.plist"
+	build-displayName="#81"
+	label="Accès aux JSON bouchonnés"/>
+
 <ios-installation
 	date="2014-07-15 02:15"
 	git-commit="aadb4200c95c03e476f49f0218605173a0ee908d"
