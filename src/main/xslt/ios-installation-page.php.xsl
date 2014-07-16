@@ -287,14 +287,32 @@ li.git-commit {
 <tr>
 <td>
 
+<!-- 
 <div class="nav">
 <a href="https://github.com/univmobile/unm-ios/">Back to the GitHub Repository</a>
 </div>
+
 <div class="nav">
 <a href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-ios/0.0.1-SNAPSHOT/scenarios.html">UnivMobile iOS — Scénarios</a>
 </div>
+-->
+
 <div class="nav">
-<a href="http://univmobile.vswip.com/">Jenkins — Intégration continue</a>
+<a href="http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html">
+	UniVmobile iOS — Intégration continue
+</a>
+</div>
+
+<div class="nav">
+<a href="http://univmobile.vswip.com/">
+	Jenkins — Intégration continue
+</a>
+</div>
+
+<div class="nav">
+<a href="http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ios-it-scenarios-dump.html">
+	UniVmobile iOS — Scénarios
+</a>
 </div>
 
 <h1>
