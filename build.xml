@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<project name="unm-ios" default="generate-documentation">
+<project name="unm-ios" default="all">
 
+	<target name="all" depends="generate-documentation,
+		generate-ios-installation-page">
+	</target>
+		
 	<target name="generate-documentation"
 		description="Generate documentation for the UnivMobile iOS application">
 
