@@ -2,6 +2,9 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="html" encoding="UTF-8" doctype-public="html"/>
 
+<xsl:variable name="ios-installations"
+	select="ios-installation-page/ios-installation"/>
+	
 <xsl:template match="/ios-installation-page">
 
 <!-- XML VALIDATION -->
@@ -23,6 +26,33 @@
 </xsl:for-each>
 </xsl:message>
 </xsl:if>
+
+<xsl:message>OK - No duplicates in: dates, git commits, plistHrefs.</xsl:message>
+
+<!-- INSPECT PLISTS -->
+
+<!-- TODO: This code works only onl David’s environment.
+
+<xsl:for-each select="$ios-installations">
+<xsl:variable name="git-commit" select="@git-commit"/>
+<xsl:variable name="plist" select="document(concat(
+	'/Users/dandriana/Dropbox/UnivMobile/ios/', $git-commit, '/UnivMobile.plist'
+))/plist"/>
+<xsl:if test="$plist">
+<xsl:variable name="ipaURL" select="$plist/dict/array[1]/dict[1]/array[1]/dict
+		[1]/key[. = 'url']/following-sibling::string"/>
+<xsl:if test="not($ipaURL = concat('http://univmobile.vswip.com/ios/',
+		$git-commit, '/UnivMobile.ipa'))">
+<xsl:message terminate="yes">Incorrect ipaURL: <xsl:value-of
+	select="$ipaURL"/> for commit-id: <xsl:value-of
+	select="$git-commit"/></xsl:message>
+</xsl:if>
+</xsl:if>
+</xsl:for-each>
+
+<xsl:message>OK - All plist/ipaURLs have been checked.</xsl:message>
+
+-->
 
 <!-- HTML OUTPUT -->	
 
