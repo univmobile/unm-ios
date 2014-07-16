@@ -13,7 +13,10 @@
 
 - (id) syncFetchJsonAtURL:(NSString*)path withErrorHandler:(void(^)(NSError*))onError {
 	
-	NSURL* const url = [NSURL URLWithString:path];
+	NSURL* const url = [path hasPrefix:@"http://univmobile.vswip.com/unm-backend-mock/"] //
+	? [NSURL URLWithString:path] //
+	: [NSURL URLWithString:[@"http://univmobile.vswip.com/unm-backend-mock/listUniversities_"
+											 stringByAppendingString:path]];
 
 	NSLog(@"syncFetchJsonAtURL(Web):%@...", url);
 	
