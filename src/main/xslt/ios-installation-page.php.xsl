@@ -299,7 +299,7 @@ li.git-commit {
 
 <div class="nav">
 <a href="http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html">
-	UniVmobile iOS — Intégration continue
+	UnivMobile iOS — Intégration continue
 </a>
 </div>
 
@@ -311,7 +311,7 @@ li.git-commit {
 
 <div class="nav">
 <a href="http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ios-it-scenarios-dump.html">
-	UniVmobile iOS — Scénarios
+	UnivMobile iOS — Scénarios
 </a>
 </div>
 
