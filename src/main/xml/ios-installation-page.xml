@@ -15,14 +15,19 @@ UnivMobileAlpha
 
 <ios-installation-page>
 
-<!--  
+<ios-installation
+	date="2014-07-16 15:45"
+	git-commit="137324ff6630e1338360e1a76a024fe2317feb94"
+	plistHref="https://dl.dropboxusercontent.com/s/d54vf85khg9kq4q/UnivMobile.plist"
+	build-displayName="#88"
+	label="UDIDs corrects (BCO et ALP)"/>
+
 <ios-installation
 	date="2014-07-16 10:27"
-	git-commit="426c1b312333297a2e87bfe6c45c3ccaf183d327"
-	plistHref="https://www.dropbox.com/s/plqypt6cszfvxfd/UnivMobile_ipa_sur_https.plist"
-	build-displayName="#82"
+	git-commit="9cab674d7c7065be6618e911b696fab2d7b96113"
+	plistHref="https://dl.dropboxusercontent.com/s/kx69mu5kwxctsk4/UnivMobile_ipa_sur_https.plist"
+	build-displayName="#83"
 	label="Essai .ipa sur HTTPS"/>
--->
 
 <ios-installation
 	date="2014-07-16 10:05"
