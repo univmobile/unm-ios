@@ -46,6 +46,7 @@ if [ "${XCODE_VERSION}" = "Xcode 5.1.1" ]; then
 #	SUFFIX="_ios6"
 #	PLATFORM_VERSION="6.1"
 	echo "${XCODE_VERSION}"
+	
 else
 #	echo "** Xcode is neither 5.1.1 or 4.6.3: ${XCODE_VERSION}"
 	echo "** Xcode is not 5.1.1: ${XCODE_VERSION}"
