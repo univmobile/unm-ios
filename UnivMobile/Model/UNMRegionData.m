@@ -81,7 +81,8 @@
 	
 	[map addEntriesFromDictionary:@{
 									@"id": @"id",
-									@"title": @"title"
+									@"title": @"title",
+									@"universitiesUrl": @"url"
 									}];
 	
 	return map;

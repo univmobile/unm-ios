@@ -16,6 +16,7 @@
 
 @property (copy, nonatomic) NSString* id; // e.g. @"ile_de_france"
 @property (copy, nonatomic) NSString* label; // e.g. @"Île de France"
+@property (copy, nonatomic) NSString* universitiesUrl; // e.g. @"http://m.univmobile.fr"
 
 @property (strong, nonatomic) NSArray* universities; // array of UNMUniversityData*
 
