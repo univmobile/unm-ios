@@ -15,6 +15,7 @@
 #import "UNMDebug.h"
 #import "UNMJsonFetcher.h"
 #import "UNMJsonFetcherFileSystem.h"
+#import "UNMJsonFetcherWeb.h"
 
 @interface UNMAppDelegate ()
 
@@ -39,7 +40,8 @@
 	
 	// APPLICATION LAYER
 	
-	NSObject <UNMJsonFetcher>* const jsonFetcher = [UNMJsonFetcherFileSystem new];
+	NSObject <UNMJsonFetcher>* const jsonFetcher = // [UNMJsonFetcherFileSystem new];
+		[UNMJsonFetcherWeb new];
 	
 	_appLayer = [[UNMAppLayer alloc] initWithJsonFetcher:jsonFetcher];
 	

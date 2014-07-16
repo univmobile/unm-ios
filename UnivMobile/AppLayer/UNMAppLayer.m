@@ -180,6 +180,8 @@
 		_regionsData = regionsData;
 		
 		_regionsData.refreshedAt = [NSDate date];
+
+		[self invokeCallbacksForSelector:@selector(refreshRegionsData)];
 	}
 }
 
