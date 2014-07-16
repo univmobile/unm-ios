@@ -156,6 +156,12 @@ APP_ID=`date "+%Y%m%d-%H%M%S"`
 
 git checkout "${PLIST}"
 
+if grep -q GIT_COMMIT "${PLIST}"; then
+	echo "** Error: GIT_COMMIT already present in UnivMobile-Info.plist"
+	echo "Exiting."
+	exit 1
+fi
+
 /usr/libexec/Plistbuddy -c "Add BUILD_DISPLAY_NAME string '#(test)'" "${PLIST}" 
 /usr/libexec/Plistbuddy -c "Add BUILD_ID string '${BUILD_ID}'" "${PLIST}" 
 /usr/libexec/Plistbuddy -c "Add BUILD_NUMBER string '(test)'" "${PLIST}"

@@ -45,6 +45,12 @@ rm -f build/UnivMobile.ipa
 
 git checkout "${PLIST}" # Clean up any old Build Info in UnivMobile-Info.plist
 
+if grep -q GIT_COMMIT "${PLIST}"; then
+	echo "** Error: GIT_COMMIT already present in UnivMobile-Info.plist"
+	echo "Exiting."
+	exit 1
+fi
+
 # ======== 3. SET BUILD INFO ========
 
 /usr/libexec/Plistbuddy -c "Add BUILD_DISPLAY_NAME string '${BUILD_DISPLAY_NAME}'" "${PLIST}"
