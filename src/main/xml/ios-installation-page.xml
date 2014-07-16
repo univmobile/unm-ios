@@ -16,6 +16,13 @@ UnivMobileAlpha
 <ios-installation-page>
 
 <ios-installation
+	date="2014-07-15 02:15"
+	git-commit="aadb4200c95c03e476f49f0218605173a0ee908d"
+	plistHref="https://dl.dropboxusercontent.com/s/iipolivu4zo8u8q/UnivMobile.plist"
+	build-displayName="#71"
+	label="Déploiement pour BCO"/>
+
+<ios-installation
 	date="2014-07-11 13:07"
 	git-commit="1e4ba31266c1fd2db238aa8047b0c5bfd1c27418"
 	plistHref="https://dl.dropboxusercontent.com/s/gzthvjay8b4g9f1/UnivMobile.plist"
