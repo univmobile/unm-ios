@@ -198,7 +198,7 @@
 
 // Override: UNMAppViewCallback
 - (void) callbackRefreshRegionsData {
-	
+
 	[self.tableView reloadData];
 }
 
