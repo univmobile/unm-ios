@@ -200,6 +200,12 @@
 - (void) callbackRefreshRegionsData {
 
 	[self.tableView reloadData];
+	
+	// We must reload in memory the current regionData, the old one has been flushed
+	
+	self.universitiesController.regionData = [self.appLayer.regionsData regionDataById:self.selectedRegionId];
+	
+	[self.universitiesController.tableView reloadData];
 }
 
 /*
