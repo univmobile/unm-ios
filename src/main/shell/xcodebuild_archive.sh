@@ -60,11 +60,19 @@ fi
 
 # ======== 4. UNLOCK KEYCHAIN ========
 
-security unlock-keychain -p "${KEYCHAIN_PASS}" "${KEYCHAIN}"
+if ! security unlock-keychain -p "${KEYCHAIN_PASS}" "${KEYCHAIN}"; then
+	echo "** Error: Cannot unlock-keychain ${KEYCHAIN}"
+	echo "Exiting."
+	exit 1
+fi
 
 # ======== 5. XCODEBUILD ARCHIVE ========
 
-xcodebuild -workspace UnivMobile.xcworkspace -scheme UnivMobile clean archive
+if ! xcodebuild -workspace UnivMobile.xcworkspace -scheme UnivMobile clean archive; then
+	echo "** Error: Cannot xcodebuild archive"
+	echo "Exiting."
+	exit 1
+fi
 
 # ======== 6. RETRIEVE ARCHIVE INFO ========
 
@@ -72,8 +80,10 @@ xcodebuild -workspace UnivMobile.xcworkspace -scheme UnivMobile clean archive
 
 # ======== 7. XCODEBUILD EXPORT ========
 
-xcodebuild -exportArchive -exportFormat IPA -archivePath "${ARCHIVE_PATH}" \
-  -exportPath build/UnivMobile.ipa \
-  -exportProvisioningProfile "${PROVISIONING_PROFILE}"
-  
-
+if ! xcodebuild -exportArchive -exportFormat IPA -archivePath "${ARCHIVE_PATH}" \
+  		-exportPath build/UnivMobile.ipa \
+  		-exportProvisioningProfile "${PROVISIONING_PROFILE}"; then
+	echo "** Error: Cannot xcodebuild -exportArchive"
+	echo "Exiting."
+	exit 1
+fi
