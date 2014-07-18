@@ -88,7 +88,7 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 		capabilities.setCapability(PLATFORM, "Mac");
 		capabilities.setCapability(PLATFORM_NAME, getCurrentPlatformName());
 		capabilities.setCapability(PLATFORM_VERSION,
-				getCurrentPlatformVersion());
+				EnvironmentUtils.getCurrentPlatformVersion());
 
 		capabilities.setCapability(DEVICE, "iPhone Simulator");
 		capabilities.setCapability(DEVICE_NAME, getCurrentDeviceName());
@@ -370,11 +370,6 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 	public static String getCurrentPlatformName() {
 
 		return "iOS";
-	}
-
-	public static String getCurrentPlatformVersion() {
-
-		return "7.1";
 	}
 
 	private static String currentDeviceName = "iPhone Retina (4-inch)";

@@ -133,7 +133,7 @@ class ElementCheckObserverXMLDump implements ElementCheckObserver {
 
 		final String platformName = AppiumEnabledTestDefaultEngine
 				.getCurrentPlatformName();
-		final String platformVersion = AppiumEnabledTestDefaultEngine
+		final String platformVersion = EnvironmentUtils
 				.getCurrentPlatformVersion();
 
 		dumper = XMLDumper.newXMLDumper("scenario", outFile) //
