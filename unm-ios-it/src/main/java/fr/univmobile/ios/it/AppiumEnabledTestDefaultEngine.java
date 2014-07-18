@@ -1,11 +1,11 @@
 package fr.univmobile.ios.it;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-import static fr.univmobile.ios.it.AppiumCapabilityType.APP;
-import static fr.univmobile.ios.it.AppiumCapabilityType.DEVICE;
-import static fr.univmobile.ios.it.AppiumCapabilityType.DEVICE_NAME;
-import static fr.univmobile.ios.it.AppiumCapabilityType.PLATFORM_NAME;
-import static fr.univmobile.ios.it.AppiumCapabilityType.PLATFORM_VERSION;
+import static fr.univmobile.it.commons.AppiumCapabilityType.APP;
+import static fr.univmobile.it.commons.AppiumCapabilityType.DEVICE;
+import static fr.univmobile.it.commons.AppiumCapabilityType.DEVICE_NAME;
+import static fr.univmobile.it.commons.AppiumCapabilityType.PLATFORM_NAME;
+import static fr.univmobile.it.commons.AppiumCapabilityType.PLATFORM_VERSION;
 import static org.apache.commons.lang3.CharEncoding.UTF_8;
 import static org.apache.commons.lang3.StringUtils.substringBeforeLast;
 import static org.junit.Assert.assertEquals;
@@ -34,6 +34,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebElement;
 
+import fr.univmobile.it.commons.EnvironmentUtils;
 import fr.univmobile.testutil.PropertiesUtils;
 
 final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
