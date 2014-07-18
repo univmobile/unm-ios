@@ -274,9 +274,30 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 	}
 
 	@Override
+	public RemoteWebElement findElementByName(final String name)
+			throws IOException {
+
+		try {
+
+			return (RemoteWebElement) driver.findElementByName(name);
+
+		} catch (final NoSuchElementException e) {
+
+			throw new NoSuchElementException(
+					"Could not find element for name: " + name, e);
+		}
+	}
+
+	@Override
 	public ElementChecker elementById(final String id) throws IOException {
 
 		return new WebElementChecker(id, findElementById(id));
+	}
+
+	@Override
+	public ElementChecker elementByName(final String name) throws IOException {
+
+		return new WebElementChecker("name=" + name, findElementById(name));
 	}
 
 	@Override

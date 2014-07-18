@@ -130,6 +130,12 @@ public class AppiumEnabledTestCheckerEngine extends
 	}
 
 	@Override
+	public ElementChecker elementByName(final String name) throws IOException {
+
+		return elementById("name=" + name);
+	}
+
+	@Override
 	public String getSimpleName() {
 
 		return "checker";
@@ -166,8 +172,9 @@ class ElementCheckerWithAttributes implements ElementChecker {
 
 		final String text = attributes.get("text");
 
-		observer.notifyCheck(id + ".text.shouldEqualTo: " + ref, ref.equals(text),
-				"expected: <" + ref + ">, but was: <" + text + ">");
+		observer.notifyCheck(id + ".text.shouldEqualTo: " + ref,
+				ref.equals(text), "expected: <" + ref + ">, but was: <" + text
+						+ ">");
 	}
 
 	@Override

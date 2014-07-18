@@ -18,7 +18,17 @@ abstract class AppiumEnabledTestPhasedEngine implements AppiumEnabledTestEngine 
 	public final RemoteWebElement findElementById(String id) throws IOException {
 
 		throw new IllegalStateException(
-				"Because it’s using a phased engine, a scenario test should not call findElementById().");
+				"Because it’s using a phased engine, a scenario test should not call findElementById(): "
+						+ id);
+	}
+
+	@Override
+	public final RemoteWebElement findElementByName(String name)
+			throws IOException {
+
+		throw new IllegalStateException(
+				"Because it’s using a phased engine, a scenario test should not call findElementById(): "
+						+ name);
 	}
 
 	@Override

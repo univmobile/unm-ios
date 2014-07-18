@@ -39,20 +39,35 @@ public class Scenarios001 extends AppiumEnabledTest {
 		elementById("textView-buildInfo").shouldBeHidden();
 	}
 
+	public static final int PAUSE = 2000;
+	public static final int DELAY_SCREENSHOT = 160;
+
 	@Scenario("Aller-retour sur la liste des Régions")
 	@Test
 	public void sc002() throws Exception {
 
 		takeScreenshot("home_beforeRegions.png");
 
-		pause(2000);
+		pause(PAUSE);
 
-		futureScreenshot(600, "home_swappingToRegions.png");
+		savePageSource("pageSource.xml");
+
+		futureScreenshot(DELAY_SCREENSHOT, "home_swappingToRegions.png");
 
 		elementById("button-choisirUniversité").click();
 
-		pause(2000);
+		pause(PAUSE);
 
 		takeScreenshot("regions.png");
+
+		pause(PAUSE);
+
+		futureScreenshot(DELAY_SCREENSHOT, "home_swappingFromRegions.png");
+
+		elementByName("Retour").click();
+
+		pause(PAUSE);
+
+		takeScreenshot("home_afterRegions.png");
 	}
 }
