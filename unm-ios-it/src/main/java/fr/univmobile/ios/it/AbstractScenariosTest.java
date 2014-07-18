@@ -17,6 +17,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import fr.univmobile.it.commons.EnvironmentUtils;
 import fr.univmobile.testutil.Dumper;
 import fr.univmobile.testutil.XMLDumper;
 
