@@ -218,11 +218,14 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 		final File srcFile = // ((TakesScreenshot) augmentedDriver)
 		driver.getScreenshotAs(OutputType.FILE);
 
-		final File file = new File(new File("target", "screenshots"), filename);
+		final File destFile = new File(new File("target", "screenshots"),
+				filename);
 
-		FileUtils.forceMkdir(file.getParentFile());
+		FileUtils.forceMkdir(destFile.getParentFile());
 
-		FileUtils.copyFile(srcFile, file, true);
+		FileUtils.copyFile(srcFile, destFile, true);
+
+		srcFile.delete();
 	}
 
 	@Override
