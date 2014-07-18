@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import fr.univmobile.testutil.PropertiesUtils;
+
 public class EnvironmentUtilsTest {
 
 	@Test
@@ -12,6 +14,9 @@ public class EnvironmentUtilsTest {
 		final String platformVersion = EnvironmentUtils
 				.getCurrentPlatformVersion();
 
-		assertEquals("7.1", platformVersion);
+		final String platformVersionRef = PropertiesUtils
+				.getTestProperty("ios.platformVersion.shouldBe");
+
+		assertEquals(platformVersionRef, platformVersion);
 	}
 }
