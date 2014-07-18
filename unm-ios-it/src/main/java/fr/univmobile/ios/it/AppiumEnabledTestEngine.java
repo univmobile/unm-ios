@@ -25,7 +25,11 @@ interface AppiumEnabledTestEngine {
 
 	RemoteWebElement findElementById(String id) throws IOException;
 
+	RemoteWebElement findElementByName(String name) throws IOException;
+
 	ElementChecker elementById(String id) throws IOException;
+
+	ElementChecker elementByName(String name) throws IOException;
 
 	AppiumDriver getDriver();
 

@@ -82,9 +82,22 @@ public abstract class AppiumEnabledTest implements AppiumEnabledTestEngine {
 	}
 
 	@Override
+	public final RemoteWebElement findElementByName(final String name)
+			throws IOException {
+
+		return checkedEngine().findElementByName(name);
+	}
+
+	@Override
 	public final ElementChecker elementById(final String id) throws IOException {
 
 		return checkedEngine().elementById(id);
+	}
+
+	@Override
+	public final ElementChecker elementByName(final String name) throws IOException {
+
+		return checkedEngine().elementByName(name);
 	}
 
 	@Override

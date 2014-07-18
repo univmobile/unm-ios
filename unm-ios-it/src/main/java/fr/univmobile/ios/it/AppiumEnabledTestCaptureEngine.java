@@ -86,18 +86,23 @@ final class AppiumEnabledTestCaptureEngine extends
 	}
 
 	@Override
+	public ElementChecker elementByName(final String name) throws IOException {
+
+		return new WebElementCapturer(pw, "name=" + name,
+				defaultEngine.findElementByName(name));
+	}
+
+	@Override
 	public String getSimpleName() {
 
 		return "capture";
 	}
 
 	/*
-	@Override
-	public void clearErrors() {
-
-		// do nothing
-	}
-	*/
+	 * @Override public void clearErrors() {
+	 * 
+	 * // do nothing }
+	 */
 
 	@Override
 	public boolean hasErrors() {
@@ -110,11 +115,11 @@ final class AppiumEnabledTestCaptureEngine extends
 
 		defaultEngine.pause(ms);
 	}
-	
+
 	@Override
-	public final void futureScreenshot(final int ms, final String filename) 
-	throws IOException {
-		
+	public final void futureScreenshot(final int ms, final String filename)
+			throws IOException {
+
 		defaultEngine.futureScreenshot(ms, customizeFilename(filename));
 	}
 }
@@ -141,7 +146,8 @@ final class WebElementCapturer implements ElementChecker {
 	private final PrintWriter pw;
 
 	@Override
-	public void textShouldEqualTo(@Nullable final String ref) throws IOException {
+	public void textShouldEqualTo(@Nullable final String ref)
+			throws IOException {
 
 		pw.println("# " + id + ".text.shouldEqualTo: " + ref);
 
@@ -191,10 +197,10 @@ final class WebElementCapturer implements ElementChecker {
 
 		pw.println();
 	}
-	
+
 	@Override
 	public void click() {
-		
+
 		element.click();
 	}
 }
