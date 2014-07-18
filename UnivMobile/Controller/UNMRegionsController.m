@@ -11,6 +11,7 @@
 #import <ReactiveCocoa/ReactiveCocoa/ReactiveCocoa.h>
 #import <EXTScope.h>
 #import "UNMConstants.h"
+#import "UIBarButtonItem+UIAccessibility.h"
 
 @interface UNMRegionsController ()
 
@@ -55,6 +56,7 @@
 											  style:UIBarButtonItemStyleBordered
 											  target:nil
 											  action:nil];
+	rightBarButton.accessibilityIdentifier = @"button-retour";
 	
 	self.navigationItem.rightBarButtonItem = rightBarButton;
 	self.universitiesController.navigationItem.rightBarButtonItem = rightBarButton;
