@@ -63,6 +63,7 @@
 		DF95538F196DCF690083D61E /* UNMAppLayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DF95538E196DCF690083D61E /* UNMAppLayerTests.m */; };
 		DF9945C3196B850800AE125E /* UNMDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9945C2196B850800AE125E /* UNMDebug.m */; };
 		DF9945C6196B9DAE00AE125E /* UNMRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9945C5196B9DAE00AE125E /* UNMRuntime.m */; };
+		DFF416601978C6EB003B5D38 /* UIBarButtonItem+UIAccessibility.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF4165F1978C6EB003B5D38 /* UIBarButtonItem+UIAccessibility.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -135,6 +136,8 @@
 		DF9945C2196B850800AE125E /* UNMDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMDebug.m; path = Utilities/UNMDebug.m; sourceTree = "<group>"; };
 		DF9945C4196B9DAE00AE125E /* UNMRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMRuntime.h; path = Utilities/UNMRuntime.h; sourceTree = "<group>"; };
 		DF9945C5196B9DAE00AE125E /* UNMRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMRuntime.m; path = Utilities/UNMRuntime.m; sourceTree = "<group>"; };
+		DFF4165E1978C6EB003B5D38 /* UIBarButtonItem+UIAccessibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+UIAccessibility.h"; path = "Utilities/UIBarButtonItem+UIAccessibility.h"; sourceTree = "<group>"; };
+		DFF4165F1978C6EB003B5D38 /* UIBarButtonItem+UIAccessibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+UIAccessibility.m"; path = "Utilities/UIBarButtonItem+UIAccessibility.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +178,8 @@
 				DF9945C5196B9DAE00AE125E /* UNMRuntime.m */,
 				DF8024CC196E0FFF00852CC8 /* TestAppDelegate.h */,
 				DF8024CD196E0FFF00852CC8 /* TestAppDelegate.m */,
+				DFF4165E1978C6EB003B5D38 /* UIBarButtonItem+UIAccessibility.h */,
+				DFF4165F1978C6EB003B5D38 /* UIBarButtonItem+UIAccessibility.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -467,6 +472,7 @@
 				DF9945C3196B850800AE125E /* UNMDebug.m in Sources */,
 				DF7EC2D619657D83004730C4 /* main.m in Sources */,
 				DF7EC2DA19657D83004730C4 /* UNMAppDelegate.m in Sources */,
+				DFF416601978C6EB003B5D38 /* UIBarButtonItem+UIAccessibility.m in Sources */,
 				DF7EC31219667A7C004730C4 /* UNMHomeController.m in Sources */,
 				DF7EC3001965FF88004730C4 /* UNMConstants.m in Sources */,
 				DF8024C9196DEB3A00852CC8 /* UNMJsonSerializer.m in Sources */,
