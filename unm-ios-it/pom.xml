@@ -8,7 +8,7 @@
 		<groupId>fr.univmobile</groupId>
 		<artifactId>unm-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath/> <!-- explicitly not ../pom.xml -->
+		<relativePath /> <!-- explicitly not ../pom.xml -->
 	</parent>
 
 	<dependencies>
@@ -51,6 +51,11 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-exec</artifactId>
+			<version>1.2</version>
 		</dependency>
 	</dependencies>
 	<build>

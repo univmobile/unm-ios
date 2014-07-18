@@ -12,6 +12,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -59,6 +60,10 @@ public abstract class AbstractScenariosTest {
 			final Class<?>... classes) throws IOException {
 
 		for (final Class<?> clazz : classes) {
+
+			if (clazz.getAnnotation(Ignore.class) != null) {
+				continue;
+			}
 
 			// 1. SCENARIOS CLASS
 
@@ -128,6 +133,10 @@ public abstract class AbstractScenariosTest {
 			final String classSimpleName = clazz.getSimpleName();
 
 			for (final Method method : clazz.getMethods()) {
+
+				if (method.getAnnotation(Ignore.class) != null) {
+					continue;
+				}
 
 				final Scenario scenarioAnnotation = method
 						.getAnnotation(Scenario.class);
@@ -218,7 +227,7 @@ public abstract class AbstractScenariosTest {
 
 		engine.setPlatformName(AppiumEnabledTestDefaultEngine
 				.getCurrentPlatformName());
-		engine.setPlatformVersion(AppiumEnabledTestDefaultEngine
+		engine.setPlatformVersion(EnvironmentUtils
 				.getCurrentPlatformVersion());
 		engine.setDeviceName(deviceName);
 		engine.setScenariosClass(scenariosClass);
