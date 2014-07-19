@@ -15,8 +15,8 @@
 
 PLIST=UnivMobile/UnivMobile-Info.plist
 
-KEYCHAIN=/Users/dandriana/Library/Keychains/MyKeichain.keychain
-KEYCHAIN_PASS=`cat /Users/dandriana/.config/security-unlock-keychain-MyKeichain`
+KEYCHAIN=/Users/dandriana/Library/Keychains/MyKeychain.keychain
+KEYCHAIN_PASS=`cat /Users/dandriana/.config/security-unlock-keychain-MyKeychain`
 PROVISIONING_PROFILE=UnivMobileAlphaProfile
 
 PLATFORM_VERSION=7.1
@@ -31,8 +31,8 @@ if [ "${XCODE_VERSION}" != "Xcode 5.1.1" ]; then
 	exit 1 
 fi
 
-if [ "${HOSTNAME}" != "unm-temp2.local" ]; then
-	echo "** Hostname is not unm-temp2.local: ${HOSTNAME}"
+if [ "${HOSTNAME}" != "unm-ios7.local" ]; then
+	echo "** Hostname is not unm-ios7.local: ${HOSTNAME}"
 	echo "Exiting."
 	exit 1 
 fi
