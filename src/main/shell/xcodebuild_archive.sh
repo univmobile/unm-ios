@@ -31,8 +31,8 @@ if [ "${XCODE_VERSION}" != "Xcode 5.1.1" ]; then
 	exit 1 
 fi
 
-if [ "${HOSTNAME}" != "unm-ios7.local" ]; then
-	echo "** Hostname is not unm-ios7.local: ${HOSTNAME}"
+if [ "${HOSTNAME}" != "unm-ios7" ]; then
+	echo "** Hostname is not unm-ios7: ${HOSTNAME}"
 	echo "Exiting."
 	exit 1 
 fi
