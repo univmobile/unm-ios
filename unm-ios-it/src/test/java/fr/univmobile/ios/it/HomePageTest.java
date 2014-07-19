@@ -2,6 +2,8 @@ package fr.univmobile.ios.it;
 
 import org.junit.Test;
 
+import fr.univmobile.it.commons.AppiumEnabledTest;
+
 public class HomePageTest extends AppiumEnabledTest {
 
 	@Test
