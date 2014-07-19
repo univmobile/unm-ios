@@ -6,6 +6,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import fr.univmobile.it.commons.AbstractScenariosTest;
+import fr.univmobile.it.commons.AppiumEnabledTest;
+import fr.univmobile.it.commons.AppiumEnabledTestPhasedEngine;
+
 @RunWith(Parameterized.class)
 public class AllScenariosTest extends AbstractScenariosTest {
 
