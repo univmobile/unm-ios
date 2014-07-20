@@ -328,14 +328,14 @@ li.git-commit {
 -->
 
 <div class="nav">
-<a href="http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html">
-	UnivMobile iOS — Intégration continue
+<a href="http://univmobile.vswip.com/">
+	Jenkins — Intégration continue
 </a>
 </div>
 
 <div class="nav">
-<a href="http://univmobile.vswip.com/">
-	Jenkins — Intégration continue
+<a href="http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html">
+	UnivMobile iOS — Intégration continue
 </a>
 </div>
 
