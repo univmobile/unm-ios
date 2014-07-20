@@ -256,3 +256,4 @@ if cp -r "${APP_PATH}" "${APP_DEST}"; then
 	fi
 fi
 
+echo "Done."
