@@ -55,7 +55,9 @@ public class SimpleAppiumTest {
 			FileUtils.copyFile(file, //
 					new File("target", "testAppiumSimple.png"));
 
-			System.out.println(file.getCanonicalPath());
+			System.out.println("Deleting: " + file.getCanonicalPath() + "...");
+
+			file.delete();
 
 		} finally {
 			driver.quit();
