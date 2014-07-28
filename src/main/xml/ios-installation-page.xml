@@ -16,6 +16,13 @@ UnivMobileAlpha
 <ios-installation-page>
 
 <ios-installation
+	date="2014-07-28 11:46"
+	git-commit="460a5a645531f2fee618702cbac070f71d34b06c"
+	plistHref="https://dl.dropboxusercontent.com/s/gseps2i3dl8embd/UnivMobile.plist"
+	build-displayName="#109"
+	label="Ajout d’UDIDs de BCO et ALE"/>
+
+<ios-installation
 	date="2014-07-16 15:45"
 	git-commit="137324ff6630e1338360e1a76a024fe2317feb94"
 	plistHref="https://dl.dropboxusercontent.com/s/d54vf85khg9kq4q/UnivMobile.plist"
