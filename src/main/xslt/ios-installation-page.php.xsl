@@ -279,6 +279,9 @@ div.mention {
 td.build-displayName span.label {
 	display: none;
 }
+td.build-displayName {
+	text-align: center;
+}
 </style>
 
 <xsl:text disable-output-escaping="yes">

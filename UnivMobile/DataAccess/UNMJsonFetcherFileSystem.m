@@ -14,6 +14,7 @@
 - (id) syncFetchJsonAtURL:(NSString*)path withErrorHandler:(void(^)(NSError*))onError {
 	
 	// @"http://univmobile.vswip.com/unm-backend-mock/regions"
+	// @"https://univmobile-dev.univ-paris1.fr/json/regions"
 	
 	NSString* filePath = nil;
 	
