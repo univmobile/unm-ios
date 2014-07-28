@@ -21,7 +21,8 @@
 + (UNMRegionsData*) fetchRegionsData:(NSObject<UNMJsonFetcher>*)jsonFetcher
 					withErrorHandler:(void(^)(NSError*))onError {
 	
-	NSString* const url = @"http://univmobile.vswip.com/unm-backend-mock/regions";
+	NSString* const url = // @"http://univmobile.vswip.com/unm-backend-mock/regions";
+	@"https://univmobile-dev.univ-paris1.fr/json/regions";
 	
 	id const json = [jsonFetcher syncFetchJsonAtURL:url withErrorHandler:onError];
 
