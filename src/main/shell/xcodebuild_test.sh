@@ -84,7 +84,7 @@ rm -rf "${TEST_REPORT_REPO}"
 #
 # EDIT just use "git pull --quiet --commit --no-edit"
  
-git -b develop clone https://dandriana-jenkins@github.com/univmobile/unm-integration "${TEST_REPORT_REPO}"
+git clone -b develop https://dandriana-jenkins@github.com/univmobile/unm-integration "${TEST_REPORT_REPO}"
 
 if [ -z "${TEST_REPORT}" ]; then
   echo "** Error: TEST_REPORT must be set and must be in a git repo. e.g. ../unm-ios-test-results/data/xcodebuild-test.log"
