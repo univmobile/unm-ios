@@ -32,7 +32,7 @@
 		Integration tests for the UnivMobile iOS project.
 	</description>
 	<url>
-        http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}
+        http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}/
     </url>
 
 	<scm>
