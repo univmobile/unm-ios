@@ -65,6 +65,13 @@
 	</distributionManagement>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/doxygen</directory>
+				<targetPath>../doxygen</targetPath>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -99,7 +106,7 @@
 				<configuration>
 					<executable>doxygen</executable>
 					<arguments>
-						<argument>src/doxygen/doxygen.config</argument>
+						<argument>target/doxygen/doxygen.config</argument>
 					</arguments>
 				</configuration>
 			</plugin>
