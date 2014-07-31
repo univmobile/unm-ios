@@ -104,7 +104,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<executable>doxygen</executable>
+					<executable>${doxygen.executable}</executable>
 					<arguments>
 						<argument>target/doxygen/doxygen.config</argument>
 					</arguments>
@@ -140,5 +140,18 @@
 			</releases>
 		</repository>
 	</repositories>
+	
+	<properties>
+		<doxygen.executable>doxygen</doxygen.executable>
+	</properties>
+	
+	<profiles>
+		<profile>
+			<id>unm_ios7</id>
+			<properties>
+				<doxygen.executable>/usr/local/bin/doxygen</doxygen.executable>
+			</properties>
+		</profile>
+	</profiles>
 
 </project>
