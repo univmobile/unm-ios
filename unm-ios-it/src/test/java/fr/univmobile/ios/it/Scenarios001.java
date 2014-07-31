@@ -2,14 +2,14 @@ package fr.univmobile.ios.it;
 
 import org.junit.Test;
 
-import fr.univmobile.it.commons.AppiumEnabledTest;
+import fr.univmobile.it.commons.AppiumIOSEnabledTest;
 import fr.univmobile.it.commons.DeviceNames;
 import fr.univmobile.it.commons.Scenario;
 import fr.univmobile.it.commons.Scenarios;
 
 @Scenarios("Scénarios simples")
 @DeviceNames({ "iPhone Retina (3.5-inch)", "iPhone Retina (4-inch)" })
-public class Scenarios001 extends AppiumEnabledTest {
+public class Scenarios001 extends AppiumIOSEnabledTest {
 
 	@Scenario("Aller-retour sur la page « À Propos »")
 	@Test
