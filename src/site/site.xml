@@ -10,6 +10,11 @@
 		</menu>
 		-->
 
+		<menu name="Objective-C">
+			<item href="doxygen/html/index.html"
+				name="Doxygen" />
+		</menu>
+
 		<menu name="Screenshots">
 			<item href="scenarios.html"
 				name="Scénarios" />
