@@ -7,12 +7,7 @@
 //
 
 #import "UNMBuildInfo.h"
-
-@interface NSBundle (String)
-
-+ (NSString*) stringForKey:(NSString*)key defaultValue:(NSString*)defaultValue;
-
-@end
+#import "NSBundle+String.h"
 
 @implementation UNMBuildInfo
 
@@ -34,24 +29,13 @@
 		// e.g. @"c159768e3c52b27bb15e4b8c9d865a3debe667e0"
 		_GIT_COMMIT = [NSBundle stringForKey:@"GIT_COMMIT"
 								defaultValue:@"????????????????????????????????????????"];
+		
+		// e.g. @"https://univmobile-dev.univ-paris1.fr/json/"
+		_UNMJsonBaseURL = [NSBundle stringForKey:@"UNMJsonBaseURL"
+								defaultValue:@"???"];
 	}
 	
 	return self;
-}
-
-@end
-
-@implementation NSBundle (String)
-
-+ (NSString*) stringForKey:(NSString*)key defaultValue:(NSString*)defaultValue {
-	
-	NSBundle* const mainBundle = [NSBundle mainBundle];
-	
-	id object = [mainBundle objectForInfoDictionaryKey:key];
-	
-	if (!object) return defaultValue;
-	
-	return [NSString stringWithFormat:@"%@", object];
 }
 
 @end
