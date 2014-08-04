@@ -16,6 +16,10 @@
 			<groupId>fr.univmobile</groupId>
 			<artifactId>unm-it-commons</artifactId>
 		</dependency>	
+		<dependency>
+			<groupId>fr.univmobile</groupId>
+			<artifactId>unm-ios</artifactId>
+		</dependency>	
 	</dependencies>
 
 	<build>
