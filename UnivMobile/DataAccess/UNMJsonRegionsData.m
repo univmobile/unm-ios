@@ -24,12 +24,22 @@
 
 @implementation UNMJsonRegionsData
 
+- (instancetype) init {
+	
+	NSLog(@"IllegalStateException: UNMJsonRegionsData.init()");
+	
+	@throw [NSException
+			exceptionWithName:@"IllegalStateException"
+			reason:@"init() should not be called"
+			userInfo:nil];
+}
+
 - (instancetype) initWithJSONBaseURL:(NSString*)jsonBaseURL {
 	
 	self = [super init];
 	
 	if (self) {
-		
+
 		self.jsonBaseURL = jsonBaseURL;
 	}
 	
@@ -43,9 +53,11 @@
 	// @"https://univmobile-dev.univ-paris1.fr/json/regions";
 	[self.jsonBaseURL stringByAppendingString:@"regions"];
 	
-	NSLog(@"url: %@", url);
+	// NSLog(@"fetchRegionsData:url: %@", url);
 	
 	id const json = [jsonFetcher syncFetchJsonAtURL:url withErrorHandler:onError];
+
+	// NSLog(@"fetchRegionsData -> json: %@", json);
 
 	if (!json) return nil; // Error is already handled by callback
 	
@@ -62,6 +74,8 @@
 		return nil;
 	}
 	
+	// NSLog(@"fetchRegionsData:regionsData: %@", regionsData);
+	
 	if (!regionsData) {
 		
 		NSLog(@"Error: regionsData == nill");
@@ -75,9 +89,12 @@
 		
 		NSString* const universitiesUrl = regionData.universitiesUrl;
 		
+		NSLog(@"universitiesUrl: %@", universitiesUrl);
+		
 		id const universitiesJson = [jsonFetcher syncFetchJsonAtURL:universitiesUrl withErrorHandler:onError];
 		
-		if (!universitiesJson) return nil; // Error is already handled by callback
+		// TODO continue;? return nil;? Alert?
+		if (!universitiesJson) continue; // Error is already handled by callback
 		
 		id const universitiesData = [MTLJSONAdapter modelOfClass:[UNMUniversitiesData class]
 										 fromJSONDictionary:universitiesJson

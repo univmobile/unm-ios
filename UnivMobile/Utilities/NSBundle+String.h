@@ -10,7 +10,7 @@
 
 @interface NSBundle (String)
 
-+ (NSString*) stringForKey:(NSString*)key defaultValue:(NSString*)defaultValue;
+- (NSString*) stringForKey:(NSString*)key defaultValue:(NSString*)defaultValue;
 
 @end
 

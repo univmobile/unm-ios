@@ -21,7 +21,7 @@
 @property (strong, nonatomic, readonly) UNMRegionsData* regionsData;
 @property (strong, nonatomic, readonly) UNMBuildInfo* buildInfo;
 
-- (instancetype) initWithJsonFetcher:(NSObject<UNMJsonFetcher>*) jsonFetcher;
+- (instancetype) initWithBundle:(NSBundle*)bundle jsonFetcher:(NSObject<UNMJsonFetcher>*)jsonFetcher;
 
 - (UNMRegionsData*) loadInitialRegionsData;
 

@@ -10,11 +10,12 @@
 
 @implementation NSBundle (String)
 
-+ (NSString*) stringForKey:(NSString*)key defaultValue:(NSString*)defaultValue {
+- (NSString*) stringForKey:(NSString*)key defaultValue:(NSString*)defaultValue {
 	
-	NSBundle* const mainBundle = [NSBundle mainBundle];
+//	NSBundle* const mainBundle = [NSBundle mainBundle]; // Will not work in XCTests
+//	[NSBundle bundleForClass:[self class]]; // Will not work un main project
 	
-	id object = [mainBundle objectForInfoDictionaryKey:key];
+	id object = [self objectForInfoDictionaryKey:key];
 	
 	if (!object) return defaultValue;
 	

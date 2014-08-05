@@ -18,5 +18,7 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>UNMJsonBaseURL</key>
+	<string>http://(dummy URL)/unm-backend/json/</string>
 </dict>
 </plist>
