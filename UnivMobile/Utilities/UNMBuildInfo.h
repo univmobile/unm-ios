@@ -25,4 +25,6 @@
 // e.g. @"https://univmobile-dev.univ-paris1.fr/json/"
 @property (copy, nonatomic, readonly) NSString* UNMJsonBaseURL;
 
+- (instancetype) initWithBundle:(NSBundle*)bundle;
+
 @end

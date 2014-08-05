@@ -43,7 +43,7 @@
 	NSObject <UNMJsonFetcher>* const jsonFetcher = // [UNMJsonFetcherFileSystem new];
 		[UNMJsonFetcherWeb new];
 	
-	_appLayer = [[UNMAppLayer alloc] initWithJsonFetcher:jsonFetcher];
+	_appLayer = [[UNMAppLayer alloc] initWithBundle:[NSBundle mainBundle] jsonFetcher:jsonFetcher];
 	
 	// NAVIGATION CONTROLLER
 	

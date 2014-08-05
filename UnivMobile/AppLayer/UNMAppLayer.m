@@ -15,6 +15,7 @@
 @interface UNMAppLayer ()
 
 @property (strong, nonatomic, readonly) NSMutableArray* callbacks; // array of NSObject*
+@property (strong, nonatomic, readonly) NSBundle* bundle;
 @property (strong, nonatomic, readonly) NSObject <UNMJsonFetcher>* jsonFetcher;
 @property (strong, nonatomic, readonly) UNMJsonRegionsData* jsonRegionsData;
 
@@ -22,20 +23,25 @@
 
 @implementation UNMAppLayer
 
-- (instancetype) initWithJsonFetcher:(NSObject<UNMJsonFetcher>*) jsonFetcher {
+- (instancetype) initWithBundle:(NSBundle*)bundle jsonFetcher:(NSObject<UNMJsonFetcher>*)jsonFetcher {
 
 	self = [super init];
 	
 	if (self) {
 		
-		_buildInfo = [UNMBuildInfo new];
+		_bundle = bundle;
+		
+		_buildInfo = [[UNMBuildInfo alloc] initWithBundle:bundle];
 		
 		[self loadInitialRegionsData];
 		
 		_callbacks = [[NSMutableArray alloc] init];
 		_jsonFetcher = jsonFetcher;
 		
-		NSString* const jsonBaseURL = [NSBundle stringForKey:@"UNMJsonBaseURL" defaultValue:nil];
+		NSString* const jsonBaseURL = [bundle stringForKey:@"UNMJsonBaseURL" defaultValue:nil];
+		// NSLog(@"bundle: %@", bundle);
+		
+		// NSLog(@"UNMAppLayer:jsonBaseURL: %@",jsonBaseURL);
 		
 		_jsonRegionsData = [[UNMJsonRegionsData alloc] initWithJSONBaseURL:jsonBaseURL];
 	}
@@ -165,6 +171,9 @@
 	// Please keep this method synchronous so automatic callbacks may occur consistently.
 	// Use the asyncXxxYyy naming pattern for asynchronous tasks.
 	
+	// NSLog(@"self.jsonRegionsData: %@", self.jsonRegionsData);
+	// NSLog(@"self.jsonFetcher: %@", self.jsonFetcher);
+	
 	UNMRegionsData* const regionsData = [self.jsonRegionsData fetchRegionsData:self.jsonFetcher
 															withErrorHandler:^(NSError* error) {
 		
@@ -180,6 +189,8 @@
 		[alert show];
 		
 	}];
+	
+	// NSLog(@"regionsData: %@",regionsData);
 	
 	if (regionsData != nil) {
 		

@@ -33,9 +33,6 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>UNMJsonBaseURL</key>
-	<!--
-	<string>https://univmobile-dev.univ-paris1.fr/json/</string>
-	-->
 	<string>http://localhost:8380/unm-backend/json/</string>
 </dict>
 </plist>
