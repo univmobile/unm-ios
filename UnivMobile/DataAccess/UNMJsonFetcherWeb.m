@@ -13,14 +13,33 @@
 
 - (id) syncFetchJsonAtURL:(NSString*)path withErrorHandler:(void(^)(NSError*))onError {
 	
-	NSURL* const url = [path hasPrefix: // @"http://univmobile.vswip.com/unm-backend-mock/"] //
-						@"https://univmobile-dev.univ-paris1.fr/json/regions"] //
-	? [NSURL URLWithString:path] //
-	: [NSURL URLWithString:[ //@"http://univmobile.vswip.com/unm-backend-mock/listUniversities_"
-							@"http://univmobile-dev.univ-paris1.fr/unm-backend-mock-0.0.2/listUniversities_"
-											 stringByAppendingString:path]];
+	//NSURL* const url = [path hasPrefix: // @"http://univmobile.vswip.com/unm-backend-mock/"] //
+	//					@"https://univmobile-dev.univ-paris1.fr/json/regions"] //
+	//? [NSURL URLWithString:path] //
+	//: [NSURL URLWithString:[ //@"http://univmobile.vswip.com/unm-backend-mock/listUniversities_"
+	//						@"http://univmobile-dev.univ-paris1.fr/unm-backend-mock-0.0.2/listUniversities_"
+	//										 stringByAppendingString:path]];
 
+	NSURL* const url = [NSURL URLWithString:path];
+	
 	NSLog(@"syncFetchJsonAtURL(Web):%@...", url);
+	
+	if (!url) {
+		
+		NSLog(@"Error: no URL");
+		
+		NSDictionary* const userInfo = @{
+										 NSLocalizedDescriptionKey: NSLocalizedString(@"Le rapatriement des données a échoué.", nil),
+										 NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"L’URL JSON est inconnue.", nil),
+										 NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Contactez l’administrateur.", nil)
+										 };
+		
+		if (onError) onError([NSError errorWithDomain:@"UnivMobile"
+												 code:-10
+											 userInfo:userInfo]);
+		
+		return nil;
+	}
 	
 	NSError* error = nil;
 	

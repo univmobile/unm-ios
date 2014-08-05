@@ -12,7 +12,9 @@
 
 @interface UNMJsonRegionsData : NSObject
 
-+ (UNMRegionsData*) fetchRegionsData:(NSObject<UNMJsonFetcher>*)jsonFetcher
+- (instancetype) initWithJSONBaseURL:(NSString*)jsonBaseURL;
+
+- (UNMRegionsData*) fetchRegionsData:(NSObject<UNMJsonFetcher>*)jsonFetcher
 					withErrorHandler:(void(^)(NSError*))onError;
 
 @end
