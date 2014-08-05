@@ -138,7 +138,7 @@
 	const UNMBuildInfo* const buildInfo = self.appLayer.buildInfo;
 	
 	self.aboutTextView.text = [NSString stringWithFormat:
-							   @"\nUnivMobile\n\n©2014 UNPIdF\n\nBuild %@ — %@\n\n\nhttps://github.com/univmobile/unm-ios\n\n%@",
+							   @"\nUnivMobile\n\n©2014 UNPIdF\n\nBuild %@ — %@\n\nJSON: %@\n\nGitHub: https://github.com/univmobile/unm-ios\n\n%@",
 							   buildInfo.BUILD_DISPLAY_NAME,
 							   [[[[[buildInfo.BUILD_ID
 									stringByReplacingCharactersInRange:NSMakeRange(4, 1) withString:@"/"]
@@ -146,6 +146,7 @@
 								 stringByReplacingCharactersInRange:NSMakeRange(10, 1) withString:@" "]
 								 stringByReplacingCharactersInRange:NSMakeRange(13, 1) withString:@":"]
 								stringByReplacingCharactersInRange:NSMakeRange(16, 3) withString:@""],
+							   buildInfo.UNMJsonBaseURL,
 							   buildInfo.GIT_COMMIT
 							   ];
 	self.aboutTextView.textColor = [UIColor blackColor];//[UNMConstants RGB_79b8d9];

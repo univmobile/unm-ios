@@ -10,11 +10,13 @@
 #import "UNMInitialRegionsData.h"
 #import "UNMJsonRegionsData.h"
 #import "UNMJsonFetcher.h"
+#import "NSBundle+String.h"
 
 @interface UNMAppLayer ()
 
 @property (strong, nonatomic, readonly) NSMutableArray* callbacks; // array of NSObject*
 @property (strong, nonatomic, readonly) NSObject <UNMJsonFetcher>* jsonFetcher;
+@property (strong, nonatomic, readonly) UNMJsonRegionsData* jsonRegionsData;
 
 @end
 
@@ -32,6 +34,10 @@
 		
 		_callbacks = [[NSMutableArray alloc] init];
 		_jsonFetcher = jsonFetcher;
+		
+		NSString* const jsonBaseURL = [NSBundle stringForKey:@"UNMJsonBaseURL" defaultValue:nil];
+		
+		_jsonRegionsData = [[UNMJsonRegionsData alloc] initWithJSONBaseURL:jsonBaseURL];
 	}
 	
 	return self;
@@ -159,7 +165,7 @@
 	// Please keep this method synchronous so automatic callbacks may occur consistently.
 	// Use the asyncXxxYyy naming pattern for asynchronous tasks.
 	
-	UNMRegionsData* const regionsData = [UNMJsonRegionsData fetchRegionsData:self.jsonFetcher
+	UNMRegionsData* const regionsData = [self.jsonRegionsData fetchRegionsData:self.jsonFetcher
 															withErrorHandler:^(NSError* error) {
 		
 		UIAlertView* alert = [[UIAlertView alloc]
