@@ -129,7 +129,7 @@ BUILD_OPTS="-workspace UnivMobile.xcworkspace \
   -sdk iphonesimulator${PLATFORM_VERSION} \
   -destination OS=${PLATFORM_VERSION},name=\"iPhone Retina (4-inch)\""
 BUILD_CMD="/usr/bin/xcodebuild clean build ${BUILD_OPTS}"  
-TEST_CMD="/usr/bin/xcodebuild test ${BUILD_OPTS}"
+TEST_CMD="/usr/bin/xcodebuild clean test ${BUILD_OPTS}"
 
 # ======== 3. TEST REPORT INITIALIZATION ========
 
@@ -186,7 +186,8 @@ RET=$?
 if [ "${RET}" -ne 0 ]; then
 
   echo "** Error: \"xcodebuild clean build\" failed with return code: ${RET}" | tee -a "${TEST_REPORT}"
-
+  exit 1
+  
 else
 
   echo >> "${TEST_REPORT}"
