@@ -177,9 +177,9 @@ echo "${BUILD_CMD}"
 echo "${BUILD_CMD}" > "${CMD_FILE}"    
 echo "${BUILD_CMD}" >> "${BUILD_LOG}"
 
-# "${CMD_FILE}" >> "${TEST_REPORT}" 2>&1 // xcodebuild clean build
+# "${CMD_FILE}" >> "${TEST_REPORT}" 2>&1 # xcodebuild clean build
 
-"${CMD_FILE}" >> "${BUILD_LOG}" 2>&1 // xcodebuild clean build
+"${CMD_FILE}" >> "${BUILD_LOG}" 2>&1 # xcodebuild clean build
 
 RET=$?
 
@@ -201,7 +201,7 @@ else
   echo "${TEST_CMD}" > "${CMD_FILE}"    
   echo "${TEST_CMD}" >> "${BUILD_LOG}"
 
-  "${CMD_FILE}" >> "${TEST_REPORT}" 2>&1 // xcodebuild test
+  "${CMD_FILE}" >> "${TEST_REPORT}" 2>&1 # xcodebuild test
 
 fi
 
