@@ -1,7 +1,11 @@
 package fr.univmobile.ios.it;
 
+import java.io.File;
+
+import org.junit.Before;
 import org.junit.Test;
 
+import fr.univmobile.backend.it.TestBackend;
 import fr.univmobile.it.commons.AppiumIOSEnabledTest;
 import fr.univmobile.it.commons.DeviceNames;
 import fr.univmobile.it.commons.Scenario;
@@ -10,6 +14,16 @@ import fr.univmobile.it.commons.Scenarios;
 @Scenarios("Scénarios simples")
 @DeviceNames({ "iPhone Retina (3.5-inch)", "iPhone Retina (4-inch)" })
 public class Scenarios001 extends AppiumIOSEnabledTest {
+
+	@Before
+	public void setUpData() throws Exception {
+
+		// "/tmp/unm-mobileweb/dataDir"
+		final String dataDir = TestBackend.readBackendAppDataDir(new File(
+				"target", "unm-backend-app/WEB-INF/web.xml"));
+
+		TestBackend.setUpData("001", new File(dataDir));
+	}
 
 	@Scenario("Aller-retour sur la page « À Propos »")
 	@Test
