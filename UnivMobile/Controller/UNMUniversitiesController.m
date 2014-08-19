@@ -39,8 +39,11 @@
 
 // Override: UIViewController
 - (void)viewDidLoad {
+
     [super viewDidLoad];
     
+	self.tableView.accessibilityIdentifier = @"table-universities";
+
 	self.view.backgroundColor = [UNMConstants RGB_9bc9e1];
 
     // Preserve selection between presentations.
@@ -106,6 +109,14 @@
 	const UNMUniversityData* const universityData = [self.regionData.universities objectAtIndex:row];
 	
 	const BOOL isSelected = [universityData.id isEqualToString:self.selectedUniversityId];
+	
+	// For details, see:
+	// https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/iPhoneAccessibility/Making_Application_Accessible/Making_Application_Accessible.html
+	//
+	cell.isAccessibilityElement = NO; // Important.
+	cell.textLabel.isAccessibilityElement = YES;
+	cell.textLabel.accessibilityElementsHidden = NO;
+	cell.textLabel.accessibilityIdentifier = [@"table-universities-" stringByAppendingString:universityData.id];
 
 	if (isSelected) {
 		cell.backgroundColor = [UNMConstants RGB_79b8d9];

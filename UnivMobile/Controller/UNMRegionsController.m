@@ -44,6 +44,8 @@
 	
     [super viewDidLoad];
 	
+	self.tableView.accessibilityIdentifier = @"table-regions";
+	
 	self.view.backgroundColor = [UNMConstants RGB_9bc9e1];
     
     // Preserve selection between presentations.
@@ -125,13 +127,21 @@
 	const UNMRegionData* const regionData = [self.appLayer.regionsData regionDataAtIndex:row];
 
 	const BOOL isSelected = [regionData.id isEqualToString:self.selectedRegionId];
+	
+	// For details, see:
+	// https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/iPhoneAccessibility/Making_Application_Accessible/Making_Application_Accessible.html
+	//
+	cell.isAccessibilityElement = NO; // Important.
+	cell.textLabel.isAccessibilityElement = YES;
+	cell.textLabel.accessibilityElementsHidden = NO;
+	cell.textLabel.accessibilityIdentifier = [@"table-regions-" stringByAppendingString:regionData.id];
 
 	if (isSelected) {
 		cell.backgroundColor = [UNMConstants RGB_79b8d9];
 	} else {
 		cell.backgroundColor = [UNMConstants RGBA_79b8d9];
 	}
-
+	
 	cell.textLabel.textColor = [UIColor blackColor];
 	cell.detailTextLabel.textColor = [UIColor redColor];
 	
