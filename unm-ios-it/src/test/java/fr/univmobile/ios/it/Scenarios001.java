@@ -3,6 +3,7 @@ package fr.univmobile.ios.it;
 import java.io.File;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import fr.univmobile.backend.it.TestBackend;
@@ -69,7 +70,7 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		pause(PAUSE);
 
-		savePageSource("pageSource.xml");
+		savePageSource("homeSource.xml");
 
 		futureScreenshot(DELAY_SCREENSHOT, "home_swappingToRegions.png");
 
@@ -78,6 +79,8 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		pause(PAUSE);
 
 		takeScreenshot("regions.png");
+
+		savePageSource("regionsSource.xml");
 
 		pause(PAUSE);
 
@@ -88,5 +91,37 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		pause(PAUSE);
 
 		takeScreenshot("home_afterRegions.png");
+	}
+	
+	@Scenario("Sélection d’une université")
+	@Test
+	@Ignore
+	public void sc003() throws Exception {
+
+		takeScreenshot("home_beforeRegions.png");
+
+		pause(PAUSE);
+
+		// savePageSource("pageSource.xml");
+
+		futureScreenshot(DELAY_SCREENSHOT, "home_swappingToRegions.png");
+
+		elementById("button-choisirUniversité").click();
+
+		pause(PAUSE);
+
+		takeScreenshot("regions.png");
+
+		savePageSource("regionsSource.xml");
+		
+		pause(PAUSE);
+
+		//futureScreenshot(DELAY_SCREENSHOT, "home_swappingFromRegions.png");
+
+		//elementByName("Retour").click();
+
+		//pause(PAUSE);
+
+		//takeScreenshot("home_afterRegions.png");
 	}
 }
