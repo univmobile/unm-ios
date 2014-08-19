@@ -23,7 +23,7 @@ NSString* _accessibilityIdentifier;
 // Override: UIAccessibilityIdentification
 - (void) setAccessibilityIdentifier:(NSString*)accessibilityIdentifier {
 	
-	NSLog(@"setacc: %@", accessibilityIdentifier);
+	// NSLog(@"setacc: %@", accessibilityIdentifier);
 	
 	//self.title=@"toto";
 	
