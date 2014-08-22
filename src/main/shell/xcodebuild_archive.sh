@@ -45,6 +45,10 @@ rm -f build/UnivMobile.ipa
 
 git checkout "${PLIST}" # Clean up any old Build Info in UnivMobile-Info.plist
 
+if test -f target/UnivMobile-Info.plist; then
+	cp target/UnivMobile-Info.plist UnivMobile/
+fi
+
 if grep -q GIT_COMMIT "${PLIST}"; then
 	echo "** Error: GIT_COMMIT already present in UnivMobile-Info.plist"
 	echo "Exiting."
