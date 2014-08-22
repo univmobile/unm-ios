@@ -15,6 +15,22 @@ UnivMobileAlpha
 
 <ios-installation-page>
 
+https://www.dropbox.com/s//UnivMobile.plist
+
+<ios-installation
+	date="2014-08-22 13:57"
+	git-commit="2261a886b737c077aa878cf8fa20f4019fc60a9c"
+	plistHref="https://dl.dropboxusercontent.com/s/kigwgat7p1x7pmw/UnivMobile.plist"
+	build-displayName="#151"
+	label="Fix: jsonBaseURL=dev"/>
+
+<ios-installation
+	date="2014-08-22 11:31"
+	git-commit="49519c24a84d7ad991433c6cb6580141aede5927"
+	plistHref="https://dl.dropboxusercontent.com/s/ofnmxq4b2ks12tv/UnivMobile.plist"
+	build-displayName="#141"
+	label="Ajout d’UDID de CRE"/>
+
 <ios-installation
 	date="2014-07-28 16:30"
 	git-commit="e56987ada044f659f726deda90a078a191ce0f03"
