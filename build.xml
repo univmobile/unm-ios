@@ -15,4 +15,19 @@
 		
 	</target>
 
+	<property name="jsonBaseURL" value="http://localhost:8380/unm-backend/json/"/>
+
+	<target name="update-plist">
+	
+		<xslt style="src/main/xslt/update_plist.xsl"
+				in="UnivMobile/UnivMobile-Info.plist"
+				out="target/UnivMobile-Info.plist">
+			<param name="jsonBaseURL" expression="${jsonBaseURL}"/>
+		</xslt>
+		
+		<copy file="target/UnivMobile-Info.plist"
+			tofile="UnivMobile/UnivMobile-Info.plist"/>
+
+	</target>	
+	
 </project>
