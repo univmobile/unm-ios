@@ -25,7 +25,8 @@
 			<param name="jsonBaseURL" expression="${jsonBaseURL}"/>
 		</xslt>
 		
-		<copy file="target/UnivMobile-Info.plist"
+		<copy overwrite="true"
+			file="target/UnivMobile-Info.plist"
 			tofile="UnivMobile/UnivMobile-Info.plist"/>
 
 	</target>	
