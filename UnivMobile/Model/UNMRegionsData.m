@@ -120,7 +120,7 @@
 	// add: [super JSONKeyPathsByPropertyKey];
 	
 	[map addEntriesFromDictionary:@{
-									@"regions": @"region"
+									@"regions": @"regions"
 									}];
 	
 	return map;
