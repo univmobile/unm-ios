@@ -25,9 +25,21 @@
 			<param name="jsonBaseURL" expression="${jsonBaseURL}"/>
 		</xslt>
 		
+		<loadfile property="targetPlist"
+			srcFile="target/UnivMobile-Info.plist"
+			encoding="UTF-8"/>
+			
+		<echo>targetPlist:${targetPlist}</echo>
+      
 		<copy overwrite="true"
 			file="target/UnivMobile-Info.plist"
 			tofile="UnivMobile/UnivMobile-Info.plist"/>
+		
+		<loadfile property="plist"
+			srcFile="UnivMobile/UnivMobile-Info.plist"
+			encoding="UTF-8"/>
+			
+		<echo>plist:${plist}</echo>
 
 	</target>	
 	
