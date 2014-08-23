@@ -209,6 +209,7 @@
 	self.aboutCloseButton = [[UIButton alloc] initWithFrame:CGRectMake(
 																	   120.0, self.screenMiddle + 126.0, 80.0, 20.0)
 							 ];
+	self.aboutCloseButton.accessibilityIdentifier = @"button-okCloseAbout";
 	
 	[self.aboutCloseButton setTitle:@"OK" forState:UIControlStateNormal];
 	

@@ -58,6 +58,51 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		elementById("textView-buildInfo").shouldBeHidden();
 	}
 
+	@Scenario("Recharger les données")
+	@Test
+	public void sc004() throws Exception {
+
+		takeScreenshot("home.png");
+
+		// Don’t ask me why running only one swipe doesn’t work.
+
+		swipe(80, 168, 77, 414, 800);
+		swipe(80, 168, 77, 414, 800);
+		swipe(80, 168, 77, 414, 800);
+
+		takeScreenshot("about1.png");
+
+		elementById("button-dataRefresh").click();
+
+		pause(PAUSE);
+
+		takeScreenshot("about2.png");
+
+		elementById("button-okCloseAbout").click();
+
+		pause(PAUSE);
+
+		takeScreenshot("home2.png");
+
+		elementById("button-choisirUniversité").click();
+
+		pause(PAUSE);
+
+		takeScreenshot("regions.png");
+		
+		elementById("table-regions-bretagne").click(); // Bretagne
+
+		pause(PAUSE);
+
+		takeScreenshot("universities.png");
+		
+		elementById("table-universities-rennes1").click(); // Univ. de Rennes 1
+
+		pause(PAUSE);
+
+		takeScreenshot("home_afterUniversities.png");
+	}
+
 	public static final int PAUSE = 2000;
 	public static final int DELAY_SCREENSHOT = 160;
 
@@ -116,7 +161,7 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		futureScreenshot(DELAY_SCREENSHOT, "regions_swappingToUniversities.png");
 		
-		elementById("table-regions-unrpcl").click();
+		elementById("table-regions-unrpcl").click(); // Limousin/Poitou-Ch.
 
 		pause(PAUSE);
 
@@ -126,7 +171,7 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		futureScreenshot(DELAY_SCREENSHOT, "universities_swappingToHome.png");
 		
-		elementById("table-universities-ul").click();
+		elementById("table-universities-ul").click(); // Université de Limoges
 
 		pause(PAUSE);
 
