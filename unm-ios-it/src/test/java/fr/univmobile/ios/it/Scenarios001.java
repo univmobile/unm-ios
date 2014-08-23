@@ -20,7 +20,7 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		// "/tmp/unm-mobileweb/dataDir"
 		final String dataDir = TestBackend.readBackendAppDataDir(new File(
-				"target", "unm-backend-app/WEB-INF/web.xml"));
+				"target", "unm-backend-app-noshib/WEB-INF/web.xml"));
 
 		TestBackend.setUpData("001", new File(dataDir));
 	}
@@ -89,13 +89,13 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		pause(PAUSE);
 
 		takeScreenshot("regions.png");
-		
+
 		elementById("table-regions-bretagne").click(); // Bretagne
 
 		pause(PAUSE);
 
 		takeScreenshot("universities.png");
-		
+
 		elementById("table-universities-rennes1").click(); // Univ. de Rennes 1
 
 		pause(PAUSE);
@@ -160,7 +160,7 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		// pause(PAUSE); // ?
 
 		futureScreenshot(DELAY_SCREENSHOT, "regions_swappingToUniversities.png");
-		
+
 		elementById("table-regions-unrpcl").click(); // Limousin/Poitou-Ch.
 
 		pause(PAUSE);
@@ -170,7 +170,7 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		savePageSource("universitiesSource.xml");
 
 		futureScreenshot(DELAY_SCREENSHOT, "universities_swappingToHome.png");
-		
+
 		elementById("table-universities-ul").click(); // Université de Limoges
 
 		pause(PAUSE);
