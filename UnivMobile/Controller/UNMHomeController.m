@@ -175,7 +175,8 @@
 
 	self.aboutDataRefreshButton = [[UIButton alloc] initWithFrame:CGRectMake(
 																	   15.0, self.screenMiddle + 40.0, 290.0, 20.0)];
-
+	self.aboutDataRefreshButton.accessibilityIdentifier = @"button-dataRefresh";
+	
 	// self.aboutDataRefreshButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
 	
 	// self.aboutDataRefreshButton.backgroundColor = [UIColor redColor];
