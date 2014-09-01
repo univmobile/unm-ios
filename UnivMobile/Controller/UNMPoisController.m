@@ -31,6 +31,8 @@
 		_appLayer = appLayer;
 		
 		[self.appLayer addCallback:self];
+		
+		self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"List" image:NULL tag:1];
     }
 	
     return self;

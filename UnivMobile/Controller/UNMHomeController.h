@@ -15,6 +15,6 @@
 
 - (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer
 						  regionsNavView:(UIView*)regionsNavView
-					  poisNavView:(UIView*)poisNavView;
+					  poisNavController:(UIViewController*)poisNavController;
 
 @end
