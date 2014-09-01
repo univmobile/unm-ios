@@ -75,7 +75,7 @@
 	
     self.window.rootViewController = [[UNMHomeController alloc] initWithAppLayer:_appLayer
 																		 regionsNavView:self.regionsNavController.view
-																	 poisNavView:self.poisNavController.view
+																	 poisNavController:self.poisNavController
 									  ];
 	
 	self.window.backgroundColor = [UNMConstants RGB_79b8d9]; // This background will show during animations
