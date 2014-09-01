@@ -13,14 +13,17 @@
 #import "UNMRegionsController.h"
 #import "UNMUniversitiesController.h"
 #import "UNMPoisController.h"
+#import "UNMMapController.h"
 #import "UNMDebug.h"
 #import "UNMJsonFetcher.h"
 #import "UNMJsonFetcherFileSystem.h"
 #import "UNMJsonFetcherWeb.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface UNMAppDelegate ()
 
 @property (strong, nonatomic, readonly) UNMAppLayer* appLayer;
+@property (nonatomic, strong) UITabBarController* tabBarController;
 
 @end
 
@@ -39,6 +42,8 @@
 	
 //#endif
 	
+	[GMSServices provideAPIKey:@"AIzaSyCqH7d3P6A8VLeUgI9m69PougPACFOKSZk"];
+	
 	// APPLICATION LAYER
 	
 	NSObject <UNMJsonFetcher>* const jsonFetcher = // [UNMJsonFetcherFileSystem new];
@@ -46,7 +51,7 @@
 	
 	_appLayer = [[UNMAppLayer alloc] initWithBundle:[NSBundle mainBundle] jsonFetcher:jsonFetcher];
 	
-	// NAVIGATION CONTROLLER
+	// NAVIGATION CONTROLLER: REGIONS
 	
 	UNMUniversitiesController* const universitiesController = [[UNMUniversitiesController alloc]
 															   initWithAppLayer:_appLayer
@@ -60,14 +65,22 @@
 	_regionsNavController = [[UINavigationController alloc]
 						  initWithRootViewController:regionsController];
 
-	// NAVIGATION CONTROLLER 2
+	// NAVIGATION CONTROLLER: POIS
 	
 	UNMPoisController* const poisController = [[UNMPoisController alloc]
 															   initWithAppLayer:_appLayer
 															   style:UITableViewStylePlain];
 	
+	UNMMapController* const mapController = [[UNMMapController alloc]
+											   initWithAppLayer:_appLayer];
+	
+	self.tabBarController = [[UITabBarController alloc] init];
+	
+	self.tabBarController.viewControllers = [NSArray arrayWithObjects:poisController, mapController, nil];
+	
 	_poisNavController = [[UINavigationController alloc]
-					  initWithRootViewController:poisController];
+					  //initWithRootViewController:poisController];
+						  initWithRootViewController:self.tabBarController];
 
 	// WINDOW
 	
