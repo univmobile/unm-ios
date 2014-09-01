@@ -11,6 +11,7 @@
 #import <EXTScope.h>
 #import "UIBarButtonItem+UIAccessibility.h"
 #import "UNMConstants.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface UNMDetail : NSObject
 
@@ -43,6 +44,7 @@
 @interface UNMDetailsController ()
 
 @property (strong, nonatomic) NSMutableArray* details; // Array of NSDetail*
+@property (strong, nonatomic) GMSMapView* mapView;
 
 @end
 
@@ -118,6 +120,28 @@
 		
 		return [RACSignal empty];
 	}];
+	
+	// GOOGLE MAP
+	
+	const CGFloat ZOOM = 16.0;
+	
+	GMSCameraPosition* const camera = [GMSCameraPosition cameraWithLatitude:-33.868
+																  longitude:151.2086
+																	   zoom:ZOOM];
+	
+	GMSMapView* const mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+	
+	//mapView.userInteractionEnabled = YES;
+	
+	self.mapView = mapView;
+	
+	const CGRect frame = self.view.window.frame;
+	
+	mapView.frame = CGRectMake(0.0, 0.0, frame.size.width, 80.0);
+	
+	//self.view = mapView;
+	
+	//[self.view addSubview:mapView];
 }
 
 // Override
@@ -172,17 +196,46 @@
 }
 
 // Override: UITableViewDataSource
+- (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath {
+	
+	const NSUInteger row = indexPath.row;
+	const BOOL isMapCell = (row == [self.details count] + 1);
+	
+	if (isMapCell) return 200.0;
+	
+	return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+}
+
+// Override: UITableViewDataSource
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
 	
 	const NSUInteger row = indexPath.row;
-	
 	const BOOL isNameCell = (row == 0);
 	const BOOL isMapCell = (row == [self.details count] + 1);
-	
+	UNMDetail* const detail = isNameCell || isMapCell ? NULL : [self.details objectAtIndex:row -1];
+
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:(isMapCell?@"map":@"detail")];
 	
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:(isMapCell?UITableViewCellStyleDefault:UITableViewCellStyleSubtitle) reuseIdentifier:(isMapCell?@"map":@"detail")];
+		
+		if (isMapCell) {
+			
+			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"map"];
+			
+			self.mapView.frame = CGRectMake(0.0, 0.0, 320.0, 200.0);
+			
+			[cell.contentView addSubview:self.mapView];
+			
+			[cell setNeedsLayout];
+			
+			cell.userInteractionEnabled = YES;
+			
+		} else {
+			
+			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"detail"];
+			
+			cell.userInteractionEnabled = detail != NULL && [@"coordinates" isEqualToString:detail.id];
+		}
     }
 	
 	/*
@@ -201,8 +254,6 @@
 	cell.textLabel.isAccessibilityElement = YES;
 	cell.textLabel.accessibilityElementsHidden = NO;
 	
-	UNMDetail* const detail = isNameCell || isMapCell ? NULL : [self.details objectAtIndex:row -1];
-	
 	if (isNameCell) {
 		cell.textLabel.accessibilityIdentifier = @"table-details-name";
 	} else if (isMapCell) {
@@ -213,7 +264,7 @@
 	
 	//NSLog(@"cell.textLabel.accessibilityIdentifier: %@",cell.textLabel.accessibilityIdentifier);
 	
-	cell.userInteractionEnabled = NO;
+	//cell.userInteractionEnabled = NO;
 	
 	// cell.detailTextLabel.textColor = [UIColor redColor];
 	
@@ -233,6 +284,20 @@
 		//cell.backgroundColor = [UNMConstants RGB_9bc9e1];
 	} else if (isMapCell) {
 		//cell.textLabel.text = @"MAP";
+		//cell.contentView.
+		[self.mapView clear];
+				
+		GMSMarker* const marker = [[GMSMarker alloc] init];
+		
+		marker.position = CLLocationCoordinate2DMake(self.poi.lat, self.poi.lng);
+		// marker.title = poi.name;
+		//marker.userData = poi;
+		//marker.snippet = poi.name;
+		// marker.appearAnimation = kGMSMarkerAnimationPop;
+		marker.map = self.mapView;
+		
+		[self.mapView animateToLocation:marker.position];
+		
 	} else if (detail == NULL){
 		cell.textLabel.text = @"???";
 	} else {
@@ -245,6 +310,24 @@
 	}
 	
     return cell;
+}
+
+// Override: UITableViewDelegate
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
+	
+	const NSUInteger row = indexPath.row;
+	const BOOL isNameCell = (row == 0);
+	const BOOL isMapCell = (row == [self.details count] + 1);
+	UNMDetail* const detail = isNameCell || isMapCell ? NULL : [self.details objectAtIndex:row -1];
+
+	if (detail != NULL && [@"coordinates" isEqualToString:detail.id]) {
+		
+		const CGFloat ZOOM = 16.0;
+		
+		[self.mapView animateToLocation:CLLocationCoordinate2DMake(self.poi.lat, self.poi.lng)];
+		
+		[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	}
 }
 
 @end
