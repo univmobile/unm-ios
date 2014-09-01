@@ -32,11 +32,10 @@
 
 @property (nonatomic, strong) UIView* regionsView;
 @property (nonatomic, strong) UILabel* regionsLabel;
-@property (nonatomic, strong) UITabBarController* tabBarController;
 @property (nonatomic, strong) UIView* poisView;
 
 @property (nonatomic, weak) UIView* regionsNavView;
-@property (nonatomic, weak) UIViewController* poisNavController;
+//@property (nonatomic, weak) UIViewController* poisNavController;
 @property (nonatomic, weak) UIView* poisNavView;
 
 @end
@@ -60,7 +59,7 @@
 
 - (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer
 						  regionsNavView:(UIView*)regionsNavView
-					  poisNavController:(UIViewController*)poisNavController{
+					  poisNavView:(UIView*)poisNavView{
 	
 	self = [super init];
 	
@@ -71,8 +70,9 @@
 		[self.appLayer addCallback:self];
 		
 		self.regionsNavView = regionsNavView;
-		self.poisNavController = poisNavController;
-		self.poisNavView = poisNavController.view; // poisNavView;
+//		self.poisNavController = poisNavController;
+		self.poisNavView = // poisNavController.view; //
+		poisNavView;
 	}
 	
 	return self;
@@ -131,7 +131,7 @@
 	[[UIView alloc] initWithFrame:bounds];
 	//[[UITabBarController alloc] init];
 	self.poisView.hidden = YES;
-	self.poisView.backgroundColor = [UIColor greenColor];
+	//self.poisView.backgroundColor = [UIColor greenColor];
 	
 	//self.tabBarController.viewControllers = [NSArray arrayWithObjects:self.poisView, nil];;
 	[self.view addSubview:self.poisView];
@@ -323,13 +323,13 @@
 	self.regionsLabel.backgroundColor = [UIColor whiteColor];
 	*/
 	
-	self.tabBarController = [[UITabBarController alloc] init];
+	//self.tabBarController = [[UITabBarController alloc] init];
 	
-	self.tabBarController.viewControllers = [NSArray arrayWithObject:self.poisNavController];
+	//self.tabBarController.viewControllers = [NSArray arrayWithObject:self.poisNavController];
 	
-	//[self.poisView addSubview:self.poisNavView];
+	[self.poisView addSubview:self.poisNavView];
 	
-	[self.poisView addSubview:self.tabBarController.view];
+	//[self.poisView addSubview:self.tabBarController.view];
 	
 	//self.tabBarController.viewControllers = [NSArray arrayWithObjects:self.poisNavView, nil];
 	

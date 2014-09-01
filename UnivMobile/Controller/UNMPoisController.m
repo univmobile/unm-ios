@@ -32,8 +32,13 @@
 		
 		[self.appLayer addCallback:self];
 		
-		self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"List" image:NULL tag:1];
-    }
+		self.tabBarItem = [[UITabBarItem alloc] //initWithTitle:@"Liste"
+						   initWithTitle:NULL
+						   image:[UIImage imageNamed:@"text-list.png"] tag:1];
+//		[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:1];
+
+		self.tabBarItem.accessibilityLabel = @"Liste";
+	}
 	
     return self;
 }
@@ -47,7 +52,9 @@
 	
 	self.view.backgroundColor = [UNMConstants RGB_9bc9e1];
 	
-	self.title = @"POIs";
+	self.tabBarController.title = @"POIs";
+	//self.title = @"POIs";
+//	UITabBarSystemItem
 	
 	UIBarButtonItem* const rightBarButton = [[UIBarButtonItem alloc]
 											 initWithTitle:@"Retour"
@@ -56,7 +63,8 @@
 											 action:nil];
 	rightBarButton.accessibilityIdentifier = @"button-retour";
 	
-	self.navigationItem.rightBarButtonItem = rightBarButton;
+	//self.navigationItem.rightBarButtonItem = rightBarButton;
+	self.tabBarController.navigationItem.rightBarButtonItem = rightBarButton;
 	
 	@weakify(self)
 	
