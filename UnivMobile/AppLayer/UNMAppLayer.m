@@ -86,7 +86,7 @@
 
 - (void) goBackFromGeocampus {
 	
-	NSLog(@"AppLayer.goBackFromGeocampus...");
+	//NSLog(@"AppLayer.goBackFromGeocampus...");
 	
 	[self invokeCallbacksForSelector:@selector(goBackFromGeocampus)];
 }
@@ -164,6 +164,8 @@
 	}
 }
 
+#pragma mark - Regions
+
 - (UNMRegionsData*)loadInitialRegionsData {
 	
 	UNMRegionsData* const regionsData = [UNMInitialRegionsData loadInitialRegionsData];
@@ -212,6 +214,8 @@
 	}
 }
 
+#pragma mark - POIs
+
 - (void) refreshPoisData {
 	
 	// Please keep this method synchronous so automatic callbacks may occur consistently.
@@ -248,6 +252,21 @@
 		
 		[self invokeCallbacksForSelector:@selector(refreshPoisData)];
 	}
+}
+
+- (UNMPoiData*) poiById:(NSInteger)poiId {
+	
+	if (self.poisData == nil) return nil;
+	
+	for (UNMPoiGroupData* poiGroup in self.poisData.poiGroups) {
+		
+		for (UNMPoiData* const poi in poiGroup.pois) {
+			
+			if (poi.id == poiId) return poi;
+		}
+	}
+	
+	return nil;
 }
 
 @end
