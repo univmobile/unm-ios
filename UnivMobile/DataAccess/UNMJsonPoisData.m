@@ -79,45 +79,6 @@
 		return nil;
 	}
 	
-	for (UNMPoiGroupData* const poiGroupData in ((UNMPoisData*)poisData).poiGroups) {
-
-		// NSLog(@"poiGroup: %@", poiGroupData.groupLabel);
-		/*
-		NSString* const universitiesUrl = regionData.universitiesUrl;
-		
-		NSLog(@"universitiesUrl: %@", universitiesUrl);
-		
-		id const universitiesJson = [jsonFetcher syncFetchJsonAtURL:universitiesUrl withErrorHandler:onError];
-		
-		// TODO continue;? return nil;? Alert?
-		if (!universitiesJson) continue; // Error is already handled by callback
-		
-		id const universitiesData = [MTLJSONAdapter modelOfClass:[UNMUniversitiesData class]
-											  fromJSONDictionary:universitiesJson
-														   error:&error];
-		
-		if (error) {
-			
-			NSLog(@"Error: %@", error);
-			
-			if (onError) onError(error);
-			
-			return nil;
-		}
-		
-		if (!universitiesData) {
-			
-			NSLog(@"Error: universitiesData == nill");
-			
-			if (onError) onError([NSError errorWithDomain:@"UNMJsonRegionsData" code:3 userInfo:nil]);
-			
-			return nil;
-		}
-		
-		regionData.universities = ((UNMUniversitiesData*)universitiesData).universities;
-		 */
-	}
-	
 	return poisData;
 }
 

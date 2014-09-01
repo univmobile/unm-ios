@@ -33,6 +33,7 @@
 @property (nonatomic, strong) UIView* regionsView;
 @property (nonatomic, strong) UILabel* regionsLabel;
 @property (nonatomic, strong) UIView* poisView;
+@property (nonatomic, strong) UIView* detailsView;
 
 @property (nonatomic, weak) UIView* regionsNavView;
 //@property (nonatomic, weak) UIViewController* poisNavController;
@@ -59,7 +60,7 @@
 
 - (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer
 						  regionsNavView:(UIView*)regionsNavView
-					  poisNavView:(UIView*)poisNavView{
+					  poisNavView:(UIView*)poisNavView {
 	
 	self = [super init];
 	
@@ -451,6 +452,19 @@
 	
 	[UIView transitionFromView:self.poisView
 						toView:self.homeView
+					  duration:[UNMConstants TRANSITION_DURATION]
+					   options:UIViewAnimationOptionTransitionCrossDissolve //
+									+ UIViewAnimationOptionShowHideTransitionViews
+					completion:^(BOOL done) {
+						// nothing here
+					}];
+}
+
+// Override: UNMAppViewCallback
+- (void)callbackGoFromPoisToDetails {
+	
+	[UIView transitionFromView:self.poisView
+						toView:self.detailsView
 					  duration:[UNMConstants TRANSITION_DURATION]
 					   options:UIViewAnimationOptionTransitionCrossDissolve //
 									+ UIViewAnimationOptionShowHideTransitionViews
