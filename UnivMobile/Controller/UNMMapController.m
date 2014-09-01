@@ -15,13 +15,16 @@
 
 @interface UNMMapController ()
 
-@property (strong, nonatomic) GMSMapView* mapView;
-@property (strong, nonatomic) UIView* infoView;
-@property (strong, nonatomic) UILabel* poiNameLabel;
-@property (strong, nonatomic) UILabel* poiAddressLabel;
+@property (strong, nonatomic, readonly) GMSMapView* mapView;
+@property (strong, nonatomic, readonly) UIView* infoView;
+@property (strong, nonatomic, readonly) UILabel* poiNameLabel;
+@property (strong, nonatomic, readonly) UILabel* poiAddressLabel;
 @property (weak, nonatomic) UNMPoiData* selectedPoi;
+@property (assign, nonatomic) NSInteger selectedPoiId;
 @property (strong, nonatomic) NSMutableArray* markers; // Array of Markers
+@property (weak, nonatomic, readonly) UNMDetailsController* detailsController;
 
+//@property (assign, nonatomic) BOOL noSelectedPoi;
 @property (assign, nonatomic) BOOL tabSelected;
 
 @end
@@ -30,25 +33,30 @@
 
 @synthesize appLayer = _appLayer;
 
-- (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer {
+- (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer
+				detailsController:(UNMDetailsController*)detailsController {
 	
     self = [super init];
 	
     if (self) {
 		
 		_appLayer = appLayer;
+		_detailsController = detailsController;
 		
 		[self.appLayer addCallback:self];
 		
 		self.tabBarItem = [[UITabBarItem alloc] //initWithTitle:@"Plan"
-						   initWithTitle:NULL
+						   initWithTitle:nil
 						   image:[UIImage imageNamed:@"earth-usa.png"] tag:2];
 		
 		self.tabBarItem.accessibilityLabel = @"Plan";
 		
 		self.tabSelected = NO;
 		
-		self.selectedPoi = NULL;
+		//NSLog(@"RESET self.selectedPoi");
+		
+		self.selectedPoi = nil;
+		//self.noSelectedPoi = YES;
     }
 	
     return self;
@@ -106,7 +114,7 @@
 	
 	mapView.delegate = self;
 	
-	self.mapView = mapView;
+	_mapView = mapView;
 	
 	//self.view = mapView;
 	
@@ -120,7 +128,7 @@
 	
 	UIView* const infoView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, width, 40.0)];
 	
-	self.infoView = infoView;
+	_infoView = infoView;
 	
 	[self.view addSubview:infoView];
 	
@@ -134,7 +142,7 @@
 	
 	// POI INFO: NAME
 	 
-	self.poiNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(4.0, 11.0, 200.0, 20.0)];
+	_poiNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(4.0, 11.0, 200.0, 20.0)];
 	self.poiNameLabel.text = @"Aucun POI sélectionné";
 	self.poiNameLabel.textColor = [UIColor blackColor];
 	self.poiNameLabel.font = [UIFont boldSystemFontOfSize:18.0];
@@ -143,7 +151,7 @@
 	
 	[self.infoView addSubview:self.poiNameLabel];
 	
-	self.poiAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(4.0, 36.0, 200.0, 18.0)];
+	_poiAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(4.0, 36.0, 200.0, 18.0)];
 	self.poiAddressLabel.text = @"(Adresse)";
 	self.poiAddressLabel.textColor = [UIColor blackColor];
 	self.poiAddressLabel.font = [UIFont systemFontOfSize:14.0];
@@ -232,9 +240,13 @@
 // Override: UITabBarControllerDelegate
 - (void)tabBarController:(UITabBarController*)tabBarController didSelectViewController:(UIViewController*)viewController {
 	
-	if (viewController != self) return;
+	//NSLog(@"didSelectViewController");
 	
-	if (!self.tabSelected) {
+	if (viewController != self) return;
+
+	//NSLog(@"didSelectViewController: MAP %d", self.tabSelected);
+
+	if (!self.tabSelected || self.selectedPoi == nil) {
 		
 		self.tabSelected = YES;
 		
@@ -254,7 +266,7 @@
 
 - (void) selectPoi:(UNMPoiData*)poi {
 	
-	// NSLog(@"selectPoi: %@", poi);
+	//NSLog(@"selectPoi: nil?%d", poi == nil);
 	
 	self.poiNameLabel.text = poi.name;
 	
@@ -262,13 +274,15 @@
 	
 	self.selectedPoi = poi;
 	
+	self.selectedPoiId = poi.id;
+	
 	GMSMarker* const marker = [self markerForPoi:poi];
 	
 	//self.mapView.selectedMarker = marker;
 	
 	[self.mapView animateToLocation:marker.position];
 	
-	self.mapView.selectedMarker = marker;
+	self.mapView.selectedMarker = marker; // Show the infoWondow
 }
 
 #pragma mark - GMSMapViewDelegate
@@ -280,7 +294,7 @@
 	
 	if (mapView.selectedMarker == marker) {
 		
-		mapView.selectedMarker = NULL;
+		mapView.selectedMarker = nil; // Hide the infoWondow
 		
 		//[self showDetailsPage:poi];
 		
@@ -304,16 +318,32 @@
 
 - (void) showDetailsPage:(UNMPoiData*)poi {
 	
-	NSLog(@"DETAILS PAGE: %d", poi.id);
+	self.detailsController.poi = poi;
+	
+	@weakify(self)
+	
+	dispatch_async(dispatch_get_main_queue(), ^{
+		
+		@strongify(self)
+		
+		[self.tabBarController.navigationController pushViewController:self.detailsController.tabBarController animated:YES];
+		
+		[self.detailsController.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+	});
 }
 
 #pragma mark - Gestures
 
 - (void)clickInfoView:(UITapGestureRecognizer*)recognizer {
 
-	NSLog(@"clickInfoView");
+	// NSLog(@"clickInfoView, nil?%d", self.selectedPoi == nil);
 	
-	if (self.selectedPoi == NULL) return;
+	if (self.selectedPoi == nil) {
+		
+		self.selectedPoi = [self.appLayer poiById:self.selectedPoiId]; // After a refresh
+	
+		if (self.selectedPoi == nil) return;
+	}
 	
 	GMSMarker* const marker = [self markerForPoi:self.selectedPoi];
 	
@@ -324,6 +354,8 @@
 	} else {
 		
 		[self selectPoi:self.selectedPoi];
+		
+		self.mapView.selectedMarker = marker; // Show the infoWondow
 	}
 }
 
@@ -331,6 +363,7 @@
 
 // Override: UNMAppViewCallback
 - (void) callbackRefreshPoisData {
+	
 	
 	[self refreshMarkers];
 }
@@ -394,7 +427,7 @@
 		if (marker.userData == poi) return marker;
 	}
 	
-	return NULL;
+	return nil;
 }
 
 @end

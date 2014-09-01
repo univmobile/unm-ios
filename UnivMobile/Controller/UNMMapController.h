@@ -9,10 +9,12 @@
 @import UIKit;
 #import "UNMAppLayered.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "UNMDetailsController.h"
 
 @interface UNMMapController : UIViewController
 <UNMAppLayered, UNMAppViewCallback, UITabBarControllerDelegate, GMSMapViewDelegate>
 
-- (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer;
+- (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer
+				detailsController:(UNMDetailsController*)detailsController;
 
 @end
