@@ -165,6 +165,8 @@
 		@strongify(self)
 		
 		[self.tabBarController.navigationController pushViewController:self.detailsController.tabBarController animated:YES];
+		
+		[self.detailsController.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
 	});
 }
 
