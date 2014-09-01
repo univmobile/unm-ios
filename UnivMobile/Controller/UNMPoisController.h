@@ -8,10 +8,12 @@
 
 @import UIKit;
 #import "UNMAppLayered.h"
+#import "UNMDetailsController.h"
 
 @interface UNMPoisController : UITableViewController <UNMAppLayered, UNMAppViewCallback>
 
 - (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer
-							style:(UITableViewStyle)style;
+							style:(UITableViewStyle)style
+				detailsController:(UNMDetailsController*)detailsController;
 
 @end

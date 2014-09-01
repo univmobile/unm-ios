@@ -14,6 +14,7 @@
 #import "UNMUniversitiesController.h"
 #import "UNMPoisController.h"
 #import "UNMMapController.h"
+#import "UNMDetailsController.h"
 #import "UNMDebug.h"
 #import "UNMJsonFetcher.h"
 #import "UNMJsonFetcherFileSystem.h"
@@ -23,7 +24,8 @@
 @interface UNMAppDelegate ()
 
 @property (strong, nonatomic, readonly) UNMAppLayer* appLayer;
-@property (nonatomic, strong) UITabBarController* tabBarController;
+@property (nonatomic, strong) UITabBarController* poisTabBarController;
+@property (nonatomic, strong) UITabBarController* detailsTabBarController;
 
 @end
 
@@ -67,22 +69,33 @@
 
 	// NAVIGATION CONTROLLER: POIS
 	
+	UNMDetailsController* const detailsController = [[UNMDetailsController alloc]
+													 initWithAppLayer:_appLayer];
+	
+	self.detailsTabBarController = [[UITabBarController alloc] init];
+	
+	self.detailsTabBarController.viewControllers = [NSArray arrayWithObjects:detailsController, nil];
+	
+	//self.detailsTabBarController.delegate = detailsController;
+	
 	UNMPoisController* const poisController = [[UNMPoisController alloc]
 															   initWithAppLayer:_appLayer
-															   style:UITableViewStylePlain];
+															   style:UITableViewStylePlain
+											   detailsController:detailsController
+											   ];
 	
 	UNMMapController* const mapController = [[UNMMapController alloc]
 											   initWithAppLayer:_appLayer];
 	
-	self.tabBarController = [[UITabBarController alloc] init];
+	self.poisTabBarController = [[UITabBarController alloc] init];
 	
-	self.tabBarController.viewControllers = [NSArray arrayWithObjects:poisController, mapController, nil];
+	self.poisTabBarController.viewControllers = [NSArray arrayWithObjects:poisController, mapController, nil];
 
-	self.tabBarController.delegate = mapController;
+	self.poisTabBarController.delegate = mapController;
 	
 	_poisNavController = [[UINavigationController alloc]
 					  //initWithRootViewController:poisController];
-						  initWithRootViewController:self.tabBarController];
+						  initWithRootViewController:self.poisTabBarController];
 
 	// WINDOW
 	

@@ -15,6 +15,8 @@
 
 @interface UNMPoisController ()
 
+@property (weak, nonatomic) UNMDetailsController* detailsController;
+
 @end
 
 @implementation UNMPoisController
@@ -22,7 +24,8 @@
 @synthesize appLayer = _appLayer;
 
 - (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer
-							style:(UITableViewStyle)style {
+							style:(UITableViewStyle)style
+				detailsController:(UNMDetailsController*)detailsController{
 	
     self = [super initWithStyle:style];
 	
@@ -38,6 +41,8 @@
 //		[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:1];
 
 		self.tabBarItem.accessibilityLabel = @"Liste";
+		
+		self.detailsController = detailsController;
 	}
 	
     return self;
@@ -119,7 +124,7 @@
 	const NSUInteger section = indexPath.section;
 	const NSUInteger row = indexPath.row;
 	
-	const UNMPoiData* const poiData = [[self.appLayer.poisData poiGroupDataAtIndex:section] poiDataAtIndex:row];
+	const UNMPoiData* const poi = [[self.appLayer.poisData poiGroupDataAtIndex:section] poiDataAtIndex:row];
 	
 	// For details, see:
 	// https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/iPhoneAccessibility/Making_Application_Accessible/Making_Application_Accessible.html
@@ -127,7 +132,7 @@
 	cell.isAccessibilityElement = NO; // Important.
 	cell.textLabel.isAccessibilityElement = YES;
 	cell.textLabel.accessibilityElementsHidden = NO;
-	cell.textLabel.accessibilityIdentifier = [NSString stringWithFormat:@"table-pois-%d", poiData.id];
+	cell.textLabel.accessibilityIdentifier = [NSString stringWithFormat:@"table-pois-%d", poi.id];
 	
 	cell.textLabel.textColor = [UIColor blackColor];
 	cell.detailTextLabel.textColor = [UIColor redColor];
@@ -138,7 +143,7 @@
     
 	cell.textLabel.font = [UIFont systemFontOfSize:18.0];
 	
-	cell.textLabel.text = poiData.name;
+	cell.textLabel.text = poi.name;
 	
     return cell;
 }
@@ -149,18 +154,18 @@
 	const NSUInteger section = indexPath.section;
 	const NSUInteger row = indexPath.row;
 	
-	const UNMPoiData* const poiData = [[self.appLayer.poisData poiGroupDataAtIndex:section] poiDataAtIndex:row];
+	const UNMPoiData* const poi = [[self.appLayer.poisData poiGroupDataAtIndex:section] poiDataAtIndex:row];
 
-	/*
+	self.detailsController.poi = poi;
+	
 	@weakify(self)
 	
 	dispatch_async(dispatch_get_main_queue(), ^{
 		
 		@strongify(self)
 		
-		[self.navigationController pushViewController:self.universitiesController animated:YES];
+		[self.tabBarController.navigationController pushViewController:self.detailsController.tabBarController animated:YES];
 	});
-	 */
 }
 
 #pragma mark - AppLayer Callbacks

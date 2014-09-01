@@ -10,6 +10,8 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "UNMPoisData.h"
 #import "UNMPoiData.h"
+#import <ReactiveCocoa/ReactiveCocoa/ReactiveCocoa.h>
+#import <EXTScope.h>
 
 @interface UNMMapController ()
 
@@ -17,6 +19,8 @@
 @property (strong, nonatomic) UIView* infoView;
 @property (strong, nonatomic) UILabel* poiNameLabel;
 @property (strong, nonatomic) UILabel* poiAddressLabel;
+@property (weak, nonatomic) UNMPoiData* selectedPoi;
+@property (strong, nonatomic) NSMutableArray* markers; // Array of Markers
 
 @property (assign, nonatomic) BOOL tabSelected;
 
@@ -43,6 +47,8 @@
 		self.tabBarItem.accessibilityLabel = @"Plan";
 		
 		self.tabSelected = NO;
+		
+		self.selectedPoi = NULL;
     }
 	
     return self;
@@ -119,6 +125,12 @@
 	[self.view addSubview:infoView];
 	
 	infoView.backgroundColor = [UIColor whiteColor];
+	
+	UITapGestureRecognizer* const tapGestureRecognizer =
+	[[UITapGestureRecognizer alloc] initWithTarget:self
+											action:@selector(clickInfoView:)];
+	
+	[infoView addGestureRecognizer:tapGestureRecognizer];
 	
 	// POI INFO: NAME
 	 
@@ -248,7 +260,15 @@
 	
 	self.poiAddressLabel.text = poi.address;
 	
-	[self.mapView animateToLocation:CLLocationCoordinate2DMake(poi.lat, poi.lng)];
+	self.selectedPoi = poi;
+	
+	GMSMarker* const marker = [self markerForPoi:poi];
+	
+	//self.mapView.selectedMarker = marker;
+	
+	[self.mapView animateToLocation:marker.position];
+	
+	self.mapView.selectedMarker = marker;
 }
 
 #pragma mark - GMSMapViewDelegate
@@ -258,11 +278,53 @@
 	
 	UNMPoiData* const poi = marker.userData;
 	
-	// NSLog(@"poi: %@", poi);
+	if (mapView.selectedMarker == marker) {
+		
+		mapView.selectedMarker = NULL;
+		
+		//[self showDetailsPage:poi];
+		
+		return YES;
+	}
+	
+	// NSLog(@"poi: %d", poi.id);
 	
 	[self selectPoi:poi];
 	
-	return NO;
+	return YES;
+}
+
+// Override: GMSMapViewDelegate
+-(void)mapView:(GMSMapView*)mapView didTapInfoWindowOfMarker:(GMSMarker*)marker{
+	
+	UNMPoiData* const poi = marker.userData;
+	
+	[self showDetailsPage:poi];
+}
+
+- (void) showDetailsPage:(UNMPoiData*)poi {
+	
+	NSLog(@"DETAILS PAGE: %d", poi.id);
+}
+
+#pragma mark - Gestures
+
+- (void)clickInfoView:(UITapGestureRecognizer*)recognizer {
+
+	NSLog(@"clickInfoView");
+	
+	if (self.selectedPoi == NULL) return;
+	
+	GMSMarker* const marker = [self markerForPoi:self.selectedPoi];
+	
+	if (self.mapView.selectedMarker == marker) {
+		
+		[self showDetailsPage:self.selectedPoi];
+		
+	} else {
+		
+		[self selectPoi:self.selectedPoi];
+	}
 }
 
 #pragma mark - AppLayer Callbacks
@@ -273,6 +335,8 @@
 	[self refreshMarkers];
 }
 
+#pragma mark - Markers
+
 - (void) refreshMarkers {
 	
 	if (!self.appLayer.poisData) return;
@@ -282,6 +346,8 @@
 	// NSLog(@"Map:callbackRefreshPoisData()");
 	
 	[self.mapView clear];
+	
+	self.markers = [[NSMutableArray alloc] init];
 	
 	BOOL hasCenter = NO;
 	CLLocationDegrees centerLat = 0.0;
@@ -305,8 +371,10 @@
 			// marker.title = poi.name;
 			marker.userData = poi;
 			marker.snippet = poi.name;
-			marker.appearAnimation = kGMSMarkerAnimationPop;
+			// marker.appearAnimation = kGMSMarkerAnimationPop;
 			marker.map = self.mapView;
+			
+			[self.markers addObject:marker];
 		}
 	}
 	
@@ -317,6 +385,16 @@
 	}
 	
 	//self.mapView.
+}
+
+- (GMSMarker*)markerForPoi:(UNMPoiData*)poi {
+	
+	for (GMSMarker* const marker in self.markers) {
+		
+		if (marker.userData == poi) return marker;
+	}
+	
+	return NULL;
 }
 
 @end

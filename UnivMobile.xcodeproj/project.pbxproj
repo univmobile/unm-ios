@@ -86,6 +86,10 @@
 		DFB006CB19B412A000737FFE /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB006CA19B412A000737FFE /* OpenGLES.framework */; };
 		DFB006CD19B412A900737FFE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB006CC19B412A900737FFE /* QuartzCore.framework */; };
 		DFB006CF19B412B200737FFE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB006CE19B412B200737FFE /* SystemConfiguration.framework */; };
+		DFB006D219B4B05B00737FFE /* UNMDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB006D119B4B05B00737FFE /* UNMDetailsController.m */; };
+		DFB006D419B4C20200737FFE /* text-left.png in Resources */ = {isa = PBXBuildFile; fileRef = DFB006D319B4C20200737FFE /* text-left.png */; };
+		DFB006D619B4C23600737FFE /* document.png in Resources */ = {isa = PBXBuildFile; fileRef = DFB006D519B4C23600737FFE /* document.png */; };
+		DFB006D819B4C27400737FFE /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = DFB006D719B4C27400737FFE /* info.png */; };
 		DFBA69B3198EE9F7000B107C /* NSBundle+String.m in Sources */ = {isa = PBXBuildFile; fileRef = DFBA69B2198EE9F7000B107C /* NSBundle+String.m */; };
 		DFF416601978C6EB003B5D38 /* UIBarButtonItem+UIAccessibility.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF4165F1978C6EB003B5D38 /* UIBarButtonItem+UIAccessibility.m */; };
 /* End PBXBuildFile section */
@@ -187,6 +191,11 @@
 		DFB006CA19B412A000737FFE /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		DFB006CC19B412A900737FFE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DFB006CE19B412B200737FFE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		DFB006D019B4B05B00737FFE /* UNMDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMDetailsController.h; path = Controller/UNMDetailsController.h; sourceTree = "<group>"; };
+		DFB006D119B4B05B00737FFE /* UNMDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMDetailsController.m; path = Controller/UNMDetailsController.m; sourceTree = "<group>"; };
+		DFB006D319B4C20200737FFE /* text-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text-left.png"; sourceTree = "<group>"; };
+		DFB006D519B4C23600737FFE /* document.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = document.png; sourceTree = "<group>"; };
+		DFB006D719B4C27400737FFE /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
 		DFBA69B1198EE9F7000B107C /* NSBundle+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBundle+String.h"; path = "Utilities/NSBundle+String.h"; sourceTree = "<group>"; };
 		DFBA69B2198EE9F7000B107C /* NSBundle+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+String.m"; path = "Utilities/NSBundle+String.m"; sourceTree = "<group>"; };
 		DFF4165E1978C6EB003B5D38 /* UIBarButtonItem+UIAccessibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+UIAccessibility.h"; path = "Utilities/UIBarButtonItem+UIAccessibility.h"; sourceTree = "<group>"; };
@@ -373,6 +382,9 @@
 		DF7EC2D019657D83004730C4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DFB006D719B4C27400737FFE /* info.png */,
+				DFB006D519B4C23600737FFE /* document.png */,
+				DFB006D319B4C20200737FFE /* text-left.png */,
 				DFB006AB19B40D0800737FFE /* text-list.png */,
 				DFB006AD19B40D7500737FFE /* earth-usa.png */,
 				DF7EC2D119657D83004730C4 /* UnivMobile-Info.plist */,
@@ -429,6 +441,8 @@
 				DF7E650919B3E13B00922FFB /* UNMPoisController.m */,
 				DFB006AF19B40E6B00737FFE /* UNMMapController.h */,
 				DFB006B019B40E6B00737FFE /* UNMMapController.m */,
+				DFB006D019B4B05B00737FFE /* UNMDetailsController.h */,
+				DFB006D119B4B05B00737FFE /* UNMDetailsController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -512,9 +526,12 @@
 			files = (
 				DFB006AC19B40D0800737FFE /* text-list.png in Resources */,
 				DF7EC2D419657D83004730C4 /* InfoPlist.strings in Resources */,
+				DFB006D819B4C27400737FFE /* info.png in Resources */,
+				DFB006D419B4C20200737FFE /* text-left.png in Resources */,
 				DFB006AE19B40D7500737FFE /* earth-usa.png in Resources */,
 				DFB006B719B4121F00737FFE /* GoogleMaps.bundle in Resources */,
 				DF7EC2DC19657D83004730C4 /* Images.xcassets in Resources */,
+				DFB006D619B4C23600737FFE /* document.png in Resources */,
 				DFB006B319B4118100737FFE /* CHANGELOG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,6 +599,7 @@
 				DF8024C9196DEB3A00852CC8 /* UNMJsonSerializer.m in Sources */,
 				DF365391196DCA5E00BD98A4 /* UNMJsonRegionsData.m in Sources */,
 				DF365383196DCA4800BD98A4 /* UNMBuildInfo.m in Sources */,
+				DFB006D219B4B05B00737FFE /* UNMDetailsController.m in Sources */,
 				DF365390196DCA5E00BD98A4 /* UNMJsonFetcherWeb.m in Sources */,
 				DF9945C6196B9DAE00AE125E /* UNMRuntime.m in Sources */,
 				DF7EC31419667A7C004730C4 /* UNMUniversitiesController.m in Sources */,
