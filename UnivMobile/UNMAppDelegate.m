@@ -81,11 +81,11 @@
 	UNMPoisController* const poisController = [[UNMPoisController alloc]
 															   initWithAppLayer:_appLayer
 															   style:UITableViewStylePlain
-											   detailsController:detailsController
-											   ];
+											   detailsController:detailsController];
 	
 	UNMMapController* const mapController = [[UNMMapController alloc]
-											   initWithAppLayer:_appLayer];
+											   initWithAppLayer:_appLayer
+											 detailsController:detailsController];
 	
 	self.poisTabBarController = [[UITabBarController alloc] init];
 	
