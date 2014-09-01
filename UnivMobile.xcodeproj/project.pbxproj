@@ -38,6 +38,29 @@
 		DF417A19196DCCB200D1DD64 /* UNMJsonFetcherFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = DF365389196DCA5E00BD98A4 /* UNMJsonFetcherFileSystem.m */; };
 		DF417A1A196DCCB200D1DD64 /* UNMJsonFetcherWeb.m in Sources */ = {isa = PBXBuildFile; fileRef = DF36538B196DCA5E00BD98A4 /* UNMJsonFetcherWeb.m */; };
 		DF417A1B196DCCB200D1DD64 /* UNMJsonRegionsData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF36538D196DCA5E00BD98A4 /* UNMJsonRegionsData.m */; };
+		DF4EB92419B5212B00904FCD /* UNMCommentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4EB92319B5212B00904FCD /* UNMCommentsController.m */; };
+		DF4EB92519B5233D00904FCD /* UNMJsonPoisData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7E651219B3ECA800922FFB /* UNMJsonPoisData.m */; };
+		DF4EB92619B5233D00904FCD /* UNMPoisData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7E650C19B3E50F00922FFB /* UNMPoisData.m */; };
+		DF4EB92719B5233D00904FCD /* UNMPoiData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7E650F19B3E5DE00922FFB /* UNMPoiData.m */; };
+		DF4EB92C19B5236300904FCD /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB006BA19B4124500737FFE /* CoreData.framework */; };
+		DF4EB92D19B5239400904FCD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB006CA19B412A000737FFE /* OpenGLES.framework */; };
+		DF4EB92E19B523BB00904FCD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB006B819B4123E00737FFE /* AVFoundation.framework */; };
+		DF4EB92F19B523CA00904FCD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB006BC19B4124D00737FFE /* CoreLocation.framework */; };
+		DF4EB93019B523DA00904FCD /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB006BE19B4125600737FFE /* CoreText.framework */; };
+		DF4EB93119B523E200904FCD /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB006C019B4126000737FFE /* GLKit.framework */; };
+		DF4EB93219B523E900904FCD /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB006C219B4126800737FFE /* ImageIO.framework */; };
+		DF4EB93319B523FB00904FCD /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB006C419B4127A00737FFE /* libc++.dylib */; };
+		DF4EB93419B5240400904FCD /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB006C619B4128A00737FFE /* libicucore.dylib */; };
+		DF4EB93519B5241500904FCD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB006C819B4129600737FFE /* libz.dylib */; };
+		DF4EB93619B5241F00904FCD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB006CC19B412A900737FFE /* QuartzCore.framework */; };
+		DF4EB93719B5242600904FCD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB006CE19B412B200737FFE /* SystemConfiguration.framework */; };
+		DF4EB93819B5245600904FCD /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DFB006B619B4121F00737FFE /* GoogleMaps.bundle */; };
+		DF4EB93919B5247200904FCD /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = DFB006D719B4C27400737FFE /* info.png */; };
+		DF4EB93A19B5247200904FCD /* document.png in Resources */ = {isa = PBXBuildFile; fileRef = DFB006D519B4C23600737FFE /* document.png */; };
+		DF4EB93B19B5247200904FCD /* text-left.png in Resources */ = {isa = PBXBuildFile; fileRef = DFB006D319B4C20200737FFE /* text-left.png */; };
+		DF4EB93C19B5247200904FCD /* text-list.png in Resources */ = {isa = PBXBuildFile; fileRef = DFB006AB19B40D0800737FFE /* text-list.png */; };
+		DF4EB93D19B5247200904FCD /* earth-usa.png in Resources */ = {isa = PBXBuildFile; fileRef = DFB006AD19B40D7500737FFE /* earth-usa.png */; };
+		DF4EB93E19B524BD00904FCD /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB006B419B411B300737FFE /* GoogleMaps.framework */; };
 		DF5EDF9A196D075E00C1AE1D /* UNMRegionsData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5EDF99196D075E00C1AE1D /* UNMRegionsData.m */; };
 		DF6000311968DC7D00A72D24 /* UNMAppLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DF6000301968DC7D00A72D24 /* UNMAppLayer.m */; };
 		DF7E650A19B3E13B00922FFB /* UNMPoisController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7E650919B3E13B00922FFB /* UNMPoisController.m */; };
@@ -125,6 +148,8 @@
 		DF36538B196DCA5E00BD98A4 /* UNMJsonFetcherWeb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMJsonFetcherWeb.m; path = DataAccess/UNMJsonFetcherWeb.m; sourceTree = "<group>"; };
 		DF36538C196DCA5E00BD98A4 /* UNMJsonRegionsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMJsonRegionsData.h; path = DataAccess/UNMJsonRegionsData.h; sourceTree = "<group>"; };
 		DF36538D196DCA5E00BD98A4 /* UNMJsonRegionsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMJsonRegionsData.m; path = DataAccess/UNMJsonRegionsData.m; sourceTree = "<group>"; };
+		DF4EB92219B5212B00904FCD /* UNMCommentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMCommentsController.h; path = Controller/UNMCommentsController.h; sourceTree = "<group>"; };
+		DF4EB92319B5212B00904FCD /* UNMCommentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMCommentsController.m; path = Controller/UNMCommentsController.m; sourceTree = "<group>"; };
 		DF5EDF98196D075E00C1AE1D /* UNMRegionsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMRegionsData.h; path = Model/UNMRegionsData.h; sourceTree = "<group>"; };
 		DF5EDF99196D075E00C1AE1D /* UNMRegionsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMRegionsData.m; path = Model/UNMRegionsData.m; sourceTree = "<group>"; };
 		DF60002F1968DC7D00A72D24 /* UNMAppLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMAppLayer.h; path = AppLayer/UNMAppLayer.h; sourceTree = "<group>"; };
@@ -231,6 +256,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF4EB93E19B524BD00904FCD /* GoogleMaps.framework in Frameworks */,
+				DF4EB93719B5242600904FCD /* SystemConfiguration.framework in Frameworks */,
+				DF4EB93619B5241F00904FCD /* QuartzCore.framework in Frameworks */,
+				DF4EB93519B5241500904FCD /* libz.dylib in Frameworks */,
+				DF4EB93419B5240400904FCD /* libicucore.dylib in Frameworks */,
+				DF4EB93319B523FB00904FCD /* libc++.dylib in Frameworks */,
+				DF4EB93219B523E900904FCD /* ImageIO.framework in Frameworks */,
+				DF4EB93119B523E200904FCD /* GLKit.framework in Frameworks */,
+				DF4EB93019B523DA00904FCD /* CoreText.framework in Frameworks */,
+				DF4EB92F19B523CA00904FCD /* CoreLocation.framework in Frameworks */,
+				DF4EB92E19B523BB00904FCD /* AVFoundation.framework in Frameworks */,
+				DF4EB92D19B5239400904FCD /* OpenGLES.framework in Frameworks */,
+				DF4EB92C19B5236300904FCD /* CoreData.framework in Frameworks */,
 				DF7EC2E319657D83004730C4 /* XCTest.framework in Frameworks */,
 				DF7EC2E519657D83004730C4 /* UIKit.framework in Frameworks */,
 				DF7EC2E419657D83004730C4 /* Foundation.framework in Frameworks */,
@@ -443,6 +481,8 @@
 				DFB006B019B40E6B00737FFE /* UNMMapController.m */,
 				DFB006D019B4B05B00737FFE /* UNMDetailsController.h */,
 				DFB006D119B4B05B00737FFE /* UNMDetailsController.m */,
+				DF4EB92219B5212B00904FCD /* UNMCommentsController.h */,
+				DF4EB92319B5212B00904FCD /* UNMCommentsController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -540,6 +580,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF4EB93919B5247200904FCD /* info.png in Resources */,
+				DF4EB93A19B5247200904FCD /* document.png in Resources */,
+				DF4EB93B19B5247200904FCD /* text-left.png in Resources */,
+				DF4EB93C19B5247200904FCD /* text-list.png in Resources */,
+				DF4EB93D19B5247200904FCD /* earth-usa.png in Resources */,
+				DF4EB93819B5245600904FCD /* GoogleMaps.bundle in Resources */,
 				DF7EC2ED19657D83004730C4 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -608,6 +654,7 @@
 				DF7EC31319667A7C004730C4 /* UNMRegionsController.m in Sources */,
 				DF6000311968DC7D00A72D24 /* UNMAppLayer.m in Sources */,
 				DF7EC30919667A19004730C4 /* UNMRegionData.m in Sources */,
+				DF4EB92419B5212B00904FCD /* UNMCommentsController.m in Sources */,
 				DF7E651319B3ECA800922FFB /* UNMJsonPoisData.m in Sources */,
 				DF103EEB1969F23200AC123A /* UNMViewFx.m in Sources */,
 				DF36538F196DCA5E00BD98A4 /* UNMJsonFetcherFileSystem.m in Sources */,
@@ -618,6 +665,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF4EB92519B5233D00904FCD /* UNMJsonPoisData.m in Sources */,
+				DF4EB92619B5233D00904FCD /* UNMPoisData.m in Sources */,
+				DF4EB92719B5233D00904FCD /* UNMPoiData.m in Sources */,
 				DF9EA2711991128F0002BD3C /* NSBundle+String.m in Sources */,
 				DF8024CA196DEC3D00852CC8 /* UNMJsonSerializer.m in Sources */,
 				DF8024CB196DEC3D00852CC8 /* UNMBuildInfo.m in Sources */,
@@ -798,6 +848,7 @@
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(SRCROOT)/Pods/**",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnivMobile/UnivMobile-Prefix.pch";
@@ -824,6 +875,7 @@
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(SRCROOT)/Pods/**",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnivMobile/UnivMobile-Prefix.pch";
@@ -903,6 +955,7 @@
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(SRCROOT)/Pods/**",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnivMobile/UnivMobile-Prefix.pch";
