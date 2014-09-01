@@ -27,6 +27,8 @@
 
 - (UNMRegionsData*) loadInitialRegionsData;
 
+- (UNMPoiData*) poiById:(NSInteger)poiId;
+
 // Allow callbacks
 - (void) setSelectedRegionIdInList:(NSString*)regionId;
 
