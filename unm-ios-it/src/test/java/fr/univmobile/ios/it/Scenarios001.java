@@ -179,4 +179,43 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		savePageSource("home_afterUniversitiesSource.xml");
 	}
+
+	@Scenario("Géocampus")
+	@Test
+	public void Geocampus_000() throws Exception {
+
+		pause(PAUSE);
+		
+		takeScreenshot("home.png");
+
+		elementById("button-Géocampus").click();
+
+		pause(PAUSE);
+
+		takeScreenshot("geocampus_list.png");
+
+		elementByName("Plan").click();
+
+		pause(PAUSE);
+
+		takeScreenshot("geocampus_map.png");
+
+		// elementById("link-poiNav-3792").click(); // Cergy Pointoise
+
+		// pause(2000);
+
+		// takeScreenshot("geocampus_map_infoWindow.png");
+
+		elementById("label-poi-name").click();
+
+		pause(PAUSE);
+
+		takeScreenshot("geocampus_details.png");
+
+		elementByName("Pois").click();
+
+		pause(PAUSE);
+
+		takeScreenshot("geocampus_back_to_map.png");
+	}
 }
