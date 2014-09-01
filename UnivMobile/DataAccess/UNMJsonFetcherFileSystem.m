@@ -15,7 +15,7 @@
 	
 	if (!path) @throw [NSException
 					   exceptionWithName:@"NullPointerException"
-					   reason:@"syncFetchJsonAtURL(path = null)"
+					   reason:@"syncFetchJsonAtURL(path = nil)"
 					   userInfo:nil];
 
 	// @"http://univmobile.vswip.com/unm-backend-mock/regions"
