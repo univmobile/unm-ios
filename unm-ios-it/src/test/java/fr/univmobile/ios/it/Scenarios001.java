@@ -194,7 +194,7 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		takeScreenshot("geocampus_list.png");
 
-		elementByName("Plan").click();
+		elementById("Plan").click();
 
 		pause(PAUSE);
 
@@ -212,7 +212,7 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		takeScreenshot("geocampus_details.png");
 
-		elementByName("Pois").click();
+		elementById("Pois").click();
 
 		pause(PAUSE);
 
