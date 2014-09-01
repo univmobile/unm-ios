@@ -33,6 +33,6 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>UNMJsonBaseURL</key>
-	<string>http://localhost:8380/unm-backend/json/</string>
+	<string>http://localhost:8080/unm-backend/json/</string>
 </dict>
 </plist>

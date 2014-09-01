@@ -11,6 +11,7 @@
 @interface UNMAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow* window;
-@property (strong, nonatomic, readonly) UINavigationController* navController;
+@property (strong, nonatomic, readonly) UINavigationController* regionsNavController;
+@property (strong, nonatomic, readonly) UINavigationController* poisNavController;
 
 @end

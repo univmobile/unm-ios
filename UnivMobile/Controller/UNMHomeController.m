@@ -28,11 +28,14 @@
 @property (nonatomic, strong) UIButton* aboutCloseButton;
 @property (nonatomic, strong) UILabel* universityLabel;
 @property (nonatomic, strong) UIButton* chooseButton;
+@property (nonatomic, strong) UIButton* geocampusButton;
 
 @property (nonatomic, strong) UIView* regionsView;
 @property (nonatomic, strong) UILabel* regionsLabel;
+@property (nonatomic, strong) UIView* poisView;
 
-@property (nonatomic, weak) UIView* navView;
+@property (nonatomic, weak) UIView* regionsNavView;
+@property (nonatomic, weak) UIView* poisNavView;
 
 @end
 
@@ -54,7 +57,8 @@
  */
 
 - (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer
-						  navView:(UIView*)navView {
+						  regionsNavView:(UIView*)regionsNavView
+					  poisNavView:(UIView*)poisNavView{
 	
 	self = [super init];
 	
@@ -64,7 +68,8 @@
 		
 		[self.appLayer addCallback:self];
 		
-		self.navView = navView;
+		self.regionsNavView = regionsNavView;
+		self.poisNavView = poisNavView;
 	}
 	
 	return self;
@@ -112,7 +117,15 @@
 	self.regionsView.hidden = YES;
 	
 	[self.view addSubview:self.regionsView];
+
+	// POIS VIEW
 	
+	self.poisView = [[UIView alloc] initWithFrame:bounds];
+	self.poisView.hidden = YES;
+	self.poisView.backgroundColor = [UIColor greenColor];
+	
+	[self.view addSubview:self.poisView];
+
 	// TITLE LABEL
 	
 	self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0, self.screenMiddle - 200.0, 220.0, 60.0)
@@ -230,7 +243,7 @@
 	
 	// UNIVERSITY NAME LABEL
 	
-	self.universityLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.screenMiddle + 20.0, 320.0, 40.0)];
+	self.universityLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.screenMiddle - 20.0, 320.0, 40.0)];
 	self.universityLabel.text = @"Aucune université sélectionnée";
 	self.universityLabel.textColor = [UIColor blackColor];
 	self.universityLabel.font = [UIFont italicSystemFontOfSize:18];
@@ -248,11 +261,11 @@
 	self.regionsLabel.textAlignment = NSTextAlignmentCenter;
 	self.regionsLabel.backgroundColor = [UIColor whiteColor];
 	
-	[self.regionsView addSubview:self.navView];
+	[self.regionsView addSubview:self.regionsNavView];
 	
 	// CHOOSE BUTTON
 	
-	self.chooseButton = [[UIButton alloc] initWithFrame:CGRectMake(120.0, self.screenMiddle + 100.0, 80.0, 20.0)];
+	self.chooseButton = [[UIButton alloc] initWithFrame:CGRectMake(120.0, self.screenMiddle + 40.0, 80.0, 20.0)];
 	self.chooseButton.accessibilityIdentifier = @"button-choisirUniversité";
 	
 	[self.chooseButton setTitle:@"Choisir…" forState:UIControlStateNormal];
@@ -289,6 +302,51 @@
 		return [RACSignal empty];
 	}];
 	
+	// POIS LABEL
+	
+	/*
+	self.regionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0, self.screenMiddle - 200.0, 220.0, 60.0)];
+	self.regionsLabel.text = @"Régions";
+	self.regionsLabel.textColor = [UNMConstants RGB_79b8d9];
+	self.regionsLabel.font = [UIFont systemFontOfSize:36];
+	self.regionsLabel.textAlignment = NSTextAlignmentCenter;
+	self.regionsLabel.backgroundColor = [UIColor whiteColor];
+	*/
+	
+	[self.poisView addSubview:self.poisNavView];
+	
+	// GÉOCAMPUS BUTTON
+
+	self.geocampusButton = [[UIButton alloc] initWithFrame:CGRectMake(100.0, self.screenMiddle + 120.0, 120.0, 40.0)];
+	self.geocampusButton.accessibilityIdentifier = @"button-Géocampus";
+	
+	[self.geocampusButton setTitle:@"Géocampus" forState:UIControlStateNormal];
+	[self.geocampusButton setTitleColor:[UNMConstants RGB_79b8d9] forState:UIControlStateNormal];
+	self.geocampusButton.backgroundColor = [UIColor whiteColor];
+	
+	[self.geocampusButton setTitleColor:[UIColor greenColor] forState:UIControlStateHighlighted];
+	
+	[self.homeTitleView addSubview:self.geocampusButton];
+	
+	self.geocampusButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
+		
+		@strongify(self)
+		
+		[self.appLayer refreshPoisData];
+		
+		[UIView transitionFromView:self.homeView
+							toView:self.poisView
+						  duration:[UNMConstants TRANSITION_DURATION]
+		 options:UIViewAnimationOptionTransitionCrossDissolve
+						   // options:UIViewAnimationOptionTransitionCrossDissolve //
+		 + UIViewAnimationOptionShowHideTransitionViews
+						completion:^(BOOL done) {
+							// nothing here
+						}];
+		
+		return [RACSignal empty];
+	}];
+
 	// LAYOUT
 	
 	[self doLayoutSubviews];
@@ -334,8 +392,10 @@
 	const CGRect bounds = self.view.bounds;
 	
     self.regionsView.frame = bounds;
+    self.poisView.frame = bounds;
 	
-	self.navView.frame = bounds;
+	self.regionsNavView.frame = bounds;
+	self.poisNavView.frame = bounds;
 }
 
 #pragma mark - AppLayer Callbacks
@@ -362,6 +422,19 @@
 						toView:self.homeView
 					  duration:[UNMConstants TRANSITION_DURATION]
 					   options:UIViewAnimationOptionTransitionFlipFromLeft //
+									+ UIViewAnimationOptionShowHideTransitionViews
+					completion:^(BOOL done) {
+						// nothing here
+					}];
+}
+
+// Override: UNMAppViewCallback
+- (void)callbackGoBackFromGeocampus {
+	
+	[UIView transitionFromView:self.poisView
+						toView:self.homeView
+					  duration:[UNMConstants TRANSITION_DURATION]
+					   options:UIViewAnimationOptionTransitionCrossDissolve //
 									+ UIViewAnimationOptionShowHideTransitionViews
 					completion:^(BOOL done) {
 						// nothing here

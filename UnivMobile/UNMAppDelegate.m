@@ -12,6 +12,7 @@
 #import "UNMConstants.h"
 #import "UNMRegionsController.h"
 #import "UNMUniversitiesController.h"
+#import "UNMPoisController.h"
 #import "UNMDebug.h"
 #import "UNMJsonFetcher.h"
 #import "UNMJsonFetcherFileSystem.h"
@@ -56,15 +57,25 @@
 													 style:UITableViewStylePlain
 													 universitiesController:universitiesController];
 	
-	_navController = [[UINavigationController alloc]
+	_regionsNavController = [[UINavigationController alloc]
 						  initWithRootViewController:regionsController];
+
+	// NAVIGATION CONTROLLER 2
 	
+	UNMPoisController* const poisController = [[UNMPoisController alloc]
+															   initWithAppLayer:_appLayer
+															   style:UITableViewStylePlain];
+	
+	_poisNavController = [[UINavigationController alloc]
+					  initWithRootViewController:poisController];
+
 	// WINDOW
 	
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
     self.window.rootViewController = [[UNMHomeController alloc] initWithAppLayer:_appLayer
-																		 navView:self.navController.view
+																		 regionsNavView:self.regionsNavController.view
+																	 poisNavView:self.poisNavController.view
 									  ];
 	
 	self.window.backgroundColor = [UNMConstants RGB_79b8d9]; // This background will show during animations
