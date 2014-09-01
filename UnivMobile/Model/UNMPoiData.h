@@ -21,8 +21,8 @@
 @property (copy, nonatomic) NSString* phone;
 @property (copy, nonatomic) NSString* url;
 @property (copy, nonatomic) NSString* coordinates;
-@property (copy, nonatomic) NSString* lat;
-@property (copy, nonatomic) NSString* lng;
+@property (assign, nonatomic) CGFloat lat;
+@property (assign, nonatomic) CGFloat lng;
 @property (copy, nonatomic) NSString* commentsUrl; // e.g. @"http://univmobile.vswip.com/u/comments/poi123"
 
 - (instancetype)initWithId:(NSUInteger)id name:(NSString*)name;
