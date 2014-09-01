@@ -194,6 +194,8 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		takeScreenshot("geocampus_list.png");
 
+		savePageSource("geocampus_list.xml");
+
 		elementById("Plan").click();
 
 		pause(PAUSE);
