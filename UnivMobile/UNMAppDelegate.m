@@ -77,6 +77,8 @@
 	self.tabBarController = [[UITabBarController alloc] init];
 	
 	self.tabBarController.viewControllers = [NSArray arrayWithObjects:poisController, mapController, nil];
+
+	self.tabBarController.delegate = mapController;
 	
 	_poisNavController = [[UINavigationController alloc]
 					  //initWithRootViewController:poisController];
