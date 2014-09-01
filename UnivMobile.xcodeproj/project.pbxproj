@@ -40,6 +40,10 @@
 		DF417A1B196DCCB200D1DD64 /* UNMJsonRegionsData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF36538D196DCA5E00BD98A4 /* UNMJsonRegionsData.m */; };
 		DF5EDF9A196D075E00C1AE1D /* UNMRegionsData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5EDF99196D075E00C1AE1D /* UNMRegionsData.m */; };
 		DF6000311968DC7D00A72D24 /* UNMAppLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DF6000301968DC7D00A72D24 /* UNMAppLayer.m */; };
+		DF7E650A19B3E13B00922FFB /* UNMPoisController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7E650919B3E13B00922FFB /* UNMPoisController.m */; };
+		DF7E650D19B3E50F00922FFB /* UNMPoisData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7E650C19B3E50F00922FFB /* UNMPoisData.m */; };
+		DF7E651019B3E5DE00922FFB /* UNMPoiData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7E650F19B3E5DE00922FFB /* UNMPoiData.m */; };
+		DF7E651319B3ECA800922FFB /* UNMJsonPoisData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7E651219B3ECA800922FFB /* UNMJsonPoisData.m */; };
 		DF7EC2CA19657D83004730C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7EC2C919657D83004730C4 /* Foundation.framework */; };
 		DF7EC2CC19657D83004730C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7EC2CB19657D83004730C4 /* CoreGraphics.framework */; };
 		DF7EC2CE19657D83004730C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7EC2CD19657D83004730C4 /* UIKit.framework */; };
@@ -104,6 +108,14 @@
 		DF60002F1968DC7D00A72D24 /* UNMAppLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMAppLayer.h; path = AppLayer/UNMAppLayer.h; sourceTree = "<group>"; };
 		DF6000301968DC7D00A72D24 /* UNMAppLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMAppLayer.m; path = AppLayer/UNMAppLayer.m; sourceTree = "<group>"; };
 		DF6000351968DF8700A72D24 /* UNMAppLayered.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMAppLayered.h; path = AppLayer/UNMAppLayered.h; sourceTree = "<group>"; };
+		DF7E650819B3E13B00922FFB /* UNMPoisController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMPoisController.h; path = Controller/UNMPoisController.h; sourceTree = "<group>"; };
+		DF7E650919B3E13B00922FFB /* UNMPoisController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMPoisController.m; path = Controller/UNMPoisController.m; sourceTree = "<group>"; };
+		DF7E650B19B3E50F00922FFB /* UNMPoisData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMPoisData.h; path = Model/UNMPoisData.h; sourceTree = "<group>"; };
+		DF7E650C19B3E50F00922FFB /* UNMPoisData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMPoisData.m; path = Model/UNMPoisData.m; sourceTree = "<group>"; };
+		DF7E650E19B3E5DE00922FFB /* UNMPoiData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMPoiData.h; path = Model/UNMPoiData.h; sourceTree = "<group>"; };
+		DF7E650F19B3E5DE00922FFB /* UNMPoiData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMPoiData.m; path = Model/UNMPoiData.m; sourceTree = "<group>"; };
+		DF7E651119B3ECA800922FFB /* UNMJsonPoisData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMJsonPoisData.h; path = DataAccess/UNMJsonPoisData.h; sourceTree = "<group>"; };
+		DF7E651219B3ECA800922FFB /* UNMJsonPoisData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMJsonPoisData.m; path = DataAccess/UNMJsonPoisData.m; sourceTree = "<group>"; };
 		DF7EC2C619657D83004730C4 /* UnivMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnivMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF7EC2C919657D83004730C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DF7EC2CB19657D83004730C4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -221,10 +233,12 @@
 				DF365389196DCA5E00BD98A4 /* UNMJsonFetcherFileSystem.m */,
 				DF36538A196DCA5E00BD98A4 /* UNMJsonFetcherWeb.h */,
 				DF36538B196DCA5E00BD98A4 /* UNMJsonFetcherWeb.m */,
-				DF36538C196DCA5E00BD98A4 /* UNMJsonRegionsData.h */,
-				DF36538D196DCA5E00BD98A4 /* UNMJsonRegionsData.m */,
 				DF8024C7196DEB3A00852CC8 /* UNMJsonSerializer.h */,
 				DF8024C8196DEB3A00852CC8 /* UNMJsonSerializer.m */,
+				DF36538C196DCA5E00BD98A4 /* UNMJsonRegionsData.h */,
+				DF36538D196DCA5E00BD98A4 /* UNMJsonRegionsData.m */,
+				DF7E651119B3ECA800922FFB /* UNMJsonPoisData.h */,
+				DF7E651219B3ECA800922FFB /* UNMJsonPoisData.m */,
 			);
 			name = DataAccess;
 			sourceTree = "<group>";
@@ -327,6 +341,10 @@
 				DF7EC30819667A19004730C4 /* UNMRegionData.m */,
 				DF5EDF98196D075E00C1AE1D /* UNMRegionsData.h */,
 				DF5EDF99196D075E00C1AE1D /* UNMRegionsData.m */,
+				DF7E650B19B3E50F00922FFB /* UNMPoisData.h */,
+				DF7E650C19B3E50F00922FFB /* UNMPoisData.m */,
+				DF7E650E19B3E5DE00922FFB /* UNMPoiData.h */,
+				DF7E650F19B3E5DE00922FFB /* UNMPoiData.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -340,6 +358,8 @@
 				DF7EC30F19667A7C004730C4 /* UNMRegionsController.m */,
 				DF7EC31019667A7C004730C4 /* UNMUniversitiesController.h */,
 				DF7EC31119667A7C004730C4 /* UNMUniversitiesController.m */,
+				DF7E650819B3E13B00922FFB /* UNMPoisController.h */,
+				DF7E650919B3E13B00922FFB /* UNMPoisController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -475,9 +495,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF9EA274199181B00002BD3C /* TestAppDelegate.m in Sources */,
+				DF7E651019B3E5DE00922FFB /* UNMPoiData.m in Sources */,
 				DF5EDF9A196D075E00C1AE1D /* UNMRegionsData.m in Sources */,
 				DF9945C3196B850800AE125E /* UNMDebug.m in Sources */,
 				DF7EC2D619657D83004730C4 /* main.m in Sources */,
+				DF7E650D19B3E50F00922FFB /* UNMPoisData.m in Sources */,
 				DF7EC2DA19657D83004730C4 /* UNMAppDelegate.m in Sources */,
 				DFF416601978C6EB003B5D38 /* UIBarButtonItem+UIAccessibility.m in Sources */,
 				DFBA69B3198EE9F7000B107C /* NSBundle+String.m in Sources */,
@@ -490,9 +512,11 @@
 				DF9945C6196B9DAE00AE125E /* UNMRuntime.m in Sources */,
 				DF7EC31419667A7C004730C4 /* UNMUniversitiesController.m in Sources */,
 				DF36538E196DCA5E00BD98A4 /* UNMInitialRegionsData.m in Sources */,
+				DF7E650A19B3E13B00922FFB /* UNMPoisController.m in Sources */,
 				DF7EC31319667A7C004730C4 /* UNMRegionsController.m in Sources */,
 				DF6000311968DC7D00A72D24 /* UNMAppLayer.m in Sources */,
 				DF7EC30919667A19004730C4 /* UNMRegionData.m in Sources */,
+				DF7E651319B3ECA800922FFB /* UNMJsonPoisData.m in Sources */,
 				DF103EEB1969F23200AC123A /* UNMViewFx.m in Sources */,
 				DF36538F196DCA5E00BD98A4 /* UNMJsonFetcherFileSystem.m in Sources */,
 			);

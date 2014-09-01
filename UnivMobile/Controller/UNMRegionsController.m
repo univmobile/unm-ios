@@ -122,7 +122,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"region"];
     }
 	
-	const NSUInteger row = [indexPath row];
+	const NSUInteger row = indexPath.row;
 	
 	const UNMRegionData* const regionData = [self.appLayer.regionsData regionDataAtIndex:row];
 
@@ -159,7 +159,7 @@
 // Override: UITableViewDelegate
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
 	
-	const NSUInteger row = [indexPath row];
+	const NSUInteger row = indexPath.row;
 
 	const UNMRegionData* const regionData = [self.appLayer.regionsData regionDataAtIndex:row];
 

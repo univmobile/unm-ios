@@ -102,7 +102,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"university"];
     }
 	
-	const NSUInteger row = [indexPath row];
+	const NSUInteger row = indexPath.row;
 	
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
 	
@@ -137,7 +137,7 @@
 // Override: UITableViewDelegate
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
 	
-	const NSUInteger row = [indexPath row];
+	const NSUInteger row = indexPath.row;
 	
 	const UNMUniversityData* const universityData = [self.regionData.universities objectAtIndex:row];
 

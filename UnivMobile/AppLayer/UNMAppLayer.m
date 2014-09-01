@@ -9,6 +9,7 @@
 #import "UNMAppLayer.h"
 #import "UNMInitialRegionsData.h"
 #import "UNMJsonRegionsData.h"
+#import "UNMJsonPoisData.h"
 #import "UNMJsonFetcher.h"
 #import "NSBundle+String.h"
 
@@ -18,6 +19,7 @@
 @property (strong, nonatomic, readonly) NSBundle* bundle;
 @property (strong, nonatomic, readonly) NSObject <UNMJsonFetcher>* jsonFetcher;
 @property (strong, nonatomic, readonly) UNMJsonRegionsData* jsonRegionsData;
+@property (strong, nonatomic, readonly) UNMJsonPoisData* jsonPoisData;
 
 @end
 
@@ -44,6 +46,7 @@
 		// NSLog(@"UNMAppLayer:jsonBaseURL: %@",jsonBaseURL);
 		
 		_jsonRegionsData = [[UNMJsonRegionsData alloc] initWithJSONBaseURL:jsonBaseURL];
+		_jsonPoisData = [[UNMJsonPoisData alloc] initWithJSONBaseURL:jsonBaseURL];
 	}
 	
 	return self;
@@ -79,6 +82,13 @@
 - (void) goBackFromRegions {
 	
 	[self invokeCallbacksForSelector:@selector(goBackFromRegions)];
+}
+
+- (void) goBackFromGeocampus {
+	
+	NSLog(@"AppLayer.goBackFromGeocampus...");
+	
+	[self invokeCallbacksForSelector:@selector(goBackFromGeocampus)];
 }
 
 - (void) showUniversityList {
@@ -199,6 +209,44 @@
 		_regionsData.refreshedAt = [NSDate date];
 
 		[self invokeCallbacksForSelector:@selector(refreshRegionsData)];
+	}
+}
+
+- (void) refreshPoisData {
+	
+	// Please keep this method synchronous so automatic callbacks may occur consistently.
+	// Use the asyncXxxYyy naming pattern for asynchronous tasks.
+	
+	// NSLog(@"refreshPoisData");
+	
+	// NSLog(@"self.jsonPoisData: %@", self.jsonPoisData);
+	// NSLog(@"self.jsonFetcher: %@", self.jsonFetcher);
+	
+	UNMPoisData* const poisData = [self.jsonPoisData fetchPoisData:self.jsonFetcher
+															  withErrorHandler:^(NSError* error) {
+																  
+																  UIAlertView* alert = [[UIAlertView alloc]
+																						initWithTitle:@"Erreur de transmission"
+																						message:[NSString stringWithFormat:@"Build %@ %@",
+																								 self.buildInfo.BUILD_DISPLAY_NAME, error]
+																						delegate:nil
+																						cancelButtonTitle:@"OK"
+																						otherButtonTitles:nil
+																						];
+																  
+																  [alert show];
+																  
+															  }];
+	
+	// NSLog(@"poisData: %@",poisData);
+	
+	if (poisData != nil) {
+		
+		_poisData = poisData;
+		
+		// _poisData.refreshedAt = [NSDate date];
+		
+		[self invokeCallbacksForSelector:@selector(refreshPoisData)];
 	}
 }
 
