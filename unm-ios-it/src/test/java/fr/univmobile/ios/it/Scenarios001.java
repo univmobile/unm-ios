@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 
 import fr.univmobile.backend.it.TestBackend;
 import fr.univmobile.it.commons.AppiumIOSEnabledTest;
@@ -185,7 +186,7 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 	public void Geocampus_000() throws Exception {
 
 		pause(PAUSE);
-		
+
 		takeScreenshot("home.png");
 
 		elementById("button-Géocampus").click();
@@ -196,7 +197,10 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		savePageSource("geocampus_list.xml");
 
-		elementById("Plan").click();
+		//getDriver().findElement(By.xpath("//UIATabBar[1]/UIAButton[2]"))
+			//	.click();
+		elementByXPath("//UIATabBar[1]/UIAButton[2]").click();
+		// elementById("Plan").click();
 
 		pause(PAUSE);
 
