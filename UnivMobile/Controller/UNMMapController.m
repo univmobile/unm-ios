@@ -148,6 +148,7 @@
 	self.poiNameLabel.font = [UIFont boldSystemFontOfSize:18.0];
 	self.poiNameLabel.textAlignment = NSTextAlignmentCenter;
 	self.poiNameLabel.backgroundColor = [UIColor whiteColor];
+	self.poiNameLabel.accessibilityIdentifier = @"label-poi-name";
 	
 	[self.infoView addSubview:self.poiNameLabel];
 	
@@ -157,6 +158,7 @@
 	self.poiAddressLabel.font = [UIFont systemFontOfSize:14.0];
 	self.poiAddressLabel.textAlignment = NSTextAlignmentCenter;
 	self.poiAddressLabel.backgroundColor = [UIColor whiteColor];
+	self.poiAddressLabel.accessibilityIdentifier = @"label-poi-address";
 	
 	[self.infoView addSubview:self.poiAddressLabel];
 
