@@ -15,7 +15,12 @@ UnivMobileAlpha
 
 <ios-installation-page>
 
-https://www.dropbox.com/s//UnivMobile.plist
+<ios-installation
+	date="2014-09-01 22:47"
+	git-commit="3ca44af8a5c1b3c7ead521c888ed22d03a48ba20"
+	plistHref="https://dl.dropboxusercontent.com/s/kxg4kicjxdid6xr/UnivMobile.plist"
+	build-displayName="#158"
+	label="Google Maps"/>
 
 <ios-installation
 	date="2014-08-22 13:57"
