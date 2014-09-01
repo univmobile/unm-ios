@@ -15,6 +15,7 @@
 #import "UNMPoisController.h"
 #import "UNMMapController.h"
 #import "UNMDetailsController.h"
+#import "UNMCommentsController.h"
 #import "UNMDebug.h"
 #import "UNMJsonFetcher.h"
 #import "UNMJsonFetcherFileSystem.h"
@@ -71,10 +72,13 @@
 	
 	UNMDetailsController* const detailsController = [[UNMDetailsController alloc]
 													 initWithAppLayer:_appLayer];
-	
+
+	UNMCommentsController* const commentsController = [[UNMCommentsController alloc]
+													 initWithAppLayer:_appLayer];
+
 	self.detailsTabBarController = [[UITabBarController alloc] init];
 	
-	self.detailsTabBarController.viewControllers = [NSArray arrayWithObjects:detailsController, nil];
+	self.detailsTabBarController.viewControllers = [NSArray arrayWithObjects:detailsController, commentsController, nil];
 	
 	//self.detailsTabBarController.delegate = detailsController;
 	
