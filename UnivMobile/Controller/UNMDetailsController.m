@@ -63,14 +63,14 @@
 		// [self.appLayer addCallback:self];
 		
 		self.tabBarItem = [[UITabBarItem alloc] //initWithTitle:@"Plan"
-						   initWithTitle:NULL
+						   initWithTitle:nil
 						   image:[UIImage imageNamed:@"info.png"] tag:1];
 		
 		self.tabBarItem.accessibilityLabel = @"Détails";
 		
 		//self.tabSelected = NO;
 		
-		//self.selectedPoi = NULL;
+		//self.selectedPoi = nil;
     }
     
 	return self;
@@ -172,7 +172,7 @@
 
 - (void) addToDetails:(NSMutableArray*)details label:(NSString*)label id:(NSString*)id value:(NSString*)value {
 
-	if (value == NULL) return;
+	if (value == nil) return;
 	
 	if ([[value
 		  stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""
@@ -212,7 +212,7 @@
 	const NSUInteger row = indexPath.row;
 	const BOOL isNameCell = (row == 0);
 	const BOOL isMapCell = (row == [self.details count] + 1);
-	UNMDetail* const detail = isNameCell || isMapCell ? NULL : [self.details objectAtIndex:row -1];
+	UNMDetail* const detail = isNameCell || isMapCell ? nil : [self.details objectAtIndex:row -1];
 
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:(isMapCell?@"map":@"detail")];
 	
@@ -234,7 +234,7 @@
 			
 			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"detail"];
 			
-			cell.userInteractionEnabled = detail != NULL && [@"coordinates" isEqualToString:detail.id];
+			cell.userInteractionEnabled = detail != nil && [@"coordinates" isEqualToString:detail.id];
 		}
     }
 	
@@ -274,7 +274,7 @@
     
 	// cell.textLabel.font = [UIFont systemFontOfSize:18.0];
 	
-	cell.detailTextLabel.text = NULL; // Clear old value
+	cell.detailTextLabel.text = nil; // Clear old value
 
 	if (isNameCell) {
 		cell.textLabel.font = [UIFont boldSystemFontOfSize:16.0];
@@ -298,7 +298,7 @@
 		
 		[self.mapView animateToLocation:marker.position];
 		
-	} else if (detail == NULL){
+	} else if (detail == nil){
 		cell.textLabel.text = @"???";
 	} else {
 		cell.textLabel.font = [UIFont systemFontOfSize:12.0];
@@ -318,9 +318,9 @@
 	const NSUInteger row = indexPath.row;
 	const BOOL isNameCell = (row == 0);
 	const BOOL isMapCell = (row == [self.details count] + 1);
-	UNMDetail* const detail = isNameCell || isMapCell ? NULL : [self.details objectAtIndex:row -1];
+	UNMDetail* const detail = isNameCell || isMapCell ? nil : [self.details objectAtIndex:row -1];
 
-	if (detail != NULL && [@"coordinates" isEqualToString:detail.id]) {
+	if (detail != nil && [@"coordinates" isEqualToString:detail.id]) {
 		
 		const CGFloat ZOOM = 16.0;
 		
