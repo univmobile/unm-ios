@@ -4,7 +4,6 @@ import java.io.File;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 
 import fr.univmobile.backend.it.TestBackend;
 import fr.univmobile.it.commons.AppiumIOSEnabledTest;
