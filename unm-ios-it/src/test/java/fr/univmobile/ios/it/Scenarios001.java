@@ -219,7 +219,9 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		savePageSource("geocampus_details.xml");
 		
-		elementByXPath("//UIANavigationBar[1]/UIAButton[1]").click();
+		//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[2]/UIAButton[2]
+
+		elementByXPath("//UIANavigationBar[2]/UIAButton[2]").click();
 		//elementByName("POIs").click(); // ?
 
 		pause(PAUSE);
