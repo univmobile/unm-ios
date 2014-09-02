@@ -1,17 +1,14 @@
 package fr.univmobile.ios.it;
 
-import io.appium.java_client.AppiumDriver;
-
 import java.io.File;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.Capabilities;
 
 import fr.univmobile.backend.it.TestBackend;
-import fr.univmobile.it.commons.AppiumCapabilityType;
 import fr.univmobile.it.commons.AppiumIOSEnabledTest;
 import fr.univmobile.it.commons.DeviceNames;
+import fr.univmobile.it.commons.EnvironmentUtils;
 import fr.univmobile.it.commons.Scenario;
 import fr.univmobile.it.commons.Scenarios;
 
@@ -229,19 +226,17 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 			boolean IOS_6 = false;
 
-			final AppiumDriver appium = (AppiumDriver) getDriver();
-
-			final Capabilities capabilities = appium.getCapabilities();
-
-			final String platformVersion = capabilities.getCapability(
-					AppiumCapabilityType.PLATFORM_VERSION).toString();
+			final String platformVersion = EnvironmentUtils
+					.getCurrentPlatformVersion("iOS");
 
 			System.out.println("Found platformVersion: " + platformVersion);
-			
+
 			if (platformVersion.startsWith("6")) {
 				IOS_6 = true;
 			}
 
+			// To find these values, launch the Appium Inspector.
+			//
 			if (IOS_6) { // IOS_6
 				navUpXPath = "//UIANavigationBar[1]/UIAButton[1]";
 			} else { // IOS_7
