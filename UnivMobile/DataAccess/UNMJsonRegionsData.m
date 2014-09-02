@@ -89,7 +89,7 @@
 		
 		NSString* const universitiesUrl = regionData.universitiesUrl;
 		
-		NSLog(@"universitiesUrl: %@", universitiesUrl);
+		//NSLog(@"universitiesUrl: %@", universitiesUrl);
 		
 		id const universitiesJson = [jsonFetcher syncFetchJsonAtURL:universitiesUrl withErrorHandler:onError];
 		

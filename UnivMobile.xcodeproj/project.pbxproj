@@ -34,6 +34,9 @@
 		DF36538F196DCA5E00BD98A4 /* UNMJsonFetcherFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = DF365389196DCA5E00BD98A4 /* UNMJsonFetcherFileSystem.m */; };
 		DF365390196DCA5E00BD98A4 /* UNMJsonFetcherWeb.m in Sources */ = {isa = PBXBuildFile; fileRef = DF36538B196DCA5E00BD98A4 /* UNMJsonFetcherWeb.m */; };
 		DF365391196DCA5E00BD98A4 /* UNMJsonRegionsData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF36538D196DCA5E00BD98A4 /* UNMJsonRegionsData.m */; };
+		DF3998CA19B52C9000829D03 /* UNMCommentData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3998C919B52C9000829D03 /* UNMCommentData.m */; };
+		DF3998CD19B52E8C00829D03 /* UNMCommentsData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3998CC19B52E8C00829D03 /* UNMCommentsData.m */; };
+		DF3998D019B5420700829D03 /* UNMJsonCommentsData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3998CF19B5420700829D03 /* UNMJsonCommentsData.m */; };
 		DF417A18196DCCB200D1DD64 /* UNMInitialRegionsData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF365386196DCA5E00BD98A4 /* UNMInitialRegionsData.m */; };
 		DF417A19196DCCB200D1DD64 /* UNMJsonFetcherFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = DF365389196DCA5E00BD98A4 /* UNMJsonFetcherFileSystem.m */; };
 		DF417A1A196DCCB200D1DD64 /* UNMJsonFetcherWeb.m in Sources */ = {isa = PBXBuildFile; fileRef = DF36538B196DCA5E00BD98A4 /* UNMJsonFetcherWeb.m */; };
@@ -148,6 +151,12 @@
 		DF36538B196DCA5E00BD98A4 /* UNMJsonFetcherWeb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMJsonFetcherWeb.m; path = DataAccess/UNMJsonFetcherWeb.m; sourceTree = "<group>"; };
 		DF36538C196DCA5E00BD98A4 /* UNMJsonRegionsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMJsonRegionsData.h; path = DataAccess/UNMJsonRegionsData.h; sourceTree = "<group>"; };
 		DF36538D196DCA5E00BD98A4 /* UNMJsonRegionsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMJsonRegionsData.m; path = DataAccess/UNMJsonRegionsData.m; sourceTree = "<group>"; };
+		DF3998C819B52C9000829D03 /* UNMCommentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMCommentData.h; path = Model/UNMCommentData.h; sourceTree = "<group>"; };
+		DF3998C919B52C9000829D03 /* UNMCommentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMCommentData.m; path = Model/UNMCommentData.m; sourceTree = "<group>"; };
+		DF3998CB19B52E8C00829D03 /* UNMCommentsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMCommentsData.h; path = Model/UNMCommentsData.h; sourceTree = "<group>"; };
+		DF3998CC19B52E8C00829D03 /* UNMCommentsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMCommentsData.m; path = Model/UNMCommentsData.m; sourceTree = "<group>"; };
+		DF3998CE19B5420700829D03 /* UNMJsonCommentsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMJsonCommentsData.h; path = DataAccess/UNMJsonCommentsData.h; sourceTree = "<group>"; };
+		DF3998CF19B5420700829D03 /* UNMJsonCommentsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMJsonCommentsData.m; path = DataAccess/UNMJsonCommentsData.m; sourceTree = "<group>"; };
 		DF4EB92219B5212B00904FCD /* UNMCommentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMCommentsController.h; path = Controller/UNMCommentsController.h; sourceTree = "<group>"; };
 		DF4EB92319B5212B00904FCD /* UNMCommentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMCommentsController.m; path = Controller/UNMCommentsController.m; sourceTree = "<group>"; };
 		DF5EDF98196D075E00C1AE1D /* UNMRegionsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMRegionsData.h; path = Model/UNMRegionsData.h; sourceTree = "<group>"; };
@@ -336,6 +345,8 @@
 				DF36538D196DCA5E00BD98A4 /* UNMJsonRegionsData.m */,
 				DF7E651119B3ECA800922FFB /* UNMJsonPoisData.h */,
 				DF7E651219B3ECA800922FFB /* UNMJsonPoisData.m */,
+				DF3998CE19B5420700829D03 /* UNMJsonCommentsData.h */,
+				DF3998CF19B5420700829D03 /* UNMJsonCommentsData.m */,
 			);
 			name = DataAccess;
 			sourceTree = "<group>";
@@ -458,10 +469,14 @@
 				DF7EC30819667A19004730C4 /* UNMRegionData.m */,
 				DF5EDF98196D075E00C1AE1D /* UNMRegionsData.h */,
 				DF5EDF99196D075E00C1AE1D /* UNMRegionsData.m */,
-				DF7E650B19B3E50F00922FFB /* UNMPoisData.h */,
-				DF7E650C19B3E50F00922FFB /* UNMPoisData.m */,
 				DF7E650E19B3E5DE00922FFB /* UNMPoiData.h */,
 				DF7E650F19B3E5DE00922FFB /* UNMPoiData.m */,
+				DF7E650B19B3E50F00922FFB /* UNMPoisData.h */,
+				DF7E650C19B3E50F00922FFB /* UNMPoisData.m */,
+				DF3998C819B52C9000829D03 /* UNMCommentData.h */,
+				DF3998C919B52C9000829D03 /* UNMCommentData.m */,
+				DF3998CB19B52E8C00829D03 /* UNMCommentsData.h */,
+				DF3998CC19B52E8C00829D03 /* UNMCommentsData.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -645,8 +660,10 @@
 				DF8024C9196DEB3A00852CC8 /* UNMJsonSerializer.m in Sources */,
 				DF365391196DCA5E00BD98A4 /* UNMJsonRegionsData.m in Sources */,
 				DF365383196DCA4800BD98A4 /* UNMBuildInfo.m in Sources */,
+				DF3998CA19B52C9000829D03 /* UNMCommentData.m in Sources */,
 				DFB006D219B4B05B00737FFE /* UNMDetailsController.m in Sources */,
 				DF365390196DCA5E00BD98A4 /* UNMJsonFetcherWeb.m in Sources */,
+				DF3998CD19B52E8C00829D03 /* UNMCommentsData.m in Sources */,
 				DF9945C6196B9DAE00AE125E /* UNMRuntime.m in Sources */,
 				DF7EC31419667A7C004730C4 /* UNMUniversitiesController.m in Sources */,
 				DF36538E196DCA5E00BD98A4 /* UNMInitialRegionsData.m in Sources */,
@@ -656,6 +673,7 @@
 				DF7EC30919667A19004730C4 /* UNMRegionData.m in Sources */,
 				DF4EB92419B5212B00904FCD /* UNMCommentsController.m in Sources */,
 				DF7E651319B3ECA800922FFB /* UNMJsonPoisData.m in Sources */,
+				DF3998D019B5420700829D03 /* UNMJsonCommentsData.m in Sources */,
 				DF103EEB1969F23200AC123A /* UNMViewFx.m in Sources */,
 				DF36538F196DCA5E00BD98A4 /* UNMJsonFetcherFileSystem.m in Sources */,
 			);

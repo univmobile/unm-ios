@@ -22,9 +22,8 @@
 @property (weak, nonatomic) UNMPoiData* selectedPoi;
 @property (assign, nonatomic) NSInteger selectedPoiId;
 @property (strong, nonatomic) NSMutableArray* markers; // Array of Markers
-@property (weak, nonatomic, readonly) UNMDetailsController* detailsController;
+@property (weak, nonatomic, readonly) UNMPoisController* poisController;
 
-//@property (assign, nonatomic) BOOL noSelectedPoi;
 @property (assign, nonatomic) BOOL tabSelected;
 
 @end
@@ -34,14 +33,14 @@
 @synthesize appLayer = _appLayer;
 
 - (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer
-				detailsController:(UNMDetailsController*)detailsController {
+				poisController:(UNMPoisController*)poisController {
 	
     self = [super init];
 	
     if (self) {
 		
 		_appLayer = appLayer;
-		_detailsController = detailsController;
+		_poisController = poisController;
 		
 		[self.appLayer addCallback:self];
 		
@@ -244,7 +243,12 @@
 	
 	//NSLog(@"didSelectViewController");
 	
-	if (viewController != self) return;
+	if (viewController != self) {
+		
+		self.tabSelected = NO;
+		
+		return;
+	}
 
 	//NSLog(@"didSelectViewController: MAP %d", self.tabSelected);
 
@@ -315,23 +319,7 @@
 	
 	UNMPoiData* const poi = marker.userData;
 	
-	[self showDetailsPage:poi];
-}
-
-- (void) showDetailsPage:(UNMPoiData*)poi {
-	
-	self.detailsController.poi = poi;
-	
-	@weakify(self)
-	
-	dispatch_async(dispatch_get_main_queue(), ^{
-		
-		@strongify(self)
-		
-		[self.tabBarController.navigationController pushViewController:self.detailsController.tabBarController animated:YES];
-		
-		[self.detailsController.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
-	});
+	[self.poisController showDetailsPage:poi];
 }
 
 #pragma mark - Gestures
@@ -351,7 +339,7 @@
 	
 	if (self.mapView.selectedMarker == marker) {
 		
-		[self showDetailsPage:self.selectedPoi];
+		[self.poisController showDetailsPage:self.selectedPoi];
 		
 	} else {
 		

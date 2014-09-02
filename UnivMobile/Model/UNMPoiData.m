@@ -43,7 +43,7 @@
 									@"coordinates":@"coordinates",
 									@"lat":@"lat",
 									@"lng":@"lng",
-									@"commentsUrl":@"commentsUrl"
+									@"commentsUrl":@"comments.url"
 									}];
 	
 	return map;

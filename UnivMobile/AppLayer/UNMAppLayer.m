@@ -10,8 +10,10 @@
 #import "UNMInitialRegionsData.h"
 #import "UNMJsonRegionsData.h"
 #import "UNMJsonPoisData.h"
+#import "UNMJsonCommentsData.h"
 #import "UNMJsonFetcher.h"
 #import "NSBundle+String.h"
+#import "UNMCommentsData.h"
 
 @interface UNMAppLayer ()
 
@@ -20,6 +22,7 @@
 @property (strong, nonatomic, readonly) NSObject <UNMJsonFetcher>* jsonFetcher;
 @property (strong, nonatomic, readonly) UNMJsonRegionsData* jsonRegionsData;
 @property (strong, nonatomic, readonly) UNMJsonPoisData* jsonPoisData;
+@property (strong, nonatomic, readonly) UNMJsonCommentsData* jsonCommentsData;
 
 @end
 
@@ -47,6 +50,7 @@
 		
 		_jsonRegionsData = [[UNMJsonRegionsData alloc] initWithJSONBaseURL:jsonBaseURL];
 		_jsonPoisData = [[UNMJsonPoisData alloc] initWithJSONBaseURL:jsonBaseURL];
+		_jsonCommentsData = [[UNMJsonCommentsData alloc] init];
 	}
 	
 	return self;
@@ -267,6 +271,32 @@
 	}
 	
 	return nil;
+}
+
+- (NSArray*) loadCommentsForPoi:(const UNMPoiData*)poi {
+	
+	//NSLog(@"loadCommentsForPoi:%d", poi.id);
+	
+	UNMCommentsData* const commentsData = [self.jsonCommentsData fetchCommentsData:self.jsonFetcher
+																		   withPoi:poi
+												  errorHandler:^(NSError* error) {
+													  
+													  UIAlertView* alert = [[UIAlertView alloc]
+																			initWithTitle:@"Erreur de transmission"
+																			message:[NSString stringWithFormat:@"Build %@ %@",
+																					 self.buildInfo.BUILD_DISPLAY_NAME, error]
+																			delegate:nil
+																			cancelButtonTitle:@"OK"
+																			otherButtonTitles:nil
+																			];
+													  
+													  [alert show];
+													  					
+												  }];
+	
+	//NSLog(@"commentsData: %@",commentsData);
+	
+	return commentsData.comments;
 }
 
 @end

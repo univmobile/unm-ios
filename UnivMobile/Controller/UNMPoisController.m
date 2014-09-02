@@ -40,7 +40,9 @@
 						   image:[UIImage imageNamed:@"text-list.png"] tag:1];
 //		[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:1];
 
+		// self.tabBarItem.isAccessibilityElement = YES;
 		self.tabBarItem.accessibilityLabel = @"Liste";
+		
 		
 		self.detailsController = detailsController;
 	}
@@ -156,6 +158,11 @@
 	
 	const UNMPoiData* const poi = [[self.appLayer.poisData poiGroupDataAtIndex:section] poiDataAtIndex:row];
 
+	[self showDetailsPage:poi];
+}
+
+- (void) showDetailsPage:(const UNMPoiData*)poi {
+	
 	self.detailsController.poi = poi;
 	
 	@weakify(self)

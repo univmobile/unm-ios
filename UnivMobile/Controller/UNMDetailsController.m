@@ -67,10 +67,6 @@
 						   image:[UIImage imageNamed:@"info.png"] tag:1];
 		
 		self.tabBarItem.accessibilityLabel = @"Détails";
-		
-		//self.tabSelected = NO;
-		
-		//self.selectedPoi = nil;
     }
     
 	return self;
@@ -144,7 +140,7 @@
 	//[self.view addSubview:mapView];
 }
 
-// Override
+// Override: UIViewController
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 	
@@ -234,7 +230,14 @@
 			
 			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"detail"];
 			
-			cell.userInteractionEnabled = detail != nil && [@"coordinates" isEqualToString:detail.id];
+			if (detail == nil || ![@"coordinates" isEqualToString:detail.id]) {
+				
+				cell.userInteractionEnabled = NO; // By default, cell are not interactive
+				
+			} else {
+				
+				cell.userInteractionEnabled = YES; // Clicking the "coordinates" cell makes recenter the map
+			}
 		}
     }
 	

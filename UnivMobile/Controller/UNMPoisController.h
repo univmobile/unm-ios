@@ -16,4 +16,6 @@
 							style:(UITableViewStyle)style
 				detailsController:(UNMDetailsController*)detailsController;
 
+- (void) showDetailsPage:(const UNMPoiData*)poi;
+
 @end
