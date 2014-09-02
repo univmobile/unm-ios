@@ -264,7 +264,7 @@
 				
 				[self selectPoi:poi];
 				
-				break;
+				return;
 			}
 		}
 	}
