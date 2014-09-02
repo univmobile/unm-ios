@@ -39,6 +39,6 @@
 	<string>http://univmobile.vswip.com/unm-backend/json/</string>
 	<string>http://localhost:8080/unm-backend/json/</string>
 	-->
-	<string>http://localhost:8080/unm-backend/json/</string>
+	<string>http://localhost:8380/unm-backend/json/</string>
 </dict>
 </plist>
