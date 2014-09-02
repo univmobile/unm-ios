@@ -1,11 +1,15 @@
 package fr.univmobile.ios.it;
 
+import io.appium.java_client.AppiumDriver;
+
 import java.io.File;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.Capabilities;
 
 import fr.univmobile.backend.it.TestBackend;
+import fr.univmobile.it.commons.AppiumCapabilityType;
 import fr.univmobile.it.commons.AppiumIOSEnabledTest;
 import fr.univmobile.it.commons.DeviceNames;
 import fr.univmobile.it.commons.Scenario;
@@ -180,6 +184,8 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		savePageSource("home_afterUniversitiesSource.xml");
 	}
 
+	private static String navUpXPath = null;
+
 	@Scenario("Géocampus")
 	@Test
 	public void Geocampus_000() throws Exception {
@@ -218,11 +224,33 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		takeScreenshot("geocampus_details.png");
 
 		savePageSource("geocampus_details.xml");
-		
-		//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[2]/UIAButton[2]
 
-		elementByXPath("//UIANavigationBar[2]/UIAButton[2]").click();
-		//elementByName("POIs").click(); // ?
+		if (navUpXPath == null) {
+
+			boolean IOS_6 = false;
+
+			final AppiumDriver appium = (AppiumDriver) getDriver();
+
+			final Capabilities capabilities = appium.getCapabilities();
+
+			final String platformVersion = capabilities.getCapability(
+					AppiumCapabilityType.PLATFORM_VERSION).toString();
+
+			System.out.println("Found platformVersion: " + platformVersion);
+			
+			if (platformVersion.startsWith("6")) {
+				IOS_6 = true;
+			}
+
+			if (IOS_6) { // IOS_6
+				navUpXPath = "//UIANavigationBar[1]/UIAButton[1]";
+			} else { // IOS_7
+				navUpXPath = "//UIANavigationBar[2]/UIAButton[2]";
+			}
+		}
+
+		elementByXPath(navUpXPath).click();
+		// elementByName("POIs").click(); // ?
 
 		pause(PAUSE);
 
