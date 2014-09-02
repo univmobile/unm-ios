@@ -37,6 +37,9 @@
 		DF3998CA19B52C9000829D03 /* UNMCommentData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3998C919B52C9000829D03 /* UNMCommentData.m */; };
 		DF3998CD19B52E8C00829D03 /* UNMCommentsData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3998CC19B52E8C00829D03 /* UNMCommentsData.m */; };
 		DF3998D019B5420700829D03 /* UNMJsonCommentsData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3998CF19B5420700829D03 /* UNMJsonCommentsData.m */; };
+		DF3998D119B5AC7900829D03 /* UNMJsonCommentsData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3998CF19B5420700829D03 /* UNMJsonCommentsData.m */; };
+		DF3998D219B5AC8C00829D03 /* UNMCommentData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3998C919B52C9000829D03 /* UNMCommentData.m */; };
+		DF3998D319B5AC8C00829D03 /* UNMCommentsData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3998CC19B52E8C00829D03 /* UNMCommentsData.m */; };
 		DF417A18196DCCB200D1DD64 /* UNMInitialRegionsData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF365386196DCA5E00BD98A4 /* UNMInitialRegionsData.m */; };
 		DF417A19196DCCB200D1DD64 /* UNMJsonFetcherFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = DF365389196DCA5E00BD98A4 /* UNMJsonFetcherFileSystem.m */; };
 		DF417A1A196DCCB200D1DD64 /* UNMJsonFetcherWeb.m in Sources */ = {isa = PBXBuildFile; fileRef = DF36538B196DCA5E00BD98A4 /* UNMJsonFetcherWeb.m */; };
@@ -683,6 +686,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF3998D219B5AC8C00829D03 /* UNMCommentData.m in Sources */,
+				DF3998D319B5AC8C00829D03 /* UNMCommentsData.m in Sources */,
+				DF3998D119B5AC7900829D03 /* UNMJsonCommentsData.m in Sources */,
 				DF4EB92519B5233D00904FCD /* UNMJsonPoisData.m in Sources */,
 				DF4EB92619B5233D00904FCD /* UNMPoisData.m in Sources */,
 				DF4EB92719B5233D00904FCD /* UNMPoiData.m in Sources */,
