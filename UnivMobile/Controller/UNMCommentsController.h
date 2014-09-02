@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "UNMAppLayered.h"
-#import "UNMPoiData.h"
-//#import "UNMCommentsData.h"
+//#import "UNMPoiData.h"
+#import "UNMDetailsController.h"
 
-@interface UNMCommentsController : UITableViewController <UNMAppLayered>
+@interface UNMCommentsController : UITableViewController <UNMAppLayered, UITabBarControllerDelegate>
 
-@property (weak, nonatomic) const UNMPoiData* poi;
+//@property (weak, nonatomic) const UNMPoiData* poi;
 
-- (instancetype)initWithAppLayer:(UNMAppLayer*)appLayer;
+- (instancetype)initWithAppLayer:(UNMAppLayer*)appLayer
+			   detailsController:(UNMDetailsController*)detailsController;
 
 @end

@@ -74,7 +74,7 @@
 		
 		NSLog(@"Error: poisData == nill");
 		
-		if (onError) onError([NSError errorWithDomain:@"UNMJsonPoiData" code:2 userInfo:nil]);
+		if (onError) onError([NSError errorWithDomain:@"UNMJsonPoisData" code:2 userInfo:nil]);
 		
 		return nil;
 	}

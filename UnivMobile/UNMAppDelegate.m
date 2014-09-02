@@ -74,13 +74,14 @@
 													 initWithAppLayer:_appLayer];
 
 	UNMCommentsController* const commentsController = [[UNMCommentsController alloc]
-													 initWithAppLayer:_appLayer];
+													 initWithAppLayer:_appLayer
+													   detailsController:detailsController];
 
 	self.detailsTabBarController = [[UITabBarController alloc] init];
 	
 	self.detailsTabBarController.viewControllers = [NSArray arrayWithObjects:detailsController, commentsController, nil];
 	
-	//self.detailsTabBarController.delegate = detailsController;
+	self.detailsTabBarController.delegate = commentsController;
 	
 	UNMPoisController* const poisController = [[UNMPoisController alloc]
 															   initWithAppLayer:_appLayer
@@ -89,7 +90,7 @@
 	
 	UNMMapController* const mapController = [[UNMMapController alloc]
 											   initWithAppLayer:_appLayer
-											 detailsController:detailsController];
+											 poisController:poisController];
 	
 	self.poisTabBarController = [[UITabBarController alloc] init];
 	

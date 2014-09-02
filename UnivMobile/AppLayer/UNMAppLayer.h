@@ -50,6 +50,8 @@
 // Allow callbacks
 - (void) refreshPoisData;
 
+- (NSArray*) loadCommentsForPoi:(const UNMPoiData*)poi;
+
 - (void) addCallback:(NSObject<UNMAppViewCallback>*)callback;
 
 @end
