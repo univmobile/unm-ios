@@ -16,6 +16,34 @@ UnivMobileAlpha
 <ios-installation-page>
 
 <ios-installation
+	date="2014-09-01 22:47"
+	git-commit="3ca44af8a5c1b3c7ead521c888ed22d03a48ba20"
+	plistHref="https://dl.dropboxusercontent.com/s/kxg4kicjxdid6xr/UnivMobile.plist"
+	build-displayName="#158"
+	label="Google Maps"/>
+
+<ios-installation
+	date="2014-08-22 13:57"
+	git-commit="2261a886b737c077aa878cf8fa20f4019fc60a9c"
+	plistHref="https://dl.dropboxusercontent.com/s/kigwgat7p1x7pmw/UnivMobile.plist"
+	build-displayName="#151"
+	label="Fix: jsonBaseURL=dev"/>
+
+<ios-installation
+	date="2014-08-22 11:31"
+	git-commit="49519c24a84d7ad991433c6cb6580141aede5927"
+	plistHref="https://dl.dropboxusercontent.com/s/ofnmxq4b2ks12tv/UnivMobile.plist"
+	build-displayName="#141"
+	label="Ajout d’UDID de CRE"/>
+
+<ios-installation
+	date="2014-07-28 16:30"
+	git-commit="e56987ada044f659f726deda90a078a191ce0f03"
+	plistHref="https://dl.dropboxusercontent.com/s/ko1kfmnqecdqrrh/UnivMobile.plist"
+	build-displayName="#3"
+	label="Release ité 1"/>
+
+<ios-installation
 	date="2014-07-28 11:46"
 	git-commit="460a5a645531f2fee618702cbac070f71d34b06c"
 	plistHref="https://dl.dropboxusercontent.com/s/gseps2i3dl8embd/UnivMobile.plist"

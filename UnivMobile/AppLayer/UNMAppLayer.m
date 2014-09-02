@@ -9,29 +9,48 @@
 #import "UNMAppLayer.h"
 #import "UNMInitialRegionsData.h"
 #import "UNMJsonRegionsData.h"
+#import "UNMJsonPoisData.h"
+#import "UNMJsonCommentsData.h"
 #import "UNMJsonFetcher.h"
+#import "NSBundle+String.h"
+#import "UNMCommentsData.h"
 
 @interface UNMAppLayer ()
 
 @property (strong, nonatomic, readonly) NSMutableArray* callbacks; // array of NSObject*
+@property (strong, nonatomic, readonly) NSBundle* bundle;
 @property (strong, nonatomic, readonly) NSObject <UNMJsonFetcher>* jsonFetcher;
+@property (strong, nonatomic, readonly) UNMJsonRegionsData* jsonRegionsData;
+@property (strong, nonatomic, readonly) UNMJsonPoisData* jsonPoisData;
+@property (strong, nonatomic, readonly) UNMJsonCommentsData* jsonCommentsData;
 
 @end
 
 @implementation UNMAppLayer
 
-- (instancetype) initWithJsonFetcher:(NSObject<UNMJsonFetcher>*) jsonFetcher {
+- (instancetype) initWithBundle:(NSBundle*)bundle jsonFetcher:(NSObject<UNMJsonFetcher>*)jsonFetcher {
 
 	self = [super init];
 	
 	if (self) {
 		
-		_buildInfo = [UNMBuildInfo new];
+		_bundle = bundle;
+		
+		_buildInfo = [[UNMBuildInfo alloc] initWithBundle:bundle];
 		
 		[self loadInitialRegionsData];
 		
 		_callbacks = [[NSMutableArray alloc] init];
 		_jsonFetcher = jsonFetcher;
+		
+		NSString* const jsonBaseURL = [bundle stringForKey:@"UNMJsonBaseURL" defaultValue:nil];
+		// NSLog(@"bundle: %@", bundle);
+		
+		// NSLog(@"UNMAppLayer:jsonBaseURL: %@",jsonBaseURL);
+		
+		_jsonRegionsData = [[UNMJsonRegionsData alloc] initWithJSONBaseURL:jsonBaseURL];
+		_jsonPoisData = [[UNMJsonPoisData alloc] initWithJSONBaseURL:jsonBaseURL];
+		_jsonCommentsData = [[UNMJsonCommentsData alloc] init];
 	}
 	
 	return self;
@@ -67,6 +86,13 @@
 - (void) goBackFromRegions {
 	
 	[self invokeCallbacksForSelector:@selector(goBackFromRegions)];
+}
+
+- (void) goBackFromGeocampus {
+	
+	//NSLog(@"AppLayer.goBackFromGeocampus...");
+	
+	[self invokeCallbacksForSelector:@selector(goBackFromGeocampus)];
 }
 
 - (void) showUniversityList {
@@ -142,6 +168,8 @@
 	}
 }
 
+#pragma mark - Regions
+
 - (UNMRegionsData*)loadInitialRegionsData {
 	
 	UNMRegionsData* const regionsData = [UNMInitialRegionsData loadInitialRegionsData];
@@ -159,7 +187,10 @@
 	// Please keep this method synchronous so automatic callbacks may occur consistently.
 	// Use the asyncXxxYyy naming pattern for asynchronous tasks.
 	
-	UNMRegionsData* const regionsData = [UNMJsonRegionsData fetchRegionsData:self.jsonFetcher
+	// NSLog(@"self.jsonRegionsData: %@", self.jsonRegionsData);
+	// NSLog(@"self.jsonFetcher: %@", self.jsonFetcher);
+	
+	UNMRegionsData* const regionsData = [self.jsonRegionsData fetchRegionsData:self.jsonFetcher
 															withErrorHandler:^(NSError* error) {
 		
 		UIAlertView* alert = [[UIAlertView alloc]
@@ -175,6 +206,8 @@
 		
 	}];
 	
+	// NSLog(@"regionsData: %@",regionsData);
+	
 	if (regionsData != nil) {
 		
 		_regionsData = regionsData;
@@ -183,6 +216,87 @@
 
 		[self invokeCallbacksForSelector:@selector(refreshRegionsData)];
 	}
+}
+
+#pragma mark - POIs
+
+- (void) refreshPoisData {
+	
+	// Please keep this method synchronous so automatic callbacks may occur consistently.
+	// Use the asyncXxxYyy naming pattern for asynchronous tasks.
+	
+	// NSLog(@"refreshPoisData");
+	
+	// NSLog(@"self.jsonPoisData: %@", self.jsonPoisData);
+	// NSLog(@"self.jsonFetcher: %@", self.jsonFetcher);
+	
+	UNMPoisData* const poisData = [self.jsonPoisData fetchPoisData:self.jsonFetcher
+															  withErrorHandler:^(NSError* error) {
+																  
+																  UIAlertView* alert = [[UIAlertView alloc]
+																						initWithTitle:@"Erreur de transmission"
+																						message:[NSString stringWithFormat:@"Build %@ %@",
+																								 self.buildInfo.BUILD_DISPLAY_NAME, error]
+																						delegate:nil
+																						cancelButtonTitle:@"OK"
+																						otherButtonTitles:nil
+																						];
+																  
+																  [alert show];
+																  
+															  }];
+	
+	// NSLog(@"poisData: %@",poisData);
+	
+	if (poisData != nil) {
+		
+		_poisData = poisData;
+		
+		// _poisData.refreshedAt = [NSDate date];
+		
+		[self invokeCallbacksForSelector:@selector(refreshPoisData)];
+	}
+}
+
+- (UNMPoiData*) poiById:(NSInteger)poiId {
+	
+	if (self.poisData == nil) return nil;
+	
+	for (UNMPoiGroupData* poiGroup in self.poisData.poiGroups) {
+		
+		for (UNMPoiData* const poi in poiGroup.pois) {
+			
+			if (poi.id == poiId) return poi;
+		}
+	}
+	
+	return nil;
+}
+
+- (NSArray*) loadCommentsForPoi:(const UNMPoiData*)poi {
+	
+	//NSLog(@"loadCommentsForPoi:%d", poi.id);
+	
+	UNMCommentsData* const commentsData = [self.jsonCommentsData fetchCommentsData:self.jsonFetcher
+																		   withPoi:poi
+												  errorHandler:^(NSError* error) {
+													  
+													  UIAlertView* alert = [[UIAlertView alloc]
+																			initWithTitle:@"Erreur de transmission"
+																			message:[NSString stringWithFormat:@"Build %@ %@",
+																					 self.buildInfo.BUILD_DISPLAY_NAME, error]
+																			delegate:nil
+																			cancelButtonTitle:@"OK"
+																			otherButtonTitles:nil
+																			];
+													  
+													  [alert show];
+													  					
+												  }];
+	
+	//NSLog(@"commentsData: %@",commentsData);
+	
+	return commentsData.comments;
 }
 
 @end

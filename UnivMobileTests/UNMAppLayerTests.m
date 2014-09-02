@@ -25,7 +25,8 @@
 	
 	NSObject<UNMJsonFetcher>* const jsonFetcher = [UNMJsonFetcherFileSystem new];
 	
-	self.appLayer = [[UNMAppLayer alloc] initWithJsonFetcher:jsonFetcher];
+	self.appLayer = [[UNMAppLayer alloc] initWithBundle:[NSBundle bundleForClass:[UNMAppLayer class]]
+											jsonFetcher:jsonFetcher];
 }
 
 - (void)tearDown {

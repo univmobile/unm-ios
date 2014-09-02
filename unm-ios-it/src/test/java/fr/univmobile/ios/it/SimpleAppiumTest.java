@@ -33,7 +33,7 @@ public class SimpleAppiumTest {
 		capabilities.setCapability(PLATFORM, "Mac");
 		capabilities.setCapability(PLATFORM_NAME, "iOS");
 		capabilities.setCapability(PLATFORM_VERSION,
-				EnvironmentUtils.getCurrentPlatformVersion());
+				EnvironmentUtils.getCurrentPlatformVersion("iOS"));
 
 		capabilities.setCapability(DEVICE, "iPhone Simulator");
 		capabilities.setCapability(DEVICE_NAME, "iPhone Retina (4-inch)");

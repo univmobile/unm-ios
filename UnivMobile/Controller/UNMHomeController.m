@@ -28,11 +28,16 @@
 @property (nonatomic, strong) UIButton* aboutCloseButton;
 @property (nonatomic, strong) UILabel* universityLabel;
 @property (nonatomic, strong) UIButton* chooseButton;
+@property (nonatomic, strong) UIButton* geocampusButton;
 
 @property (nonatomic, strong) UIView* regionsView;
 @property (nonatomic, strong) UILabel* regionsLabel;
+@property (nonatomic, strong) UIView* poisView;
+@property (nonatomic, strong) UIView* detailsView;
 
-@property (nonatomic, weak) UIView* navView;
+@property (nonatomic, weak) UIView* regionsNavView;
+//@property (nonatomic, weak) UIViewController* poisNavController;
+@property (nonatomic, weak) UIView* poisNavView;
 
 @end
 
@@ -54,7 +59,8 @@
  */
 
 - (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer
-						  navView:(UIView*)navView {
+						  regionsNavView:(UIView*)regionsNavView
+					  poisNavView:(UIView*)poisNavView {
 	
 	self = [super init];
 	
@@ -64,7 +70,10 @@
 		
 		[self.appLayer addCallback:self];
 		
-		self.navView = navView;
+		self.regionsNavView = regionsNavView;
+//		self.poisNavController = poisNavController;
+		self.poisNavView = // poisNavController.view; //
+		poisNavView;
 	}
 	
 	return self;
@@ -112,7 +121,22 @@
 	self.regionsView.hidden = YES;
 	
 	[self.view addSubview:self.regionsView];
+
+	// POIS VIEW
 	
+	//UITabBarController* const
+	
+	//self.tabBarController = [[UITabBarController alloc] init];
+	
+	self.poisView = //self.tabBarController.view; //
+	[[UIView alloc] initWithFrame:bounds];
+	//[[UITabBarController alloc] init];
+	self.poisView.hidden = YES;
+	//self.poisView.backgroundColor = [UIColor greenColor];
+	
+	//self.tabBarController.viewControllers = [NSArray arrayWithObjects:self.poisView, nil];;
+	[self.view addSubview:self.poisView];
+
 	// TITLE LABEL
 	
 	self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0, self.screenMiddle - 200.0, 220.0, 60.0)
@@ -138,7 +162,7 @@
 	const UNMBuildInfo* const buildInfo = self.appLayer.buildInfo;
 	
 	self.aboutTextView.text = [NSString stringWithFormat:
-							   @"\nUnivMobile\n\n©2014 UNPIdF\n\nBuild %@ — %@\n\n\nhttps://github.com/univmobile/unm-ios\n\n%@",
+							   @"\nUnivMobile\n\n©2014 UNPIdF\n\nBuild %@ — %@\n\nJSON: %@\n\nGitHub: https://github.com/univmobile/unm-ios\n\n%@",
 							   buildInfo.BUILD_DISPLAY_NAME,
 							   [[[[[buildInfo.BUILD_ID
 									stringByReplacingCharactersInRange:NSMakeRange(4, 1) withString:@"/"]
@@ -146,6 +170,7 @@
 								 stringByReplacingCharactersInRange:NSMakeRange(10, 1) withString:@" "]
 								 stringByReplacingCharactersInRange:NSMakeRange(13, 1) withString:@":"]
 								stringByReplacingCharactersInRange:NSMakeRange(16, 3) withString:@""],
+							   buildInfo.UNMJsonBaseURL,
 							   buildInfo.GIT_COMMIT
 							   ];
 	self.aboutTextView.textColor = [UIColor blackColor];//[UNMConstants RGB_79b8d9];
@@ -174,7 +199,8 @@
 
 	self.aboutDataRefreshButton = [[UIButton alloc] initWithFrame:CGRectMake(
 																	   15.0, self.screenMiddle + 40.0, 290.0, 20.0)];
-
+	self.aboutDataRefreshButton.accessibilityIdentifier = @"button-dataRefresh";
+	
 	// self.aboutDataRefreshButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
 	
 	// self.aboutDataRefreshButton.backgroundColor = [UIColor redColor];
@@ -207,6 +233,7 @@
 	self.aboutCloseButton = [[UIButton alloc] initWithFrame:CGRectMake(
 																	   120.0, self.screenMiddle + 126.0, 80.0, 20.0)
 							 ];
+	self.aboutCloseButton.accessibilityIdentifier = @"button-okCloseAbout";
 	
 	[self.aboutCloseButton setTitle:@"OK" forState:UIControlStateNormal];
 	
@@ -227,7 +254,7 @@
 	
 	// UNIVERSITY NAME LABEL
 	
-	self.universityLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.screenMiddle + 20.0, 320.0, 40.0)];
+	self.universityLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.screenMiddle - 20.0, 320.0, 40.0)];
 	self.universityLabel.text = @"Aucune université sélectionnée";
 	self.universityLabel.textColor = [UIColor blackColor];
 	self.universityLabel.font = [UIFont italicSystemFontOfSize:18];
@@ -245,11 +272,11 @@
 	self.regionsLabel.textAlignment = NSTextAlignmentCenter;
 	self.regionsLabel.backgroundColor = [UIColor whiteColor];
 	
-	[self.regionsView addSubview:self.navView];
+	[self.regionsView addSubview:self.regionsNavView];
 	
 	// CHOOSE BUTTON
 	
-	self.chooseButton = [[UIButton alloc] initWithFrame:CGRectMake(120.0, self.screenMiddle + 100.0, 80.0, 20.0)];
+	self.chooseButton = [[UIButton alloc] initWithFrame:CGRectMake(120.0, self.screenMiddle + 40.0, 80.0, 20.0)];
 	self.chooseButton.accessibilityIdentifier = @"button-choisirUniversité";
 	
 	[self.chooseButton setTitle:@"Choisir…" forState:UIControlStateNormal];
@@ -286,6 +313,59 @@
 		return [RACSignal empty];
 	}];
 	
+	// POIS LABEL
+	
+	/*
+	self.regionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0, self.screenMiddle - 200.0, 220.0, 60.0)];
+	self.regionsLabel.text = @"Régions";
+	self.regionsLabel.textColor = [UNMConstants RGB_79b8d9];
+	self.regionsLabel.font = [UIFont systemFontOfSize:36];
+	self.regionsLabel.textAlignment = NSTextAlignmentCenter;
+	self.regionsLabel.backgroundColor = [UIColor whiteColor];
+	*/
+	
+	//self.tabBarController = [[UITabBarController alloc] init];
+	
+	//self.tabBarController.viewControllers = [NSArray arrayWithObject:self.poisNavController];
+	
+	[self.poisView addSubview:self.poisNavView];
+	
+	//[self.poisView addSubview:self.tabBarController.view];
+	
+	//self.tabBarController.viewControllers = [NSArray arrayWithObjects:self.poisNavView, nil];
+	
+	// GÉOCAMPUS BUTTON
+
+	self.geocampusButton = [[UIButton alloc] initWithFrame:CGRectMake(100.0, self.screenMiddle + 120.0, 120.0, 40.0)];
+	self.geocampusButton.accessibilityIdentifier = @"button-Géocampus";
+	
+	[self.geocampusButton setTitle:@"Géocampus" forState:UIControlStateNormal];
+	[self.geocampusButton setTitleColor:[UNMConstants RGB_79b8d9] forState:UIControlStateNormal];
+	self.geocampusButton.backgroundColor = [UIColor whiteColor];
+	
+	[self.geocampusButton setTitleColor:[UIColor greenColor] forState:UIControlStateHighlighted];
+	
+	[self.homeTitleView addSubview:self.geocampusButton];
+	
+	self.geocampusButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
+		
+		@strongify(self)
+		
+		[self.appLayer refreshPoisData];
+		
+		[UIView transitionFromView:self.homeView
+							toView:self.poisView
+						  duration:[UNMConstants TRANSITION_DURATION]
+		 options:UIViewAnimationOptionTransitionCrossDissolve
+						   // options:UIViewAnimationOptionTransitionCrossDissolve //
+		 + UIViewAnimationOptionShowHideTransitionViews
+						completion:^(BOOL done) {
+							// nothing here
+						}];
+		
+		return [RACSignal empty];
+	}];
+
 	// LAYOUT
 	
 	[self doLayoutSubviews];
@@ -331,8 +411,10 @@
 	const CGRect bounds = self.view.bounds;
 	
     self.regionsView.frame = bounds;
+    self.poisView.frame = bounds;
 	
-	self.navView.frame = bounds;
+	self.regionsNavView.frame = bounds;
+	self.poisNavView.frame = bounds;
 }
 
 #pragma mark - AppLayer Callbacks
@@ -359,6 +441,32 @@
 						toView:self.homeView
 					  duration:[UNMConstants TRANSITION_DURATION]
 					   options:UIViewAnimationOptionTransitionFlipFromLeft //
+									+ UIViewAnimationOptionShowHideTransitionViews
+					completion:^(BOOL done) {
+						// nothing here
+					}];
+}
+
+// Override: UNMAppViewCallback
+- (void)callbackGoBackFromGeocampus {
+	
+	[UIView transitionFromView:self.poisView
+						toView:self.homeView
+					  duration:[UNMConstants TRANSITION_DURATION]
+					   options:UIViewAnimationOptionTransitionCrossDissolve //
+									+ UIViewAnimationOptionShowHideTransitionViews
+					completion:^(BOOL done) {
+						// nothing here
+					}];
+}
+
+// Override: UNMAppViewCallback
+- (void)callbackGoFromPoisToDetails {
+	
+	[UIView transitionFromView:self.poisView
+						toView:self.detailsView
+					  duration:[UNMConstants TRANSITION_DURATION]
+					   options:UIViewAnimationOptionTransitionCrossDissolve //
 									+ UIViewAnimationOptionShowHideTransitionViews
 					completion:^(BOOL done) {
 						// nothing here

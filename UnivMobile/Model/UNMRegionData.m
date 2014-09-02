@@ -49,7 +49,8 @@
 	
 	[map addEntriesFromDictionary:@{
 									@"id": @"id",
-									@"label":@"label"
+									@"label":@"label",
+									@"universitiesUrl": @"url"
 									}];
 	
 	return map;
@@ -82,7 +83,6 @@
 	[map addEntriesFromDictionary:@{
 									@"id": @"id",
 									@"title": @"title"
-									// @"universitiesUrl": @"url"
 									}];
 	
 	return map;

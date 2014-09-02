@@ -2,9 +2,9 @@ package fr.univmobile.ios.it;
 
 import org.junit.Test;
 
-import fr.univmobile.it.commons.AppiumEnabledTest;
+import fr.univmobile.it.commons.AppiumIOSEnabledTest;
 
-public class HomePageTest extends AppiumEnabledTest {
+public class HomePageTest extends AppiumIOSEnabledTest {
 
 	@Test
 	public void testHomePage_display() throws Exception {

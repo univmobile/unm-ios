@@ -14,6 +14,7 @@
 @interface UNMHomeController : UIViewController <UNMAppLayered, UNMAppViewCallback>
 
 - (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer
-						  navView:(UIView*)navView;
+						  regionsNavView:(UIView*)regionsNavView
+					  poisNavView:(UIView*)poisNavView;
 
 @end
