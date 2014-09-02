@@ -217,7 +217,7 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		takeScreenshot("geocampus_details.png");
 
-		elementById("Pois").click();
+		elementById("POIs").click(); // ?
 
 		pause(PAUSE);
 
