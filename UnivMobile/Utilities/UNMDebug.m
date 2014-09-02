@@ -128,7 +128,7 @@
 		}
 	}
 	
-	if (ivarName == NULL) return @"!iVar?";
+	if (ivarName == nil) return @"!iVar?";
 	
 	return [object valueForKey:ivarName];
 }

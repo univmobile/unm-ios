@@ -22,6 +22,9 @@
 // e.g. @"c159768e3c52b27bb15e4b8c9d865a3debe667e0"
 @property (copy, nonatomic, readonly) NSString* GIT_COMMIT;
 
+// e.g. @"https://univmobile-dev.univ-paris1.fr/json/"
+@property (copy, nonatomic, readonly) NSString* UNMJsonBaseURL;
+
+- (instancetype) initWithBundle:(NSBundle*)bundle;
+
 @end
-
-

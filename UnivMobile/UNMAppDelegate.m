@@ -12,14 +12,21 @@
 #import "UNMConstants.h"
 #import "UNMRegionsController.h"
 #import "UNMUniversitiesController.h"
+#import "UNMPoisController.h"
+#import "UNMMapController.h"
+#import "UNMDetailsController.h"
+#import "UNMCommentsController.h"
 #import "UNMDebug.h"
 #import "UNMJsonFetcher.h"
 #import "UNMJsonFetcherFileSystem.h"
 #import "UNMJsonFetcherWeb.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface UNMAppDelegate ()
 
 @property (strong, nonatomic, readonly) UNMAppLayer* appLayer;
+@property (nonatomic, strong) UITabBarController* poisTabBarController;
+@property (nonatomic, strong) UITabBarController* detailsTabBarController;
 
 @end
 
@@ -38,14 +45,16 @@
 	
 //#endif
 	
+	[GMSServices provideAPIKey:@"AIzaSyCqH7d3P6A8VLeUgI9m69PougPACFOKSZk"];
+	
 	// APPLICATION LAYER
 	
 	NSObject <UNMJsonFetcher>* const jsonFetcher = // [UNMJsonFetcherFileSystem new];
 		[UNMJsonFetcherWeb new];
 	
-	_appLayer = [[UNMAppLayer alloc] initWithJsonFetcher:jsonFetcher];
+	_appLayer = [[UNMAppLayer alloc] initWithBundle:[NSBundle mainBundle] jsonFetcher:jsonFetcher];
 	
-	// NAVIGATION CONTROLLER
+	// NAVIGATION CONTROLLER: REGIONS
 	
 	UNMUniversitiesController* const universitiesController = [[UNMUniversitiesController alloc]
 															   initWithAppLayer:_appLayer
@@ -56,15 +65,50 @@
 													 style:UITableViewStylePlain
 													 universitiesController:universitiesController];
 	
-	_navController = [[UINavigationController alloc]
+	_regionsNavController = [[UINavigationController alloc]
 						  initWithRootViewController:regionsController];
+
+	// NAVIGATION CONTROLLER: POIS
 	
+	UNMDetailsController* const detailsController = [[UNMDetailsController alloc]
+													 initWithAppLayer:_appLayer];
+
+	UNMCommentsController* const commentsController = [[UNMCommentsController alloc]
+													 initWithAppLayer:_appLayer
+													   detailsController:detailsController];
+
+	self.detailsTabBarController = [[UITabBarController alloc] init];
+	
+	self.detailsTabBarController.viewControllers = [NSArray arrayWithObjects:detailsController, commentsController, nil];
+	
+	self.detailsTabBarController.delegate = commentsController;
+	
+	UNMPoisController* const poisController = [[UNMPoisController alloc]
+															   initWithAppLayer:_appLayer
+															   style:UITableViewStylePlain
+											   detailsController:detailsController];
+	
+	UNMMapController* const mapController = [[UNMMapController alloc]
+											   initWithAppLayer:_appLayer
+											 poisController:poisController];
+	
+	self.poisTabBarController = [[UITabBarController alloc] init];
+	
+	self.poisTabBarController.viewControllers = [NSArray arrayWithObjects:poisController, mapController, nil];
+
+	self.poisTabBarController.delegate = mapController;
+	
+	_poisNavController = [[UINavigationController alloc]
+					  //initWithRootViewController:poisController];
+						  initWithRootViewController:self.poisTabBarController];
+
 	// WINDOW
 	
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
     self.window.rootViewController = [[UNMHomeController alloc] initWithAppLayer:_appLayer
-																		 navView:self.navController.view
+																		 regionsNavView:self.regionsNavController.view
+																	 poisNavView:self.poisNavController.view
 									  ];
 	
 	self.window.backgroundColor = [UNMConstants RGB_79b8d9]; // This background will show during animations

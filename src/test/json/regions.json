@@ -1,13 +1,13 @@
-{"region":[{
+{"regions":[{
 	"id":"ile_de_france",
 	"label":"Île de France",
-	"url":"http://m.univmobile.fr"
+	"url":"http://m.univmobile.fr/json/listUniversities_ile_de_france.json"
 },{
 	"id":"bretagne",
 	"label":"Bretagne",
-	"url":"http://univmobile.ueb.eu"
+	"url":"http://univmobile.ueb.eu/json/listUniversities_bretagne.json"
 },{
 	"id":"unrpcl",
 	"label":"Limousin/Poitou-Charentes",
-	"url":"http://umobile.univ-lr.fr"
+	"url":"http://umobile.univ-lr.fr/json/listUniversities_unrpcl.json"
 }]}

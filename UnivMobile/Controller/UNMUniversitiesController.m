@@ -30,8 +30,8 @@
 		
 		[self.appLayer addCallback:self];
 		
-		self.view.accessibilityIdentifier = @"toto";
-		self.view.accessibilityLabel = @"Popeye";
+		// self.view.accessibilityIdentifier = @"toto";
+		// self.view.accessibilityLabel = @"Popeye";
     }
     
 	return self;
@@ -39,8 +39,11 @@
 
 // Override: UIViewController
 - (void)viewDidLoad {
+
     [super viewDidLoad];
     
+	self.tableView.accessibilityIdentifier = @"table-universities";
+
 	self.view.backgroundColor = [UNMConstants RGB_9bc9e1];
 
     // Preserve selection between presentations.
@@ -99,13 +102,21 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"university"];
     }
 	
-	const NSUInteger row = [indexPath row];
+	const NSUInteger row = indexPath.row;
 	
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
 	
 	const UNMUniversityData* const universityData = [self.regionData.universities objectAtIndex:row];
 	
 	const BOOL isSelected = [universityData.id isEqualToString:self.selectedUniversityId];
+	
+	// For details, see:
+	// https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/iPhoneAccessibility/Making_Application_Accessible/Making_Application_Accessible.html
+	//
+	cell.isAccessibilityElement = NO; // Important.
+	cell.textLabel.isAccessibilityElement = YES;
+	cell.textLabel.accessibilityElementsHidden = NO;
+	cell.textLabel.accessibilityIdentifier = [@"table-universities-" stringByAppendingString:universityData.id];
 
 	if (isSelected) {
 		cell.backgroundColor = [UNMConstants RGB_79b8d9];
@@ -126,7 +137,7 @@
 // Override: UITableViewDelegate
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
 	
-	const NSUInteger row = [indexPath row];
+	const NSUInteger row = indexPath.row;
 	
 	const UNMUniversityData* const universityData = [self.regionData.universities objectAtIndex:row];
 

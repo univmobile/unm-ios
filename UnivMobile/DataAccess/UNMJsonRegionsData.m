@@ -16,15 +16,48 @@
 
 @end
 
+@interface UNMJsonRegionsData ()
+
+@property (copy, atomic) NSString* jsonBaseURL;
+
+@end
+
 @implementation UNMJsonRegionsData
 
-+ (UNMRegionsData*) fetchRegionsData:(NSObject<UNMJsonFetcher>*)jsonFetcher
+- (instancetype) init {
+	
+	NSLog(@"IllegalStateException: UNMJsonRegionsData.init()");
+	
+	@throw [NSException
+			exceptionWithName:@"IllegalStateException"
+			reason:@"init() should not be called"
+			userInfo:nil];
+}
+
+- (instancetype) initWithJSONBaseURL:(NSString*)jsonBaseURL {
+	
+	self = [super init];
+	
+	if (self) {
+
+		self.jsonBaseURL = jsonBaseURL;
+	}
+	
+	return self;
+}
+
+- (UNMRegionsData*) fetchRegionsData:(NSObject<UNMJsonFetcher>*)jsonFetcher
 					withErrorHandler:(void(^)(NSError*))onError {
 	
 	NSString* const url = // @"http://univmobile.vswip.com/unm-backend-mock/regions";
-	@"https://univmobile-dev.univ-paris1.fr/json/regions";
+	// @"https://univmobile-dev.univ-paris1.fr/json/regions";
+	[self.jsonBaseURL stringByAppendingString:@"regions"];
+	
+	// NSLog(@"fetchRegionsData:url: %@", url);
 	
 	id const json = [jsonFetcher syncFetchJsonAtURL:url withErrorHandler:onError];
+
+	// NSLog(@"fetchRegionsData -> json: %@", json);
 
 	if (!json) return nil; // Error is already handled by callback
 	
@@ -41,6 +74,8 @@
 		return nil;
 	}
 	
+	// NSLog(@"fetchRegionsData:regionsData: %@", regionsData);
+	
 	if (!regionsData) {
 		
 		NSLog(@"Error: regionsData == nill");
@@ -52,11 +87,14 @@
 
 	for (UNMRegionData* const regionData in ((UNMRegionsData*)regionsData).regions) {
 		
-		NSString* const universitiesUrl = regionData.id;
+		NSString* const universitiesUrl = regionData.universitiesUrl;
+		
+		//NSLog(@"universitiesUrl: %@", universitiesUrl);
 		
 		id const universitiesJson = [jsonFetcher syncFetchJsonAtURL:universitiesUrl withErrorHandler:onError];
 		
-		if (!universitiesJson) return nil; // Error is already handled by callback
+		// TODO continue;? return nil;? Alert?
+		if (!universitiesJson) continue; // Error is already handled by callback
 		
 		id const universitiesData = [MTLJSONAdapter modelOfClass:[UNMUniversitiesData class]
 										 fromJSONDictionary:universitiesJson

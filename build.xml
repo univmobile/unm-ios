@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="unm-ios" default="all">
 
-	<target name="all" depends="generate-documentation,
-		generate-ios-installation-page">
-	</target>
-		
-	<target name="generate-documentation"
-		description="Generate documentation for the UnivMobile iOS application">
-
-		<xslt force="true"
-			style="src/main/xslt/scenarios.html.xsl"
-			in="src/main/site/scenarios.xml"
-			out="target/site/scenarios.html"/>
-
-		<copy todir="target/site/img">
-			<fileset dir="src/site/img"/>
-		</copy>
+	<target name="all" depends="generate-ios-installation-page">
 		
 	</target>
 
@@ -29,4 +15,20 @@
 		
 	</target>
 
+	<property name="jsonBaseURL" value="http://localhost:8380/unm-backend/json/"/>
+
+	<target name="update-plist">
+	
+		<xslt style="src/main/xslt/update_plist.xsl"
+				in="UnivMobile/UnivMobile-Info.plist"
+				out="target/UnivMobile-Info.plist">
+			<param name="jsonBaseURL" expression="${jsonBaseURL}"/>
+		</xslt>
+      
+		<copy overwrite="true"
+			file="target/UnivMobile-Info.plist"
+			tofile="UnivMobile/UnivMobile-Info.plist"/>
+
+	</target>	
+	
 </project>

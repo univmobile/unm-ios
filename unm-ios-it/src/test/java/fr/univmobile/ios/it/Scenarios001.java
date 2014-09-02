@@ -1,15 +1,30 @@
 package fr.univmobile.ios.it;
 
+import java.io.File;
+
+import org.junit.Before;
 import org.junit.Test;
 
-import fr.univmobile.it.commons.AppiumEnabledTest;
+import fr.univmobile.backend.it.TestBackend;
+import fr.univmobile.it.commons.AppiumIOSEnabledTest;
 import fr.univmobile.it.commons.DeviceNames;
+import fr.univmobile.it.commons.EnvironmentUtils;
 import fr.univmobile.it.commons.Scenario;
 import fr.univmobile.it.commons.Scenarios;
 
 @Scenarios("Scénarios simples")
 @DeviceNames({ "iPhone Retina (3.5-inch)", "iPhone Retina (4-inch)" })
-public class Scenarios001 extends AppiumEnabledTest {
+public class Scenarios001 extends AppiumIOSEnabledTest {
+
+	@Before
+	public void setUpData() throws Exception {
+
+		// "/tmp/unm-mobileweb/dataDir"
+		final String dataDir = TestBackend.readBackendAppDataDir(new File(
+				"target", "unm-backend-app-noshib/WEB-INF/web.xml"));
+
+		TestBackend.setUpData("001", new File(dataDir));
+	}
 
 	@Scenario("Aller-retour sur la page « À Propos »")
 	@Test
@@ -44,6 +59,51 @@ public class Scenarios001 extends AppiumEnabledTest {
 		elementById("textView-buildInfo").shouldBeHidden();
 	}
 
+	@Scenario("Recharger les données")
+	@Test
+	public void sc004() throws Exception {
+
+		takeScreenshot("home.png");
+
+		// Don’t ask me why running only one swipe doesn’t work.
+
+		swipe(80, 168, 77, 414, 800);
+		swipe(80, 168, 77, 414, 800);
+		swipe(80, 168, 77, 414, 800);
+
+		takeScreenshot("about1.png");
+
+		elementById("button-dataRefresh").click();
+
+		pause(PAUSE);
+
+		takeScreenshot("about2.png");
+
+		elementById("button-okCloseAbout").click();
+
+		pause(PAUSE);
+
+		takeScreenshot("home2.png");
+
+		elementById("button-choisirUniversité").click();
+
+		pause(PAUSE);
+
+		takeScreenshot("regions.png");
+
+		elementById("table-regions-bretagne").click(); // Bretagne
+
+		pause(PAUSE);
+
+		takeScreenshot("universities.png");
+
+		elementById("table-universities-rennes1").click(); // Univ. de Rennes 1
+
+		pause(PAUSE);
+
+		takeScreenshot("home_afterUniversities.png");
+	}
+
 	public static final int PAUSE = 2000;
 	public static final int DELAY_SCREENSHOT = 160;
 
@@ -55,7 +115,7 @@ public class Scenarios001 extends AppiumEnabledTest {
 
 		pause(PAUSE);
 
-		savePageSource("pageSource.xml");
+		savePageSource("homeSource.xml");
 
 		futureScreenshot(DELAY_SCREENSHOT, "home_swappingToRegions.png");
 
@@ -65,7 +125,9 @@ public class Scenarios001 extends AppiumEnabledTest {
 
 		takeScreenshot("regions.png");
 
-		pause(PAUSE);
+		savePageSource("regionsSource.xml");
+
+		// pause(PAUSE); // ?
 
 		futureScreenshot(DELAY_SCREENSHOT, "home_swappingFromRegions.png");
 
@@ -74,5 +136,141 @@ public class Scenarios001 extends AppiumEnabledTest {
 		pause(PAUSE);
 
 		takeScreenshot("home_afterRegions.png");
+	}
+
+	@Scenario("Sélection d’une université")
+	@Test
+	public void sc003() throws Exception {
+
+		takeScreenshot("home_beforeRegions.png");
+
+		pause(PAUSE);
+
+		// savePageSource("pageSource.xml");
+
+		futureScreenshot(DELAY_SCREENSHOT, "home_swappingToRegions.png");
+
+		elementById("button-choisirUniversité").click();
+
+		pause(PAUSE);
+
+		takeScreenshot("regions.png");
+
+		savePageSource("regionsSource.xml");
+
+		// pause(PAUSE); // ?
+
+		futureScreenshot(DELAY_SCREENSHOT, "regions_swappingToUniversities.png");
+
+		elementById("table-regions-unrpcl").click(); // Limousin/Poitou-Ch.
+
+		pause(PAUSE);
+
+		takeScreenshot("universities.png");
+
+		savePageSource("universitiesSource.xml");
+
+		futureScreenshot(DELAY_SCREENSHOT, "universities_swappingToHome.png");
+
+		elementById("table-universities-ul").click(); // Université de Limoges
+
+		pause(PAUSE);
+
+		takeScreenshot("home_afterUniversities.png");
+
+		savePageSource("home_afterUniversitiesSource.xml");
+	}
+
+	private static String navUpXPath = null;
+
+	@Scenario("Géocampus")
+	@Test
+	public void Geocampus_000() throws Exception {
+
+		pause(PAUSE);
+
+		takeScreenshot("home.png");
+
+		elementById("button-Géocampus").click();
+
+		pause(PAUSE);
+
+		takeScreenshot("geocampus_list.png");
+
+		savePageSource("geocampus_list.xml");
+
+		// getDriver().findElement(By.xpath("//UIATabBar[1]/UIAButton[2]"))
+		// .click();
+		elementByXPath("//UIATabBar[1]/UIAButton[2]").click();
+		// elementById("Plan").click();
+
+		pause(PAUSE);
+
+		takeScreenshot("geocampus_map.png");
+
+		// elementById("link-poiNav-3792").click(); // Cergy Pointoise
+
+		// pause(2000);
+
+		// takeScreenshot("geocampus_map_infoWindow.png");
+
+		elementById("label-poi-name").click();
+
+		pause(PAUSE);
+
+		takeScreenshot("geocampus_details.png");
+
+		savePageSource("geocampus_details.xml");
+
+		if (navUpXPath == null) {
+
+			boolean IOS_6 = false;
+
+			final String platformVersion = EnvironmentUtils
+					.getCurrentPlatformVersion("iOS");
+
+			System.out.println("Found platformVersion: " + platformVersion);
+
+			if (platformVersion.startsWith("6")) {
+				IOS_6 = true;
+			}
+
+			// To find these values, launch the Appium Inspector.
+			//
+			if (IOS_6) { // IOS_6
+				navUpXPath = "//UIANavigationBar[1]/UIAButton[1]";
+			} else { // IOS_7
+				navUpXPath = "//UIANavigationBar[2]/UIAButton[2]";
+			}
+		}
+
+		elementByXPath(navUpXPath).click();
+		// elementByName("POIs").click(); // ?
+
+		pause(PAUSE);
+
+		takeScreenshot("geocampus_back_to_map.png");
+	}
+
+	@Scenario("Géocampus, commentaires")
+	@Test
+	public void Geocampus_001() throws Exception {
+
+		pause(PAUSE);
+		takeScreenshot("home.png");
+		elementById("button-Géocampus").click();
+		pause(PAUSE);
+		takeScreenshot("geocampus_list.png");
+		elementByXPath("//UIATabBar[1]/UIAButton[2]").click();
+		// elementByName("Plan").click();
+		pause(PAUSE);
+		takeScreenshot("geocampus_map.png");
+		elementById("label-poi-name").click();
+		pause(PAUSE);
+		takeScreenshot("geocampus_details.png");
+		elementByXPath("//UIATabBar[1]/UIAButton[2]").click();
+		// elementByName("Commentaires").click();
+		pause(PAUSE);
+		takeScreenshot("comments.png");
 	}
 }

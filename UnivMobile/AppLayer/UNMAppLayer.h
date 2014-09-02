@@ -8,6 +8,7 @@
 
 @import Foundation;
 #import "UNMRegionsData.h"
+#import "UNMPoisData.h"
 #import "UNMAppViewCallback.h"
 #import "UNMBuildInfo.h"
 #import "UNMJsonFetcher.h"
@@ -19,11 +20,14 @@
 @property (copy, nonatomic) NSString* selectedRegionId;
 @property (copy, nonatomic) NSString* selectedUniversityId;
 @property (strong, nonatomic, readonly) UNMRegionsData* regionsData;
+@property (strong, nonatomic, readonly) UNMPoisData* poisData;
 @property (strong, nonatomic, readonly) UNMBuildInfo* buildInfo;
 
-- (instancetype) initWithJsonFetcher:(NSObject<UNMJsonFetcher>*) jsonFetcher;
+- (instancetype) initWithBundle:(NSBundle*)bundle jsonFetcher:(NSObject<UNMJsonFetcher>*)jsonFetcher;
 
 - (UNMRegionsData*) loadInitialRegionsData;
+
+- (UNMPoiData*) poiById:(NSInteger)poiId;
 
 // Allow callbacks
 - (void) setSelectedRegionIdInList:(NSString*)regionId;
@@ -35,10 +39,18 @@
 - (void) goBackFromRegions;
 
 // Allow callbacks
+- (void) goBackFromGeocampus;
+
+// Allow callbacks
 - (void) showUniversityList;
 
 // Allow callbacks
 - (void) refreshRegionsData;
+
+// Allow callbacks
+- (void) refreshPoisData;
+
+- (NSArray*) loadCommentsForPoi:(const UNMPoiData*)poi;
 
 - (void) addCallback:(NSObject<UNMAppViewCallback>*)callback;
 

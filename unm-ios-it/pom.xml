@@ -6,33 +6,25 @@
 
 	<parent>
 		<groupId>fr.univmobile</groupId>
-		<artifactId>unm-it-parent</artifactId>
-		<version>0.0.3</version>
+		<artifactId>unm-backend-it-parent</artifactId>
+		<version>0.0.4</version>
 		<relativePath />
 	</parent>
 
 	<dependencies>
 		<dependency>
 			<groupId>fr.univmobile</groupId>
-			<artifactId>unm-it-commons</artifactId>
+			<artifactId>unm-ios</artifactId>
+			<scope>test</scope>
 		</dependency>	
 	</dependencies>
-
-	<build>
-		<testResources>
-			<testResource>
-				<directory>src/test/resources</directory>
-				<filtering>true</filtering>
-			</testResource>
-		</testResources>
-	</build>
 
 	<name>unm-ios-it</name>
 	<description>
 		Integration tests for the UnivMobile iOS project.
 	</description>
 	<url>
-        http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}
+        http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}/
     </url>
 
 	<scm>

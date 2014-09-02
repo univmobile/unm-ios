@@ -10,7 +10,7 @@ import fr.univmobile.it.commons.ScenarioContext;
 @RunWith(Parameterized.class)
 public class AllScenariosTest extends AbstractScenariosTest {
 
-	@Parameters(name = "{1}.{2}.{3}_{0}")
+	@Parameters(name = "{0}")
 	public static Iterable<Object[]> parameters() throws Exception {
 
 		return AbstractScenariosTest.loadParametersForScenarioClasses( //

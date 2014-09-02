@@ -129,7 +129,7 @@ BUILD_OPTS="-workspace UnivMobile.xcworkspace \
   -sdk iphonesimulator${PLATFORM_VERSION} \
   -destination OS=${PLATFORM_VERSION},name=\"iPhone Retina (4-inch)\""
 BUILD_CMD="/usr/bin/xcodebuild clean build ${BUILD_OPTS}"  
-TEST_CMD="/usr/bin/xcodebuild test ${BUILD_OPTS}"
+TEST_CMD="/usr/bin/xcodebuild clean test ${BUILD_OPTS}"
 
 # ======== 3. TEST REPORT INITIALIZATION ========
 
@@ -177,16 +177,17 @@ echo "${BUILD_CMD}"
 echo "${BUILD_CMD}" > "${CMD_FILE}"    
 echo "${BUILD_CMD}" >> "${BUILD_LOG}"
 
-# "${CMD_FILE}" >> "${TEST_REPORT}" 2>&1 // xcodebuild clean build
+# "${CMD_FILE}" >> "${TEST_REPORT}" 2>&1 # xcodebuild clean build
 
-"${CMD_FILE}" >> "${BUILD_LOG}" 2>&1 // xcodebuild clean build
+"${CMD_FILE}" >> "${BUILD_LOG}" 2>&1 # xcodebuild clean build
 
 RET=$?
 
 if [ "${RET}" -ne 0 ]; then
 
   echo "** Error: \"xcodebuild clean build\" failed with return code: ${RET}" | tee -a "${TEST_REPORT}"
-
+  exit 1
+  
 else
 
   echo >> "${TEST_REPORT}"
@@ -201,7 +202,7 @@ else
   echo "${TEST_CMD}" > "${CMD_FILE}"    
   echo "${TEST_CMD}" >> "${BUILD_LOG}"
 
-  "${CMD_FILE}" >> "${TEST_REPORT}" 2>&1 // xcodebuild test
+  "${CMD_FILE}" >> "${TEST_REPORT}" 2>&1 # xcodebuild test
 
 fi
 
