@@ -181,6 +181,7 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		savePageSource("home_afterUniversitiesSource.xml");
 	}
 
+	private static String navUpName = null;
 	private static String navUpXPath = null;
 
 	@Scenario("Géocampus")
@@ -222,7 +223,7 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		savePageSource("geocampus_details.xml");
 
-		if (navUpXPath == null) {
+		if (navUpName == null && navUpXPath == null) {
 
 			boolean IOS_6 = false;
 
@@ -238,14 +239,21 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 			// To find these values, launch the Appium Inspector.
 			//
 			if (IOS_6) { // IOS_6
-				navUpXPath = "//UIANavigationBar[1]/UIAButton[1]";
+				// navUpXPath = "//UIANavigationBar[1]/UIAButton[1]";
+				navUpXPath = null;
+				navUpName = "POIs";
 			} else { // IOS_7
 				navUpXPath = "//UIANavigationBar[2]/UIAButton[2]";
+				navUpName = null;
 			}
 		}
 
-		elementByXPath(navUpXPath).click();
-		// elementByName("POIs").click(); // ?
+		if (navUpName != null) {
+			elementByName(navUpName).click();
+			// elementByName("POIs").click(); // ?
+		} else {
+			elementByXPath(navUpXPath).click();
+		}
 
 		pause(PAUSE);
 
