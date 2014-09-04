@@ -15,11 +15,6 @@
 				name="Doxygen" />
 		</menu>
 
-		<menu name="Screenshots">
-			<item href="scenarios.html"
-				name="Scénarios" />
-		</menu>
-
 		<menu ref="parent" />
 
 		<menu ref="modules" />
