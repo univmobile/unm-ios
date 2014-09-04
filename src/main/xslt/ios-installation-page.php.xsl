@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="html" encoding="UTF-8" doctype-public="html"/>
 
-<xsl:variable name="ios-installations"
+<xsl:variable name="/ios-installations"
 	select="ios-installation-page/ios-installation"/>
 	
 <xsl:template match="/ios-installation-page">
@@ -31,7 +31,7 @@
 
 <!-- INSPECT PLISTS -->
 
-<!-- TODO: This code works only onl David’s environment.
+<!-- TODO: This code works only on David’s environment.
 
 <xsl:for-each select="$ios-installations">
 <xsl:variable name="git-commit" select="@git-commit"/>
