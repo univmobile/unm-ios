@@ -62,15 +62,18 @@
 
 $user_agent = $_SERVER['HTTP_USER_AGENT'];
 
-$ios = false;
+$mobile = false;
 
-if (strstr($user_agent, '(iPod;') !== false) $ios = true;
-if (strstr($user_agent, '(iPad;') !== false) $ios = true;
-if (strstr($user_agent, ' Mobile') !== false) $ios = true;
+if (strstr($user_agent, '(iPod;') !== false) $mobile = true;
+if (strstr($user_agent, '(iPad;') !== false) $mobile = true;
+if (strstr($user_agent, ' Mobile') !== false) $mobile = true;
+if (strstr($user_agent, ' Android') !== false) $mobile = true;
 
-$title = 'UnivMobile';
-if (!$ios) $title .= ' iOS ';
-$title .= ' — Installations ad hoc';
+if ($mobile) {
+	$title = 'UnivMobile iOS — Installations';
+} else {
+	$title = 'UnivMobile iOS — Installations ad hoc';
+}
 
 ?>
 ]]>
@@ -85,7 +88,7 @@ $title .= ' — Installations ad hoc';
 </xsl:text>
 </title>
 <xsl:text disable-output-escaping="yes">
-<![CDATA[<?php if ($ios) { ?>]]>
+<![CDATA[<?php if ($mobile) { ?>]]>
 </xsl:text>
 
 <style type="text/css">
@@ -98,6 +101,9 @@ body {
 }
 div.nav {
 	display: none;
+}
+#table-body {
+	width: 100%;
 }
 table {
 	font-size: 100%;
@@ -398,7 +404,7 @@ Git commit=<xsl:value-of select="$git-commit"/>
 
 <tr>
 <xsl:text disable-output-escaping="yes">
-<![CDATA[<?php if ($ios) { ?>]]>
+<![CDATA[<?php if ($mobile) { ?>]]>
 </xsl:text>
 
 <td>
