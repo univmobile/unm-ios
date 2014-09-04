@@ -17,6 +17,6 @@ Documentation des sous-projets :
 
 ### Architecture logicielle
 
-![](src/site/images/ios.png =600x "iOS, Backend")
+![](src/site/images/ios.png?raw=true =600x "iOS, Backend")
 
 
