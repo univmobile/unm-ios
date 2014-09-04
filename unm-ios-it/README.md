@@ -46,5 +46,15 @@ Dans un environnement Jenkins,
 le projet unm-devel-it dans le repository GitHub unm-integration
 a pour but de collecter les différentes captures d’écrans prises par les tests (il y a un job pour les captures en iOS 7 et un job pour les captures en iOS 6) et de les agréger dans une page HTML.
 
+![](src/site/images/screenshot-scenario-ios.png =600x "Screenshot Scénario")
 
+Page live : [UnivMobile iOS — Scénarios](http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ios-it-scenarios-dump.html)
 
+Jobs Jenkins :
+
+  * [unm-ios-it](http://univmobile.vswip.com/job/unm-ios-it/) (iOS 7)
+  * [unm-ios-it_ios6](http://univmobile.vswip.com/job/unm-ios-it_ios6/) (iOS 6)
+
+Ces jobs s’appuient sur l’archive .app (iOS Simulator) créée
+par un script xcodebuild_test.sh lancé en ligne de commande dans une GUI Mac OS X, et mise à disposition
+avec timestamp dans un répertoire partagé /var/xcodebuild_test-apps
