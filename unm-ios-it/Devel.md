@@ -1,10 +1,6 @@
 # Développement : unm-ios-it
 
-Documentation parente : [unm-ios](../README.md) — _Application iOS UnivMobile_
-
-Documentation de même niveau :
-
-  * [unm-ios-it](README.md) — _Tests d’intégration de l’application iOS UnivMobile_
+Documentation parente : [README.md](README.md "Documentation parente : unm-ios-it/README.md") — _Tests d’intégration de l’application iOS UnivMobile_
 
 ### Installation sur un poste de développement
 

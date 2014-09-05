@@ -5,11 +5,11 @@ _Application iOS UnivMobile_
 
 Ce projet contient le code Objective-C / Xcode de l’application iOS UnivMobile.
 
-Documentation parente : [unm-devel](../../../unm-devel/blob/develop/README.md)
+Documentation parente : [unm-devel](../../../unm-devel/blob/develop/README.md "Documentation parente : unm-devel/README.md")
 
 Documentation de même niveau :
 
-  * [Développement : unm-ios](Devel.md)
+  * [Développement : unm-ios](Devel.md "Documentation : unm-ios/Devel.md")
 
 Documentation des sous-projets :
 

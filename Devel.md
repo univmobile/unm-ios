@@ -1,15 +1,11 @@
 # Développement : unm-ios
 
-Documentation parente : [unm-devel](../../../unm-devel/blob/develop/README.md)
-
-Documentation de même niveau :
-
-  * [unm-ios](README.md) — _Application iOS UnivMobile_
+Documentation parente : [README.md](README.md "Documentation parente : unm-ios/README.md") _Application iOS UnivMobile_
 
 ### Documentation Doxygen
 
 La documentation Doxygen et le Maven Generated Site sont accessibles depuis l’adresse suivante :
-[http://univmobile.vswip.com/nexus/content/sites/pub/unm-ios/](http://univmobile.vswip.com/nexus/content/sites/pub/unm-ios/)
+[Maven Generated Site](http://univmobile.vswip.com/nexus/content/sites/pub/unm-ios/0.0.4/ "Maven Generated Site: unm-ios:0.0.4")
 
 ### Installation sur un poste de développement
 
