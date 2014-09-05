@@ -3,11 +3,11 @@ unm-ios-it
 
 _Tests d’intégration de l’application iOS UnivMobile_
 
-Documentation parente : [unm-ios](../README.md) — _Application iOS UnivMobile_
+Documentation parente : [unm-ios](../README.md "Documentation parente : unm-ios/README.md") — _Application iOS UnivMobile_
 
 Documentation de même niveau :
 
-  * [Développement : unm-ios-it](Devel.md) 
+  * [Développement : unm-ios-it](Devel.md "Documentation : unm-ios-it/Devel.md") 
   
 Ces tests s’appuient sur Appium, qui pilote le simulateur iOS sur la machine cible.
 
@@ -46,14 +46,14 @@ Dans un environnement Jenkins,
 le projet unm-devel-it dans le repository GitHub unm-integration
 a pour but de collecter les différentes captures d’écrans prises par les tests (il y a un job pour les captures en iOS 7 et un job pour les captures en iOS 6) et de les agréger dans une page HTML.
 
-![](src/site/images/screenshot-scenario-ios.png =600x "Screenshot Scénario")
+![](src/site/images/screenshot-scenario-ios.png?raw=true =600x "Screenshot Scénario")
 
 Page live : [UnivMobile iOS — Scénarios](http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ios-it-scenarios-dump.html)
 
 Jobs Jenkins :
 
-  * [unm-ios-it](http://univmobile.vswip.com/job/unm-ios-it/) (iOS 7)
-  * [unm-ios-it_ios6](http://univmobile.vswip.com/job/unm-ios-it_ios6/) (iOS 6)
+  * [http://univmobile.vswip.com/job/unm-ios-it/](http://univmobile.vswip.com/job/unm-ios-it/) (iOS 7)
+  * [http://univmobile.vswip.com/job/unm-ios-it_ios6/](http://univmobile.vswip.com/job/unm-ios-it_ios6/) (iOS 6)
 
 Ces jobs s’appuient sur l’archive .app (iOS Simulator) créée
 par un script xcodebuild_test.sh lancé en ligne de commande dans une GUI Mac OS X, et mise à disposition
