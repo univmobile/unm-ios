@@ -17,6 +17,23 @@ Documentation des sous-projets :
 
 ### Architecture logicielle
 
-![](src/site/images/ios.png?raw=true =600x "iOS, Backend")
+![](src/site/images/ios.png?raw=true =600x "iOS + Backend")
 
+L’application iOS UnivMobile récupère les données JSON du backend
+via une URL spécifiée avec le paramètre « UNMJsonBaseURL »
+dans UnivMobile-Info.plist.
 
+En développement :
+
+    <key>UNMJsonBaseURL</key>
+    <string>http://univmobile.vswip.com/unm-backend/json/</string>
+
+En intégration continue :
+
+    <key>UNMJsonBaseURL</key>
+    <string>http://localhost:8380/unm-backend/json/</string>
+    
+En intégration :
+
+    <key>UNMJsonBaseURL</key>
+    <string>https://univmobile-dev.univ-paris1.fr/json/</string>
