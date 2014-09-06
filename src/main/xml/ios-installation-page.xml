@@ -16,6 +16,13 @@ UnivMobileAlpha
 <ios-installation-page>
 
 <ios-installation
+	date="2014-09-07 00:04"
+	git-commit="16f548f36497f39633356b8dd12bcf4efe4b6662"
+	plistHref="https://dl.dropboxusercontent.com/s/kt29g64hmwp8nv7/UnivMobile.plist"
+	build-displayName="#182"
+	label="Ajout d’UDID de SFE"/>
+
+<ios-installation
 	date="2014-09-03 22:54"
 	git-commit="36e3605cffd1db585ace014ce6e24895370ca1fb"
 	plistHref="https://dl.dropboxusercontent.com/s/l42mwihihi13dfy/UnivMobile.plist"
