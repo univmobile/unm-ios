@@ -15,6 +15,14 @@ Documentation des sous-projets :
 
   * [unm-ios-it](unm-ios-it/README.md) — _Tests d’intégration de l’application iOS UnivMobile_
 
+### Autres repositories GitHub
+
+  * [unm-devel](https://github.com/univmobile/unm-devel "Repository GitHub unm-devel")
+  * [unm-android](https://github.com/univmobile/unm-android "Repository GitHub unm-android")
+  * [unm-mobileweb](https://github.com/univmobile/unm-mobileweb "Repository GitHub unm-mobileweb")
+  * [unm-backend](https://github.com/univmobile/unm-backend "Repository GitHub unm-backend")
+  * [unm-integration](https://github.com/univmobile/unm-integration "Repository GitHub unm-integration")
+
 ### Architecture logicielle
 
 ![](src/site/images/ios.png?raw=true =600x "iOS + Backend")
