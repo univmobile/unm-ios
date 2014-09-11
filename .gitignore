@@ -24,3 +24,7 @@ DerivedData
 *.moved-aside
 UnivMobile.ipa
 UnivMobile.plist
+src/site/apt/
+*/src/site/apt/
+src/site/xhtml/
+*/src/site/xhtml/
