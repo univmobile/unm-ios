@@ -4,18 +4,17 @@
 	<body>
 
 		<menu name="Workspace">
-			<item href="http://univmobile.vswip.com/job/unm-ios"
-				name="Job Jenkins" />
+			<item href="http://univmobile.vswip.com/job/unm-ios-it"
+				name="Job Jenkins: iOS 7" />
+			<item href="http://univmobile.vswip.com/job/unm-ios-it_ios6"
+				name="Job Jenkins: iOS 6" />
+			<item href="../../unm-ios/0.0.5-SNAPSHOT/index.html"
+				name="unm-ios"/>
 		</menu>
 		
 		<menu name="Documentation">
 			<item href="index.html" name="README" />
 			<item href="Devel.html" name="Développement" />
-		</menu>
-
-		<menu name="Objective-C">
-			<item href="doxygen/html/index.html"
-				name="Doxygen" />
 		</menu>
 
 		<menu ref="parent" />
