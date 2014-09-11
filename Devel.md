@@ -1,6 +1,8 @@
 # Développement : unm-ios
 
-Documentation parente : [README.md](README.md "Documentation parente : unm-ios/README.md") _Application iOS UnivMobile_
+_Application iOS UnivMobile_
+
+Documentation parente : [README](README.md "Documentation parente : unm-ios/README.md") 
 
 ### Documentation Doxygen
 
