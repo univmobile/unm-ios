@@ -15,14 +15,14 @@ Documentation des sous-projets :
 
   * [unm-ios-it](unm-ios-it/README.md) — _Tests d’intégration de l’application iOS UnivMobile_
 
-### Autres repositories GitHub
+### Tous les repositories GitHub
 
-  * [unm-devel](https://github.com/univmobile/unm-devel/README.md "Repository GitHub unm-devel")
+  * [unm-devel](https://github.com/univmobile/unm-devel/blob/develop/README.md "Repository GitHub unm-devel")
   * **unm-ios**
-  * [unm-android](https://github.com/univmobile/unm-android/README.md "Repository GitHub unm-android")
-  * [unm-mobileweb](https://github.com/univmobile/unm-mobileweb/README.md "Repository GitHub unm-mobileweb")
-  * [unm-backend](https://github.com/univmobile/unm-backend/README.md "Repository GitHub unm-backend")
-  * [unm-integration](https://github.com/univmobile/unm-integration/README.md "Repository GitHub unm-integration")
+  * [unm-android](https://github.com/univmobile/unm-android/blob/develop/README.md "Repository GitHub unm-android")
+  * [unm-mobileweb](https://github.com/univmobile/unm-mobileweb/blob/develop/README.md "Repository GitHub unm-mobileweb")
+  * [unm-backend](https://github.com/univmobile/unm-backend/blob/develop/README.md "Repository GitHub unm-backend")
+  * [unm-integration](https://github.com/univmobile/unm-integration/blob/develop/README.md "Repository GitHub unm-integration")
 
 ### Architecture logicielle
 
