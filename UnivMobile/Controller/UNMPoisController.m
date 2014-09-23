@@ -134,7 +134,7 @@
 	cell.isAccessibilityElement = NO; // Important.
 	cell.textLabel.isAccessibilityElement = YES;
 	cell.textLabel.accessibilityElementsHidden = NO;
-	cell.textLabel.accessibilityIdentifier = [NSString stringWithFormat:@"table-pois-%lu", poi.id];
+	cell.textLabel.accessibilityIdentifier = [NSString stringWithFormat:@"table-pois-%lu", (unsigned long) poi.id];
 	
 	cell.textLabel.textColor = [UIColor blackColor];
 	cell.detailTextLabel.textColor = [UIColor redColor];

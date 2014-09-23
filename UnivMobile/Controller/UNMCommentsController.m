@@ -137,7 +137,8 @@
 	cell.textLabel.isAccessibilityElement = YES;
 	cell.textLabel.accessibilityElementsHidden = NO;
 	
-	cell.textLabel.accessibilityIdentifier = [NSString stringWithFormat:@"table-comments-%lu", row];
+	cell.textLabel.accessibilityIdentifier =
+	[NSString stringWithFormat:@"table-comments-%lu", (unsigned long) row];
 	
 	//NSLog(@"cell.textLabel.accessibilityIdentifier: %@",cell.textLabel.accessibilityIdentifier);
 	
@@ -155,7 +156,7 @@
 	
 	if (isNameCell) {
 		
-		const NSInteger count = [self.comments count];
+		const NSUInteger count = [self.comments count];
 		
 		switch (count) {
 			case 0:
@@ -171,7 +172,7 @@
 			default:
 				cell.textLabel.font = [UIFont boldSystemFontOfSize:16.0];
 				cell.textLabel.textColor = [UIColor lightGrayColor];
-				cell.textLabel.text = [NSString stringWithFormat:@"%lu commentaires", count];
+				cell.textLabel.text = [NSString stringWithFormat:@"%lu commentaires", (unsigned long) count];
 				break;
 		}
 		//cell.textLabel.textAlignment = NSTextAlignmentCenter;
