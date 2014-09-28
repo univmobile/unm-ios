@@ -96,7 +96,7 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		takeScreenshot("about2.png");
 
 		savePageSource("about2.xml");
-		
+
 		elementById("button-okCloseAbout").click();
 
 		pause(PAUSE);
@@ -201,7 +201,7 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 	private static String navUpName = null;
 	private static String navUpXPath = null;
-	private static String navPlanName = null;
+	private static String navPlanId = null;
 	private static String navPlanXPath = null;
 
 	@Scenario("Géocampus")
@@ -219,8 +219,8 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		takeScreenshot("geocampus_list.png");
 
 		savePageSource("geocampus_list.xml");
-		
-		if (navPlanName == null && navPlanXPath == null) {
+
+		if (navPlanId == null && navPlanXPath == null) {
 
 			boolean IOS_6 = false;
 
@@ -232,24 +232,24 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 			if (platformVersion.startsWith("6")) {
 				IOS_6 = true;
 			}
-			
+
 			// To find these values, launch the Appium Inspector.
 			//
 			if (IOS_6) { // IOS_6
 				navPlanXPath = null;
-				navPlanName = "Plan";
+				navPlanId = "Plan";
 			} else { // IOS_7
 				navPlanXPath = "//UIATabBar[1]/UIAButton[2]";
-				navPlanName = null;
+				navPlanId = null;
 			}
 		}
-		
+
 		// getDriver().findElement(By.xpath("//UIATabBar[1]/UIAButton[2]"))
 		// .click();
-		//elementByXPath("//UIATabBar[1]/UIAButton[2]").click();
+		// elementByXPath("//UIATabBar[1]/UIAButton[2]").click();
 		// elementById("Plan").click();
-		if (navPlanName != null) {
-			elementByName(navPlanName).click();
+		if (navPlanId != null) {
+			elementById(navPlanId).click();
 			// elementByName("Plan").click(); // ?
 		} else {
 			elementByXPath(navPlanXPath).click();
