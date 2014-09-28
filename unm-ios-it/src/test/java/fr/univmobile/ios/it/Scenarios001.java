@@ -199,6 +199,8 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 	private static String navUpName = null;
 	private static String navUpXPath = null;
+	private static String navPlanName = null;
+	private static String navPlanXPath = null;
 
 	@Scenario("Géocampus")
 	@Test
@@ -215,11 +217,41 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		takeScreenshot("geocampus_list.png");
 
 		savePageSource("geocampus_list.xml");
+		
+		if (navPlanName == null && navPlanXPath == null) {
 
+			boolean IOS_6 = false;
+
+			final String platformVersion = EnvironmentUtils
+					.getCurrentPlatformVersion("iOS");
+
+			System.out.println("Found platformVersion: " + platformVersion);
+
+			if (platformVersion.startsWith("6")) {
+				IOS_6 = true;
+			}
+			
+			// To find these values, launch the Appium Inspector.
+			//
+			if (IOS_6) { // IOS_6
+				navPlanXPath = null;
+				navPlanName = "Plan";
+			} else { // IOS_7
+				navPlanXPath = "//UIATabBar[1]/UIAButton[2]";
+				navPlanName = null;
+			}
+		}
+		
 		// getDriver().findElement(By.xpath("//UIATabBar[1]/UIAButton[2]"))
 		// .click();
-		elementByXPath("//UIATabBar[1]/UIAButton[2]").click();
+		//elementByXPath("//UIATabBar[1]/UIAButton[2]").click();
 		// elementById("Plan").click();
+		if (navPlanName != null) {
+			elementByName(navPlanName).click();
+			// elementByName("Plan").click(); // ?
+		} else {
+			elementByXPath(navPlanXPath).click();
+		}
 
 		pause(PAUSE);
 
