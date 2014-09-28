@@ -95,6 +95,8 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		takeScreenshot("about2.png");
 
+		savePageSource("about2.xml");
+		
 		elementById("button-okCloseAbout").click();
 
 		pause(PAUSE);
