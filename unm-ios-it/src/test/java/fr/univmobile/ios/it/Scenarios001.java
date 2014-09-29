@@ -99,7 +99,8 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		savePageSource("about2.xml");
 
-		elementById("button-okCloseAbout").click();
+		//elementById("button-okCloseAbout").click();
+		elementByName("button-okCloseAbout").click();
 
 		pause(PAUSE);
 
@@ -240,8 +241,8 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		savePageSource("geocampus_details.xml");
 
-		element(ios6ByXPath("//UIANavigationBar[2]/UIAButton[2]"),
-				//ios6ByName("POIS"),
+		element(//ios6ByXPath("//UIANavigationBar[2]/UIAButton[2]"),
+				ios6ByName("POIs"),
 				ios7ByXPath("//UIANavigationBar[2]/UIAButton[2]")).click();
 
 		pause(PAUSE);
