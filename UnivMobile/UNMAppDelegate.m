@@ -20,6 +20,8 @@
 #import "UNMJsonFetcher.h"
 #import "UNMJsonFetcherFileSystem.h"
 #import "UNMJsonFetcherWeb.h"
+#import "UNMLoginController.h"
+#import "UNMProfileController.h"
 #import <GoogleMaps/GoogleMaps.h>
 
 @interface UNMAppDelegate ()
@@ -53,6 +55,30 @@
 		[UNMJsonFetcherWeb new];
 	
 	_appLayer = [[UNMAppLayer alloc] initWithBundle:[NSBundle mainBundle] jsonFetcher:jsonFetcher];
+	
+	// NAVIGATION CONTROLLER: LOGIN
+	
+	UNMLoginClassicController* const loginClassicController = [[UNMLoginClassicController alloc]
+															   initWithAppLayer:_appLayer];
+	
+	UNMLoginController* const loginController = [[UNMLoginController alloc]
+													 initWithAppLayer:_appLayer
+												//	 loginClassicController:loginClassicController
+												 ];
+	
+	_loginNavController = [[UINavigationController alloc]
+							 initWithRootViewController:loginController];
+	
+	_loginClassicNavController = [[UINavigationController alloc]
+						   initWithRootViewController:loginClassicController];
+	
+	// NAVIGATION CONTROLLER: PROFILE
+	
+	UNMProfileController* const profileController = [[UNMProfileController alloc]
+													 initWithAppLayer:_appLayer];
+	
+	_profileNavController = [[UINavigationController alloc]
+						   initWithRootViewController:profileController];
 	
 	// NAVIGATION CONTROLLER: REGIONS
 	
@@ -107,7 +133,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
     self.window.rootViewController = [[UNMHomeController alloc] initWithAppLayer:_appLayer
-																		 regionsNavView:self.regionsNavController.view
+																	loginNavView:self.loginNavController.view
+															 loginClassicNavView:self.loginClassicNavController.view
+																  profileNavView:self.profileNavController.view
+																  regionsNavView:self.regionsNavController.view
 																	 poisNavView:self.poisNavController.view
 									  ];
 	

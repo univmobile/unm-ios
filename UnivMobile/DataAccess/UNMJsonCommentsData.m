@@ -2,8 +2,8 @@
 //  UNMJsonCommentsData.m
 //  UnivMobile
 //
-//  Created by David on 02/09/2014.
-//  Copyright (c) 2014 David. All rights reserved.
+//  Created by David Andrianavalontsalama on 02/09/2014.
+//  Copyright (c) 2014 UNPIdF. All rights reserved.
 //
 
 #import "UNMJsonCommentsData.h"
@@ -20,7 +20,7 @@
 	
 	 //NSLog(@"fetchCommentsData: %@", url);
 	
-	id const json = [jsonFetcher syncFetchJsonAtURL:url withErrorHandler:onError];
+	id const json = [jsonFetcher syncJsonGetURL:url withErrorHandler:onError];
 	
 	// NSLog(@"fetchCommentsData -> json: %@", json);
 	

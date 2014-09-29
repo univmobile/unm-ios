@@ -2,8 +2,8 @@
 //  UNMCommentData.m
 //  UnivMobile
 //
-//  Created by David on 02/09/2014.
-//  Copyright (c) 2014 David. All rights reserved.
+//  Created by David Andrianavalontsalama on 02/09/2014.
+//  Copyright (c) 2014 UNPIdF. All rights reserved.
 //
 
 #import "UNMCommentData.h"

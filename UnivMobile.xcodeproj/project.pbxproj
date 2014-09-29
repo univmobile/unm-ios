@@ -44,6 +44,16 @@
 		DF417A19196DCCB200D1DD64 /* UNMJsonFetcherFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = DF365389196DCA5E00BD98A4 /* UNMJsonFetcherFileSystem.m */; };
 		DF417A1A196DCCB200D1DD64 /* UNMJsonFetcherWeb.m in Sources */ = {isa = PBXBuildFile; fileRef = DF36538B196DCA5E00BD98A4 /* UNMJsonFetcherWeb.m */; };
 		DF417A1B196DCCB200D1DD64 /* UNMJsonRegionsData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF36538D196DCA5E00BD98A4 /* UNMJsonRegionsData.m */; };
+		DF46C36519D9B56500C812C5 /* UNMLoginClassicController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF46C36419D9B56500C812C5 /* UNMLoginClassicController.m */; };
+		DF46C36819D9B7BE00C812C5 /* UNMLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF46C36719D9B7BE00C812C5 /* UNMLoginController.m */; };
+		DF46C36B19D9D9EF00C812C5 /* UNMJsonSessionData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF46C36A19D9D9EF00C812C5 /* UNMJsonSessionData.m */; };
+		DF46C36C19D9D9EF00C812C5 /* UNMJsonSessionData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF46C36A19D9D9EF00C812C5 /* UNMJsonSessionData.m */; };
+		DF46C36F19D9DB6500C812C5 /* UNMAppToken.m in Sources */ = {isa = PBXBuildFile; fileRef = DF46C36E19D9DB6500C812C5 /* UNMAppToken.m */; };
+		DF46C37019D9DB6500C812C5 /* UNMAppToken.m in Sources */ = {isa = PBXBuildFile; fileRef = DF46C36E19D9DB6500C812C5 /* UNMAppToken.m */; };
+		DF46C37319D9FFFE00C812C5 /* UNMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DF46C37219D9FFFE00C812C5 /* UNMUtils.m */; };
+		DF46C37419D9FFFE00C812C5 /* UNMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DF46C37219D9FFFE00C812C5 /* UNMUtils.m */; };
+		DF46C37619DA004D00C812C5 /* UNMUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF46C37519DA004D00C812C5 /* UNMUtilsTest.m */; };
+		DF46C37919DA0BF800C812C5 /* UNMProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF46C37819DA0BF800C812C5 /* UNMProfileController.m */; };
 		DF4EB92419B5212B00904FCD /* UNMCommentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4EB92319B5212B00904FCD /* UNMCommentsController.m */; };
 		DF4EB92519B5233D00904FCD /* UNMJsonPoisData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7E651219B3ECA800922FFB /* UNMJsonPoisData.m */; };
 		DF4EB92619B5233D00904FCD /* UNMPoisData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7E650C19B3E50F00922FFB /* UNMPoisData.m */; };
@@ -160,6 +170,19 @@
 		DF3998CC19B52E8C00829D03 /* UNMCommentsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMCommentsData.m; path = Model/UNMCommentsData.m; sourceTree = "<group>"; };
 		DF3998CE19B5420700829D03 /* UNMJsonCommentsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMJsonCommentsData.h; path = DataAccess/UNMJsonCommentsData.h; sourceTree = "<group>"; };
 		DF3998CF19B5420700829D03 /* UNMJsonCommentsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMJsonCommentsData.m; path = DataAccess/UNMJsonCommentsData.m; sourceTree = "<group>"; };
+		DF46C36319D9B56500C812C5 /* UNMLoginClassicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMLoginClassicController.h; path = Controller/UNMLoginClassicController.h; sourceTree = "<group>"; };
+		DF46C36419D9B56500C812C5 /* UNMLoginClassicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMLoginClassicController.m; path = Controller/UNMLoginClassicController.m; sourceTree = "<group>"; };
+		DF46C36619D9B7BE00C812C5 /* UNMLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMLoginController.h; path = Controller/UNMLoginController.h; sourceTree = "<group>"; };
+		DF46C36719D9B7BE00C812C5 /* UNMLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMLoginController.m; path = Controller/UNMLoginController.m; sourceTree = "<group>"; };
+		DF46C36919D9D9EF00C812C5 /* UNMJsonSessionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMJsonSessionData.h; path = DataAccess/UNMJsonSessionData.h; sourceTree = "<group>"; };
+		DF46C36A19D9D9EF00C812C5 /* UNMJsonSessionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMJsonSessionData.m; path = DataAccess/UNMJsonSessionData.m; sourceTree = "<group>"; };
+		DF46C36D19D9DB6500C812C5 /* UNMAppToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMAppToken.h; path = Model/UNMAppToken.h; sourceTree = "<group>"; };
+		DF46C36E19D9DB6500C812C5 /* UNMAppToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMAppToken.m; path = Model/UNMAppToken.m; sourceTree = "<group>"; };
+		DF46C37119D9FFFE00C812C5 /* UNMUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMUtils.h; path = Utilities/UNMUtils.h; sourceTree = "<group>"; };
+		DF46C37219D9FFFE00C812C5 /* UNMUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMUtils.m; path = Utilities/UNMUtils.m; sourceTree = "<group>"; };
+		DF46C37519DA004D00C812C5 /* UNMUtilsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNMUtilsTest.m; sourceTree = "<group>"; };
+		DF46C37719DA0BF800C812C5 /* UNMProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMProfileController.h; path = Controller/UNMProfileController.h; sourceTree = "<group>"; };
+		DF46C37819DA0BF800C812C5 /* UNMProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMProfileController.m; path = Controller/UNMProfileController.m; sourceTree = "<group>"; };
 		DF4EB92219B5212B00904FCD /* UNMCommentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMCommentsController.h; path = Controller/UNMCommentsController.h; sourceTree = "<group>"; };
 		DF4EB92319B5212B00904FCD /* UNMCommentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMCommentsController.m; path = Controller/UNMCommentsController.m; sourceTree = "<group>"; };
 		DF5EDF98196D075E00C1AE1D /* UNMRegionsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMRegionsData.h; path = Model/UNMRegionsData.h; sourceTree = "<group>"; };
@@ -307,6 +330,8 @@
 				DFF4165F1978C6EB003B5D38 /* UIBarButtonItem+UIAccessibility.m */,
 				DFBA69B1198EE9F7000B107C /* NSBundle+String.h */,
 				DFBA69B2198EE9F7000B107C /* NSBundle+String.m */,
+				DF46C37119D9FFFE00C812C5 /* UNMUtils.h */,
+				DF46C37219D9FFFE00C812C5 /* UNMUtils.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -350,6 +375,8 @@
 				DF7E651219B3ECA800922FFB /* UNMJsonPoisData.m */,
 				DF3998CE19B5420700829D03 /* UNMJsonCommentsData.h */,
 				DF3998CF19B5420700829D03 /* UNMJsonCommentsData.m */,
+				DF46C36919D9D9EF00C812C5 /* UNMJsonSessionData.h */,
+				DF46C36A19D9D9EF00C812C5 /* UNMJsonSessionData.m */,
 			);
 			name = DataAccess;
 			sourceTree = "<group>";
@@ -451,6 +478,7 @@
 			isa = PBXGroup;
 			children = (
 				DF95538E196DCF690083D61E /* UNMAppLayerTests.m */,
+				DF46C37519DA004D00C812C5 /* UNMUtilsTest.m */,
 				DF7EC2E919657D83004730C4 /* Supporting Files */,
 			);
 			path = UnivMobileTests;
@@ -480,6 +508,8 @@
 				DF3998C919B52C9000829D03 /* UNMCommentData.m */,
 				DF3998CB19B52E8C00829D03 /* UNMCommentsData.h */,
 				DF3998CC19B52E8C00829D03 /* UNMCommentsData.m */,
+				DF46C36D19D9DB6500C812C5 /* UNMAppToken.h */,
+				DF46C36E19D9DB6500C812C5 /* UNMAppToken.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -501,6 +531,12 @@
 				DFB006D119B4B05B00737FFE /* UNMDetailsController.m */,
 				DF4EB92219B5212B00904FCD /* UNMCommentsController.h */,
 				DF4EB92319B5212B00904FCD /* UNMCommentsController.m */,
+				DF46C36619D9B7BE00C812C5 /* UNMLoginController.h */,
+				DF46C36719D9B7BE00C812C5 /* UNMLoginController.m */,
+				DF46C36319D9B56500C812C5 /* UNMLoginClassicController.h */,
+				DF46C36419D9B56500C812C5 /* UNMLoginClassicController.m */,
+				DF46C37719DA0BF800C812C5 /* UNMProfileController.h */,
+				DF46C37819DA0BF800C812C5 /* UNMProfileController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -653,6 +689,8 @@
 				DF5EDF9A196D075E00C1AE1D /* UNMRegionsData.m in Sources */,
 				DF9945C3196B850800AE125E /* UNMDebug.m in Sources */,
 				DF7EC2D619657D83004730C4 /* main.m in Sources */,
+				DF46C36F19D9DB6500C812C5 /* UNMAppToken.m in Sources */,
+				DF46C36519D9B56500C812C5 /* UNMLoginClassicController.m in Sources */,
 				DF7E650D19B3E50F00922FFB /* UNMPoisData.m in Sources */,
 				DF7EC2DA19657D83004730C4 /* UNMAppDelegate.m in Sources */,
 				DFF416601978C6EB003B5D38 /* UIBarButtonItem+UIAccessibility.m in Sources */,
@@ -668,16 +706,20 @@
 				DF365390196DCA5E00BD98A4 /* UNMJsonFetcherWeb.m in Sources */,
 				DF3998CD19B52E8C00829D03 /* UNMCommentsData.m in Sources */,
 				DF9945C6196B9DAE00AE125E /* UNMRuntime.m in Sources */,
+				DF46C37319D9FFFE00C812C5 /* UNMUtils.m in Sources */,
 				DF7EC31419667A7C004730C4 /* UNMUniversitiesController.m in Sources */,
 				DF36538E196DCA5E00BD98A4 /* UNMInitialRegionsData.m in Sources */,
 				DF7E650A19B3E13B00922FFB /* UNMPoisController.m in Sources */,
 				DF7EC31319667A7C004730C4 /* UNMRegionsController.m in Sources */,
 				DF6000311968DC7D00A72D24 /* UNMAppLayer.m in Sources */,
 				DF7EC30919667A19004730C4 /* UNMRegionData.m in Sources */,
+				DF46C36B19D9D9EF00C812C5 /* UNMJsonSessionData.m in Sources */,
+				DF46C37919DA0BF800C812C5 /* UNMProfileController.m in Sources */,
 				DF4EB92419B5212B00904FCD /* UNMCommentsController.m in Sources */,
 				DF7E651319B3ECA800922FFB /* UNMJsonPoisData.m in Sources */,
 				DF3998D019B5420700829D03 /* UNMJsonCommentsData.m in Sources */,
 				DF103EEB1969F23200AC123A /* UNMViewFx.m in Sources */,
+				DF46C36819D9B7BE00C812C5 /* UNMLoginController.m in Sources */,
 				DF36538F196DCA5E00BD98A4 /* UNMJsonFetcherFileSystem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -686,6 +728,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF46C37619DA004D00C812C5 /* UNMUtilsTest.m in Sources */,
 				DF3998D219B5AC8C00829D03 /* UNMCommentData.m in Sources */,
 				DF3998D319B5AC8C00829D03 /* UNMCommentsData.m in Sources */,
 				DF3998D119B5AC7900829D03 /* UNMJsonCommentsData.m in Sources */,
@@ -700,6 +743,7 @@
 				DF417A1A196DCCB200D1DD64 /* UNMJsonFetcherWeb.m in Sources */,
 				DF417A1B196DCCB200D1DD64 /* UNMJsonRegionsData.m in Sources */,
 				DF365372196DC9F600BD98A4 /* EXTRuntimeExtensions.m in Sources */,
+				DF46C37419D9FFFE00C812C5 /* UNMUtils.m in Sources */,
 				DF365373196DC9F600BD98A4 /* EXTScope.m in Sources */,
 				DF365374196DC9F600BD98A4 /* MTLJSONAdapter.m in Sources */,
 				DF365375196DC9F600BD98A4 /* MTLManagedObjectAdapter.m in Sources */,
@@ -709,12 +753,14 @@
 				DF365379196DC9F600BD98A4 /* MTLValueTransformer.m in Sources */,
 				DF36537A196DC9F600BD98A4 /* NSArray+MTLManipulationAdditions.m in Sources */,
 				DF36537B196DC9F600BD98A4 /* NSDictionary+MTLManipulationAdditions.m in Sources */,
+				DF46C36C19D9D9EF00C812C5 /* UNMJsonSessionData.m in Sources */,
 				DF36537C196DC9F600BD98A4 /* NSError+MTLModelException.m in Sources */,
 				DF36537D196DC9F600BD98A4 /* NSObject+MTLComparisonAdditions.m in Sources */,
 				DF36537E196DC9F600BD98A4 /* NSValueTransformer+MTLInversionAdditions.m in Sources */,
 				DF36537F196DC9F600BD98A4 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */,
 				DF95538F196DCF690083D61E /* UNMAppLayerTests.m in Sources */,
 				DF36535E196DC9BA00BD98A4 /* UNMAppLayer.m in Sources */,
+				DF46C37019D9DB6500C812C5 /* UNMAppToken.m in Sources */,
 				DF36535F196DC9BA00BD98A4 /* UNMRegionData.m in Sources */,
 				DF365360196DC9BA00BD98A4 /* UNMRegionsData.m in Sources */,
 				DF365361196DC9BA00BD98A4 /* UNMDebug.m in Sources */,

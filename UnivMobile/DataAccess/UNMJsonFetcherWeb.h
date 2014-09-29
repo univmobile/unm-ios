@@ -11,6 +11,6 @@
 
 @interface UNMJsonFetcherWeb : NSObject <UNMJsonFetcher>
 
-- (id) syncFetchJsonAtURL:(NSString*)path withErrorHandler:(void(^)(NSError*))onError;
+// - (id) syncJsonGetURL:(NSString*)path withErrorHandler:(void(^)(NSError*))onError;
 
 @end
