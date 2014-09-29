@@ -240,7 +240,8 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		savePageSource("geocampus_details.xml");
 
-		element(ios6ByName("POIS"),
+		element(ios6ByXPath("//UIANavigationBar[2]/UIAButton[2]"),
+				//ios6ByName("POIS"),
 				ios7ByXPath("//UIANavigationBar[2]/UIAButton[2]")).click();
 
 		pause(PAUSE);
