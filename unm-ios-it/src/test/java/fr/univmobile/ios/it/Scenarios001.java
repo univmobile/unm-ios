@@ -5,6 +5,7 @@ import static fr.univmobile.testutil.PropertiesUtils.getSettingsTestRefProperty;
 import static fr.univmobile.testutil.PropertiesUtils.getTestProperty;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -14,6 +15,7 @@ import org.junit.Test;
 import fr.univmobile.backend.it.TestBackend;
 import fr.univmobile.it.commons.AppiumIOSEnabledTest;
 import fr.univmobile.it.commons.DeviceNames;
+import fr.univmobile.it.commons.ElementChecker;
 import fr.univmobile.it.commons.EnvironmentUtils;
 import fr.univmobile.it.commons.Scenario;
 import fr.univmobile.it.commons.Scenarios;
@@ -199,11 +201,6 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		savePageSource("home_afterUniversitiesSource.xml");
 	}
 
-	private static String navUpName = null;
-	private static String navUpXPath = null;
-	private static String navPlanId = null;
-	private static String navPlanXPath = null;
-
 	@Scenario("Géocampus")
 	@Test
 	public void Geocampus_000() throws Exception {
@@ -220,40 +217,8 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		savePageSource("geocampus_list.xml");
 
-		if (navPlanId == null && navPlanXPath == null) {
-
-			boolean IOS_6 = false;
-
-			final String platformVersion = EnvironmentUtils
-					.getCurrentPlatformVersion("iOS");
-
-			System.out.println("Found platformVersion: " + platformVersion);
-
-			if (platformVersion.startsWith("6")) {
-				IOS_6 = true;
-			}
-
-			// To find these values, launch the Appium Inspector.
-			//
-			if (IOS_6) { // IOS_6
-				navPlanXPath = null;
-				navPlanId = "Plan";
-			} else { // IOS_7
-				navPlanXPath = "//UIATabBar[1]/UIAButton[2]";
-				navPlanId = null;
-			}
-		}
-
-		// getDriver().findElement(By.xpath("//UIATabBar[1]/UIAButton[2]"))
-		// .click();
-		// elementByXPath("//UIATabBar[1]/UIAButton[2]").click();
-		// elementById("Plan").click();
-		if (navPlanId != null) {
-			elementById(navPlanId).click();
-			// elementByName("Plan").click(); // ?
-		} else {
-			elementByXPath(navPlanXPath).click();
-		}
+		element(ios6ByName("Plan"), ios7ByXPath("//UIATabBar[1]/UIAButton[2]"))
+				.click();
 
 		pause(PAUSE);
 
@@ -273,9 +238,22 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		savePageSource("geocampus_details.xml");
 
-		if (navUpName == null && navUpXPath == null) {
+		element(ios6ByName("POIS"),
+				ios7ByXPath("//UIANavigationBar[2]/UIAButton[2]")).click();
 
-			boolean IOS_6 = false;
+		pause(PAUSE);
+
+		takeScreenshot("geocampus_back_to_map.png");
+	}
+
+	private static Boolean IOS_6 = null;
+
+	private ElementChecker element(final IOS6By ios6By, final IOS7By ios7By)
+			throws IOException {
+
+		if (IOS_6 == null) {
+
+			IOS_6 = false;
 
 			final String platformVersion = EnvironmentUtils
 					.getCurrentPlatformVersion("iOS");
@@ -286,28 +264,47 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 				IOS_6 = true;
 			}
 
-			// To find these values, launch the Appium Inspector.
-			//
-			if (IOS_6) { // IOS_6
-				// navUpXPath = "//UIANavigationBar[1]/UIAButton[1]";
-				navUpXPath = null;
-				navUpName = "POIs";
-			} else { // IOS_7
-				navUpXPath = "//UIANavigationBar[2]/UIAButton[2]";
-				navUpName = null;
+			System.out.println("IOS_6: " + IOS_6);
+		}
+
+		return IOS_6 ? ios6By.element() : ios7By.element();
+	}
+
+	private interface IOS_By {
+
+		ElementChecker element() throws IOException;
+	}
+
+	private interface IOS6By extends IOS_By {
+
+	}
+
+	private interface IOS7By extends IOS_By {
+
+	}
+
+	private IOS6By ios6ByName(final String name) {
+
+		return new IOS6By() {
+
+			@Override
+			public ElementChecker element() throws IOException {
+
+				return elementByName(name);
 			}
-		}
+		};
+	}
 
-		if (navUpName != null) {
-			elementByName(navUpName).click();
-			// elementByName("POIs").click(); // ?
-		} else {
-			elementByXPath(navUpXPath).click();
-		}
+	private IOS7By ios7ByXPath(final String xpath) {
 
-		pause(PAUSE);
+		return new IOS7By() {
 
-		takeScreenshot("geocampus_back_to_map.png");
+			@Override
+			public ElementChecker element() throws IOException {
+
+				return elementByXPath(xpath);
+			}
+		};
 	}
 
 	@Scenario("Géocampus, commentaires")
@@ -319,7 +316,9 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		elementById("button-Géocampus").click();
 		pause(PAUSE);
 		takeScreenshot("geocampus_list.png");
-		elementByXPath("//UIATabBar[1]/UIAButton[2]").click();
+		element(ios6ByName("Plan"), ios7ByXPath("//UIATabBar[1]/UIAButton[2]"))
+				.click();
+		// elementByXPath("//UIATabBar[1]/UIAButton[2]").click();
 		// elementByName("Plan").click();
 		pause(PAUSE);
 		takeScreenshot("geocampus_map.png");
