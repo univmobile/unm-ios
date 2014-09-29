@@ -124,7 +124,7 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		takeScreenshot("home_afterUniversities.png");
 	}
 
-	public static final int PAUSE = 2000;
+	public static final int PAUSE = 8000;
 	public static final int DELAY_SCREENSHOT = 160;
 
 	@Scenario("Aller-retour sur la liste des Régions")
