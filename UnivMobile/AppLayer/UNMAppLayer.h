@@ -12,6 +12,7 @@
 #import "UNMAppViewCallback.h"
 #import "UNMBuildInfo.h"
 #import "UNMJsonFetcher.h"
+#import "UNMAppToken.h"
 
 // Objects in the App Layer (applicative layer) are responsible for
 // the data and the coordination between View Controllers.
@@ -22,12 +23,19 @@
 @property (strong, nonatomic, readonly) UNMRegionsData* regionsData;
 @property (strong, nonatomic, readonly) UNMPoisData* poisData;
 @property (strong, nonatomic, readonly) UNMBuildInfo* buildInfo;
+@property (strong, nonatomic, readonly) UNMAppToken* appToken;
 
 - (instancetype) initWithBundle:(NSBundle*)bundle jsonFetcher:(NSObject<UNMJsonFetcher>*)jsonFetcher;
 
 - (UNMRegionsData*) loadInitialRegionsData;
 
 - (UNMPoiData*) poiById:(NSInteger)poiId;
+
+- (NSArray*) loadCommentsForPoi:(const UNMPoiData*)poi;
+
+- (BOOL) login:(NSString*)login password:(NSString*)password apiKey:(NSString*)apiKey;
+
+- (void) addCallback:(NSObject<UNMAppViewCallback>*)callback;
 
 // Allow callbacks
 - (void) setSelectedRegionIdInList:(NSString*)regionId;
@@ -42,6 +50,21 @@
 - (void) goBackFromGeocampus;
 
 // Allow callbacks
+- (void) goBackFromLogin;
+
+// Allow callbacks
+- (void) goBackFromLoginClassic;
+
+// Allow callbacks
+- (void) goFromLoginToLoginClassic;
+
+// Allow callbacks
+- (void) goFromLoginClassicToProfile;
+
+// Allow callbacks
+- (void) goBackFromProfile;
+
+// Allow callbacks
 - (void) showUniversityList;
 
 // Allow callbacks
@@ -50,8 +73,7 @@
 // Allow callbacks
 - (void) refreshPoisData;
 
-- (NSArray*) loadCommentsForPoi:(const UNMPoiData*)poi;
-
-- (void) addCallback:(NSObject<UNMAppViewCallback>*)callback;
+// Allow callbacks
+- (void) logout;
 
 @end

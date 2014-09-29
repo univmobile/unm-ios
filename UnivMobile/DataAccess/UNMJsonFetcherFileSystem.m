@@ -11,11 +11,11 @@
 
 @implementation UNMJsonFetcherFileSystem
 
-- (id) syncFetchJsonAtURL:(NSString*)path withErrorHandler:(void(^)(NSError*))onError {
+- (id) syncJsonGetURL:(NSString*)path withErrorHandler:(void(^)(NSError*))onError {
 	
 	if (!path) @throw [NSException
 					   exceptionWithName:@"NullPointerException"
-					   reason:@"syncFetchJsonAtURL(path = nil)"
+					   reason:@"syncJsonGetURL(path = nil)"
 					   userInfo:nil];
 
 	// @"http://univmobile.vswip.com/unm-backend-mock/regions"
@@ -50,7 +50,7 @@
 	
 	NSError* error = nil;
 	
-	//				NSLog(@"UNMJsonFetcherFileSystem.syncFetchJsonAtURL:filePath: %@", filePath);
+	//				NSLog(@"UNMJsonFetcherFileSystem.syncJsonGetURL:filePath: %@", filePath);
 					
 	NSData* const data = [NSData dataWithContentsOfFile:filePath options:options error:&error];
 	
@@ -64,6 +64,13 @@
 	}
 	
 	return [UNMJsonSerializer jsonDeserialize:data withErrorHandler:onError];
+}
+
+- (id) syncJsonPostURL:(NSString*)path withParams:(NSDictionary*)params errorHandler:(void(^)(NSError*))onError {
+
+	NSLog(@"Illegal State: UNMJsonFetcherFileSystem.syncJsonPostURL");
+	
+	return nil;
 }
 
 @end

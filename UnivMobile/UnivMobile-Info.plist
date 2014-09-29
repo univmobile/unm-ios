@@ -37,6 +37,7 @@
 	<string>http://192.168.0.40:8080/unm-backend/json/</string>
 	<string>http://localhost:8380/unm-backend/json/</string>
 	<string>http://univmobile.vswip.com/unm-backend/json/</string>
+	<string>https://univmobile-dev.univ-paris1.fr/json/</string>
 	<string>http://localhost:8080/unm-backend/json/</string>
 	-->
 	<string>http://localhost:8380/unm-backend/json/</string>

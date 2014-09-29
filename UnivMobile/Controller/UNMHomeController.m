@@ -29,14 +29,22 @@
 @property (nonatomic, strong) UILabel* universityLabel;
 @property (nonatomic, strong) UIButton* chooseButton;
 @property (nonatomic, strong) UIButton* geocampusButton;
+@property (nonatomic, strong) UIButton* loginButton;
+@property (nonatomic, strong) UIButton* profileButton;
+
+@property (nonatomic, strong) UIView* loginView;
+@property (nonatomic, strong) UIView* loginClassicView;
+@property (nonatomic, strong) UIView* profileView;
 
 @property (nonatomic, strong) UIView* regionsView;
 @property (nonatomic, strong) UILabel* regionsLabel;
 @property (nonatomic, strong) UIView* poisView;
 @property (nonatomic, strong) UIView* detailsView;
 
+@property (nonatomic, weak) UIView* loginNavView;
+@property (nonatomic, weak) UIView* loginClassicNavView;
+@property (nonatomic, weak) UIView* profileNavView;
 @property (nonatomic, weak) UIView* regionsNavView;
-//@property (nonatomic, weak) UIViewController* poisNavController;
 @property (nonatomic, weak) UIView* poisNavView;
 
 @end
@@ -59,7 +67,10 @@
  */
 
 - (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer
-						  regionsNavView:(UIView*)regionsNavView
+					 loginNavView:(UIView*)loginNavView
+			  loginClassicNavView:(UIView*)loginClassicNavView
+				   profileNavView:(UIView*)profileNavView
+				   regionsNavView:(UIView*)regionsNavView
 					  poisNavView:(UIView*)poisNavView {
 	
 	self = [super init];
@@ -70,10 +81,11 @@
 		
 		[self.appLayer addCallback:self];
 		
+		self.loginNavView = loginNavView;
+		self.loginClassicNavView = loginClassicNavView;
 		self.regionsNavView = regionsNavView;
-//		self.poisNavController = poisNavController;
-		self.poisNavView = // poisNavController.view; //
-		poisNavView;
+		self.poisNavView = poisNavView;
+		self.profileNavView = profileNavView;
 	}
 	
 	return self;
@@ -115,6 +127,25 @@
 													  toView:self.homeAboutView
 														edge:UNMPageTransitionEdgeTop];
 	
+	// LOGIN VIEW
+	
+	self.loginView = [[UIView alloc] initWithFrame:bounds];
+	self.loginView.hidden= YES;
+	
+	[self.view addSubview:self.loginView];
+
+	self.loginClassicView = [[UIView alloc] initWithFrame:bounds];
+	self.loginClassicView.hidden= YES;
+	
+	[self.view addSubview:self.loginClassicView];
+	
+	// PROFILE VIEW
+	
+	self.profileView = [[UIView alloc] initWithFrame:bounds];
+	self.profileView.hidden= YES;
+	
+	[self.view addSubview:self.profileView];
+
 	// REGIONS VIEW
 	
 	self.regionsView = [[UIView alloc] initWithFrame:bounds];
@@ -139,8 +170,7 @@
 
 	// TITLE LABEL
 	
-	self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0, self.screenMiddle - 200.0, 220.0, 60.0)
-					   ];
+	self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0, self.screenMiddle - 140.0, 220.0, 60.0)];
 	self.titleLabel.accessibilityIdentifier = @"label-homePageTitle";
 	self.titleLabel.text = @"UnivMobile";
 	self.titleLabel.textColor = [UNMConstants RGB_79b8d9];
@@ -154,7 +184,8 @@
 	
 	// ABOUT: TEXT VIEW
 	
-	self.aboutTextView = [[UITextView alloc]initWithFrame:CGRectMake(15.0, self.screenMiddle - 200.0, 290.0, 190.0)];
+	self.aboutTextView = [[UITextView alloc]
+						  initWithFrame:CGRectMake(15.0, self.screenMiddle - 200.0, 290.0, 190.0)];
 	self.aboutTextView.accessibilityIdentifier = @"textView-buildInfo";
 
 	self.aboutTextView.editable = NO;
@@ -212,7 +243,6 @@
 	[self.homeAboutView addSubview:self.aboutLastDataRefreshLabel];
 	[self.homeAboutView addSubview:self.aboutDataRefreshButton];
 	
-	
 	@weakify(self)
 	
 	self.aboutDataRefreshButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
@@ -230,8 +260,8 @@
 
 	// CLOSE ABOUT BUTTON
 	
-	self.aboutCloseButton = [[UIButton alloc] initWithFrame:CGRectMake(
-																	   120.0, self.screenMiddle + 126.0, 80.0, 20.0)
+	self.aboutCloseButton = [[UIButton alloc]
+							 initWithFrame:CGRectMake(120.0, self.screenMiddle + 126.0, 80.0, 20.0)
 							 ];
 	self.aboutCloseButton.isAccessibilityElement = YES;
 	self.aboutCloseButton.accessibilityIdentifier = @"button-okCloseAbout";
@@ -313,6 +343,61 @@
 		return [RACSignal empty];
 	}];
 	
+	// LOGIN BUTTON
+	
+	[self.loginView addSubview:self.loginNavView];
+	[self.loginClassicView addSubview:self.loginClassicNavView];
+	[self.profileView addSubview:self.profileNavView];
+
+	self.loginButton = [[UIButton alloc] initWithFrame:CGRectMake(20.0, self.screenMiddle - 200.0, 280.0, 20.0)];
+	self.loginButton.accessibilityIdentifier = @"button-login";
+	[self.loginButton setTitle:@"Se connecter…" forState:UIControlStateNormal];
+	[self.loginButton setTitleColor:[UIColor greenColor] forState:UIControlStateHighlighted];
+	
+	[self.homeTitleView addSubview:self.loginButton];
+	
+	self.loginButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
+		
+		@strongify(self)
+		
+		[UIView transitionFromView:self.homeView
+							toView:self.loginView
+						  duration:[UNMConstants TRANSITION_DURATION]
+						   options:UIViewAnimationOptionTransitionFlipFromRight //
+		 + UIViewAnimationOptionShowHideTransitionViews
+						completion:^(BOOL done) {
+							// nothing here
+						}];
+		
+		return [RACSignal empty];
+	}];
+
+	// PROFILE BUTTON
+	
+	self.profileButton = [[UIButton alloc] initWithFrame:self.loginButton.frame];
+	self.profileButton.hidden = YES;
+	self.profileButton.accessibilityIdentifier = @"button-profile";
+	[self.profileButton setTitle:@"Profile" forState:UIControlStateNormal];
+	[self.profileButton setTitleColor:[UIColor greenColor] forState:UIControlStateHighlighted];
+	
+	[self.homeTitleView addSubview:self.profileButton];
+	
+	self.profileButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
+		
+		@strongify(self)
+		
+		[UIView transitionFromView:self.homeView
+							toView:self.profileView
+						  duration:[UNMConstants TRANSITION_DURATION]
+						   options:UIViewAnimationOptionTransitionCrossDissolve //
+		 + UIViewAnimationOptionShowHideTransitionViews
+						completion:^(BOOL done) {
+							// nothing here
+						}];
+		
+		return [RACSignal empty];
+	}];
+
 	// POIS LABEL
 	
 	/*
@@ -418,6 +503,85 @@
 }
 
 #pragma mark - AppLayer Callbacks
+
+// Override: UNMAppViewCallback
+- (void)callbackGoBackFromLogin {
+	
+	[UIView transitionFromView:self.loginView
+						toView:self.homeView
+					  duration:[UNMConstants TRANSITION_DURATION]
+					   options:UIViewAnimationOptionTransitionFlipFromLeft //
+	 + UIViewAnimationOptionShowHideTransitionViews
+					completion:^(BOOL done) {
+						// nothing here
+					}];
+}
+
+// Override: UNMAppViewCallback
+- (void)callbackGoBackFromLoginClassic {
+	
+	[UIView transitionFromView:self.loginClassicView
+						toView:self.homeView
+					  duration:[UNMConstants TRANSITION_DURATION]
+					   options:UIViewAnimationOptionTransitionFlipFromLeft //
+	 + UIViewAnimationOptionShowHideTransitionViews
+					completion:^(BOOL done) {
+						// nothing here
+					}];
+}
+
+// Override: UNMAppViewCallback
+- (void)callbackGoFromLoginToLoginClassic {
+	
+	[UIView transitionFromView:self.loginView
+						toView:self.loginClassicView
+					  duration:[UNMConstants TRANSITION_DURATION]
+					   options:UIViewAnimationOptionTransitionCurlUp //
+	 + UIViewAnimationOptionShowHideTransitionViews
+					completion:^(BOOL done) {
+						// nothing here
+					}];
+}
+
+// Override: UNMAppViewCallback
+- (void)callbackGoBackFromProfile {
+	
+	[UIView transitionFromView:self.profileView
+						toView:self.homeView
+					  duration:[UNMConstants TRANSITION_DURATION]
+					   options:UIViewAnimationOptionTransitionCrossDissolve //
+	 + UIViewAnimationOptionShowHideTransitionViews
+					completion:^(BOOL done) {
+						// nothing here
+					}];
+}
+
+// Override: UNMAppViewCallback
+- (void)callbackGoFromLoginClassicToProfile {
+	
+	[UIView transitionFromView:self.loginClassicView
+						toView:self.profileView
+					  duration:[UNMConstants TRANSITION_DURATION]
+					   options:UIViewAnimationOptionTransitionFlipFromRight //
+	 + UIViewAnimationOptionShowHideTransitionViews
+					completion:^(BOOL done) {
+						// nothing here
+					}];
+	
+	self.loginButton.hidden = YES;
+	self.profileButton.hidden = NO;
+	[self.profileButton setTitle:self.appLayer.appToken.user.displayName forState:UIControlStateNormal];
+}
+
+// Override: UNMAppViewCallback
+- (void)callbackLogout {
+	
+	self.loginButton.hidden = NO;
+	self.profileButton.hidden = YES;
+	[self.profileButton setTitle:@"Profile" forState:UIControlStateNormal];
+	
+	[self callbackGoBackFromProfile];
+}
 
 // Override: UNMAppViewCallback
 - (void)callbackGoBackFromRegions {

@@ -49,7 +49,7 @@
 	
 	// NSLog(@"fetchPoisData:url: %@", url);
 	
-	id const json = [jsonFetcher syncFetchJsonAtURL:url withErrorHandler:onError];
+	id const json = [jsonFetcher syncJsonGetURL:url withErrorHandler:onError];
 	
 	// NSLog(@"fetchPoisData -> json: %@", json);
 	

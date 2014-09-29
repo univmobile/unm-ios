@@ -11,6 +11,7 @@
 #import "UNMJsonRegionsData.h"
 #import "UNMJsonPoisData.h"
 #import "UNMJsonCommentsData.h"
+#import "UNMJsonSessionData.h"
 #import "UNMJsonFetcher.h"
 #import "NSBundle+String.h"
 #import "UNMCommentsData.h"
@@ -23,6 +24,7 @@
 @property (strong, nonatomic, readonly) UNMJsonRegionsData* jsonRegionsData;
 @property (strong, nonatomic, readonly) UNMJsonPoisData* jsonPoisData;
 @property (strong, nonatomic, readonly) UNMJsonCommentsData* jsonCommentsData;
+@property (strong, nonatomic, readonly) UNMJsonSessionData* jsonSessionData;
 
 @end
 
@@ -51,6 +53,7 @@
 		_jsonRegionsData = [[UNMJsonRegionsData alloc] initWithJSONBaseURL:jsonBaseURL];
 		_jsonPoisData = [[UNMJsonPoisData alloc] initWithJSONBaseURL:jsonBaseURL];
 		_jsonCommentsData = [[UNMJsonCommentsData alloc] init];
+		_jsonSessionData = [[UNMJsonSessionData alloc] initWithJSONBaseURL:jsonBaseURL];
 	}
 	
 	return self;
@@ -88,11 +91,43 @@
 	[self invokeCallbacksForSelector:@selector(goBackFromRegions)];
 }
 
+- (void) goBackFromLogin {
+	
+	[self invokeCallbacksForSelector:@selector(goBackFromLogin)];
+}
+
+- (void) goBackFromLoginClassic {
+	
+	[self invokeCallbacksForSelector:@selector(goBackFromLoginClassic)];
+}
+
+- (void) goFromLoginToLoginClassic {
+	
+	[self invokeCallbacksForSelector:@selector(goFromLoginToLoginClassic)];
+}
+
+- (void) goFromLoginClassicToProfile {
+	
+	[self invokeCallbacksForSelector:@selector(goFromLoginClassicToProfile)];
+}
+
+- (void) goBackFromProfile {
+	
+	[self invokeCallbacksForSelector:@selector(goBackFromProfile)];
+}
+
 - (void) goBackFromGeocampus {
 	
 	//NSLog(@"AppLayer.goBackFromGeocampus...");
 	
 	[self invokeCallbacksForSelector:@selector(goBackFromGeocampus)];
+}
+
+- (void) logout {
+	
+	_appToken = nil;
+	
+	[self invokeCallbacksForSelector:@selector(logout)];
 }
 
 - (void) showUniversityList {
@@ -297,6 +332,51 @@
 	//NSLog(@"commentsData: %@",commentsData);
 	
 	return commentsData.comments;
+}
+
+#pragma mark - Session
+
+- (BOOL) login:(NSString*)login password:(NSString*)password apiKey:(NSString*)apiKey {
+	
+	// Please keep this method synchronous so automatic callbacks may occur consistently.
+	// Use the asyncXxxYyy naming pattern for asynchronous tasks.
+	
+	// NSLog(@"self.jsonRegionsData: %@", self.jsonRegionsData);
+	// NSLog(@"self.jsonFetcher: %@", self.jsonFetcher);
+	
+	// NSLog(@"UNMAppLayer.login:%@, password:%@, apiKey:%@", login, password, apiKey);
+	
+	UNMAppToken* const appToken = [self.jsonSessionData fetchAppToken:self.jsonFetcher
+															   withApiKey:apiKey
+																	login:login
+																 password:password
+															 errorHandler:^(NSError* error) {
+																  
+																  UIAlertView* alert = [[UIAlertView alloc]
+																						initWithTitle:@"Erreur de transmission"
+																						message:[NSString stringWithFormat:@"Build %@ %@",
+																								 self.buildInfo.BUILD_DISPLAY_NAME, error]
+																						delegate:nil
+																						cancelButtonTitle:@"OK"
+																						otherButtonTitles:nil
+																						];
+																  
+																  [alert show];
+																  
+															  }];
+	
+	// NSLog(@"regionsData: %@",regionsData);
+	
+	if (appToken == nil) {
+		
+		return NO;
+	}
+	
+	// TODO: Store USER
+	
+	_appToken = appToken;
+	
+	return YES;
 }
 
 @end

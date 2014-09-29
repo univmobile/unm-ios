@@ -55,7 +55,7 @@
 	
 	// NSLog(@"fetchRegionsData:url: %@", url);
 	
-	id const json = [jsonFetcher syncFetchJsonAtURL:url withErrorHandler:onError];
+	id const json = [jsonFetcher syncJsonGetURL:url withErrorHandler:onError];
 
 	// NSLog(@"fetchRegionsData -> json: %@", json);
 
@@ -91,7 +91,7 @@
 		
 		//NSLog(@"universitiesUrl: %@", universitiesUrl);
 		
-		id const universitiesJson = [jsonFetcher syncFetchJsonAtURL:universitiesUrl withErrorHandler:onError];
+		id const universitiesJson = [jsonFetcher syncJsonGetURL:universitiesUrl withErrorHandler:onError];
 		
 		// TODO continue;? return nil;? Alert?
 		if (!universitiesJson) continue; // Error is already handled by callback

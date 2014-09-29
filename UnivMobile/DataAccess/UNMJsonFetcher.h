@@ -12,6 +12,11 @@
 
 @required
 
-- (id) syncFetchJsonAtURL:(NSString*)path withErrorHandler:(void(^)(NSError*))onError;
+- (id) syncJsonGetURL:(NSString*)path
+	 withErrorHandler:(void(^)(NSError*))onError;
+
+- (id) syncJsonPostURL:(NSString*)path
+			withParams:(NSDictionary*)params
+		  errorHandler:(void(^)(NSError*))onError;
 
 @end
