@@ -91,16 +91,21 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		takeScreenshot("about1.png");
 
+		savePageSource("about1.xml");
+
 		elementById("button-dataRefresh").click();
 
+		pause(PAUSE);
 		pause(PAUSE);
 
 		takeScreenshot("about2.png");
 
 		savePageSource("about2.xml");
 
-		//elementById("button-okCloseAbout").click();
-		elementByName("button-okCloseAbout").click();
+		// elementById("button-okCloseAbout").click();
+		// elementByName("button-okCloseAbout").click();
+		element(ios6ById("button-okCloseAbout"), //
+				ios7ById("button-okCloseAbout")).click();
 
 		pause(PAUSE);
 
@@ -219,9 +224,8 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		savePageSource("geocampus_list.xml");
 
 		element(ios6ByXPath("//UIATabBar[1]/UIAButton[2]"),
-				// ios6ByName("Plan"), 
-				ios7ByXPath("//UIATabBar[1]/UIAButton[2]"))
-				.click();
+		// ios6ByName("Plan"),
+				ios7ByXPath("//UIATabBar[1]/UIAButton[2]")).click();
 
 		pause(PAUSE);
 
@@ -241,7 +245,8 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		savePageSource("geocampus_details.xml");
 
-		element(//ios6ByXPath("//UIANavigationBar[2]/UIAButton[2]"),
+		element(
+				// ios6ByXPath("//UIANavigationBar[2]/UIAButton[2]"),
 				ios6ByName("POIs"),
 				ios7ByXPath("//UIANavigationBar[2]/UIAButton[2]")).click();
 
@@ -311,6 +316,18 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		};
 	}
 
+	private IOS6By ios6ById(final String id) {
+
+		return new IOS6By() {
+
+			@Override
+			public ElementChecker element() throws IOException {
+
+				return elementById(id);
+			}
+		};
+	}
+
 	private IOS7By ios7ByXPath(final String xpath) {
 
 		return new IOS7By() {
@@ -319,6 +336,18 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 			public ElementChecker element() throws IOException {
 
 				return elementByXPath(xpath);
+			}
+		};
+	}
+
+	private IOS7By ios7ById(final String id) {
+
+		return new IOS7By() {
+
+			@Override
+			public ElementChecker element() throws IOException {
+
+				return elementById(id);
 			}
 		};
 	}
