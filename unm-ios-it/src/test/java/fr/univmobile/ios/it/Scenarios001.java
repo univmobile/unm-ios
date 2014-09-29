@@ -217,7 +217,9 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		savePageSource("geocampus_list.xml");
 
-		element(ios6ByName("Plan"), ios7ByXPath("//UIATabBar[1]/UIAButton[2]"))
+		element(ios6ByXPath("//UIATabBar[1]/UIAButton[2]"),
+				// ios6ByName("Plan"), 
+				ios7ByXPath("//UIATabBar[1]/UIAButton[2]"))
 				.click();
 
 		pause(PAUSE);
@@ -295,6 +297,18 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		};
 	}
 
+	private IOS6By ios6ByXPath(final String xpath) {
+
+		return new IOS6By() {
+
+			@Override
+			public ElementChecker element() throws IOException {
+
+				return elementByXPath(xpath);
+			}
+		};
+	}
+
 	private IOS7By ios7ByXPath(final String xpath) {
 
 		return new IOS7By() {
@@ -316,8 +330,9 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		elementById("button-Géocampus").click();
 		pause(PAUSE);
 		takeScreenshot("geocampus_list.png");
-		element(ios6ByName("Plan"), ios7ByXPath("//UIATabBar[1]/UIAButton[2]"))
-				.click();
+		element(ios6ByXPath("//UIATabBar[1]/UIAButton[2]"),
+		// ios6ByName("Plan"),
+				ios7ByXPath("//UIATabBar[1]/UIAButton[2]")).click();
 		// elementByXPath("//UIATabBar[1]/UIAButton[2]").click();
 		// elementByName("Plan").click();
 		pause(PAUSE);
