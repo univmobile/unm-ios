@@ -161,7 +161,8 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 
 		futureScreenshot(DELAY_SCREENSHOT, "home_swappingFromRegions.png");
 
-		elementByName("Retour").click();
+		element(ios6ByName("Retour"), //
+				ios7ByXPath("//UIANavigationBar[4]/UIAButton[2]")).click();
 
 		pause(PAUSE);
 
@@ -252,7 +253,7 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		element(
 				// ios6ByXPath("//UIANavigationBar[2]/UIAButton[2]"),
 				ios6ByName("POIs"),
-				ios7ByXPath("//UIANavigationBar[2]/UIAButton[2]")).click();
+				ios7ByXPath("//UIANavigationBar[5]/UIAButton[2]")).click();
 
 		pause(PAUSE);
 
