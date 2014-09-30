@@ -60,6 +60,8 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		swipe(80, 168, 77, 414, 800);
 		swipe(80, 168, 77, 414, 800);
 
+		pause(PAUSE);
+
 		takeScreenshot("about.png");
 
 		elementById("label-homePageTitle").shouldBeHidden();
@@ -70,6 +72,8 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		swipe(80, 414, 77, 168, 800);
 		swipe(80, 414, 77, 168, 800);
 		swipe(80, 414, 77, 168, 800);
+
+		pause(PAUSE);
 
 		takeScreenshot("home2.png");
 
