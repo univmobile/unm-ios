@@ -11,7 +11,7 @@
 #import <ReactiveCocoa/ReactiveCocoa/ReactiveCocoa.h>
 #import <EXTScope.h>
 
-@interface UNMProfileController ()
+@interface UNMProfileController () <UIActionSheetDelegate>
 
 @end
 
