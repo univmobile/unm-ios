@@ -12,7 +12,7 @@
 #import <EXTScope.h>
 #import "UIBarButtonItem+UIAccessibility.h"
 
-@interface UNMLoginClassicController ()
+@interface UNMLoginClassicController () <UITextFieldDelegate>
 
 @property (nonatomic, strong) UILabel* loginLabel;
 @property (nonatomic, strong) UITextField* loginText;
