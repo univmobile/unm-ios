@@ -10,7 +10,7 @@
 #import "UNMAppLayered.h"
 #import "UNMAppToken.h"
 
-@interface UNMProfileController : UITableViewController <UNMAppLayered, UNMAppViewCallback, UIActionSheetDelegate>
+@interface UNMProfileController : UITableViewController <UNMAppLayered, UNMAppViewCallback>
 
 @property (weak, nonatomic) const UNMAppUser* user;
 
