@@ -12,7 +12,7 @@
 #import "UNMPoisController.h"
 
 @interface UNMMapController : UIViewController
-<UNMAppLayered, UNMAppViewCallback, UITabBarControllerDelegate, GMSMapViewDelegate>
+<UNMAppLayered, UNMAppViewCallback, UITabBarControllerDelegate>
 
 - (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer
 				poisController:(UNMPoisController*)poisController;
