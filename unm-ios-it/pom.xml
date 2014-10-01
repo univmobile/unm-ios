@@ -16,7 +16,6 @@
 			<groupId>fr.univmobile</groupId>
 			<artifactId>unm-ios</artifactId>
 			<type>pom</type>
-			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>	
 	</dependencies>
