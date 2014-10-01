@@ -65,40 +65,7 @@
 - (void)viewDidLoad {
 	
     [super viewDidLoad];
-	
-	//self.accessibilityIdentifier = @"table-pois";
-	
-	//self.view.backgroundColor = [UNMConstants RGB_9bc9e1];
-	
-	//self.view.backgroundColor = [UIColor redColor];
-	
-/*	self.tabBarController.title = @"POIs";
-	//self.title = @"POIs";
-	
-	UIBarButtonItem* const rightBarButton = [[UIBarButtonItem alloc]
-											 initWithTitle:@"Retour"
-											 style:UIBarButtonItemStyleBordered
-											 target:nil
-											 action:nil];
-	rightBarButton.accessibilityIdentifier = @"button-retour";
-	
-	//self.navigationItem.rightBarButtonItem = rightBarButton;
-	self.tabBarController.navigationItem.rightBarButtonItem = rightBarButton;
-	
-	@weakify(self)
-	
-	rightBarButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
 		
-		@strongify(self)
-		
-		[self.appLayer goBackFromGeocampus];
-		
-		return [RACSignal empty];
-	}];
- */
-	
-	//[super viewDidLoad];
-	
 	// GOOGLE MAP
 	
 	const CGFloat ZOOM = 10.0;
@@ -110,6 +77,10 @@
 	GMSMapView* const mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
 
 	mapView.userInteractionEnabled = YES;
+	
+	mapView.myLocationEnabled = YES;
+	
+	mapView.settings.myLocationButton = NO; // Wait for location update to set to YES
 	
 	mapView.delegate = self;
 	
@@ -356,6 +327,12 @@
 	
 	
 	[self refreshMarkers];
+}
+
+// Override: UNMAppViewCallback
+- (void) callbackUpdateLocation:(CLLocation*)location {
+	
+	self.mapView.settings.myLocationButton = YES;
 }
 
 #pragma mark - Markers

@@ -78,4 +78,7 @@
 // Allow callbacks
 - (void) logout;
 
+// Allow callbacks
+- (void) updateLocation:(CLLocation*)location;
+
 @end
