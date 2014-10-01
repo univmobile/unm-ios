@@ -13,7 +13,7 @@
 #import <ReactiveCocoa/ReactiveCocoa/ReactiveCocoa.h>
 #import <EXTScope.h>
 
-@interface UNMMapController ()
+@interface UNMMapController () <GMSMapViewDelegate>
 
 @property (strong, nonatomic, readonly) GMSMapView* mapView;
 @property (strong, nonatomic, readonly) UIView* infoView;
