@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UNMAppLayered.h"
 
-@interface UNMLoginClassicController : UIViewController <UNMAppLayered, UNMAppViewCallback, UITextFieldDelegate>
+@interface UNMLoginClassicController : UIViewController <UNMAppLayered, UNMAppViewCallback>
 
 @property (strong, nonatomic) UIControl* view;
 
