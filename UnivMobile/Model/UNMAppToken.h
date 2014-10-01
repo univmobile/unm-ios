@@ -10,6 +10,15 @@
 #import <Mantle.h>
 
 
+@interface UNMTwitterFollower : MTLModel <MTLJSONSerializing>
+
+@property (strong, nonatomic) NSString* screenName; // e.g. "dandriana"
+
+@property (strong, nonatomic) NSString* name; // e.g. "David Andriana"
+
+@end
+
+
 @interface UNMAppUser : MTLModel <MTLJSONSerializing>
 
 @property (strong, nonatomic) NSString* uid; // e.g. "crezvani"
@@ -17,6 +26,14 @@
 @property (strong, nonatomic) NSString* email;
 
 @property (strong, nonatomic) NSString* displayName; // e.g. "Cyrus Rezvani"
+
+@property (strong, nonatomic) NSArray* twitterFollowers; // array of UNMTwitterFollower*
+
+- (NSUInteger) sizeOfTwitterFollowers;
+
+- (UNMTwitterFollower*) twitterFollowerAtIndex:(NSUInteger)row;
+
+//- (UNMPoiData*) poiDataById:(NSUInteger*) poiId;
 
 @end
 
