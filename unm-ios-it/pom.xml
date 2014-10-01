@@ -107,6 +107,8 @@
 			<id>unm_ios6a</id>
 			<properties>
 				<ios.platformVersion.shouldBe>6.1</ios.platformVersion.shouldBe>
+				<clients_plist_source>/Users/dandriana/clients.plist</clients_plist_source>
+				<clients_plist_target>/Users/dandriana/Library/Application Support/iPhone Simulator/6.1/Library/Caches/locationd/clients.plist</clients_plist_target>
 			</properties>
 		</profile>
 		<profile>
