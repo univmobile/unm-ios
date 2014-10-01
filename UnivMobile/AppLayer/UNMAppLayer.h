@@ -13,6 +13,7 @@
 #import "UNMBuildInfo.h"
 #import "UNMJsonFetcher.h"
 #import "UNMAppToken.h"
+#import <CoreLocation/CLLocation.h>
 
 // Objects in the App Layer (applicative layer) are responsible for
 // the data and the coordination between View Controllers.
@@ -24,6 +25,7 @@
 @property (strong, nonatomic, readonly) UNMPoisData* poisData;
 @property (strong, nonatomic, readonly) UNMBuildInfo* buildInfo;
 @property (strong, nonatomic, readonly) UNMAppToken* appToken;
+@property (strong, nonatomic, readonly) CLLocation* location;
 
 - (instancetype) initWithBundle:(NSBundle*)bundle jsonFetcher:(NSObject<UNMJsonFetcher>*)jsonFetcher;
 

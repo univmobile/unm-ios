@@ -12,6 +12,7 @@
 
 @interface UNMJsonPoisData ()
 
+@property (weak, atomic) UNMAppLayer* appLayer;
 @property (copy, atomic) NSString* jsonBaseURL;
 
 @end
@@ -28,12 +29,13 @@
 			userInfo:nil];
 }
 
-- (instancetype) initWithJSONBaseURL:(NSString*)jsonBaseURL {
+- (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer jsonBaseURL:(NSString*)jsonBaseURL {
 	
 	self = [super init];
 	
 	if (self) {
 		
+		self.appLayer = appLayer;
 		self.jsonBaseURL = jsonBaseURL;
 	}
 	
@@ -45,7 +47,10 @@
 
 	// NSLog(@"fetchPoisData...");
 
-	NSString* const url = [self.jsonBaseURL stringByAppendingString:@"pois"];
+	NSString* const url = self.appLayer.location
+		? [self.jsonBaseURL stringByAppendingFormat:@"pois?lat=%f&lng=%f",
+		   self.appLayer.location.coordinate.latitude, self.appLayer.location.coordinate.longitude]
+	:[self.jsonBaseURL stringByAppendingString:@"pois"];
 	
 	// NSLog(@"fetchPoisData:url: %@", url);
 	

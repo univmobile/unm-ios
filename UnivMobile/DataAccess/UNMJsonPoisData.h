@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "UNMPoisData.h"
 #import "UNMJsonFetcher.h"
+#import "UNMAppLayer.h"
 
 @interface UNMJsonPoisData : NSObject
 
-- (instancetype) initWithJSONBaseURL:(NSString*)jsonBaseURL;
+- (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer jsonBaseURL:(NSString*)jsonBaseURL;
 
 - (UNMPoisData*) fetchPoisData:(NSObject<UNMJsonFetcher>*)jsonFetcher
 					withErrorHandler:(void(^)(NSError*))onError;

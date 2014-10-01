@@ -7,6 +7,7 @@
 //
 
 #import "UNMAppLayer.h"
+#import <CoreLocation/CLLocationManagerDelegate.h>
 #import "UNMInitialRegionsData.h"
 #import "UNMJsonRegionsData.h"
 #import "UNMJsonPoisData.h"
@@ -16,7 +17,7 @@
 #import "NSBundle+String.h"
 #import "UNMCommentsData.h"
 
-@interface UNMAppLayer ()
+@interface UNMAppLayer () <CLLocationManagerDelegate>
 
 @property (strong, nonatomic, readonly) NSMutableArray* callbacks; // array of NSObject*
 @property (strong, nonatomic, readonly) NSBundle* bundle;
@@ -25,6 +26,7 @@
 @property (strong, nonatomic, readonly) UNMJsonPoisData* jsonPoisData;
 @property (strong, nonatomic, readonly) UNMJsonCommentsData* jsonCommentsData;
 @property (strong, nonatomic, readonly) UNMJsonSessionData* jsonSessionData;
+@property (strong, nonatomic, readonly) CLLocationManager* locationManager;
 
 @end
 
@@ -51,9 +53,14 @@
 		// NSLog(@"UNMAppLayer:jsonBaseURL: %@",jsonBaseURL);
 		
 		_jsonRegionsData = [[UNMJsonRegionsData alloc] initWithJSONBaseURL:jsonBaseURL];
-		_jsonPoisData = [[UNMJsonPoisData alloc] initWithJSONBaseURL:jsonBaseURL];
+		_jsonPoisData = [[UNMJsonPoisData alloc] initWithAppLayer:self jsonBaseURL:jsonBaseURL];
 		_jsonCommentsData = [[UNMJsonCommentsData alloc] init];
 		_jsonSessionData = [[UNMJsonSessionData alloc] initWithJSONBaseURL:jsonBaseURL];
+		
+		_locationManager = [[CLLocationManager alloc] init];
+		self.locationManager.delegate = self;
+		self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+		[self.locationManager startUpdatingLocation];
 	}
 	
 	return self;
@@ -67,6 +74,20 @@
 - (void) setSelectedUniversityId:(NSString*)selectedUniversityId {
 	
 	_selectedUniversityId = selectedUniversityId;
+}
+
+#pragma mark - Location Manager Delegate
+
+// Override: CLLocationManagerDelegate
+- (void) locationManager:(CLLocationManager*)locationManager didUpdateLocations:(NSArray*)locations {
+	
+	NSLog(@"topitop");
+	if ([locations count] != 0) {
+		
+		_location = (CLLocation*) [locations objectAtIndex:0];
+		
+		[locationManager stopUpdatingLocation];
+	}
 }
 
 #pragma mark - AppLayer Callbacks
