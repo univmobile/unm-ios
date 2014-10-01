@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>fr.univmobile</groupId>
 		<artifactId>unm-backend-it-parent</artifactId>
-		<version>0.0.5</version>
+		<version>0.0.6-SNAPSHOT</version>
 		<relativePath />
 	</parent>
 
@@ -113,6 +113,8 @@
 			<id>unm_ios7</id>
 			<properties>
 				<ios.platformVersion.shouldBe>7.1</ios.platformVersion.shouldBe>
+				<clients_plist_source>/Users/dandriana/clients.plist</clients_plist_source>
+				<clients_plist_target>/Users/dandriana/Library/Application Support/iPhone Simulator/7.1/Library/Caches/locationd/clients.plist</clients_plist_target>
 			</properties>
 		</profile>
 	</profiles>
