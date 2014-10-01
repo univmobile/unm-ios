@@ -81,13 +81,18 @@
 // Override: CLLocationManagerDelegate
 - (void) locationManager:(CLLocationManager*)locationManager didUpdateLocations:(NSArray*)locations {
 	
-	NSLog(@"topitop");
 	if ([locations count] != 0) {
 		
 		_location = (CLLocation*) [locations objectAtIndex:0];
 		
 		[locationManager stopUpdatingLocation];
+
+		[self invokeCallbacksForSelector:@selector(updateLocation:) withObject:self.location];
 	}
+}
+
+- (void) updateLocation:(CLLocation*)location {
+	
 }
 
 #pragma mark - AppLayer Callbacks
