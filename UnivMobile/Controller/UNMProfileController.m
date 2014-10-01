@@ -81,7 +81,7 @@
 // Override: UITableViewDataSource
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
 	
-    return 3;
+    return 3 + self.user.sizeOfTwitterFollowers;
 }
 
 // Override: UITableViewDataSource
@@ -91,10 +91,15 @@
 	const BOOL isUidCell = (row == 0);
 	const BOOL isDisplayNameCell = NO; // (row == 1);
 	const BOOL isEmailCell = (row == 1);
-	const BOOL isLogoutCell = (row == 2);
+	const BOOL isLogoutCell = (row >= 2 + self.user.sizeOfTwitterFollowers);
+	const BOOL isTwitterFollowerCell = (row > 1) && !isLogoutCell;
 	//const BOOL isMapCell = (row == [self.details count] + 1);
 	//UNMDetail* const detail = isNameCell || isMapCell ? nil : [self.details objectAtIndex:row -1];
 	
+	UNMTwitterFollower* const twitterFollower = isTwitterFollowerCell
+	 ? [self.user twitterFollowerAtIndex:row - 2]
+		: nil;
+
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:(isLogoutCell?@"logout":@"profile")];
 	
     if (!cell) {
@@ -180,10 +185,12 @@
 		} else if (isEmailCell) {
 			cell.textLabel.text = @"e-mail";
 		} else if (isLogoutCell) {
-				cell.textLabel.font = [UIFont systemFontOfSize:16.0];
-				cell.textLabel.textAlignment = NSTextAlignmentCenter;
-				cell.textLabel.textColor = [UIColor blackColor];
-				cell.textLabel.text = @"Déconnexion";
+			cell.textLabel.font = [UIFont systemFontOfSize:16.0];
+			cell.textLabel.textAlignment = NSTextAlignmentCenter;
+			cell.textLabel.textColor = [UIColor blackColor];
+			cell.textLabel.text = @"Déconnexion";
+		} else if (isTwitterFollowerCell) {
+			cell.textLabel.text = [@"Twitter Follower: " stringByAppendingString:twitterFollower.screenName];
 		}
 			
 		cell.detailTextLabel.font = [UIFont systemFontOfSize:14.0];
@@ -194,6 +201,8 @@
 			cell.detailTextLabel.text = self.user.displayName;
 		} else if (isEmailCell) {
 			cell.detailTextLabel.text = self.user.email;
+		} else if (isTwitterFollowerCell) {
+			cell.detailTextLabel.text = twitterFollower.name;
 		}
 	//}
 	

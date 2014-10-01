@@ -36,6 +36,16 @@
 
 @implementation UNMAppUser
 
+- (NSUInteger) sizeOfTwitterFollowers {
+	
+	return [self.twitterFollowers count];
+}
+
+- (UNMTwitterFollower*) twitterFollowerAtIndex:(NSUInteger)row {
+	
+	return [self.twitterFollowers objectAtIndex:row];
+}
+
 // Override: MTLJSONSerializing
 + (NSDictionary*) JSONKeyPathsByPropertyKey {
 	
@@ -46,7 +56,35 @@
 	[map addEntriesFromDictionary:@{
 									@"uid": @"uid",
 									@"email": @"mail",
-									@"displayName": @"displayName"
+									@"displayName": @"displayName",
+									@"twitterFollowers": @"twitterFollowers"
+									}];
+	
+	return map;
+}
+
+// Override: MTLJSONSerializing
++ (NSValueTransformer*)twitterFollowersJSONTransformer {
+	
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[UNMTwitterFollower class]];
+}
+
+@end
+
+
+
+@implementation UNMTwitterFollower
+
+// Override: MTLJSONSerializing
++ (NSDictionary*) JSONKeyPathsByPropertyKey {
+	
+	NSMutableDictionary* const map = [NSMutableDictionary new];
+	
+	// add: [super JSONKeyPathsByPropertyKey];
+	
+	[map addEntriesFromDictionary:@{
+									@"screenName": @"screenName",
+									@"name": @"name"
 									}];
 	
 	return map;
