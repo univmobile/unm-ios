@@ -44,23 +44,9 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 		}
 	}
 
-	private void handleLocationManagerAlert() throws IOException,
-			InterruptedException {
-
-		takeScreenshot("start.png");
-
-		savePageSource("start.xml");
-
-		elementByName("OK").click();
-
-		pause(1000);
-	}
-
 	@Scenario("Aller-retour sur la page « À Propos »")
 	@Test
 	public void sc001() throws Exception {
-
-		handleLocationManagerAlert();
 
 		takeScreenshot("home.png");
 
@@ -98,8 +84,6 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 	@Scenario("Recharger les données")
 	@Test
 	public void sc004() throws Exception {
-
-		handleLocationManagerAlert();
 
 		takeScreenshot("home.png");
 
@@ -157,8 +141,6 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 	@Test
 	public void sc002() throws Exception {
 
-		handleLocationManagerAlert();
-
 		takeScreenshot("home_beforeRegions.png");
 
 		pause(PAUSE);
@@ -190,8 +172,6 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 	@Scenario("Sélection d’une université")
 	@Test
 	public void sc003() throws Exception {
-
-		handleLocationManagerAlert();
 
 		takeScreenshot("home_beforeRegions.png");
 
@@ -235,8 +215,6 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 	@Scenario("Géocampus")
 	@Test
 	public void Geocampus_000() throws Exception {
-
-		handleLocationManagerAlert();
 
 		pause(PAUSE);
 
@@ -382,8 +360,6 @@ public class Scenarios001 extends AppiumIOSEnabledTest {
 	@Scenario("Géocampus, commentaires")
 	@Test
 	public void Geocampus_001() throws Exception {
-
-		handleLocationManagerAlert();
 
 		pause(PAUSE);
 		takeScreenshot("home.png");
