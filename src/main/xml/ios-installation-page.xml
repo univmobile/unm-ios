@@ -16,11 +16,18 @@ UnivMobileAlpha
 <ios-installation-page>
 
 <ios-installation
+	date="2014-10-02 19:32"
+	git-commit="b3eee7dcd0c650208291bbf0a9f22b47f3c3ade1"
+	plistHref="https://dl.dropboxusercontent.com/s/2i3z99zbnm8nooq/UnivMobile.plist"
+	build-displayName="#5"
+	label="Release ité 3 finale"/>
+
+<ios-installation
 	date="2014-10-01 15:30"
 	git-commit="dedac5646942823c33441ea0ff40d36381c12e86"
 	plistHref="https://dl.dropboxusercontent.com/s/4n1k7eg0kmzrasb/UnivMobile.plist"
 	build-displayName="#3"
-	label="Release ité 3"/>
+	label="Release ité 3 (preview)"/>
 
 <ios-installation
 	date="2014-09-07 00:35"
