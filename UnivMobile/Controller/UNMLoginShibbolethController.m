@@ -141,7 +141,7 @@ static NSString* const SHIBBOLETH_CALLBACK = @"https://univmobile-dev.univ-paris
 // Override: UNMAppViewCallback
 - (void)callbackGoBackFromLoginShibboleth {
 	
-	[self clearKeyboards];
+	[self.webView endEditing:YES];
 }
 
 // Override: UIWebViewDelegate
