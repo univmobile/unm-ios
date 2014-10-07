@@ -129,6 +129,8 @@
 		DFB006D419B4C20200737FFE /* text-left.png in Resources */ = {isa = PBXBuildFile; fileRef = DFB006D319B4C20200737FFE /* text-left.png */; };
 		DFB006D619B4C23600737FFE /* document.png in Resources */ = {isa = PBXBuildFile; fileRef = DFB006D519B4C23600737FFE /* document.png */; };
 		DFB006D819B4C27400737FFE /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = DFB006D719B4C27400737FFE /* info.png */; };
+		DFB7A1A919E3BAD800F065D7 /* UNMLayout.xml in Resources */ = {isa = PBXBuildFile; fileRef = DFB7A1A819E3BAD800F065D7 /* UNMLayout.xml */; };
+		DFB7A1AC19E3BF2100F065D7 /* UNMLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB7A1AB19E3BF2100F065D7 /* UNMLayout.m */; };
 		DFBA69B3198EE9F7000B107C /* NSBundle+String.m in Sources */ = {isa = PBXBuildFile; fileRef = DFBA69B2198EE9F7000B107C /* NSBundle+String.m */; };
 		DFF416601978C6EB003B5D38 /* UIBarButtonItem+UIAccessibility.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF4165F1978C6EB003B5D38 /* UIBarButtonItem+UIAccessibility.m */; };
 /* End PBXBuildFile section */
@@ -256,6 +258,9 @@
 		DFB006D319B4C20200737FFE /* text-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text-left.png"; sourceTree = "<group>"; };
 		DFB006D519B4C23600737FFE /* document.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = document.png; sourceTree = "<group>"; };
 		DFB006D719B4C27400737FFE /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
+		DFB7A1A819E3BAD800F065D7 /* UNMLayout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = UNMLayout.xml; path = UnivMobile/UNMLayout.xml; sourceTree = SOURCE_ROOT; };
+		DFB7A1AA19E3BF2100F065D7 /* UNMLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMLayout.h; path = Controller/UNMLayout.h; sourceTree = "<group>"; };
+		DFB7A1AB19E3BF2100F065D7 /* UNMLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMLayout.m; path = Controller/UNMLayout.m; sourceTree = "<group>"; };
 		DFBA69B1198EE9F7000B107C /* NSBundle+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBundle+String.h"; path = "Utilities/NSBundle+String.h"; sourceTree = "<group>"; };
 		DFBA69B2198EE9F7000B107C /* NSBundle+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+String.m"; path = "Utilities/NSBundle+String.m"; sourceTree = "<group>"; };
 		DFF4165E1978C6EB003B5D38 /* UIBarButtonItem+UIAccessibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+UIAccessibility.h"; path = "Utilities/UIBarButtonItem+UIAccessibility.h"; sourceTree = "<group>"; };
@@ -489,6 +494,7 @@
 			children = (
 				DF7EC2EA19657D83004730C4 /* UnivMobileTests-Info.plist */,
 				DF7EC2EB19657D83004730C4 /* InfoPlist.strings */,
+				DFB7A1A819E3BAD800F065D7 /* UNMLayout.xml */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -537,6 +543,8 @@
 				DF46C36419D9B56500C812C5 /* UNMLoginClassicController.m */,
 				DF46C37719DA0BF800C812C5 /* UNMProfileController.h */,
 				DF46C37819DA0BF800C812C5 /* UNMProfileController.m */,
+				DFB7A1AA19E3BF2100F065D7 /* UNMLayout.h */,
+				DFB7A1AB19E3BF2100F065D7 /* UNMLayout.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -622,6 +630,7 @@
 				DF7EC2D419657D83004730C4 /* InfoPlist.strings in Resources */,
 				DFB006D819B4C27400737FFE /* info.png in Resources */,
 				DFB006D419B4C20200737FFE /* text-left.png in Resources */,
+				DFB7A1A919E3BAD800F065D7 /* UNMLayout.xml in Resources */,
 				DFB006AE19B40D7500737FFE /* earth-usa.png in Resources */,
 				DFB006B719B4121F00737FFE /* GoogleMaps.bundle in Resources */,
 				DF7EC2DC19657D83004730C4 /* Images.xcassets in Resources */,
@@ -692,6 +701,7 @@
 				DF46C36F19D9DB6500C812C5 /* UNMAppToken.m in Sources */,
 				DF46C36519D9B56500C812C5 /* UNMLoginClassicController.m in Sources */,
 				DF7E650D19B3E50F00922FFB /* UNMPoisData.m in Sources */,
+				DFB7A1AC19E3BF2100F065D7 /* UNMLayout.m in Sources */,
 				DF7EC2DA19657D83004730C4 /* UNMAppDelegate.m in Sources */,
 				DFF416601978C6EB003B5D38 /* UIBarButtonItem+UIAccessibility.m in Sources */,
 				DFBA69B3198EE9F7000B107C /* NSBundle+String.m in Sources */,

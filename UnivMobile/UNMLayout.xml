@@ -1,0 +1,19 @@
+<!--
+  UNMLayout.xml
+  UnivMobile
+
+  Created by David Andrianavalontsalama on 07/10/2014.
+  Copyright (c) 2014 UNPIdF. All rights reserved.
+-->
+
+<UNMLayout>
+
+<UIView controller.class="UNMLoginController">
+	<UIButton id="loginShibbolethButton" accessibilityIdentifier="button-loginShibboleth">
+		<frame x="50.0" y="180.0" width="220.0" height="60.0"/>
+		<title forState="UIControlStateNormal" value="Sécurité Shibboleth…"/>
+		<titleColor forState="UIControlStateHighlighted" value="UIColor.greenColor"/>
+	</UIButton>
+</UIView>
+
+</UNMLayout>

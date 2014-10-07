@@ -11,11 +11,11 @@
 #import <ReactiveCocoa/ReactiveCocoa/ReactiveCocoa.h>
 #import <EXTScope.h>
 #import "UIBarButtonItem+UIAccessibility.h"
+#import "UNMLayout.h"
 
 @interface UNMLoginController ()
 
-//@property (nonatomic, strong) UILabel* loginClassicLabel;
-
+@property (nonatomic, strong) UIButton* loginShibbolethButton;
 @property (nonatomic, strong) UIButton* loginClassicButton;
 
 @end
@@ -95,7 +95,10 @@
 	
 	[self.view addSubview:self.loginClassicLabel];
 	*/
-	self.loginClassicButton = [[UIButton alloc] initWithFrame:CGRectMake(50.0, 300.0, 220., 60.0)];
+	
+	self.loginShibbolethButton = [UNMLayout addLayout:@"loginShibbolethButton" toView:self.view];
+	
+	self.loginClassicButton = [[UIButton alloc] initWithFrame:CGRectMake(50.0, 300.0, 220.0, 60.0)];
 	
 	self.loginClassicButton.accessibilityIdentifier = @"button-loginClassic";
 	
