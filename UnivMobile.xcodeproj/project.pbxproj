@@ -131,6 +131,7 @@
 		DFB006D819B4C27400737FFE /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = DFB006D719B4C27400737FFE /* info.png */; };
 		DFB7A1A919E3BAD800F065D7 /* UNMLayout.xml in Resources */ = {isa = PBXBuildFile; fileRef = DFB7A1A819E3BAD800F065D7 /* UNMLayout.xml */; };
 		DFB7A1AC19E3BF2100F065D7 /* UNMLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB7A1AB19E3BF2100F065D7 /* UNMLayout.m */; };
+		DFB7A1AF19E3CE7200F065D7 /* UNMLoginShibbolethController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB7A1AE19E3CE7200F065D7 /* UNMLoginShibbolethController.m */; };
 		DFBA69B3198EE9F7000B107C /* NSBundle+String.m in Sources */ = {isa = PBXBuildFile; fileRef = DFBA69B2198EE9F7000B107C /* NSBundle+String.m */; };
 		DFF416601978C6EB003B5D38 /* UIBarButtonItem+UIAccessibility.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF4165F1978C6EB003B5D38 /* UIBarButtonItem+UIAccessibility.m */; };
 /* End PBXBuildFile section */
@@ -261,6 +262,8 @@
 		DFB7A1A819E3BAD800F065D7 /* UNMLayout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = UNMLayout.xml; path = UnivMobile/UNMLayout.xml; sourceTree = SOURCE_ROOT; };
 		DFB7A1AA19E3BF2100F065D7 /* UNMLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMLayout.h; path = Controller/UNMLayout.h; sourceTree = "<group>"; };
 		DFB7A1AB19E3BF2100F065D7 /* UNMLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMLayout.m; path = Controller/UNMLayout.m; sourceTree = "<group>"; };
+		DFB7A1AD19E3CE7200F065D7 /* UNMLoginShibbolethController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMLoginShibbolethController.h; path = Controller/UNMLoginShibbolethController.h; sourceTree = "<group>"; };
+		DFB7A1AE19E3CE7200F065D7 /* UNMLoginShibbolethController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMLoginShibbolethController.m; path = Controller/UNMLoginShibbolethController.m; sourceTree = "<group>"; };
 		DFBA69B1198EE9F7000B107C /* NSBundle+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBundle+String.h"; path = "Utilities/NSBundle+String.h"; sourceTree = "<group>"; };
 		DFBA69B2198EE9F7000B107C /* NSBundle+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+String.m"; path = "Utilities/NSBundle+String.m"; sourceTree = "<group>"; };
 		DFF4165E1978C6EB003B5D38 /* UIBarButtonItem+UIAccessibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+UIAccessibility.h"; path = "Utilities/UIBarButtonItem+UIAccessibility.h"; sourceTree = "<group>"; };
@@ -539,6 +542,8 @@
 				DF4EB92319B5212B00904FCD /* UNMCommentsController.m */,
 				DF46C36619D9B7BE00C812C5 /* UNMLoginController.h */,
 				DF46C36719D9B7BE00C812C5 /* UNMLoginController.m */,
+				DFB7A1AD19E3CE7200F065D7 /* UNMLoginShibbolethController.h */,
+				DFB7A1AE19E3CE7200F065D7 /* UNMLoginShibbolethController.m */,
 				DF46C36319D9B56500C812C5 /* UNMLoginClassicController.h */,
 				DF46C36419D9B56500C812C5 /* UNMLoginClassicController.m */,
 				DF46C37719DA0BF800C812C5 /* UNMProfileController.h */,
@@ -696,6 +701,7 @@
 				DF9EA274199181B00002BD3C /* TestAppDelegate.m in Sources */,
 				DF7E651019B3E5DE00922FFB /* UNMPoiData.m in Sources */,
 				DF5EDF9A196D075E00C1AE1D /* UNMRegionsData.m in Sources */,
+				DFB7A1AF19E3CE7200F065D7 /* UNMLoginShibbolethController.m in Sources */,
 				DF9945C3196B850800AE125E /* UNMDebug.m in Sources */,
 				DF7EC2D619657D83004730C4 /* main.m in Sources */,
 				DF46C36F19D9DB6500C812C5 /* UNMAppToken.m in Sources */,
