@@ -33,6 +33,7 @@
 @property (nonatomic, strong) UIButton* profileButton;
 
 @property (nonatomic, strong) UIView* loginView;
+@property (nonatomic, strong) UIView* loginShibbolethView;
 @property (nonatomic, strong) UIView* loginClassicView;
 @property (nonatomic, strong) UIView* profileView;
 
@@ -42,6 +43,7 @@
 @property (nonatomic, strong) UIView* detailsView;
 
 @property (nonatomic, weak) UIView* loginNavView;
+@property (nonatomic, weak) UIView* loginShibbolethNavView;
 @property (nonatomic, weak) UIView* loginClassicNavView;
 @property (nonatomic, weak) UIView* profileNavView;
 @property (nonatomic, weak) UIView* regionsNavView;
@@ -68,6 +70,7 @@
 
 - (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer
 					 loginNavView:(UIView*)loginNavView
+			  loginShibbolethNavView:(UIView*)loginShibbolethNavView
 			  loginClassicNavView:(UIView*)loginClassicNavView
 				   profileNavView:(UIView*)profileNavView
 				   regionsNavView:(UIView*)regionsNavView
@@ -82,6 +85,7 @@
 		[self.appLayer addCallback:self];
 		
 		self.loginNavView = loginNavView;
+		self.loginShibbolethNavView = loginShibbolethNavView;
 		self.loginClassicNavView = loginClassicNavView;
 		self.regionsNavView = regionsNavView;
 		self.poisNavView = poisNavView;
@@ -133,6 +137,11 @@
 	self.loginView.hidden= YES;
 	
 	[self.view addSubview:self.loginView];
+	
+	self.loginShibbolethView = [[UIView alloc] initWithFrame:bounds];
+	self.loginShibbolethView.hidden= YES;
+	
+	[self.view addSubview:self.loginShibbolethView];
 
 	self.loginClassicView = [[UIView alloc] initWithFrame:bounds];
 	self.loginClassicView.hidden= YES;
@@ -346,6 +355,7 @@
 	// LOGIN BUTTON
 	
 	[self.loginView addSubview:self.loginNavView];
+	[self.loginShibbolethView addSubview:self.loginShibbolethNavView];
 	[self.loginClassicView addSubview:self.loginClassicNavView];
 	[self.profileView addSubview:self.profileNavView];
 
@@ -359,6 +369,8 @@
 	self.loginButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
 		
 		@strongify(self)
+		
+		[self.appLayer goFromHomeToLogin];
 		
 		[UIView transitionFromView:self.homeView
 							toView:self.loginView
@@ -511,6 +523,32 @@
 						toView:self.homeView
 					  duration:[UNMConstants TRANSITION_DURATION]
 					   options:UIViewAnimationOptionTransitionFlipFromLeft //
+	 + UIViewAnimationOptionShowHideTransitionViews
+					completion:^(BOOL done) {						
+						// nothing here
+					}];
+}
+
+// Override: UNMAppViewCallback
+- (void)callbackGoBackFromLoginShibboleth {
+	
+	[UIView transitionFromView:self.loginShibbolethView
+						toView:self.homeView
+					  duration:[UNMConstants TRANSITION_DURATION]
+					   options:UIViewAnimationOptionTransitionFlipFromLeft //
+	 + UIViewAnimationOptionShowHideTransitionViews
+					completion:^(BOOL done) {
+						// nothing here
+					}];
+}
+
+// Override: UNMAppViewCallback
+- (void)callbackGoFromLoginToLoginShibboleth {
+	
+	[UIView transitionFromView:self.loginView
+						toView:self.loginShibbolethView
+					  duration:[UNMConstants TRANSITION_DURATION]
+					   options:UIViewAnimationOptionTransitionCurlUp //
 	 + UIViewAnimationOptionShowHideTransitionViews
 					completion:^(BOOL done) {
 						// nothing here

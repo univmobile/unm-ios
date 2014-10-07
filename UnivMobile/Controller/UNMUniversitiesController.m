@@ -29,9 +29,6 @@
 		_appLayer = appLayer;
 		
 		[self.appLayer addCallback:self];
-		
-		// self.view.accessibilityIdentifier = @"toto";
-		// self.view.accessibilityLabel = @"Popeye";
     }
     
 	return self;

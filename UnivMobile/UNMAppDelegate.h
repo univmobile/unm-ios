@@ -13,6 +13,7 @@
 @property (strong, nonatomic) UIWindow* window;
 
 @property (strong, nonatomic, readonly) UINavigationController* loginNavController;
+@property (strong, nonatomic, readonly) UINavigationController* loginShibbolethNavController;
 @property (strong, nonatomic, readonly) UINavigationController* loginClassicNavController;
 @property (strong, nonatomic, readonly) UINavigationController* profileNavController;
 @property (strong, nonatomic, readonly) UINavigationController* regionsNavController;

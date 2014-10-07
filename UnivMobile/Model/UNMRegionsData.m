@@ -39,13 +39,15 @@
 	_regions = regionsMutable;
 }
 
-- (void)addUniversityId:(NSString*)id title:(NSString*)title toRegionId:(NSString*)regionId {
+- (void)addUniversityId:(NSString*)id title:(NSString*)title
+shibbolethIdentityProvider:(NSString*)shibbolethIdentityProvider
+toRegionId:(NSString*)regionId {
 	
 	UNMRegionData* const regionData = [self regionDataById:regionId];
 	
 	if (regionData) {
 		
-		[regionData addUniversityWithId:id title:title];
+		[regionData addUniversityWithId:id title:title shibbolethIdentityProvider:shibbolethIdentityProvider];
 	}
 }
 

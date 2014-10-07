@@ -58,6 +58,9 @@
 	
 	// NAVIGATION CONTROLLER: LOGIN
 	
+	UNMLoginShibbolethController* const loginShibbolethController = [[UNMLoginShibbolethController alloc]
+															   initWithAppLayer:_appLayer];
+	
 	UNMLoginClassicController* const loginClassicController = [[UNMLoginClassicController alloc]
 															   initWithAppLayer:_appLayer];
 	
@@ -71,6 +74,9 @@
 	
 	_loginClassicNavController = [[UINavigationController alloc]
 						   initWithRootViewController:loginClassicController];
+	
+	_loginShibbolethNavController = [[UINavigationController alloc]
+								  initWithRootViewController:loginShibbolethController];
 	
 	// NAVIGATION CONTROLLER: PROFILE
 	
@@ -134,6 +140,7 @@
 	
     self.window.rootViewController = [[UNMHomeController alloc] initWithAppLayer:_appLayer
 																	loginNavView:self.loginNavController.view
+															 loginShibbolethNavView:self.loginShibbolethNavController.view
 															 loginClassicNavView:self.loginClassicNavController.view
 																  profileNavView:self.profileNavController.view
 																  regionsNavView:self.regionsNavController.view

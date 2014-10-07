@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "UNMAppLayered.h"
+#import "UNMLoginShibbolethController.h"
 #import "UNMLoginClassicController.h"
 
-@interface UNMLoginController : UIViewController <UNMAppLayered>
+@interface UNMLoginController : UIViewController <UNMAppLayered, UNMAppViewCallback>
 
 //@property (strong, nonatomic, readonly) UNMLoginClassicController* loginClassicController;
 

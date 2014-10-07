@@ -15,6 +15,7 @@
 
 - (instancetype) initWithAppLayer:(UNMAppLayer*)appLayer
 				   loginNavView:(UIView*)loginNavView
+			  loginShibbolethNavView:(UIView*)loginShibbolethNavView
 			  loginClassicNavView:(UIView*)loginClassicNavView
 			  profileNavView:(UIView*)profileNavView
 						  regionsNavView:(UIView*)regionsNavView

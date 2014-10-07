@@ -122,6 +122,23 @@
 	[self invokeCallbacksForSelector:@selector(goBackFromLogin)];
 }
 
+- (void) goFromHomeToLogin {
+	
+	// NSLog(@"goFromHomeToLogin");
+	
+	[self invokeCallbacksForSelector:@selector(goFromHomeToLogin)];
+}
+
+- (void) goBackFromLoginShibboleth {
+	
+	[self invokeCallbacksForSelector:@selector(goBackFromLoginShibboleth)];
+}
+
+- (void) goFromLoginToLoginShibboleth {
+	
+	[self invokeCallbacksForSelector:@selector(goFromLoginToLoginShibboleth)];
+}
+
 - (void) goBackFromLoginClassic {
 	
 	[self invokeCallbacksForSelector:@selector(goBackFromLoginClassic)];
@@ -233,12 +250,16 @@
 
 - (UNMRegionsData*)loadInitialRegionsData {
 	
+	/*
 	UNMRegionsData* const regionsData = [UNMInitialRegionsData loadInitialRegionsData];
 	
 	if (regionsData != nil) {
 		
 		_regionsData = regionsData;
 	}
+	*/
+	
+	[self refreshRegionsData];
 	
 	return _regionsData;
 }

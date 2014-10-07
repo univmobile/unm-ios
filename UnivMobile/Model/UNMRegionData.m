@@ -33,9 +33,11 @@
     return self;
 }
 
-- (void)addUniversityWithId:(NSString*)id title:(NSString*)title {
+- (void)addUniversityWithId:(NSString*)id title:(NSString*)title
+shibbolethIdentityProvider:(NSString*)shibbolethIdentityProvider {
 	
-	UNMUniversityData* const university = [[UNMUniversityData alloc] initWithId:id title:title];
+	UNMUniversityData* const university = [[UNMUniversityData alloc] initWithId:id title:title
+													  shibbolethIdentityProvider:shibbolethIdentityProvider];
 	
 	[self.universitiesMutable addObject:university];
 }
@@ -60,7 +62,8 @@
 
 @implementation UNMUniversityData
 
-- (instancetype)initWithId:(NSString*)id title:(NSString*)title {
+- (instancetype)initWithId:(NSString*)id title:(NSString*)title
+shibbolethIdentityProvider:(NSString*)shibbolethIdentityProvider {
 	
     self = [super init];
     
@@ -68,6 +71,7 @@
 		
 		_id = id;
 		_title = title;
+		_shibbolethIdentityProvider = shibbolethIdentityProvider;
 	}
 	
     return self;
@@ -82,7 +86,8 @@
 	
 	[map addEntriesFromDictionary:@{
 									@"id": @"id",
-									@"title": @"title"
+									@"title": @"title",
+									@"shibbolethIdentityProvider": @"shibboleth.identityProvider"
 									}];
 	
 	return map;

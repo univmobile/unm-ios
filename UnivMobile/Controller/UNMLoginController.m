@@ -37,10 +37,7 @@
 		
 		//_loginClassicController = loginClassicController;
 		
-		//[self.appLayer addCallback:self];
-		
-		// self.view.accessibilityIdentifier = @"toto";
-		// self.view.accessibilityLabel = @"Popeye";
+		[self.appLayer addCallback:self];
     }
     
 	return self;
@@ -73,8 +70,6 @@
 		
 		@strongify(self)
 		
-		NSLog(@"toto");
-		
 		[self.appLayer goBackFromLogin];
 		
 		return [RACSignal empty];
@@ -96,17 +91,18 @@
 	[self.view addSubview:self.loginClassicLabel];
 	*/
 	
-	self.loginShibbolethButton = [UNMLayout addLayout:@"loginShibbolethButton" toView:self.view];
+	self.loginShibbolethButton = [UNMLayout addLayout:@"loginShibbolethButton" toViewController:self];
 	
-	self.loginClassicButton = [[UIButton alloc] initWithFrame:CGRectMake(50.0, 300.0, 220.0, 60.0)];
-	
-	self.loginClassicButton.accessibilityIdentifier = @"button-loginClassic";
-	
-	[self.loginClassicButton setTitle:@"Identification standard…" forState:UIControlStateNormal];
-	
-	[self.loginClassicButton setTitleColor:[UIColor greenColor] forState:UIControlStateHighlighted];
-	
-	[self.view addSubview:self.loginClassicButton];
+	self.loginShibbolethButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
+		
+		@strongify(self)
+		
+		[self.appLayer goFromLoginToLoginShibboleth];
+		
+		return [RACSignal empty];
+	}];
+
+	self.loginClassicButton = [UNMLayout addLayout:@"loginClassicButton" toViewController:self];
 	
 	// @weakify(self)
 	
@@ -133,6 +129,33 @@
 - (void)didReceiveMemoryWarning {
 	
     [super didReceiveMemoryWarning];
+}
+
+// Override: UNMAppViewCallback
+- (void)callbackGoFromHomeToLogin {
+	
+	self.loginShibbolethButton.enabled = NO; // Login-Shibboleth Button is disabled by default
+	
+	self.loginShibbolethButton.titleLabel.text = @"Sécurité Shibboleth…\n\nAucune université sélectionnée.";
+	
+	// NSLog(@"self.appLayer.selectedUniversityId: %@", self.appLayer.selectedUniversityId);
+	
+	if (self.appLayer.selectedUniversityId) {
+		
+		UNMUniversityData* const universityData =
+			[self.appLayer.regionsData universityDataById:self.appLayer.selectedUniversityId];
+		
+		// NSLog(@"universityData: %@", universityData);
+		
+		if (universityData && universityData.shibbolethIdentityProvider) {
+			
+			self.loginShibbolethButton.enabled = YES;
+			
+			[self.loginShibbolethButton setTitle:[NSString stringWithFormat:@"Sécurité Shibboleth…\n\n%@",
+												  universityData.title]
+										forState:UIControlStateNormal];
+		}
+	}
 }
 
 @end

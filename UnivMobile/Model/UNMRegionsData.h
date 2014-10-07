@@ -25,7 +25,9 @@
 
 - (void)addRegionWithId:(NSString*)id label:(NSString*)label;
 
-- (void)addUniversityId:(NSString*)id title:(NSString*)title toRegionId:(NSString*)regionId;
+- (void)addUniversityId:(NSString*)id title:(NSString*)title
+shibbolethIdentityProvider:(NSString*)shibbolethIdentityProvider
+toRegionId:(NSString*)regionId;
 
 - (NSString*)lastDataRefreshDayAsString;
 - (NSString*)lastDataRefreshTimeAsString;

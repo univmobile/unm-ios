@@ -14,6 +14,6 @@ read from a "UNMLayout.xml" file.
 */
 @interface UNMLayout : NSObject
 
-+ (id) addLayout:(NSString*)id toView:(UIView*)view;
++ (id) addLayout:(NSString*)id toViewController:(UIViewController*)viewController;
 
 @end

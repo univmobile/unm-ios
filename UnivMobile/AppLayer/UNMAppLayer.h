@@ -55,6 +55,15 @@
 - (void) goBackFromLogin;
 
 // Allow callbacks
+- (void) goFromHomeToLogin;
+
+// Allow callbacks
+- (void) goBackFromLoginShibboleth;
+
+// Allow callbacks
+- (void) goFromLoginToLoginShibboleth;
+
+// Allow callbacks
 - (void) goBackFromLoginClassic;
 
 // Allow callbacks

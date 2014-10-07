@@ -11,6 +11,7 @@
 #import <ReactiveCocoa/ReactiveCocoa/ReactiveCocoa.h>
 #import <EXTScope.h>
 #import "UIBarButtonItem+UIAccessibility.h"
+#import "UNMLayout.h"
 
 @interface UNMLoginClassicController () <UITextFieldDelegate>
 
@@ -85,68 +86,21 @@ static NSString* const API_KEY = @"UnivMobile-iOS-0.0.5";
 
 	// LABELS
 	
-	self.loginLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0, 80.0, 220.0, 60.0)];
-	self.loginLabel.accessibilityIdentifier = @"label-loginClassic-login";
-	self.loginLabel.text = @"e-mail ou uid";
-	self.loginLabel.textColor = [UIColor whiteColor]; // [UNMConstants RGB_79b8d9];
-	self.loginLabel.font = [UIFont systemFontOfSize:18];
-	self.loginLabel.textAlignment = NSTextAlignmentCenter;
-	
-	[self.view addSubview:self.loginLabel];
-	
-	self.passwordLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0, 170.0, 220.0, 60.0)];
-	self.passwordLabel.accessibilityIdentifier = @"label-loginClassic-password";
-	self.passwordLabel.text = @"mot de passe";
-	self.passwordLabel.textColor = [UIColor whiteColor]; // [UNMConstants RGB_79b8d9];
-	self.passwordLabel.font = [UIFont systemFontOfSize:18];
-	self.passwordLabel.textAlignment = NSTextAlignmentCenter;
-	
-	[self.view addSubview:self.passwordLabel];
-
-	self.errorLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0, 260.0, 220.0, 60.0)];
-	self.errorLabel.accessibilityIdentifier = @"label-loginClassic-error";
-	self.errorLabel.text = @"Erreur d’authentification";
-	self.errorLabel.textColor = [UIColor redColor]; // [UNMConstants RGB_79b8d9];
-	self.errorLabel.font = [UIFont systemFontOfSize:18];
-	self.errorLabel.textAlignment = NSTextAlignmentCenter;
-	self.errorLabel.hidden = YES;
-	
-	[self.view addSubview:self.errorLabel];
+	self.loginLabel = [UNMLayout addLayout:@"loginLabel" toViewController:self];
+	self.passwordLabel = [UNMLayout addLayout:@"passwordLabel" toViewController:self];
+	self.errorLabel = [UNMLayout addLayout:@"errorLabel" toViewController:self];
 
 	// TEXT FIELDS
 	
-	self.loginText = [[UITextField alloc] initWithFrame:CGRectMake(20.0, 130.0, 280.0, 30.0)];
-	self.loginText.accessibilityIdentifier = @"text-loginClassic-login";
-	self.loginText.textAlignment = NSTextAlignmentCenter;
-	self.loginText.backgroundColor = [UIColor whiteColor];
-	self.loginText.returnKeyType = UIReturnKeyDone;
-	self.loginText.keyboardType = UIKeyboardTypeNamePhonePad;
+	self.loginText = [UNMLayout addLayout:@"loginText" toViewController:self];
 	self.loginText.delegate = self;
-	
-	[self.view addSubview:self.loginText];
-	
-	self.passwordText = [[UITextField alloc] initWithFrame:CGRectMake(20.0, 220.0, 280.0, 30.0)];
-	self.passwordText.accessibilityIdentifier = @"text-loginClassic-password";
-	self.passwordText.textAlignment = NSTextAlignmentCenter;
-	self.passwordText.backgroundColor = [UIColor whiteColor];
-	self.passwordText.returnKeyType = UIReturnKeyDone;
-	self.loginText.keyboardType = UIKeyboardTypeNamePhonePad;
-	self.passwordText.secureTextEntry = YES;
+
+	self.passwordText = [UNMLayout addLayout:@"passwordText" toViewController:self];
 	self.passwordText.delegate = self;
-	
-	[self.view addSubview:self.passwordText];
 	
 	// BUTTON
 	
-	self.loginButton = [[UIButton alloc] initWithFrame:CGRectMake(50.0, 300.0, 220., 60.0)];
-	
-	self.loginButton.accessibilityIdentifier = @"button-login";
-	
-	[self.loginButton setTitle:@"Connexion" forState:UIControlStateNormal];
-	
-	[self.loginButton setTitleColor:[UIColor greenColor] forState:UIControlStateHighlighted];
-	
-	[self.view addSubview:self.loginButton];
+	self.loginButton = [UNMLayout addLayout:@"loginButton" toViewController:self];
 	
 	// @weakify(self)
 	

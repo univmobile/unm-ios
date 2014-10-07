@@ -15,17 +15,11 @@ NSString* _accessibilityIdentifier;
 // Override: UIAccessibilityIdentification
 - (NSString*) accessibilityIdentifier {
 	
-	NSLog(@"--getacc: %@", _accessibilityIdentifier);
-	
 	return _accessibilityIdentifier;
 }
 
 // Override: UIAccessibilityIdentification
 - (void) setAccessibilityIdentifier:(NSString*)accessibilityIdentifier {
-	
-	// NSLog(@"setacc: %@", accessibilityIdentifier);
-	
-	//self.title=@"toto";
 	
 	_accessibilityIdentifier = accessibilityIdentifier;
 }
