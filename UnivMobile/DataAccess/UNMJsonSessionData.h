@@ -20,4 +20,14 @@
 					  password:(NSString*)password
 				  errorHandler:(void(^)(NSError*))onError;
 
+- (UNMLoginConversation*) prepare:(NSObject<UNMJsonFetcher>*)jsonFetcher
+					   withApiKey:(NSString*)apiKey
+					 errorHandler:(void(^)(NSError*))onError;
+
+- (UNMAppToken*) retrieve:(NSObject<UNMJsonFetcher>*)jsonFetcher
+					withApiKey:(NSString*)apiKey
+						 loginToken:(NSString*)loginToken
+					  key:(NSString*)key
+				  errorHandler:(void(^)(NSError*))onError;
+
 @end

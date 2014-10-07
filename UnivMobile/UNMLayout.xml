@@ -67,7 +67,7 @@
 			backgroundColor="UIColor.whiteColor"
 			textAlignment="NSTextAlignmentCenter"
 			returnKeyType="UIReturnKeyDone"
-			keyboardType="UIKeyboardTypeNamePhonePad"
+			keyboardType="UIKeyboardTypeASCIICapable"
 			secureTextEntry="YES">
 		<frame x="20.0" y="220.0" width="280.0" height="30.0"/>
 	</UITextField>

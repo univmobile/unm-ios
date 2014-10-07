@@ -139,6 +139,11 @@
 	[self invokeCallbacksForSelector:@selector(goFromLoginToLoginShibboleth)];
 }
 
+- (void) goFromLoginShibbolethToProfile {
+	
+	[self invokeCallbacksForSelector:@selector(goFromLoginShibbolethToProfile)];
+}
+
 - (void) goBackFromLoginClassic {
 	
 	[self invokeCallbacksForSelector:@selector(goBackFromLoginClassic)];
@@ -412,6 +417,11 @@
 																  
 															  }];
 	
+	return [self storeAppToken:appToken];
+}
+
+- (BOOL) storeAppToken:(UNMAppToken*)appToken {
+	
 	// NSLog(@"regionsData: %@",regionsData);
 	
 	if (appToken == nil) {
@@ -424,6 +434,54 @@
 	_appToken = appToken;
 	
 	return YES;
+}
+
+- (UNMLoginConversation*) prepareSession:(NSString*)apiKey {
+	
+	UNMLoginConversation* const conversation = [self.jsonSessionData prepare:self.jsonFetcher
+														   withApiKey:apiKey
+														 errorHandler:^(NSError* error) {
+															 
+															 UIAlertView* alert = [[UIAlertView alloc]
+																				   initWithTitle:@"Erreur de transmission"
+																				   message:[NSString stringWithFormat:@"Build %@ %@",
+																							self.buildInfo.BUILD_DISPLAY_NAME, error]
+																				   delegate:nil
+																				   cancelButtonTitle:@"OK"
+																				   otherButtonTitles:nil
+																				   ];
+															 
+															 [alert show];
+															 
+														 }];
+	
+	NSLog(@"prepareSession: %@", conversation);
+	
+	return conversation;
+}
+
+- (BOOL) retrieveSession:(NSString*)apiKey loginToken:(NSString*)loginToken key:(NSString*)key {
+	
+	UNMAppToken* const appToken = [self.jsonSessionData retrieve:self.jsonFetcher
+					   withApiKey:apiKey
+							 loginToken:loginToken
+						  key:key
+					 errorHandler:^(NSError* error) {
+						 
+						 UIAlertView* alert = [[UIAlertView alloc]
+											   initWithTitle:@"Erreur de transmission"
+											   message:[NSString stringWithFormat:@"Build %@ %@",
+														self.buildInfo.BUILD_DISPLAY_NAME, error]
+											   delegate:nil
+											   cancelButtonTitle:@"OK"
+											   otherButtonTitles:nil
+											   ];
+						 
+						 [alert show];
+						 
+					 }];
+
+	return [self storeAppToken:appToken];
 }
 
 @end

@@ -37,6 +37,10 @@
 
 - (BOOL) login:(NSString*)login password:(NSString*)password apiKey:(NSString*)apiKey;
 
+- (UNMLoginConversation*) prepareSession:(NSString*)apiKey;
+
+- (BOOL) retrieveSession:(NSString*)apiKey loginToken:(NSString*)loginToken key:(NSString*)key;
+
 - (void) addCallback:(NSObject<UNMAppViewCallback>*)callback;
 
 // Allow callbacks
@@ -62,6 +66,9 @@
 
 // Allow callbacks
 - (void) goFromLoginToLoginShibboleth;
+
+// Allow callbacks
+- (void) goFromLoginShibbolethToProfile;
 
 // Allow callbacks
 - (void) goBackFromLoginClassic;

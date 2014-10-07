@@ -12,7 +12,7 @@
 
 @interface UNMRegionsData : MTLModel <MTLJSONSerializing>
 
-@property (strong, nonatomic) NSDate* refreshedAt;
+@property (copy, nonatomic) NSDate* refreshedAt;
 @property (strong, nonatomic) NSArray* regions; // array of UNMRegionData*
 
 - (NSUInteger) sizeOfRegionData;

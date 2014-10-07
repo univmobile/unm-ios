@@ -28,7 +28,7 @@
 	
 	NSError* error = nil;
 	
-	id commentsData = [MTLJSONAdapter modelOfClass:[UNMCommentsData class] fromJSONDictionary:json error:&error];
+	UNMCommentsData* const commentsData = [MTLJSONAdapter modelOfClass:[UNMCommentsData class] fromJSONDictionary:json error:&error];
 	
 	if (error) {
 		

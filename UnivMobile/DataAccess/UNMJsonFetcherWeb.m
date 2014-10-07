@@ -299,7 +299,7 @@
 		return nil;
 	}
 	
-	NSLog(@"data: %@", [[NSString alloc] initWithData:handler.data encoding:NSUTF8StringEncoding]);
+	// NSLog(@"data: %@", [[NSString alloc] initWithData:handler.data encoding:NSUTF8StringEncoding]);
 	
 	if (handler.data.length == 0) return nil;
 	

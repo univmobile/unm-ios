@@ -12,20 +12,20 @@
 
 @interface UNMTwitterFollower : MTLModel <MTLJSONSerializing>
 
-@property (strong, nonatomic) NSString* screenName; // e.g. "dandriana"
+@property (copy, nonatomic) NSString* screenName; // e.g. "dandriana"
 
-@property (strong, nonatomic) NSString* name; // e.g. "David Andriana"
+@property (copy, nonatomic) NSString* name; // e.g. "David Andriana"
 
 @end
 
 
 @interface UNMAppUser : MTLModel <MTLJSONSerializing>
 
-@property (strong, nonatomic) NSString* uid; // e.g. "crezvani"
+@property (copy, nonatomic) NSString* uid; // e.g. "crezvani"
 
-@property (strong, nonatomic) NSString* email;
+@property (copy, nonatomic) NSString* email;
 
-@property (strong, nonatomic) NSString* displayName; // e.g. "Cyrus Rezvani"
+@property (copy, nonatomic) NSString* displayName; // e.g. "Cyrus Rezvani"
 
 @property (strong, nonatomic) NSArray* twitterFollowers; // array of UNMTwitterFollower*
 
@@ -40,8 +40,17 @@
 
 @interface UNMAppToken : MTLModel <MTLJSONSerializing>
 
-@property (strong, nonatomic) NSString* id;
+@property (copy, nonatomic) NSString* id;
 
 @property (strong, nonatomic) UNMAppUser* user;
+
+@end
+
+
+@interface UNMLoginConversation : MTLModel <MTLJSONSerializing>
+
+@property (copy, nonatomic) NSString* loginToken;
+
+@property (copy, nonatomic) NSString* key;
 
 @end

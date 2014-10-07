@@ -243,7 +243,18 @@
 }
 
 // Override: UNMAppViewCallback
+- (void)callbackGoFromLoginShibbolethToProfile {
+	
+	[self goFromAnyLoginToProfile];
+}
+
+// Override: UNMAppViewCallback
 - (void)callbackGoFromLoginClassicToProfile {
+	
+	[self goFromAnyLoginToProfile];
+}
+
+- (void)goFromAnyLoginToProfile {
 	
 	// NSLog(@"UNMProfileController:callbackGoFromLoginClassicToProfile()");
 	

@@ -72,7 +72,7 @@
 	return layout.view;
 }
 
-// Overrides: NSXMLParserDelegate
+// Override: NSXMLParserDelegate
 - (void) parser:(NSXMLParser*)parser
 didStartElement:(NSString*)elementName
    namespaceURI:(NSString*)namespaceURI
@@ -226,7 +226,7 @@ didStartElement:(NSString*)elementName
 	}
 }
 
-// Overrides: NSXMLParserDelegate
+// Override: NSXMLParserDelegate
 - (void) parser:(NSXMLParser*)parser
   didEndElement:(NSString*)elementName
    namespaceURI:(NSString*)namespaceURI
@@ -394,6 +394,10 @@ didStartElement:(NSString*)elementName
 	if ([@"UIKeyboardTypeNamePhonePad" isEqualToString:keyboardType]) {
 		
 		return UIKeyboardTypeNamePhonePad;
+		
+	} else if ([@"UIKeyboardTypeASCIICapable" isEqualToString:keyboardType]) {
+		
+		return UIKeyboardTypeASCIICapable;
 		
 	} else {
 		

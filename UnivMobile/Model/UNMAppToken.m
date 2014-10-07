@@ -72,7 +72,6 @@
 @end
 
 
-
 @implementation UNMTwitterFollower
 
 // Override: MTLJSONSerializing
@@ -85,6 +84,26 @@
 	[map addEntriesFromDictionary:@{
 									@"screenName": @"screenName",
 									@"name": @"name"
+									}];
+	
+	return map;
+}
+
+@end
+
+
+@implementation UNMLoginConversation
+
+// Override: MTLJSONSerializing
++ (NSDictionary*) JSONKeyPathsByPropertyKey {
+	
+	NSMutableDictionary* const map = [NSMutableDictionary new];
+	
+	// add: [super JSONKeyPathsByPropertyKey];
+	
+	[map addEntriesFromDictionary:@{
+									@"loginToken": @"loginToken",
+									@"key": @"key"
 									}];
 	
 	return map;

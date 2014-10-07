@@ -595,6 +595,23 @@
 }
 
 // Override: UNMAppViewCallback
+- (void)callbackGoFromLoginShibbolethToProfile {
+	
+	[UIView transitionFromView:self.loginShibbolethView
+						toView:self.profileView
+					  duration:[UNMConstants TRANSITION_DURATION]
+					   options:UIViewAnimationOptionTransitionFlipFromRight //
+	 + UIViewAnimationOptionShowHideTransitionViews
+					completion:^(BOOL done) {
+						// nothing here
+					}];
+	
+	self.loginButton.hidden = YES;
+	self.profileButton.hidden = NO;
+	[self.profileButton setTitle:self.appLayer.appToken.user.displayName forState:UIControlStateNormal];
+}
+
+// Override: UNMAppViewCallback
 - (void)callbackGoFromLoginClassicToProfile {
 	
 	[UIView transitionFromView:self.loginClassicView

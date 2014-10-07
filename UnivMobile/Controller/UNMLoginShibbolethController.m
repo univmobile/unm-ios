@@ -12,10 +12,13 @@
 #import <ReactiveCocoa/ReactiveCocoa/ReactiveCocoa.h>
 #import <EXTScope.h>
 #import "UNMLayout.h"
+#import "UNMUtils.h"
 
-@interface UNMLoginShibbolethController ()
+@interface UNMLoginShibbolethController () <UIWebViewDelegate>
 
 @property (nonatomic, strong) UIWebView* webView;
+
+@property (nonatomic, strong) UNMLoginConversation* conversation;
 
 @end
 
@@ -24,6 +27,8 @@
 @synthesize appLayer = _appLayer;
 
 static NSString* const API_KEY = @"UnivMobile-iOS-0.0.5";
+
+static NSString* const SHIBBOLETH_CALLBACK = @"https://univmobile-dev.univ-paris1.fr/testSP/success";
 
 - (instancetype)initWithAppLayer:(UNMAppLayer*)appLayer {
 	
@@ -38,6 +43,12 @@ static NSString* const API_KEY = @"UnivMobile-iOS-0.0.5";
     
 	return self;
 }
+
+// Override: UIViewController
+//- (void) loadView {
+//
+//	self.view = [[UIControl alloc] initWithFrame:UIScreen.mainScreen.applicationFrame];
+//}
 
 // Override: UIViewController
 - (void)viewDidLoad {
@@ -73,57 +84,88 @@ static NSString* const API_KEY = @"UnivMobile-iOS-0.0.5";
 	// WEB VIEW
 	
 	self.webView = [UNMLayout addLayout:@"webView" toViewController:self];
-
-//	NSURL* const url = [NSURL URLWithString://@"http://apple.com/"];
-//						@"https://univmobile-dev.univ-paris1.fr/testSP/"];
-
-//	NSURLRequest* const request=[NSURLRequest requestWithURL:url
-//												 cachePolicy:NSURLRequestUseProtocolCachePolicy
-//											 timeoutInterval:10.0];
-
-//	NSLog(@"sup:%@", self.webView.superview);
-//	[self.webView loadRequest:request];
 	
-	// LABELS
-	
-	//self.loginLabel = [UNMLayout addLayout:@"loginLabel" toViewController:self];
-	//self.passwordLabel = [UNMLayout addLayout:@"passwordLabel" toViewController:self];
-	//self.errorLabel = [UNMLayout addLayout:@"errorLabel" toViewController:self];
-	
-	// TEXT FIELDS
-	
-	//self.loginText = [UNMLayout addLayout:@"loginText" toViewController:self];
-	//self.loginText.delegate = self;
-	
-	//self.passwordText = [UNMLayout addLayout:@"passwordText" toViewController:self];
-	//self.passwordText.delegate = self;
-	
-	// BUTTON
-	
-	//self.loginButton = [UNMLayout addLayout:@"loginButton" toViewController:self];
-	
-	// @weakify(self)
-	
-	// CLOSE ALL KEYBOARDS WHEN TAPPING OUTSIDE OF THEM
-	
-//	[self.view addTarget:self
-//				  action:@selector(clearKeyboards)
-//		forControlEvents:UIControlEventTouchDown];
+	self.webView.delegate = self;
 }
 
 // Override: UNMAppViewCallback
 - (void)callbackGoFromLoginToLoginShibboleth {
 	
-	if (self.appLayer.selectedUniversityId) {
-		
-		UNMUniversityData* const universityData =
-			[self.appLayer.regionsData universityDataById:self.appLayer.selectedUniversityId];
-		
-		if (universityData && universityData.shibbolethIdentityProvider) {
+	self.conversation = [self.appLayer prepareSession:API_KEY];
+	
+	UNMUniversityData* const universityData =
+	[self.appLayer.regionsData universityDataById:self.appLayer.selectedUniversityId];
+	
+	NSString* const shibbolethIdentityProvider = universityData.shibbolethIdentityProvider;
+	
+	NSLog(@"shibbolethIdentityProvider: %@", shibbolethIdentityProvider);
+	
+	NSString* const callbackURL = SHIBBOLETH_CALLBACK;;
+	
+	NSString* const target = [NSString stringWithFormat:
+							  @"https://univmobile-dev.univ-paris1.fr/testSP/?loginToken=%@&callback=%@",
+							  self.conversation.loginToken,
+							  [UNMUtils urlEncode:callbackURL]];
 
-			NSString* const shibbolethIdentityProvider = universityData.shibbolethIdentityProvider;
+	NSString* const ssoURL =
+	[NSString stringWithFormat:@"https://univmobile-dev.univ-paris1.fr/Shibboleth.sso/Login?target=%@&entityID=%@",
+	 [UNMUtils urlEncode:target],
+	 [UNMUtils urlEncode:shibbolethIdentityProvider]];
+	
+	NSLog(@"ssoURL: %@", ssoURL);
+	
+	NSURL* const url = [NSURL URLWithString:ssoURL];
+	
+	NSURLRequest* const request=[NSURLRequest requestWithURL:url
+												 cachePolicy:NSURLRequestUseProtocolCachePolicy
+											 timeoutInterval:10.0];
+	
+	[self.webView loadRequest:request];
+}
+
+// Override: UNMAppViewCallback
+- (void) callbackLogout {
+	
+	// In case of logout, we delete all webView’s cookies.
+	
+	NSHTTPCookieStorage* const storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+	
+	for (NSHTTPCookie* const cookie in [storage cookies]) {
+		
+		[storage deleteCookie:cookie];
+	}
+	
+	[[NSUserDefaults standardUserDefaults] synchronize]; // Flush to disk the updated data
+}
+
+// Override: UNMAppViewCallback
+- (void)callbackGoBackFromLoginShibboleth {
+	
+	[self clearKeyboards];
+}
+
+// Override: UIWebViewDelegate
+- (void)webViewDidFinishLoad:(UIWebView*)webView {
+	
+	NSURL* const url = webView.request.URL;
+	
+	NSLog(@"webViewDidFinishLoad: %@", url);
+	
+	if ([[url absoluteString] hasPrefix:SHIBBOLETH_CALLBACK]) {
+		
+		const BOOL success = [self.appLayer retrieveSession:API_KEY
+														  loginToken:self.conversation.loginToken
+																 key:self.conversation.key];
+
+							  NSLog(@"retrieve.success: %d", success);
+							 
+		if (success) {
 			
-			NSLog(@"shibbolethIdentityProvider: %@", shibbolethIdentityProvider);
+			[self.appLayer goFromLoginShibbolethToProfile];
+		
+		} else {
+			
+			[self.appLayer goBackFromLoginShibboleth];
 		}
 	}
 }

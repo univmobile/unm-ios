@@ -62,7 +62,7 @@
 	
 	NSError* error = nil;
 	
-	id poisData = [MTLJSONAdapter modelOfClass:[UNMPoisData class] fromJSONDictionary:json error:&error];
+	UNMPoisData* const poisData = [MTLJSONAdapter modelOfClass:[UNMPoisData class] fromJSONDictionary:json error:&error];
 	
 	if (error) {
 		

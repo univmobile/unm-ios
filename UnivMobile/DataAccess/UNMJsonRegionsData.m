@@ -63,7 +63,7 @@
 	
 	NSError* error = nil;
 	
-	id regionsData = [MTLJSONAdapter modelOfClass:[UNMRegionsData class] fromJSONDictionary:json error:&error];
+	UNMRegionsData* const regionsData = [MTLJSONAdapter modelOfClass:[UNMRegionsData class] fromJSONDictionary:json error:&error];
 	
 	if (error) {
 		
@@ -96,7 +96,7 @@
 		// TODO continue;? return nil;? Alert?
 		if (!universitiesJson) continue; // Error is already handled by callback
 		
-		id const universitiesData = [MTLJSONAdapter modelOfClass:[UNMUniversitiesData class]
+		UNMUniversitiesData* const universitiesData = [MTLJSONAdapter modelOfClass:[UNMUniversitiesData class]
 										 fromJSONDictionary:universitiesJson
 													  error:&error];
 		
