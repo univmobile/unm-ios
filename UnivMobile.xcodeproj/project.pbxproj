@@ -1017,7 +1017,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: David ANDRIANAVALONTSALAMA (P3CN6EW78V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: David ANDRIANAVALONTSALAMA (P3CN6EW78V)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1028,7 +1028,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e94d29cd-4085-4a16-8d44-f0cc81d20aa0";
+				PROVISIONING_PROFILE = "9a9ccf8d-0491-488c-9a09-5ff8728647fe";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;
