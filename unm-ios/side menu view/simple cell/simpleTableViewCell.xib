@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Exo-Regular.otf">
+            <string>Exo-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="simpleCell" id="Lf9-7g-rVW" customClass="UNMSimpleTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lf9-7g-rVW" id="6bN-jd-t4M">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gx5-1H-dSx">
+                        <rect key="frame" x="13" y="11" width="294" height="21"/>
+                        <fontDescription key="fontDescription" name="Exo-Regular" family="Exo" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="gx5-1H-dSx" firstAttribute="leading" secondItem="6bN-jd-t4M" secondAttribute="leading" constant="13" id="73P-zR-Bap"/>
+                    <constraint firstAttribute="trailing" secondItem="gx5-1H-dSx" secondAttribute="trailing" constant="13" id="DSY-iY-Y04"/>
+                    <constraint firstItem="gx5-1H-dSx" firstAttribute="top" secondItem="6bN-jd-t4M" secondAttribute="top" constant="11" id="b3C-h1-QdZ"/>
+                    <constraint firstAttribute="bottom" secondItem="gx5-1H-dSx" secondAttribute="bottom" constant="11" id="khN-Ni-LYr"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="titleLabel" destination="gx5-1H-dSx" id="HKw-kZ-hI4"/>
+            </connections>
+            <point key="canvasLocation" x="255" y="281"/>
+        </tableViewCell>
+    </objects>
+</document>

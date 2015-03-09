@@ -1,0 +1,1250 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		37319F221AA61822007B1A0D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37319F201AA61822007B1A0D /* Crashlytics.framework */; };
+		37319F231AA61822007B1A0D /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37319F211AA61822007B1A0D /* Fabric.framework */; };
+		37319F391AA70035007B1A0D /* Exo-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37319F281AA70035007B1A0D /* Exo-Black.otf */; };
+		37319F3A1AA70035007B1A0D /* Exo-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37319F291AA70035007B1A0D /* Exo-BlackItalic.otf */; };
+		37319F3B1AA70035007B1A0D /* Exo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37319F2A1AA70035007B1A0D /* Exo-Bold.otf */; };
+		37319F3C1AA70035007B1A0D /* Exo-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37319F2B1AA70035007B1A0D /* Exo-BoldItalic.otf */; };
+		37319F3D1AA70035007B1A0D /* Exo-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37319F2C1AA70035007B1A0D /* Exo-ExtraBoldItalic.otf */; };
+		37319F3E1AA70035007B1A0D /* Exo-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37319F2D1AA70035007B1A0D /* Exo-ExtraLight.otf */; };
+		37319F3F1AA70035007B1A0D /* Exo-ExtraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37319F2E1AA70035007B1A0D /* Exo-ExtraLightItalic.otf */; };
+		37319F401AA70035007B1A0D /* Exo-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37319F2F1AA70035007B1A0D /* Exo-Italic.otf */; };
+		37319F411AA70035007B1A0D /* Exo-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37319F301AA70035007B1A0D /* Exo-Light.otf */; };
+		37319F421AA70035007B1A0D /* Exo-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37319F311AA70035007B1A0D /* Exo-LightItalic.otf */; };
+		37319F431AA70035007B1A0D /* Exo-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37319F321AA70035007B1A0D /* Exo-Medium.otf */; };
+		37319F441AA70035007B1A0D /* Exo-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37319F331AA70035007B1A0D /* Exo-MediumItalic.otf */; };
+		37319F451AA70035007B1A0D /* Exo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37319F341AA70035007B1A0D /* Exo-Regular.otf */; };
+		37319F461AA70035007B1A0D /* Exo-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37319F351AA70035007B1A0D /* Exo-SemiBold.otf */; };
+		37319F471AA70035007B1A0D /* Exo-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37319F361AA70035007B1A0D /* Exo-SemiBoldItalic.otf */; };
+		37319F481AA70035007B1A0D /* Exo-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37319F371AA70035007B1A0D /* Exo-Thin.otf */; };
+		37319F491AA70035007B1A0D /* Exo-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37319F381AA70035007B1A0D /* Exo-ThinItalic.otf */; };
+		37319F4C1AA70051007B1A0D /* AFNetworkActivityLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F4B1AA70051007B1A0D /* AFNetworkActivityLogger.m */; };
+		37319F531AA7006C007B1A0D /* CPAnimationProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F4E1AA7006C007B1A0D /* CPAnimationProgram.m */; };
+		37319F541AA7006C007B1A0D /* CPAnimationSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F501AA7006C007B1A0D /* CPAnimationSequence.m */; };
+		37319F551AA7006C007B1A0D /* CPAnimationStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F521AA7006C007B1A0D /* CPAnimationStep.m */; };
+		37319F581AA70081007B1A0D /* UNMWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F571AA70081007B1A0D /* UNMWelcomeViewController.m */; };
+		37319F5B1AA700AC007B1A0D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37319F591AA700AC007B1A0D /* Info.plist */; };
+		37319F5C1AA700AC007B1A0D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F5A1AA700AC007B1A0D /* main.m */; };
+		37319F5F1AA700CB007B1A0D /* UNMUniversitySelectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F5E1AA700CB007B1A0D /* UNMUniversitySelectionTableViewController.m */; };
+		37319F621AA700E8007B1A0D /* UNMRegionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F611AA700E8007B1A0D /* UNMRegionTableViewController.m */; };
+		37319F671AA70106007B1A0D /* UNMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F641AA70106007B1A0D /* UNMHomeViewController.m */; };
+		37319F681AA70106007B1A0D /* UNMNewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F661AA70106007B1A0D /* UNMNewsTableViewCell.m */; };
+		37319F6E1AA70125007B1A0D /* notificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37319F691AA70125007B1A0D /* notificationCell.xib */; };
+		37319F6F1AA70125007B1A0D /* UNMNotificationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F6B1AA70125007B1A0D /* UNMNotificationsTableViewController.m */; };
+		37319F701AA70125007B1A0D /* UNMNotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F6D1AA70125007B1A0D /* UNMNotificationTableViewCell.m */; };
+		37319F741AA701DB007B1A0D /* simpleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37319F711AA701DB007B1A0D /* simpleTableViewCell.xib */; };
+		37319F751AA701DB007B1A0D /* UNMSimpleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F731AA701DB007B1A0D /* UNMSimpleTableViewCell.m */; };
+		37319F791AA701E3007B1A0D /* sideMenuCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37319F761AA701E3007B1A0D /* sideMenuCustomCell.xib */; };
+		37319F7A1AA701E3007B1A0D /* UNMSideMenuCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F781AA701E3007B1A0D /* UNMSideMenuCustomTableViewCell.m */; };
+		37319F7F1AA701EF007B1A0D /* UNMGeneralWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F7C1AA701EF007B1A0D /* UNMGeneralWebViewController.m */; };
+		37319F801AA701EF007B1A0D /* UNMSideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F7E1AA701EF007B1A0D /* UNMSideMenuViewController.m */; };
+		37319F861AA70211007B1A0D /* UNMLoginClassicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F831AA70211007B1A0D /* UNMLoginClassicViewController.m */; };
+		37319F871AA70211007B1A0D /* UNMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F851AA70211007B1A0D /* UNMLoginViewController.m */; };
+		37319FAA1AA70239007B1A0D /* UNMAuthDataBasic.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F891AA70239007B1A0D /* UNMAuthDataBasic.m */; };
+		37319FAB1AA70239007B1A0D /* UNMBasicDataSaving.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F8B1AA70239007B1A0D /* UNMBasicDataSaving.m */; };
+		37319FAC1AA70239007B1A0D /* UNMBookmarkBasic.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F8D1AA70239007B1A0D /* UNMBookmarkBasic.m */; };
+		37319FAD1AA70239007B1A0D /* UNMCategoryBasic.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F8F1AA70239007B1A0D /* UNMCategoryBasic.m */; };
+		37319FAE1AA70239007B1A0D /* UNMCategoryIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F911AA70239007B1A0D /* UNMCategoryIcons.m */; };
+		37319FAF1AA70239007B1A0D /* UNMCommentBasic.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F931AA70239007B1A0D /* UNMCommentBasic.m */; };
+		37319FB01AA70239007B1A0D /* UNMImageMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F951AA70239007B1A0D /* UNMImageMap.m */; };
+		37319FB11AA70239007B1A0D /* UNMMapItemBasic.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F971AA70239007B1A0D /* UNMMapItemBasic.m */; };
+		37319FB21AA70239007B1A0D /* UNMMediaItemBasic.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F991AA70239007B1A0D /* UNMMediaItemBasic.m */; };
+		37319FB31AA70239007B1A0D /* UNMMenuItemBasic.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F9B1AA70239007B1A0D /* UNMMenuItemBasic.m */; };
+		37319FB41AA70239007B1A0D /* UNMNewsBasic.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F9D1AA70239007B1A0D /* UNMNewsBasic.m */; };
+		37319FB51AA70239007B1A0D /* UNMNotificationBasic.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319F9F1AA70239007B1A0D /* UNMNotificationBasic.m */; };
+		37319FB61AA70239007B1A0D /* UNMRegionBasic.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FA11AA70239007B1A0D /* UNMRegionBasic.m */; };
+		37319FB71AA70239007B1A0D /* UNMRestoMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FA31AA70239007B1A0D /* UNMRestoMenuItem.m */; };
+		37319FB81AA70239007B1A0D /* UNMUniversityBasic.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FA51AA70239007B1A0D /* UNMUniversityBasic.m */; };
+		37319FB91AA70239007B1A0D /* UNMUnivLibraryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FA71AA70239007B1A0D /* UNMUnivLibraryItem.m */; };
+		37319FBA1AA70239007B1A0D /* UNMUserBasic.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FA91AA70239007B1A0D /* UNMUserBasic.m */; };
+		37319FD71AA702AE007B1A0D /* UNMBonPlanScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FBC1AA702AE007B1A0D /* UNMBonPlanScrollView.m */; };
+		37319FD81AA702AE007B1A0D /* UNMBonPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FBE1AA702AE007B1A0D /* UNMBonPlanViewController.m */; };
+		37319FD91AA702AE007B1A0D /* UNMCategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FC01AA702AE007B1A0D /* UNMCategoryCollectionViewCell.m */; };
+		37319FDA1AA702AE007B1A0D /* UNMCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FC21AA702AE007B1A0D /* UNMCategoryViewController.m */; };
+		37319FDB1AA702AE007B1A0D /* UNMCommentCreationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FC41AA702AE007B1A0D /* UNMCommentCreationTableViewCell.m */; };
+		37319FDC1AA702AE007B1A0D /* UNMCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FC61AA702AE007B1A0D /* UNMCommentTableViewCell.m */; };
+		37319FDD1AA702AE007B1A0D /* UNMDescriptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FC81AA702AE007B1A0D /* UNMDescriptionTableViewCell.m */; };
+		37319FDE1AA702AE007B1A0D /* UNMDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FCA1AA702AE007B1A0D /* UNMDescriptionViewController.m */; };
+		37319FDF1AA702AE007B1A0D /* UNMDescriptionWebViewTBViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FCC1AA702AE007B1A0D /* UNMDescriptionWebViewTBViewCell.m */; };
+		37319FE01AA702AE007B1A0D /* UNMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FCE1AA702AE007B1A0D /* UNMMapViewController.m */; };
+		37319FE11AA702AE007B1A0D /* UNMPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FD01AA702AE007B1A0D /* UNMPlaceHolderTextView.m */; };
+		37319FE21AA702AE007B1A0D /* UNMSquareTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FD21AA702AE007B1A0D /* UNMSquareTextField.m */; };
+		37319FE31AA702AE007B1A0D /* UNMTabButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FD41AA702AE007B1A0D /* UNMTabButton.m */; };
+		37319FE41AA702AE007B1A0D /* UNMViewWithUnclippedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FD61AA702AE007B1A0D /* UNMViewWithUnclippedButton.m */; };
+		37319FF61AA702CB007B1A0D /* NSDate+notificationDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FE61AA702CB007B1A0D /* NSDate+notificationDate.m */; };
+		37319FF71AA702CB007B1A0D /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FE81AA702CB007B1A0D /* NSString+URLEncoding.m */; };
+		37319FF81AA702CB007B1A0D /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FEA1AA702CB007B1A0D /* UIColor+Extension.m */; };
+		37319FF91AA702CB007B1A0D /* UIScrollView+ScrollIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FEC1AA702CB007B1A0D /* UIScrollView+ScrollIndicator.m */; };
+		37319FFA1AA702CB007B1A0D /* UNMBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FEE1AA702CB007B1A0D /* UNMBaseViewController.m */; };
+		37319FFB1AA702CB007B1A0D /* UNMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FF11AA702CB007B1A0D /* UNMConstants.m */; };
+		37319FFC1AA702CB007B1A0D /* UNMScrollIndicatorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FF31AA702CB007B1A0D /* UNMScrollIndicatorHelper.m */; };
+		37319FFD1AA702CB007B1A0D /* UNMUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FF51AA702CB007B1A0D /* UNMUtilities.m */; };
+		3731A0001AA702E3007B1A0D /* UNMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FFF1AA702E3007B1A0D /* UNMSearchViewController.m */; };
+		3731A0051AA702FD007B1A0D /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3731A0021AA702FD007B1A0D /* UIBarButtonItem+Badge.m */; };
+		3731A0061AA702FD007B1A0D /* UIButton+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3731A0041AA702FD007B1A0D /* UIButton+Badge.m */; };
+		3731A00B1AA70319007B1A0D /* UNMUniversityNewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3731A0081AA70319007B1A0D /* UNMUniversityNewsTableViewController.m */; };
+		3731A00C1AA70319007B1A0D /* UNMUnivNewsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3731A00A1AA70319007B1A0D /* UNMUnivNewsWebViewController.m */; };
+		3731A0111AA70336007B1A0D /* UNMLibraryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3731A00E1AA70336007B1A0D /* UNMLibraryTableViewCell.m */; };
+		3731A0121AA70336007B1A0D /* UNMLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3731A0101AA70336007B1A0D /* UNMLibraryViewController.m */; };
+		3731A0171AA70359007B1A0D /* UNMMediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3731A0141AA70359007B1A0D /* UNMMediaTableViewCell.m */; };
+		3731A0181AA70359007B1A0D /* UNMMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3731A0161AA70359007B1A0D /* UNMMediaViewController.m */; };
+		3731A0251AA70373007B1A0D /* UNMBookmarksTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3731A01A1AA70373007B1A0D /* UNMBookmarksTableViewCell.m */; };
+		3731A0261AA70373007B1A0D /* UNMProfileFooterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3731A01C1AA70373007B1A0D /* UNMProfileFooterTableViewCell.m */; };
+		3731A0271AA70373007B1A0D /* UNMProfileTBVSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3731A01E1AA70373007B1A0D /* UNMProfileTBVSectionHeaderView.m */; };
+		3731A0281AA70373007B1A0D /* UNMProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3731A0201AA70373007B1A0D /* UNMProfileViewController.m */; };
+		3731A0291AA70373007B1A0D /* UNMUniversitySelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3731A0221AA70373007B1A0D /* UNMUniversitySelectionViewController.m */; };
+		3731A02A1AA70373007B1A0D /* UNMUnivSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3731A0241AA70373007B1A0D /* UNMUnivSelectTableViewCell.m */; };
+		3758EFC21A7776560021F0E8 /* UNMBookmarksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3758EFC11A7776560021F0E8 /* UNMBookmarksTableViewController.m */; };
+		377197531A641DF8005D50DA /* UNMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 377197521A641DF8005D50DA /* UNMAppDelegate.m */; };
+		377197561A641DF8005D50DA /* unm_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 377197541A641DF8005D50DA /* unm_ios.xcdatamodeld */; };
+		3771975C1A641DF8005D50DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3771975A1A641DF8005D50DA /* Main.storyboard */; };
+		3771975E1A641DF8005D50DA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3771975D1A641DF8005D50DA /* Images.xcassets */; };
+		377197611A641DF8005D50DA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3771975F1A641DF8005D50DA /* LaunchScreen.xib */; };
+		3771976D1A641DF8005D50DA /* unm_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771976C1A641DF8005D50DA /* unm_iosTests.m */; };
+		37B946ED1A69683C002BBB73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37B946EC1A69683C002BBB73 /* CoreLocation.framework */; };
+		63801F4F5DAD791F0A91CE92 /* libPods-unm-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8018100A1727F436B984CB9 /* libPods-unm-ios.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		377197671A641DF8005D50DA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 377197421A641DF8005D50DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 377197491A641DF8005D50DA;
+			remoteInfo = "unm-ios";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		232E84F48F2A23516118D17E /* Pods-unm-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unm-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-unm-ios/Pods-unm-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		37319F201AA61822007B1A0D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		37319F211AA61822007B1A0D /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		37319F281AA70035007B1A0D /* Exo-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-Black.otf"; path = "exo fonts/Exo-Black.otf"; sourceTree = "<group>"; };
+		37319F291AA70035007B1A0D /* Exo-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-BlackItalic.otf"; path = "exo fonts/Exo-BlackItalic.otf"; sourceTree = "<group>"; };
+		37319F2A1AA70035007B1A0D /* Exo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-Bold.otf"; path = "exo fonts/Exo-Bold.otf"; sourceTree = "<group>"; };
+		37319F2B1AA70035007B1A0D /* Exo-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-BoldItalic.otf"; path = "exo fonts/Exo-BoldItalic.otf"; sourceTree = "<group>"; };
+		37319F2C1AA70035007B1A0D /* Exo-ExtraBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-ExtraBoldItalic.otf"; path = "exo fonts/Exo-ExtraBoldItalic.otf"; sourceTree = "<group>"; };
+		37319F2D1AA70035007B1A0D /* Exo-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-ExtraLight.otf"; path = "exo fonts/Exo-ExtraLight.otf"; sourceTree = "<group>"; };
+		37319F2E1AA70035007B1A0D /* Exo-ExtraLightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-ExtraLightItalic.otf"; path = "exo fonts/Exo-ExtraLightItalic.otf"; sourceTree = "<group>"; };
+		37319F2F1AA70035007B1A0D /* Exo-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-Italic.otf"; path = "exo fonts/Exo-Italic.otf"; sourceTree = "<group>"; };
+		37319F301AA70035007B1A0D /* Exo-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-Light.otf"; path = "exo fonts/Exo-Light.otf"; sourceTree = "<group>"; };
+		37319F311AA70035007B1A0D /* Exo-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-LightItalic.otf"; path = "exo fonts/Exo-LightItalic.otf"; sourceTree = "<group>"; };
+		37319F321AA70035007B1A0D /* Exo-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-Medium.otf"; path = "exo fonts/Exo-Medium.otf"; sourceTree = "<group>"; };
+		37319F331AA70035007B1A0D /* Exo-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-MediumItalic.otf"; path = "exo fonts/Exo-MediumItalic.otf"; sourceTree = "<group>"; };
+		37319F341AA70035007B1A0D /* Exo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-Regular.otf"; path = "exo fonts/Exo-Regular.otf"; sourceTree = "<group>"; };
+		37319F351AA70035007B1A0D /* Exo-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-SemiBold.otf"; path = "exo fonts/Exo-SemiBold.otf"; sourceTree = "<group>"; };
+		37319F361AA70035007B1A0D /* Exo-SemiBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-SemiBoldItalic.otf"; path = "exo fonts/Exo-SemiBoldItalic.otf"; sourceTree = "<group>"; };
+		37319F371AA70035007B1A0D /* Exo-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-Thin.otf"; path = "exo fonts/Exo-Thin.otf"; sourceTree = "<group>"; };
+		37319F381AA70035007B1A0D /* Exo-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-ThinItalic.otf"; path = "exo fonts/Exo-ThinItalic.otf"; sourceTree = "<group>"; };
+		37319F4A1AA70051007B1A0D /* AFNetworkActivityLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityLogger.h; path = "afnetworking logger/AFNetworkActivityLogger.h"; sourceTree = "<group>"; };
+		37319F4B1AA70051007B1A0D /* AFNetworkActivityLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityLogger.m; path = "afnetworking logger/AFNetworkActivityLogger.m"; sourceTree = "<group>"; };
+		37319F4D1AA7006C007B1A0D /* CPAnimationProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPAnimationProgram.h; path = CPAnimation/CPAnimationProgram.h; sourceTree = "<group>"; };
+		37319F4E1AA7006C007B1A0D /* CPAnimationProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPAnimationProgram.m; path = CPAnimation/CPAnimationProgram.m; sourceTree = "<group>"; };
+		37319F4F1AA7006C007B1A0D /* CPAnimationSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPAnimationSequence.h; path = CPAnimation/CPAnimationSequence.h; sourceTree = "<group>"; };
+		37319F501AA7006C007B1A0D /* CPAnimationSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPAnimationSequence.m; path = CPAnimation/CPAnimationSequence.m; sourceTree = "<group>"; };
+		37319F511AA7006C007B1A0D /* CPAnimationStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPAnimationStep.h; path = CPAnimation/CPAnimationStep.h; sourceTree = "<group>"; };
+		37319F521AA7006C007B1A0D /* CPAnimationStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPAnimationStep.m; path = CPAnimation/CPAnimationStep.m; sourceTree = "<group>"; };
+		37319F561AA70081007B1A0D /* UNMWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMWelcomeViewController.h; path = "welcome view/UNMWelcomeViewController.h"; sourceTree = "<group>"; };
+		37319F571AA70081007B1A0D /* UNMWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMWelcomeViewController.m; path = "welcome view/UNMWelcomeViewController.m"; sourceTree = "<group>"; };
+		37319F591AA700AC007B1A0D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting files/Info.plist"; sourceTree = "<group>"; };
+		37319F5A1AA700AC007B1A0D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting files/main.m"; sourceTree = "<group>"; };
+		37319F5D1AA700CB007B1A0D /* UNMUniversitySelectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMUniversitySelectionTableViewController.h; path = "university selection tbview/UNMUniversitySelectionTableViewController.h"; sourceTree = "<group>"; };
+		37319F5E1AA700CB007B1A0D /* UNMUniversitySelectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMUniversitySelectionTableViewController.m; path = "university selection tbview/UNMUniversitySelectionTableViewController.m"; sourceTree = "<group>"; };
+		37319F601AA700E8007B1A0D /* UNMRegionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMRegionTableViewController.h; path = "region selection tbview/UNMRegionTableViewController.h"; sourceTree = "<group>"; };
+		37319F611AA700E8007B1A0D /* UNMRegionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMRegionTableViewController.m; path = "region selection tbview/UNMRegionTableViewController.m"; sourceTree = "<group>"; };
+		37319F631AA70106007B1A0D /* UNMHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMHomeViewController.h; path = "home view/UNMHomeViewController.h"; sourceTree = "<group>"; };
+		37319F641AA70106007B1A0D /* UNMHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMHomeViewController.m; path = "home view/UNMHomeViewController.m"; sourceTree = "<group>"; };
+		37319F651AA70106007B1A0D /* UNMNewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMNewsTableViewCell.h; path = "home view/UNMNewsTableViewCell.h"; sourceTree = "<group>"; };
+		37319F661AA70106007B1A0D /* UNMNewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMNewsTableViewCell.m; path = "home view/UNMNewsTableViewCell.m"; sourceTree = "<group>"; };
+		37319F691AA70125007B1A0D /* notificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = notificationCell.xib; path = "notification view/notificationCell.xib"; sourceTree = "<group>"; };
+		37319F6A1AA70125007B1A0D /* UNMNotificationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMNotificationsTableViewController.h; path = "notification view/UNMNotificationsTableViewController.h"; sourceTree = "<group>"; };
+		37319F6B1AA70125007B1A0D /* UNMNotificationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMNotificationsTableViewController.m; path = "notification view/UNMNotificationsTableViewController.m"; sourceTree = "<group>"; };
+		37319F6C1AA70125007B1A0D /* UNMNotificationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMNotificationTableViewCell.h; path = "notification view/UNMNotificationTableViewCell.h"; sourceTree = "<group>"; };
+		37319F6D1AA70125007B1A0D /* UNMNotificationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMNotificationTableViewCell.m; path = "notification view/UNMNotificationTableViewCell.m"; sourceTree = "<group>"; };
+		37319F711AA701DB007B1A0D /* simpleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = simpleTableViewCell.xib; path = "side menu view/simple cell/simpleTableViewCell.xib"; sourceTree = "<group>"; };
+		37319F721AA701DB007B1A0D /* UNMSimpleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMSimpleTableViewCell.h; path = "side menu view/simple cell/UNMSimpleTableViewCell.h"; sourceTree = "<group>"; };
+		37319F731AA701DB007B1A0D /* UNMSimpleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMSimpleTableViewCell.m; path = "side menu view/simple cell/UNMSimpleTableViewCell.m"; sourceTree = "<group>"; };
+		37319F761AA701E3007B1A0D /* sideMenuCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = sideMenuCustomCell.xib; path = "side menu view/custom cell/sideMenuCustomCell.xib"; sourceTree = "<group>"; };
+		37319F771AA701E3007B1A0D /* UNMSideMenuCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMSideMenuCustomTableViewCell.h; path = "side menu view/custom cell/UNMSideMenuCustomTableViewCell.h"; sourceTree = "<group>"; };
+		37319F781AA701E3007B1A0D /* UNMSideMenuCustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMSideMenuCustomTableViewCell.m; path = "side menu view/custom cell/UNMSideMenuCustomTableViewCell.m"; sourceTree = "<group>"; };
+		37319F7B1AA701EF007B1A0D /* UNMGeneralWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMGeneralWebViewController.h; path = "side menu view/UNMGeneralWebViewController.h"; sourceTree = "<group>"; };
+		37319F7C1AA701EF007B1A0D /* UNMGeneralWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMGeneralWebViewController.m; path = "side menu view/UNMGeneralWebViewController.m"; sourceTree = "<group>"; };
+		37319F7D1AA701EF007B1A0D /* UNMSideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMSideMenuViewController.h; path = "side menu view/UNMSideMenuViewController.h"; sourceTree = "<group>"; };
+		37319F7E1AA701EF007B1A0D /* UNMSideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMSideMenuViewController.m; path = "side menu view/UNMSideMenuViewController.m"; sourceTree = "<group>"; };
+		37319F811AA70211007B1A0D /* UNMLoginCallbackProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMLoginCallbackProtocol.h; path = "login view/UNMLoginCallbackProtocol.h"; sourceTree = "<group>"; };
+		37319F821AA70211007B1A0D /* UNMLoginClassicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMLoginClassicViewController.h; path = "login view/UNMLoginClassicViewController.h"; sourceTree = "<group>"; };
+		37319F831AA70211007B1A0D /* UNMLoginClassicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMLoginClassicViewController.m; path = "login view/UNMLoginClassicViewController.m"; sourceTree = "<group>"; };
+		37319F841AA70211007B1A0D /* UNMLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMLoginViewController.h; path = "login view/UNMLoginViewController.h"; sourceTree = "<group>"; };
+		37319F851AA70211007B1A0D /* UNMLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMLoginViewController.m; path = "login view/UNMLoginViewController.m"; sourceTree = "<group>"; };
+		37319F881AA70239007B1A0D /* UNMAuthDataBasic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMAuthDataBasic.h; path = "basic data types/UNMAuthDataBasic.h"; sourceTree = "<group>"; };
+		37319F891AA70239007B1A0D /* UNMAuthDataBasic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMAuthDataBasic.m; path = "basic data types/UNMAuthDataBasic.m"; sourceTree = "<group>"; };
+		37319F8A1AA70239007B1A0D /* UNMBasicDataSaving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMBasicDataSaving.h; path = "basic data types/UNMBasicDataSaving.h"; sourceTree = "<group>"; };
+		37319F8B1AA70239007B1A0D /* UNMBasicDataSaving.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMBasicDataSaving.m; path = "basic data types/UNMBasicDataSaving.m"; sourceTree = "<group>"; };
+		37319F8C1AA70239007B1A0D /* UNMBookmarkBasic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMBookmarkBasic.h; path = "basic data types/UNMBookmarkBasic.h"; sourceTree = "<group>"; };
+		37319F8D1AA70239007B1A0D /* UNMBookmarkBasic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMBookmarkBasic.m; path = "basic data types/UNMBookmarkBasic.m"; sourceTree = "<group>"; };
+		37319F8E1AA70239007B1A0D /* UNMCategoryBasic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMCategoryBasic.h; path = "basic data types/UNMCategoryBasic.h"; sourceTree = "<group>"; };
+		37319F8F1AA70239007B1A0D /* UNMCategoryBasic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMCategoryBasic.m; path = "basic data types/UNMCategoryBasic.m"; sourceTree = "<group>"; };
+		37319F901AA70239007B1A0D /* UNMCategoryIcons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMCategoryIcons.h; path = "basic data types/UNMCategoryIcons.h"; sourceTree = "<group>"; };
+		37319F911AA70239007B1A0D /* UNMCategoryIcons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMCategoryIcons.m; path = "basic data types/UNMCategoryIcons.m"; sourceTree = "<group>"; };
+		37319F921AA70239007B1A0D /* UNMCommentBasic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMCommentBasic.h; path = "basic data types/UNMCommentBasic.h"; sourceTree = "<group>"; };
+		37319F931AA70239007B1A0D /* UNMCommentBasic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMCommentBasic.m; path = "basic data types/UNMCommentBasic.m"; sourceTree = "<group>"; };
+		37319F941AA70239007B1A0D /* UNMImageMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMImageMap.h; path = "basic data types/UNMImageMap.h"; sourceTree = "<group>"; };
+		37319F951AA70239007B1A0D /* UNMImageMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMImageMap.m; path = "basic data types/UNMImageMap.m"; sourceTree = "<group>"; };
+		37319F961AA70239007B1A0D /* UNMMapItemBasic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMMapItemBasic.h; path = "basic data types/UNMMapItemBasic.h"; sourceTree = "<group>"; };
+		37319F971AA70239007B1A0D /* UNMMapItemBasic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMMapItemBasic.m; path = "basic data types/UNMMapItemBasic.m"; sourceTree = "<group>"; };
+		37319F981AA70239007B1A0D /* UNMMediaItemBasic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMMediaItemBasic.h; path = "basic data types/UNMMediaItemBasic.h"; sourceTree = "<group>"; };
+		37319F991AA70239007B1A0D /* UNMMediaItemBasic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMMediaItemBasic.m; path = "basic data types/UNMMediaItemBasic.m"; sourceTree = "<group>"; };
+		37319F9A1AA70239007B1A0D /* UNMMenuItemBasic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMMenuItemBasic.h; path = "basic data types/UNMMenuItemBasic.h"; sourceTree = "<group>"; };
+		37319F9B1AA70239007B1A0D /* UNMMenuItemBasic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMMenuItemBasic.m; path = "basic data types/UNMMenuItemBasic.m"; sourceTree = "<group>"; };
+		37319F9C1AA70239007B1A0D /* UNMNewsBasic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMNewsBasic.h; path = "basic data types/UNMNewsBasic.h"; sourceTree = "<group>"; };
+		37319F9D1AA70239007B1A0D /* UNMNewsBasic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMNewsBasic.m; path = "basic data types/UNMNewsBasic.m"; sourceTree = "<group>"; };
+		37319F9E1AA70239007B1A0D /* UNMNotificationBasic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMNotificationBasic.h; path = "basic data types/UNMNotificationBasic.h"; sourceTree = "<group>"; };
+		37319F9F1AA70239007B1A0D /* UNMNotificationBasic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMNotificationBasic.m; path = "basic data types/UNMNotificationBasic.m"; sourceTree = "<group>"; };
+		37319FA01AA70239007B1A0D /* UNMRegionBasic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMRegionBasic.h; path = "basic data types/UNMRegionBasic.h"; sourceTree = "<group>"; };
+		37319FA11AA70239007B1A0D /* UNMRegionBasic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMRegionBasic.m; path = "basic data types/UNMRegionBasic.m"; sourceTree = "<group>"; };
+		37319FA21AA70239007B1A0D /* UNMRestoMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMRestoMenuItem.h; path = "basic data types/UNMRestoMenuItem.h"; sourceTree = "<group>"; };
+		37319FA31AA70239007B1A0D /* UNMRestoMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMRestoMenuItem.m; path = "basic data types/UNMRestoMenuItem.m"; sourceTree = "<group>"; };
+		37319FA41AA70239007B1A0D /* UNMUniversityBasic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMUniversityBasic.h; path = "basic data types/UNMUniversityBasic.h"; sourceTree = "<group>"; };
+		37319FA51AA70239007B1A0D /* UNMUniversityBasic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMUniversityBasic.m; path = "basic data types/UNMUniversityBasic.m"; sourceTree = "<group>"; };
+		37319FA61AA70239007B1A0D /* UNMUnivLibraryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMUnivLibraryItem.h; path = "basic data types/UNMUnivLibraryItem.h"; sourceTree = "<group>"; };
+		37319FA71AA70239007B1A0D /* UNMUnivLibraryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMUnivLibraryItem.m; path = "basic data types/UNMUnivLibraryItem.m"; sourceTree = "<group>"; };
+		37319FA81AA70239007B1A0D /* UNMUserBasic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMUserBasic.h; path = "basic data types/UNMUserBasic.h"; sourceTree = "<group>"; };
+		37319FA91AA70239007B1A0D /* UNMUserBasic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMUserBasic.m; path = "basic data types/UNMUserBasic.m"; sourceTree = "<group>"; };
+		37319FBB1AA702AE007B1A0D /* UNMBonPlanScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMBonPlanScrollView.h; path = "map view/UNMBonPlanScrollView.h"; sourceTree = "<group>"; };
+		37319FBC1AA702AE007B1A0D /* UNMBonPlanScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMBonPlanScrollView.m; path = "map view/UNMBonPlanScrollView.m"; sourceTree = "<group>"; };
+		37319FBD1AA702AE007B1A0D /* UNMBonPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMBonPlanViewController.h; path = "map view/UNMBonPlanViewController.h"; sourceTree = "<group>"; };
+		37319FBE1AA702AE007B1A0D /* UNMBonPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMBonPlanViewController.m; path = "map view/UNMBonPlanViewController.m"; sourceTree = "<group>"; };
+		37319FBF1AA702AE007B1A0D /* UNMCategoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMCategoryCollectionViewCell.h; path = "map view/UNMCategoryCollectionViewCell.h"; sourceTree = "<group>"; };
+		37319FC01AA702AE007B1A0D /* UNMCategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMCategoryCollectionViewCell.m; path = "map view/UNMCategoryCollectionViewCell.m"; sourceTree = "<group>"; };
+		37319FC11AA702AE007B1A0D /* UNMCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMCategoryViewController.h; path = "map view/UNMCategoryViewController.h"; sourceTree = "<group>"; };
+		37319FC21AA702AE007B1A0D /* UNMCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMCategoryViewController.m; path = "map view/UNMCategoryViewController.m"; sourceTree = "<group>"; };
+		37319FC31AA702AE007B1A0D /* UNMCommentCreationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMCommentCreationTableViewCell.h; path = "map view/UNMCommentCreationTableViewCell.h"; sourceTree = "<group>"; };
+		37319FC41AA702AE007B1A0D /* UNMCommentCreationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMCommentCreationTableViewCell.m; path = "map view/UNMCommentCreationTableViewCell.m"; sourceTree = "<group>"; };
+		37319FC51AA702AE007B1A0D /* UNMCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMCommentTableViewCell.h; path = "map view/UNMCommentTableViewCell.h"; sourceTree = "<group>"; };
+		37319FC61AA702AE007B1A0D /* UNMCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMCommentTableViewCell.m; path = "map view/UNMCommentTableViewCell.m"; sourceTree = "<group>"; };
+		37319FC71AA702AE007B1A0D /* UNMDescriptionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMDescriptionTableViewCell.h; path = "map view/UNMDescriptionTableViewCell.h"; sourceTree = "<group>"; };
+		37319FC81AA702AE007B1A0D /* UNMDescriptionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMDescriptionTableViewCell.m; path = "map view/UNMDescriptionTableViewCell.m"; sourceTree = "<group>"; };
+		37319FC91AA702AE007B1A0D /* UNMDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMDescriptionViewController.h; path = "map view/UNMDescriptionViewController.h"; sourceTree = "<group>"; };
+		37319FCA1AA702AE007B1A0D /* UNMDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMDescriptionViewController.m; path = "map view/UNMDescriptionViewController.m"; sourceTree = "<group>"; };
+		37319FCB1AA702AE007B1A0D /* UNMDescriptionWebViewTBViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMDescriptionWebViewTBViewCell.h; path = "map view/UNMDescriptionWebViewTBViewCell.h"; sourceTree = "<group>"; };
+		37319FCC1AA702AE007B1A0D /* UNMDescriptionWebViewTBViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMDescriptionWebViewTBViewCell.m; path = "map view/UNMDescriptionWebViewTBViewCell.m"; sourceTree = "<group>"; };
+		37319FCD1AA702AE007B1A0D /* UNMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMMapViewController.h; path = "map view/UNMMapViewController.h"; sourceTree = "<group>"; };
+		37319FCE1AA702AE007B1A0D /* UNMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMMapViewController.m; path = "map view/UNMMapViewController.m"; sourceTree = "<group>"; };
+		37319FCF1AA702AE007B1A0D /* UNMPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMPlaceHolderTextView.h; path = "map view/UNMPlaceHolderTextView.h"; sourceTree = "<group>"; };
+		37319FD01AA702AE007B1A0D /* UNMPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMPlaceHolderTextView.m; path = "map view/UNMPlaceHolderTextView.m"; sourceTree = "<group>"; };
+		37319FD11AA702AE007B1A0D /* UNMSquareTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMSquareTextField.h; path = "map view/UNMSquareTextField.h"; sourceTree = "<group>"; };
+		37319FD21AA702AE007B1A0D /* UNMSquareTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMSquareTextField.m; path = "map view/UNMSquareTextField.m"; sourceTree = "<group>"; };
+		37319FD31AA702AE007B1A0D /* UNMTabButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMTabButton.h; path = "map view/UNMTabButton.h"; sourceTree = "<group>"; };
+		37319FD41AA702AE007B1A0D /* UNMTabButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMTabButton.m; path = "map view/UNMTabButton.m"; sourceTree = "<group>"; };
+		37319FD51AA702AE007B1A0D /* UNMViewWithUnclippedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMViewWithUnclippedButton.h; path = "map view/UNMViewWithUnclippedButton.h"; sourceTree = "<group>"; };
+		37319FD61AA702AE007B1A0D /* UNMViewWithUnclippedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMViewWithUnclippedButton.m; path = "map view/UNMViewWithUnclippedButton.m"; sourceTree = "<group>"; };
+		37319FE51AA702CB007B1A0D /* NSDate+notificationDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+notificationDate.h"; path = "utility classes/NSDate+notificationDate.h"; sourceTree = "<group>"; };
+		37319FE61AA702CB007B1A0D /* NSDate+notificationDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+notificationDate.m"; path = "utility classes/NSDate+notificationDate.m"; sourceTree = "<group>"; };
+		37319FE71AA702CB007B1A0D /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+URLEncoding.h"; path = "utility classes/NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		37319FE81AA702CB007B1A0D /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+URLEncoding.m"; path = "utility classes/NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		37319FE91AA702CB007B1A0D /* UIColor+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Extension.h"; path = "utility classes/UIColor+Extension.h"; sourceTree = "<group>"; };
+		37319FEA1AA702CB007B1A0D /* UIColor+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Extension.m"; path = "utility classes/UIColor+Extension.m"; sourceTree = "<group>"; };
+		37319FEB1AA702CB007B1A0D /* UIScrollView+ScrollIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+ScrollIndicator.h"; path = "utility classes/UIScrollView+ScrollIndicator.h"; sourceTree = "<group>"; };
+		37319FEC1AA702CB007B1A0D /* UIScrollView+ScrollIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+ScrollIndicator.m"; path = "utility classes/UIScrollView+ScrollIndicator.m"; sourceTree = "<group>"; };
+		37319FED1AA702CB007B1A0D /* UNMBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMBaseViewController.h; path = "utility classes/UNMBaseViewController.h"; sourceTree = "<group>"; };
+		37319FEE1AA702CB007B1A0D /* UNMBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMBaseViewController.m; path = "utility classes/UNMBaseViewController.m"; sourceTree = "<group>"; };
+		37319FEF1AA702CB007B1A0D /* UNMBaseViewController+univLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UNMBaseViewController+univLabel.h"; path = "utility classes/UNMBaseViewController+univLabel.h"; sourceTree = "<group>"; };
+		37319FF01AA702CB007B1A0D /* UNMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMConstants.h; path = "utility classes/UNMConstants.h"; sourceTree = "<group>"; };
+		37319FF11AA702CB007B1A0D /* UNMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMConstants.m; path = "utility classes/UNMConstants.m"; sourceTree = "<group>"; };
+		37319FF21AA702CB007B1A0D /* UNMScrollIndicatorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMScrollIndicatorHelper.h; path = "utility classes/UNMScrollIndicatorHelper.h"; sourceTree = "<group>"; };
+		37319FF31AA702CB007B1A0D /* UNMScrollIndicatorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMScrollIndicatorHelper.m; path = "utility classes/UNMScrollIndicatorHelper.m"; sourceTree = "<group>"; };
+		37319FF41AA702CB007B1A0D /* UNMUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMUtilities.h; path = "utility classes/UNMUtilities.h"; sourceTree = "<group>"; };
+		37319FF51AA702CB007B1A0D /* UNMUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMUtilities.m; path = "utility classes/UNMUtilities.m"; sourceTree = "<group>"; };
+		37319FFE1AA702E3007B1A0D /* UNMSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMSearchViewController.h; path = "search view/UNMSearchViewController.h"; sourceTree = "<group>"; };
+		37319FFF1AA702E3007B1A0D /* UNMSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMSearchViewController.m; path = "search view/UNMSearchViewController.m"; sourceTree = "<group>"; };
+		3731A0011AA702FD007B1A0D /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+Badge.h"; path = "Controls With Badges/UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
+		3731A0021AA702FD007B1A0D /* UIBarButtonItem+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+Badge.m"; path = "Controls With Badges/UIBarButtonItem+Badge.m"; sourceTree = "<group>"; };
+		3731A0031AA702FD007B1A0D /* UIButton+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+Badge.h"; path = "Controls With Badges/UIButton+Badge.h"; sourceTree = "<group>"; };
+		3731A0041AA702FD007B1A0D /* UIButton+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Badge.m"; path = "Controls With Badges/UIButton+Badge.m"; sourceTree = "<group>"; };
+		3731A0071AA70319007B1A0D /* UNMUniversityNewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMUniversityNewsTableViewController.h; path = "university news/UNMUniversityNewsTableViewController.h"; sourceTree = "<group>"; };
+		3731A0081AA70319007B1A0D /* UNMUniversityNewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMUniversityNewsTableViewController.m; path = "university news/UNMUniversityNewsTableViewController.m"; sourceTree = "<group>"; };
+		3731A0091AA70319007B1A0D /* UNMUnivNewsWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMUnivNewsWebViewController.h; path = "university news/UNMUnivNewsWebViewController.h"; sourceTree = "<group>"; };
+		3731A00A1AA70319007B1A0D /* UNMUnivNewsWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMUnivNewsWebViewController.m; path = "university news/UNMUnivNewsWebViewController.m"; sourceTree = "<group>"; };
+		3731A00D1AA70336007B1A0D /* UNMLibraryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMLibraryTableViewCell.h; path = "library view/UNMLibraryTableViewCell.h"; sourceTree = "<group>"; };
+		3731A00E1AA70336007B1A0D /* UNMLibraryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMLibraryTableViewCell.m; path = "library view/UNMLibraryTableViewCell.m"; sourceTree = "<group>"; };
+		3731A00F1AA70336007B1A0D /* UNMLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMLibraryViewController.h; path = "library view/UNMLibraryViewController.h"; sourceTree = "<group>"; };
+		3731A0101AA70336007B1A0D /* UNMLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMLibraryViewController.m; path = "library view/UNMLibraryViewController.m"; sourceTree = "<group>"; };
+		3731A0131AA70359007B1A0D /* UNMMediaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMMediaTableViewCell.h; path = "media view/UNMMediaTableViewCell.h"; sourceTree = "<group>"; };
+		3731A0141AA70359007B1A0D /* UNMMediaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMMediaTableViewCell.m; path = "media view/UNMMediaTableViewCell.m"; sourceTree = "<group>"; };
+		3731A0151AA70359007B1A0D /* UNMMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMMediaViewController.h; path = "media view/UNMMediaViewController.h"; sourceTree = "<group>"; };
+		3731A0161AA70359007B1A0D /* UNMMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMMediaViewController.m; path = "media view/UNMMediaViewController.m"; sourceTree = "<group>"; };
+		3731A0191AA70373007B1A0D /* UNMBookmarksTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMBookmarksTableViewCell.h; path = "profile view/UNMBookmarksTableViewCell.h"; sourceTree = "<group>"; };
+		3731A01A1AA70373007B1A0D /* UNMBookmarksTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMBookmarksTableViewCell.m; path = "profile view/UNMBookmarksTableViewCell.m"; sourceTree = "<group>"; };
+		3731A01B1AA70373007B1A0D /* UNMProfileFooterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMProfileFooterTableViewCell.h; path = "profile view/UNMProfileFooterTableViewCell.h"; sourceTree = "<group>"; };
+		3731A01C1AA70373007B1A0D /* UNMProfileFooterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMProfileFooterTableViewCell.m; path = "profile view/UNMProfileFooterTableViewCell.m"; sourceTree = "<group>"; };
+		3731A01D1AA70373007B1A0D /* UNMProfileTBVSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMProfileTBVSectionHeaderView.h; path = "profile view/UNMProfileTBVSectionHeaderView.h"; sourceTree = "<group>"; };
+		3731A01E1AA70373007B1A0D /* UNMProfileTBVSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMProfileTBVSectionHeaderView.m; path = "profile view/UNMProfileTBVSectionHeaderView.m"; sourceTree = "<group>"; };
+		3731A01F1AA70373007B1A0D /* UNMProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMProfileViewController.h; path = "profile view/UNMProfileViewController.h"; sourceTree = "<group>"; };
+		3731A0201AA70373007B1A0D /* UNMProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMProfileViewController.m; path = "profile view/UNMProfileViewController.m"; sourceTree = "<group>"; };
+		3731A0211AA70373007B1A0D /* UNMUniversitySelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMUniversitySelectionViewController.h; path = "profile view/UNMUniversitySelectionViewController.h"; sourceTree = "<group>"; };
+		3731A0221AA70373007B1A0D /* UNMUniversitySelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMUniversitySelectionViewController.m; path = "profile view/UNMUniversitySelectionViewController.m"; sourceTree = "<group>"; };
+		3731A0231AA70373007B1A0D /* UNMUnivSelectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMUnivSelectTableViewCell.h; path = "profile view/UNMUnivSelectTableViewCell.h"; sourceTree = "<group>"; };
+		3731A0241AA70373007B1A0D /* UNMUnivSelectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMUnivSelectTableViewCell.m; path = "profile view/UNMUnivSelectTableViewCell.m"; sourceTree = "<group>"; };
+		3758EFC01A7776560021F0E8 /* UNMBookmarksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNMBookmarksTableViewController.h; sourceTree = "<group>"; };
+		3758EFC11A7776560021F0E8 /* UNMBookmarksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNMBookmarksTableViewController.m; sourceTree = "<group>"; };
+		3771974A1A641DF8005D50DA /* UnivMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnivMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		377197511A641DF8005D50DA /* UNMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNMAppDelegate.h; sourceTree = "<group>"; };
+		377197521A641DF8005D50DA /* UNMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNMAppDelegate.m; sourceTree = "<group>"; };
+		377197551A641DF8005D50DA /* unm_ios.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = unm_ios.xcdatamodel; sourceTree = "<group>"; };
+		3771975B1A641DF8005D50DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3771975D1A641DF8005D50DA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		377197601A641DF8005D50DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		377197661A641DF8005D50DA /* unm-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "unm-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3771976B1A641DF8005D50DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3771976C1A641DF8005D50DA /* unm_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = unm_iosTests.m; sourceTree = "<group>"; };
+		37B946EC1A69683C002BBB73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A75FE80334BDC50C94769D65 /* Pods-unm-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unm-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-unm-ios/Pods-unm-ios.release.xcconfig"; sourceTree = "<group>"; };
+		A8018100A1727F436B984CB9 /* libPods-unm-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-unm-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		377197471A641DF8005D50DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37B946ED1A69683C002BBB73 /* CoreLocation.framework in Frameworks */,
+				37319F221AA61822007B1A0D /* Crashlytics.framework in Frameworks */,
+				63801F4F5DAD791F0A91CE92 /* libPods-unm-ios.a in Frameworks */,
+				37319F231AA61822007B1A0D /* Fabric.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		377197631A641DF8005D50DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1DEB08F8E8F29608C2C23991 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				232E84F48F2A23516118D17E /* Pods-unm-ios.debug.xcconfig */,
+				A75FE80334BDC50C94769D65 /* Pods-unm-ios.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		27655C29E0D994B8957F6B25 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				37B946EC1A69683C002BBB73 /* CoreLocation.framework */,
+				A8018100A1727F436B984CB9 /* libPods-unm-ios.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		372401101A7632D4002F1E22 /* profile view */ = {
+			isa = PBXGroup;
+			children = (
+				3731A0191AA70373007B1A0D /* UNMBookmarksTableViewCell.h */,
+				3731A01A1AA70373007B1A0D /* UNMBookmarksTableViewCell.m */,
+				3731A01B1AA70373007B1A0D /* UNMProfileFooterTableViewCell.h */,
+				3731A01C1AA70373007B1A0D /* UNMProfileFooterTableViewCell.m */,
+				3731A01D1AA70373007B1A0D /* UNMProfileTBVSectionHeaderView.h */,
+				3731A01E1AA70373007B1A0D /* UNMProfileTBVSectionHeaderView.m */,
+				3731A01F1AA70373007B1A0D /* UNMProfileViewController.h */,
+				3731A0201AA70373007B1A0D /* UNMProfileViewController.m */,
+				3731A0211AA70373007B1A0D /* UNMUniversitySelectionViewController.h */,
+				3731A0221AA70373007B1A0D /* UNMUniversitySelectionViewController.m */,
+				3731A0231AA70373007B1A0D /* UNMUnivSelectTableViewCell.h */,
+				3731A0241AA70373007B1A0D /* UNMUnivSelectTableViewCell.m */,
+			);
+			name = "profile view";
+			sourceTree = "<group>";
+		};
+		37298D9E1A820F2D004EF2D3 /* CPAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				37319F4D1AA7006C007B1A0D /* CPAnimationProgram.h */,
+				37319F4E1AA7006C007B1A0D /* CPAnimationProgram.m */,
+				37319F4F1AA7006C007B1A0D /* CPAnimationSequence.h */,
+				37319F501AA7006C007B1A0D /* CPAnimationSequence.m */,
+				37319F511AA7006C007B1A0D /* CPAnimationStep.h */,
+				37319F521AA7006C007B1A0D /* CPAnimationStep.m */,
+			);
+			name = CPAnimation;
+			sourceTree = "<group>";
+		};
+		37319F271AA6FFA2007B1A0D /* afnetworking logger */ = {
+			isa = PBXGroup;
+			children = (
+				37319F4A1AA70051007B1A0D /* AFNetworkActivityLogger.h */,
+				37319F4B1AA70051007B1A0D /* AFNetworkActivityLogger.m */,
+			);
+			name = "afnetworking logger";
+			sourceTree = "<group>";
+		};
+		3732F5E31A9471B800010B75 /* utility classes */ = {
+			isa = PBXGroup;
+			children = (
+				37319FE51AA702CB007B1A0D /* NSDate+notificationDate.h */,
+				37319FE61AA702CB007B1A0D /* NSDate+notificationDate.m */,
+				37319FE71AA702CB007B1A0D /* NSString+URLEncoding.h */,
+				37319FE81AA702CB007B1A0D /* NSString+URLEncoding.m */,
+				37319FE91AA702CB007B1A0D /* UIColor+Extension.h */,
+				37319FEA1AA702CB007B1A0D /* UIColor+Extension.m */,
+				37319FEB1AA702CB007B1A0D /* UIScrollView+ScrollIndicator.h */,
+				37319FEC1AA702CB007B1A0D /* UIScrollView+ScrollIndicator.m */,
+				37319FED1AA702CB007B1A0D /* UNMBaseViewController.h */,
+				37319FEE1AA702CB007B1A0D /* UNMBaseViewController.m */,
+				37319FEF1AA702CB007B1A0D /* UNMBaseViewController+univLabel.h */,
+				37319FF01AA702CB007B1A0D /* UNMConstants.h */,
+				37319FF11AA702CB007B1A0D /* UNMConstants.m */,
+				37319FF21AA702CB007B1A0D /* UNMScrollIndicatorHelper.h */,
+				37319FF31AA702CB007B1A0D /* UNMScrollIndicatorHelper.m */,
+				37319FF41AA702CB007B1A0D /* UNMUtilities.h */,
+				37319FF51AA702CB007B1A0D /* UNMUtilities.m */,
+			);
+			name = "utility classes";
+			sourceTree = "<group>";
+		};
+		374333BD1A7146420086C0FC /* search view */ = {
+			isa = PBXGroup;
+			children = (
+				37319FFE1AA702E3007B1A0D /* UNMSearchViewController.h */,
+				37319FFF1AA702E3007B1A0D /* UNMSearchViewController.m */,
+			);
+			name = "search view";
+			sourceTree = "<group>";
+		};
+		374333C11A7146800086C0FC /* university news */ = {
+			isa = PBXGroup;
+			children = (
+				3731A0071AA70319007B1A0D /* UNMUniversityNewsTableViewController.h */,
+				3731A0081AA70319007B1A0D /* UNMUniversityNewsTableViewController.m */,
+				3731A0091AA70319007B1A0D /* UNMUnivNewsWebViewController.h */,
+				3731A00A1AA70319007B1A0D /* UNMUnivNewsWebViewController.m */,
+			);
+			name = "university news";
+			sourceTree = "<group>";
+		};
+		374333C51A71591A0086C0FC /* library view */ = {
+			isa = PBXGroup;
+			children = (
+				3731A00D1AA70336007B1A0D /* UNMLibraryTableViewCell.h */,
+				3731A00E1AA70336007B1A0D /* UNMLibraryTableViewCell.m */,
+				3731A00F1AA70336007B1A0D /* UNMLibraryViewController.h */,
+				3731A0101AA70336007B1A0D /* UNMLibraryViewController.m */,
+			);
+			name = "library view";
+			sourceTree = "<group>";
+		};
+		374333CF1A7288BE0086C0FC /* media view */ = {
+			isa = PBXGroup;
+			children = (
+				3731A0131AA70359007B1A0D /* UNMMediaTableViewCell.h */,
+				3731A0141AA70359007B1A0D /* UNMMediaTableViewCell.m */,
+				3731A0151AA70359007B1A0D /* UNMMediaViewController.h */,
+				3731A0161AA70359007B1A0D /* UNMMediaViewController.m */,
+			);
+			name = "media view";
+			sourceTree = "<group>";
+		};
+		3758EFC31A7776790021F0E8 /* bookmarks view */ = {
+			isa = PBXGroup;
+			children = (
+				3758EFC01A7776560021F0E8 /* UNMBookmarksTableViewController.h */,
+				3758EFC11A7776560021F0E8 /* UNMBookmarksTableViewController.m */,
+			);
+			name = "bookmarks view";
+			sourceTree = "<group>";
+		};
+		377197411A641DF8005D50DA = {
+			isa = PBXGroup;
+			children = (
+				37319F201AA61822007B1A0D /* Crashlytics.framework */,
+				37319F211AA61822007B1A0D /* Fabric.framework */,
+				3771974C1A641DF8005D50DA /* unm-ios */,
+				377197691A641DF8005D50DA /* unm-iosTests */,
+				3771974B1A641DF8005D50DA /* Products */,
+				1DEB08F8E8F29608C2C23991 /* Pods */,
+				27655C29E0D994B8957F6B25 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3771974B1A641DF8005D50DA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3771974A1A641DF8005D50DA /* UnivMobile.app */,
+				377197661A641DF8005D50DA /* unm-iosTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3771974C1A641DF8005D50DA /* unm-ios */ = {
+			isa = PBXGroup;
+			children = (
+				37319F271AA6FFA2007B1A0D /* afnetworking logger */,
+				379B38311A9CC2AC00D9C3C3 /* exo fonts */,
+				37298D9E1A820F2D004EF2D3 /* CPAnimation */,
+				377197511A641DF8005D50DA /* UNMAppDelegate.h */,
+				377197521A641DF8005D50DA /* UNMAppDelegate.m */,
+				37F9CBAB1A690AD900C0E14F /* welcome view */,
+				3771975A1A641DF8005D50DA /* Main.storyboard */,
+				3771975D1A641DF8005D50DA /* Images.xcassets */,
+				3771975F1A641DF8005D50DA /* LaunchScreen.xib */,
+				37F9CBAC1A690AE500C0E14F /* core data */,
+				3771974D1A641DF8005D50DA /* Supporting Files */,
+				37F9CBAD1A690AF000C0E14F /* university selection tbview */,
+				37F9CBAE1A690B0300C0E14F /* region selection tbview */,
+				37F9CBAF1A690B0F00C0E14F /* home view */,
+				37F9CBB61A690E5B00C0E14F /* notification view */,
+				37F9CBB01A690B1F00C0E14F /* side menu view */,
+				37F9CBB11A690B3A00C0E14F /* login view */,
+				37F9CBB21A690B4100C0E14F /* basic data types */,
+				37B946F11A6972DF002BBB73 /* map view */,
+				3732F5E31A9471B800010B75 /* utility classes */,
+				374333BD1A7146420086C0FC /* search view */,
+				37A5C3A21A6EBD86006ABD77 /* Controls With Badges */,
+				374333C11A7146800086C0FC /* university news */,
+				374333C51A71591A0086C0FC /* library view */,
+				374333CF1A7288BE0086C0FC /* media view */,
+				372401101A7632D4002F1E22 /* profile view */,
+				3758EFC31A7776790021F0E8 /* bookmarks view */,
+			);
+			path = "unm-ios";
+			sourceTree = "<group>";
+		};
+		3771974D1A641DF8005D50DA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				37319F591AA700AC007B1A0D /* Info.plist */,
+				37319F5A1AA700AC007B1A0D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		377197691A641DF8005D50DA /* unm-iosTests */ = {
+			isa = PBXGroup;
+			children = (
+				3771976C1A641DF8005D50DA /* unm_iosTests.m */,
+				3771976A1A641DF8005D50DA /* Supporting Files */,
+			);
+			path = "unm-iosTests";
+			sourceTree = "<group>";
+		};
+		3771976A1A641DF8005D50DA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3771976B1A641DF8005D50DA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		379B38311A9CC2AC00D9C3C3 /* exo fonts */ = {
+			isa = PBXGroup;
+			children = (
+				37319F281AA70035007B1A0D /* Exo-Black.otf */,
+				37319F291AA70035007B1A0D /* Exo-BlackItalic.otf */,
+				37319F2A1AA70035007B1A0D /* Exo-Bold.otf */,
+				37319F2B1AA70035007B1A0D /* Exo-BoldItalic.otf */,
+				37319F2C1AA70035007B1A0D /* Exo-ExtraBoldItalic.otf */,
+				37319F2D1AA70035007B1A0D /* Exo-ExtraLight.otf */,
+				37319F2E1AA70035007B1A0D /* Exo-ExtraLightItalic.otf */,
+				37319F2F1AA70035007B1A0D /* Exo-Italic.otf */,
+				37319F301AA70035007B1A0D /* Exo-Light.otf */,
+				37319F311AA70035007B1A0D /* Exo-LightItalic.otf */,
+				37319F321AA70035007B1A0D /* Exo-Medium.otf */,
+				37319F331AA70035007B1A0D /* Exo-MediumItalic.otf */,
+				37319F341AA70035007B1A0D /* Exo-Regular.otf */,
+				37319F351AA70035007B1A0D /* Exo-SemiBold.otf */,
+				37319F361AA70035007B1A0D /* Exo-SemiBoldItalic.otf */,
+				37319F371AA70035007B1A0D /* Exo-Thin.otf */,
+				37319F381AA70035007B1A0D /* Exo-ThinItalic.otf */,
+			);
+			name = "exo fonts";
+			sourceTree = "<group>";
+		};
+		37A5C3A21A6EBD86006ABD77 /* Controls With Badges */ = {
+			isa = PBXGroup;
+			children = (
+				3731A0011AA702FD007B1A0D /* UIBarButtonItem+Badge.h */,
+				3731A0021AA702FD007B1A0D /* UIBarButtonItem+Badge.m */,
+				3731A0031AA702FD007B1A0D /* UIButton+Badge.h */,
+				3731A0041AA702FD007B1A0D /* UIButton+Badge.m */,
+			);
+			name = "Controls With Badges";
+			sourceTree = "<group>";
+		};
+		37B946F11A6972DF002BBB73 /* map view */ = {
+			isa = PBXGroup;
+			children = (
+				37319FBB1AA702AE007B1A0D /* UNMBonPlanScrollView.h */,
+				37319FBC1AA702AE007B1A0D /* UNMBonPlanScrollView.m */,
+				37319FBD1AA702AE007B1A0D /* UNMBonPlanViewController.h */,
+				37319FBE1AA702AE007B1A0D /* UNMBonPlanViewController.m */,
+				37319FBF1AA702AE007B1A0D /* UNMCategoryCollectionViewCell.h */,
+				37319FC01AA702AE007B1A0D /* UNMCategoryCollectionViewCell.m */,
+				37319FC11AA702AE007B1A0D /* UNMCategoryViewController.h */,
+				37319FC21AA702AE007B1A0D /* UNMCategoryViewController.m */,
+				37319FC31AA702AE007B1A0D /* UNMCommentCreationTableViewCell.h */,
+				37319FC41AA702AE007B1A0D /* UNMCommentCreationTableViewCell.m */,
+				37319FC51AA702AE007B1A0D /* UNMCommentTableViewCell.h */,
+				37319FC61AA702AE007B1A0D /* UNMCommentTableViewCell.m */,
+				37319FC71AA702AE007B1A0D /* UNMDescriptionTableViewCell.h */,
+				37319FC81AA702AE007B1A0D /* UNMDescriptionTableViewCell.m */,
+				37319FC91AA702AE007B1A0D /* UNMDescriptionViewController.h */,
+				37319FCA1AA702AE007B1A0D /* UNMDescriptionViewController.m */,
+				37319FCB1AA702AE007B1A0D /* UNMDescriptionWebViewTBViewCell.h */,
+				37319FCC1AA702AE007B1A0D /* UNMDescriptionWebViewTBViewCell.m */,
+				37319FCD1AA702AE007B1A0D /* UNMMapViewController.h */,
+				37319FCE1AA702AE007B1A0D /* UNMMapViewController.m */,
+				37319FCF1AA702AE007B1A0D /* UNMPlaceHolderTextView.h */,
+				37319FD01AA702AE007B1A0D /* UNMPlaceHolderTextView.m */,
+				37319FD11AA702AE007B1A0D /* UNMSquareTextField.h */,
+				37319FD21AA702AE007B1A0D /* UNMSquareTextField.m */,
+				37319FD31AA702AE007B1A0D /* UNMTabButton.h */,
+				37319FD41AA702AE007B1A0D /* UNMTabButton.m */,
+				37319FD51AA702AE007B1A0D /* UNMViewWithUnclippedButton.h */,
+				37319FD61AA702AE007B1A0D /* UNMViewWithUnclippedButton.m */,
+			);
+			name = "map view";
+			sourceTree = "<group>";
+		};
+		37F9CBAB1A690AD900C0E14F /* welcome view */ = {
+			isa = PBXGroup;
+			children = (
+				37319F561AA70081007B1A0D /* UNMWelcomeViewController.h */,
+				37319F571AA70081007B1A0D /* UNMWelcomeViewController.m */,
+			);
+			name = "welcome view";
+			sourceTree = "<group>";
+		};
+		37F9CBAC1A690AE500C0E14F /* core data */ = {
+			isa = PBXGroup;
+			children = (
+				377197541A641DF8005D50DA /* unm_ios.xcdatamodeld */,
+			);
+			name = "core data";
+			sourceTree = "<group>";
+		};
+		37F9CBAD1A690AF000C0E14F /* university selection tbview */ = {
+			isa = PBXGroup;
+			children = (
+				37319F5D1AA700CB007B1A0D /* UNMUniversitySelectionTableViewController.h */,
+				37319F5E1AA700CB007B1A0D /* UNMUniversitySelectionTableViewController.m */,
+			);
+			name = "university selection tbview";
+			sourceTree = "<group>";
+		};
+		37F9CBAE1A690B0300C0E14F /* region selection tbview */ = {
+			isa = PBXGroup;
+			children = (
+				37319F601AA700E8007B1A0D /* UNMRegionTableViewController.h */,
+				37319F611AA700E8007B1A0D /* UNMRegionTableViewController.m */,
+			);
+			name = "region selection tbview";
+			sourceTree = "<group>";
+		};
+		37F9CBAF1A690B0F00C0E14F /* home view */ = {
+			isa = PBXGroup;
+			children = (
+				37319F631AA70106007B1A0D /* UNMHomeViewController.h */,
+				37319F641AA70106007B1A0D /* UNMHomeViewController.m */,
+				37319F651AA70106007B1A0D /* UNMNewsTableViewCell.h */,
+				37319F661AA70106007B1A0D /* UNMNewsTableViewCell.m */,
+			);
+			name = "home view";
+			sourceTree = "<group>";
+		};
+		37F9CBB01A690B1F00C0E14F /* side menu view */ = {
+			isa = PBXGroup;
+			children = (
+				37319F7B1AA701EF007B1A0D /* UNMGeneralWebViewController.h */,
+				37319F7C1AA701EF007B1A0D /* UNMGeneralWebViewController.m */,
+				37319F7D1AA701EF007B1A0D /* UNMSideMenuViewController.h */,
+				37319F7E1AA701EF007B1A0D /* UNMSideMenuViewController.m */,
+				37F9CBBE1A69131A00C0E14F /* custom cell */,
+				37F9CBBD1A69131000C0E14F /* simple cell */,
+			);
+			name = "side menu view";
+			sourceTree = "<group>";
+		};
+		37F9CBB11A690B3A00C0E14F /* login view */ = {
+			isa = PBXGroup;
+			children = (
+				37319F811AA70211007B1A0D /* UNMLoginCallbackProtocol.h */,
+				37319F821AA70211007B1A0D /* UNMLoginClassicViewController.h */,
+				37319F831AA70211007B1A0D /* UNMLoginClassicViewController.m */,
+				37319F841AA70211007B1A0D /* UNMLoginViewController.h */,
+				37319F851AA70211007B1A0D /* UNMLoginViewController.m */,
+			);
+			name = "login view";
+			sourceTree = "<group>";
+		};
+		37F9CBB21A690B4100C0E14F /* basic data types */ = {
+			isa = PBXGroup;
+			children = (
+				37319F881AA70239007B1A0D /* UNMAuthDataBasic.h */,
+				37319F891AA70239007B1A0D /* UNMAuthDataBasic.m */,
+				37319F8A1AA70239007B1A0D /* UNMBasicDataSaving.h */,
+				37319F8B1AA70239007B1A0D /* UNMBasicDataSaving.m */,
+				37319F8C1AA70239007B1A0D /* UNMBookmarkBasic.h */,
+				37319F8D1AA70239007B1A0D /* UNMBookmarkBasic.m */,
+				37319F8E1AA70239007B1A0D /* UNMCategoryBasic.h */,
+				37319F8F1AA70239007B1A0D /* UNMCategoryBasic.m */,
+				37319F901AA70239007B1A0D /* UNMCategoryIcons.h */,
+				37319F911AA70239007B1A0D /* UNMCategoryIcons.m */,
+				37319F921AA70239007B1A0D /* UNMCommentBasic.h */,
+				37319F931AA70239007B1A0D /* UNMCommentBasic.m */,
+				37319F941AA70239007B1A0D /* UNMImageMap.h */,
+				37319F951AA70239007B1A0D /* UNMImageMap.m */,
+				37319F961AA70239007B1A0D /* UNMMapItemBasic.h */,
+				37319F971AA70239007B1A0D /* UNMMapItemBasic.m */,
+				37319F981AA70239007B1A0D /* UNMMediaItemBasic.h */,
+				37319F991AA70239007B1A0D /* UNMMediaItemBasic.m */,
+				37319F9A1AA70239007B1A0D /* UNMMenuItemBasic.h */,
+				37319F9B1AA70239007B1A0D /* UNMMenuItemBasic.m */,
+				37319F9C1AA70239007B1A0D /* UNMNewsBasic.h */,
+				37319F9D1AA70239007B1A0D /* UNMNewsBasic.m */,
+				37319F9E1AA70239007B1A0D /* UNMNotificationBasic.h */,
+				37319F9F1AA70239007B1A0D /* UNMNotificationBasic.m */,
+				37319FA01AA70239007B1A0D /* UNMRegionBasic.h */,
+				37319FA11AA70239007B1A0D /* UNMRegionBasic.m */,
+				37319FA21AA70239007B1A0D /* UNMRestoMenuItem.h */,
+				37319FA31AA70239007B1A0D /* UNMRestoMenuItem.m */,
+				37319FA41AA70239007B1A0D /* UNMUniversityBasic.h */,
+				37319FA51AA70239007B1A0D /* UNMUniversityBasic.m */,
+				37319FA61AA70239007B1A0D /* UNMUnivLibraryItem.h */,
+				37319FA71AA70239007B1A0D /* UNMUnivLibraryItem.m */,
+				37319FA81AA70239007B1A0D /* UNMUserBasic.h */,
+				37319FA91AA70239007B1A0D /* UNMUserBasic.m */,
+			);
+			name = "basic data types";
+			sourceTree = "<group>";
+		};
+		37F9CBB61A690E5B00C0E14F /* notification view */ = {
+			isa = PBXGroup;
+			children = (
+				37319F691AA70125007B1A0D /* notificationCell.xib */,
+				37319F6A1AA70125007B1A0D /* UNMNotificationsTableViewController.h */,
+				37319F6B1AA70125007B1A0D /* UNMNotificationsTableViewController.m */,
+				37319F6C1AA70125007B1A0D /* UNMNotificationTableViewCell.h */,
+				37319F6D1AA70125007B1A0D /* UNMNotificationTableViewCell.m */,
+			);
+			name = "notification view";
+			sourceTree = "<group>";
+		};
+		37F9CBBD1A69131000C0E14F /* simple cell */ = {
+			isa = PBXGroup;
+			children = (
+				37319F711AA701DB007B1A0D /* simpleTableViewCell.xib */,
+				37319F721AA701DB007B1A0D /* UNMSimpleTableViewCell.h */,
+				37319F731AA701DB007B1A0D /* UNMSimpleTableViewCell.m */,
+			);
+			name = "simple cell";
+			sourceTree = "<group>";
+		};
+		37F9CBBE1A69131A00C0E14F /* custom cell */ = {
+			isa = PBXGroup;
+			children = (
+				37319F761AA701E3007B1A0D /* sideMenuCustomCell.xib */,
+				37319F771AA701E3007B1A0D /* UNMSideMenuCustomTableViewCell.h */,
+				37319F781AA701E3007B1A0D /* UNMSideMenuCustomTableViewCell.m */,
+			);
+			name = "custom cell";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		377197491A641DF8005D50DA /* unm-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 377197701A641DF8005D50DA /* Build configuration list for PBXNativeTarget "unm-ios" */;
+			buildPhases = (
+				0EBB8284DC7D0CFC5A205694 /* Check Pods Manifest.lock */,
+				377197461A641DF8005D50DA /* Sources */,
+				377197471A641DF8005D50DA /* Frameworks */,
+				377197481A641DF8005D50DA /* Resources */,
+				350CF70A1B1823CE250F3182 /* Copy Pods Resources */,
+				37319F1F1AA617DE007B1A0D /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "unm-ios";
+			productName = "unm-ios";
+			productReference = 3771974A1A641DF8005D50DA /* UnivMobile.app */;
+			productType = "com.apple.product-type.application";
+		};
+		377197651A641DF8005D50DA /* unm-iosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 377197731A641DF8005D50DA /* Build configuration list for PBXNativeTarget "unm-iosTests" */;
+			buildPhases = (
+				377197621A641DF8005D50DA /* Sources */,
+				377197631A641DF8005D50DA /* Frameworks */,
+				377197641A641DF8005D50DA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				377197681A641DF8005D50DA /* PBXTargetDependency */,
+			);
+			name = "unm-iosTests";
+			productName = "unm-iosTests";
+			productReference = 377197661A641DF8005D50DA /* unm-iosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		377197421A641DF8005D50DA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = univmobile;
+				TargetAttributes = {
+					377197491A641DF8005D50DA = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					377197651A641DF8005D50DA = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 377197491A641DF8005D50DA;
+					};
+				};
+			};
+			buildConfigurationList = 377197451A641DF8005D50DA /* Build configuration list for PBXProject "unm-ios" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 377197411A641DF8005D50DA;
+			productRefGroup = 3771974B1A641DF8005D50DA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				377197491A641DF8005D50DA /* unm-ios */,
+				377197651A641DF8005D50DA /* unm-iosTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		377197481A641DF8005D50DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3771975C1A641DF8005D50DA /* Main.storyboard in Resources */,
+				37319F471AA70035007B1A0D /* Exo-SemiBoldItalic.otf in Resources */,
+				377197611A641DF8005D50DA /* LaunchScreen.xib in Resources */,
+				37319F791AA701E3007B1A0D /* sideMenuCustomCell.xib in Resources */,
+				37319F461AA70035007B1A0D /* Exo-SemiBold.otf in Resources */,
+				37319F421AA70035007B1A0D /* Exo-LightItalic.otf in Resources */,
+				3771975E1A641DF8005D50DA /* Images.xcassets in Resources */,
+				37319F5B1AA700AC007B1A0D /* Info.plist in Resources */,
+				37319F3E1AA70035007B1A0D /* Exo-ExtraLight.otf in Resources */,
+				37319F3D1AA70035007B1A0D /* Exo-ExtraBoldItalic.otf in Resources */,
+				37319F391AA70035007B1A0D /* Exo-Black.otf in Resources */,
+				37319F3B1AA70035007B1A0D /* Exo-Bold.otf in Resources */,
+				37319F6E1AA70125007B1A0D /* notificationCell.xib in Resources */,
+				37319F401AA70035007B1A0D /* Exo-Italic.otf in Resources */,
+				37319F741AA701DB007B1A0D /* simpleTableViewCell.xib in Resources */,
+				37319F3C1AA70035007B1A0D /* Exo-BoldItalic.otf in Resources */,
+				37319F451AA70035007B1A0D /* Exo-Regular.otf in Resources */,
+				37319F411AA70035007B1A0D /* Exo-Light.otf in Resources */,
+				37319F3F1AA70035007B1A0D /* Exo-ExtraLightItalic.otf in Resources */,
+				37319F481AA70035007B1A0D /* Exo-Thin.otf in Resources */,
+				37319F441AA70035007B1A0D /* Exo-MediumItalic.otf in Resources */,
+				37319F3A1AA70035007B1A0D /* Exo-BlackItalic.otf in Resources */,
+				37319F431AA70035007B1A0D /* Exo-Medium.otf in Resources */,
+				37319F491AA70035007B1A0D /* Exo-ThinItalic.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		377197641A641DF8005D50DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0EBB8284DC7D0CFC5A205694 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		350CF70A1B1823CE250F3182 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-unm-ios/Pods-unm-ios-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		37319F1F1AA617DE007B1A0D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run aea8fc53a9144a761827256b0b56c53b72ee92e7 4cb6acd6e27e063609872e82c1c2c8f7694675d7487d2516a959f6a8d93d4f30";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		377197461A641DF8005D50DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37319F541AA7006C007B1A0D /* CPAnimationSequence.m in Sources */,
+				3731A0061AA702FD007B1A0D /* UIButton+Badge.m in Sources */,
+				37319FDC1AA702AE007B1A0D /* UNMCommentTableViewCell.m in Sources */,
+				37319FDF1AA702AE007B1A0D /* UNMDescriptionWebViewTBViewCell.m in Sources */,
+				37319FDB1AA702AE007B1A0D /* UNMCommentCreationTableViewCell.m in Sources */,
+				37319FDD1AA702AE007B1A0D /* UNMDescriptionTableViewCell.m in Sources */,
+				37319FB21AA70239007B1A0D /* UNMMediaItemBasic.m in Sources */,
+				37319FB11AA70239007B1A0D /* UNMMapItemBasic.m in Sources */,
+				37319F551AA7006C007B1A0D /* CPAnimationStep.m in Sources */,
+				37319FAA1AA70239007B1A0D /* UNMAuthDataBasic.m in Sources */,
+				3731A0121AA70336007B1A0D /* UNMLibraryViewController.m in Sources */,
+				37319F7F1AA701EF007B1A0D /* UNMGeneralWebViewController.m in Sources */,
+				37319F681AA70106007B1A0D /* UNMNewsTableViewCell.m in Sources */,
+				37319F531AA7006C007B1A0D /* CPAnimationProgram.m in Sources */,
+				37319FFC1AA702CB007B1A0D /* UNMScrollIndicatorHelper.m in Sources */,
+				37319F6F1AA70125007B1A0D /* UNMNotificationsTableViewController.m in Sources */,
+				37319FAD1AA70239007B1A0D /* UNMCategoryBasic.m in Sources */,
+				37319FFB1AA702CB007B1A0D /* UNMConstants.m in Sources */,
+				37319FE31AA702AE007B1A0D /* UNMTabButton.m in Sources */,
+				37319FE11AA702AE007B1A0D /* UNMPlaceHolderTextView.m in Sources */,
+				37319F801AA701EF007B1A0D /* UNMSideMenuViewController.m in Sources */,
+				37319FD91AA702AE007B1A0D /* UNMCategoryCollectionViewCell.m in Sources */,
+				377197531A641DF8005D50DA /* UNMAppDelegate.m in Sources */,
+				37319FF81AA702CB007B1A0D /* UIColor+Extension.m in Sources */,
+				37319FB31AA70239007B1A0D /* UNMMenuItemBasic.m in Sources */,
+				37319FF71AA702CB007B1A0D /* NSString+URLEncoding.m in Sources */,
+				37319FD71AA702AE007B1A0D /* UNMBonPlanScrollView.m in Sources */,
+				37319FB01AA70239007B1A0D /* UNMImageMap.m in Sources */,
+				37319FAF1AA70239007B1A0D /* UNMCommentBasic.m in Sources */,
+				37319FDA1AA702AE007B1A0D /* UNMCategoryViewController.m in Sources */,
+				3731A0261AA70373007B1A0D /* UNMProfileFooterTableViewCell.m in Sources */,
+				3731A0281AA70373007B1A0D /* UNMProfileViewController.m in Sources */,
+				37319FAE1AA70239007B1A0D /* UNMCategoryIcons.m in Sources */,
+				37319FFD1AA702CB007B1A0D /* UNMUtilities.m in Sources */,
+				37319F701AA70125007B1A0D /* UNMNotificationTableViewCell.m in Sources */,
+				3731A0111AA70336007B1A0D /* UNMLibraryTableViewCell.m in Sources */,
+				37319FFA1AA702CB007B1A0D /* UNMBaseViewController.m in Sources */,
+				37319F581AA70081007B1A0D /* UNMWelcomeViewController.m in Sources */,
+				3731A0271AA70373007B1A0D /* UNMProfileTBVSectionHeaderView.m in Sources */,
+				37319FBA1AA70239007B1A0D /* UNMUserBasic.m in Sources */,
+				37319F5C1AA700AC007B1A0D /* main.m in Sources */,
+				37319F871AA70211007B1A0D /* UNMLoginViewController.m in Sources */,
+				37319F861AA70211007B1A0D /* UNMLoginClassicViewController.m in Sources */,
+				37319FE41AA702AE007B1A0D /* UNMViewWithUnclippedButton.m in Sources */,
+				37319FE21AA702AE007B1A0D /* UNMSquareTextField.m in Sources */,
+				37319F751AA701DB007B1A0D /* UNMSimpleTableViewCell.m in Sources */,
+				3731A0171AA70359007B1A0D /* UNMMediaTableViewCell.m in Sources */,
+				37319F4C1AA70051007B1A0D /* AFNetworkActivityLogger.m in Sources */,
+				37319FF61AA702CB007B1A0D /* NSDate+notificationDate.m in Sources */,
+				37319FD81AA702AE007B1A0D /* UNMBonPlanViewController.m in Sources */,
+				3731A0291AA70373007B1A0D /* UNMUniversitySelectionViewController.m in Sources */,
+				3731A00B1AA70319007B1A0D /* UNMUniversityNewsTableViewController.m in Sources */,
+				3731A02A1AA70373007B1A0D /* UNMUnivSelectTableViewCell.m in Sources */,
+				3731A0051AA702FD007B1A0D /* UIBarButtonItem+Badge.m in Sources */,
+				37319FF91AA702CB007B1A0D /* UIScrollView+ScrollIndicator.m in Sources */,
+				3758EFC21A7776560021F0E8 /* UNMBookmarksTableViewController.m in Sources */,
+				37319FB51AA70239007B1A0D /* UNMNotificationBasic.m in Sources */,
+				3731A0251AA70373007B1A0D /* UNMBookmarksTableViewCell.m in Sources */,
+				37319FDE1AA702AE007B1A0D /* UNMDescriptionViewController.m in Sources */,
+				37319FB71AA70239007B1A0D /* UNMRestoMenuItem.m in Sources */,
+				37319FB61AA70239007B1A0D /* UNMRegionBasic.m in Sources */,
+				37319FAB1AA70239007B1A0D /* UNMBasicDataSaving.m in Sources */,
+				3731A0001AA702E3007B1A0D /* UNMSearchViewController.m in Sources */,
+				37319F5F1AA700CB007B1A0D /* UNMUniversitySelectionTableViewController.m in Sources */,
+				37319F671AA70106007B1A0D /* UNMHomeViewController.m in Sources */,
+				37319FE01AA702AE007B1A0D /* UNMMapViewController.m in Sources */,
+				3731A00C1AA70319007B1A0D /* UNMUnivNewsWebViewController.m in Sources */,
+				3731A0181AA70359007B1A0D /* UNMMediaViewController.m in Sources */,
+				37319F7A1AA701E3007B1A0D /* UNMSideMenuCustomTableViewCell.m in Sources */,
+				37319FB41AA70239007B1A0D /* UNMNewsBasic.m in Sources */,
+				37319FAC1AA70239007B1A0D /* UNMBookmarkBasic.m in Sources */,
+				37319FB81AA70239007B1A0D /* UNMUniversityBasic.m in Sources */,
+				37319F621AA700E8007B1A0D /* UNMRegionTableViewController.m in Sources */,
+				377197561A641DF8005D50DA /* unm_ios.xcdatamodeld in Sources */,
+				37319FB91AA70239007B1A0D /* UNMUnivLibraryItem.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		377197621A641DF8005D50DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3771976D1A641DF8005D50DA /* unm_iosTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		377197681A641DF8005D50DA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 377197491A641DF8005D50DA /* unm-ios */;
+			targetProxy = 377197671A641DF8005D50DA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3771975A1A641DF8005D50DA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3771975B1A641DF8005D50DA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3771975F1A641DF8005D50DA /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				377197601A641DF8005D50DA /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3771976E1A641DF8005D50DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3771976F1A641DF8005D50DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		377197711A641DF8005D50DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 232E84F48F2A23516118D17E /* Pods-unm-ios.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Universite Numerique Paris Ile-de-France (TJX4382XYW)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "unm-ios/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_NAME = UnivMobile;
+				PROVISIONING_PROFILE = "bb845a63-cbad-45ab-8771-5ccf9d9f1241";
+			};
+			name = Debug;
+		};
+		377197721A641DF8005D50DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A75FE80334BDC50C94769D65 /* Pods-unm-ios.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Universite Numerique Paris Ile-de-France (TJX4382XYW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Universite Numerique Paris Ile-de-France (TJX4382XYW)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "unm-ios/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_NAME = UnivMobile;
+				PROVISIONING_PROFILE = "bb845a63-cbad-45ab-8771-5ccf9d9f1241";
+			};
+			name = Release;
+		};
+		377197741A641DF8005D50DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "unm-iosTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UnivMobile.app/UnivMobile";
+			};
+			name = Debug;
+		};
+		377197751A641DF8005D50DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "unm-iosTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UnivMobile.app/UnivMobile";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		377197451A641DF8005D50DA /* Build configuration list for PBXProject "unm-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3771976E1A641DF8005D50DA /* Debug */,
+				3771976F1A641DF8005D50DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		377197701A641DF8005D50DA /* Build configuration list for PBXNativeTarget "unm-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				377197711A641DF8005D50DA /* Debug */,
+				377197721A641DF8005D50DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		377197731A641DF8005D50DA /* Build configuration list for PBXNativeTarget "unm-iosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				377197741A641DF8005D50DA /* Debug */,
+				377197751A641DF8005D50DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		377197541A641DF8005D50DA /* unm_ios.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				377197551A641DF8005D50DA /* unm_ios.xcdatamodel */,
+			);
+			currentVersion = 377197551A641DF8005D50DA /* unm_ios.xcdatamodel */;
+			path = unm_ios.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 377197421A641DF8005D50DA /* Project object */;
+}

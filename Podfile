@@ -1,5 +1,15 @@
+# Uncomment this line to define a global platform for your project
 platform :ios, '6.0'
- 
-pod 'Mantle'
-pod 'TSMessages'
-pod 'ReactiveCocoa'
+
+target 'unm-ios' do
+pod 'AFNetworking', '~> 2.0'
+pod 'MFSideMenu'
+pod 'SSKeychain'
+pod 'Google-Maps-iOS-SDK', '~> 1.9'
+pod 'ZBarSDK', '~> 1.3'
+end
+
+target 'unm-iosTests' do
+
+end
+
