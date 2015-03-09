@@ -305,6 +305,7 @@
 		377197661A641DF8005D50DA /* unm-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "unm-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3771976B1A641DF8005D50DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3771976C1A641DF8005D50DA /* unm_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = unm_iosTests.m; sourceTree = "<group>"; };
+		37761F4D1AADFE4100CD2DC0 /* UNMCategoryIconProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNMCategoryIconProtocol.h; sourceTree = "<group>"; };
 		37B946EC1A69683C002BBB73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A75FE80334BDC50C94769D65 /* Pods-unm-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unm-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-unm-ios/Pods-unm-ios.release.xcconfig"; sourceTree = "<group>"; };
 		A8018100A1727F436B984CB9 /* libPods-unm-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-unm-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -702,6 +703,7 @@
 				37319F8F1AA70239007B1A0D /* UNMCategoryBasic.m */,
 				37319F901AA70239007B1A0D /* UNMCategoryIcons.h */,
 				37319F911AA70239007B1A0D /* UNMCategoryIcons.m */,
+				37761F4D1AADFE4100CD2DC0 /* UNMCategoryIconProtocol.h */,
 				37319F921AA70239007B1A0D /* UNMCommentBasic.h */,
 				37319F931AA70239007B1A0D /* UNMCommentBasic.m */,
 				37319F941AA70239007B1A0D /* UNMImageMap.h */,

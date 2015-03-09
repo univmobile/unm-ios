@@ -12,14 +12,16 @@
 #import "UNMUniversityBasic.h"
 
 @implementation UNMCategoryBasic
-- (instancetype)initWithName:(NSString *)name andDescription:(NSString *)description andActive:(BOOL)active andID:(NSNumber *)ID
+- (instancetype)initWithName:(NSString *)name andDescription:(NSString *)description andActive:(BOOL)active andID:(NSNumber *)ID andActiveIcon:(NSString *)activeIcon andMakerIcon:(NSString *)marker
 {
     self = [super init];
     if (self) {
         _name = name;
         _desc = description;
         _active = active;
-        _ID = ID;
+        _categoryID = ID;
+        _activeIconName = activeIcon;
+        _markerIconName = marker;
     }
     return self;
 }
@@ -45,10 +47,12 @@
                 for (NSDictionary *object in objects) {
                     NSString *name = object[@"name"];
                     NSString *description = object[@"description"];
+                    NSString *activeIconImage = object[@"activeIconUrl"];
+                    NSString *markerIconImage = object[@"markerIconUrl"];
                     BOOL active = [[object objectForKey:@"active"] boolValue];
                     NSNumber *ID = object[@"id"];
                     if (active && [name class] != [NSNull class] && [description class] != [NSNull class]) {
-                        UNMCategoryBasic *item = [[UNMCategoryBasic alloc]initWithName:name andDescription:description andActive:active andID:ID];
+                        UNMCategoryBasic *item = [[UNMCategoryBasic alloc]initWithName:name andDescription:description andActive:active andID:ID andActiveIcon:activeIconImage andMakerIcon:markerIconImage];
                         if (array != nil) {
                             if (!limit || [array count] < [limit intValue]) {
                                 [array addObject:item];

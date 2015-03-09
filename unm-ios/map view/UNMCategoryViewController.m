@@ -186,10 +186,10 @@
         
         cell.imageView.image = nil;
         
-        [self setImageForView:cell.imageView withCategoryID:category.ID];
+        [self setImageForView:cell.imageView withCategory:category];
         if ([self.selectedIndexes indexOfObject:indexPath] != NSNotFound) {
             cell.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
-        } else if(self.preselectedCategory && [category.ID isEqualToNumber:self.preselectedCategory]) {
+        } else if(self.preselectedCategory && [category.categoryID isEqualToNumber:self.preselectedCategory]) {
             cell.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
             [self.selectedIndexes addObject:indexPath];
         } else {
@@ -201,14 +201,14 @@
     return cell;
 }
 
-- (void)setImageForView:(UIImageView *)imgView withCategoryID:(NSNumber *)catID {
-    if (imgView && catID) {
-        UIImage *icon = [self.cellIcons objectForKey:catID];
+- (void)setImageForView:(UIImageView *)imgView withCategory:(UNMCategoryBasic *)category {
+    if (imgView && category) {
+        UIImage *icon = [self.cellIcons objectForKey:[category categoryID]];
         if (!icon) {
             imgView.image = nil;
-            [UNMCategoryIcons getCategoryImageWithID:catID success:^(UNMCategoryIcons *icon) {
+            [UNMCategoryIcons getCategoryImageWithCategoryProtocolItem:category success:^(UNMCategoryIcons *icon) {
                 imgView.image = icon.activeImage;
-                [self.cellIcons setObject:icon.activeImage forKey:catID];
+                [self.cellIcons setObject:icon.activeImage forKey:[category categoryID]];
             } failure:^{
                 imgView.image = nil;
             }];
@@ -269,7 +269,7 @@
             
             UNMCategoryBasic *category = self.categories[indexPath.row];
             
-            [categoryIDS addObject:category.ID];
+            [categoryIDS addObject:category.categoryID];
         }
     }
     return categoryIDS;

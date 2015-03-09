@@ -198,7 +198,7 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
 
 - (void)fetchComments {
     if (self.mapItem) {
-        NSString *path = [NSString stringWithFormat:@"comments/search/findByPoiOrderByCreatedOnDesc?poiId=%d",[[[self mapItem] ID] intValue]];
+        NSString *path = [NSString stringWithFormat:@"comments/search/findByPoiOrderByCreatedOnDesc?poiId=%d",[[[self mapItem] categoryID] intValue]];
         [UNMUtilities fetchFromApiWithPath:path success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [self.comments removeAllObjects];
             NSDictionary *embedded = responseObject[@"_embedded"];
@@ -256,12 +256,6 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
     attributes = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
     subString = [[NSAttributedString alloc] initWithString:body attributes:attributes];
     [attrStr appendAttributedString:subString];
-//    [attrStr appendAttributedString:newLine];
-//    subString = [[NSAttributedString alloc] initWithData:[body dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType} documentAttributes:NULL error:NULL];
-//    [attrStr appendAttributedString:subString];
-//    [attrStr appendAttributedString:newLine];
-//    subString = [[NSAttributedString alloc]initWithData:[subString.string dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType} documentAttributes:NULL error:NULL];
-//    [attrStr appendAttributedString:subString];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -609,7 +603,7 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
     if ([mapItem.categoryID class] != [NSNull class]) {
         UIImage *icon = [self.catIcons objectForKey:mapItem.categoryID];
         if (!icon) {
-            [UNMCategoryIcons getCategoryImageWithID:mapItem.categoryID success:^(UNMCategoryIcons *icons) {
+            [UNMCategoryIcons getCategoryImageWithCategoryProtocolItem:mapItem success:^(UNMCategoryIcons *icons) {
                 self.categoryIcon.image = icons.activeImage;
                 [self.catIcons setObject:icons.activeImage forKey:mapItem.categoryID];
             } failure:^{

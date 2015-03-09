@@ -126,7 +126,7 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
                 marker.map = self.mapView;
                 marker.userData = self.singleItem;
                 [self mapView:self.mapView didTapMarker:marker];
-                [UNMCategoryIcons getCategoryImageWithID:self.singleItem.categoryID success:^(UNMCategoryIcons *catIcon) {
+                [UNMCategoryIcons getCategoryImageWithCategoryProtocolItem:self.singleItem success:^(UNMCategoryIcons *catIcon) {
                     marker.icon = catIcon.markerImage;
                     [self.markerIcons setObject:catIcon.markerImage forKey:self.singleItem.categoryID];
                 }];
@@ -206,7 +206,7 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
         marker.userData = singleItem;
         UIImage *icon = [self.markerIcons objectForKey:singleItem.categoryID];
         if (!icon) {
-            [UNMCategoryIcons getCategoryImageWithID:singleItem.categoryID success:^(UNMCategoryIcons *catIcon) {
+            [UNMCategoryIcons getCategoryImageWithCategoryProtocolItem:singleItem success:^(UNMCategoryIcons *catIcon) {
                 marker.icon = catIcon.markerImage;
                 [self.markerIcons setObject:catIcon.markerImage forKey:singleItem.categoryID];
             }];
@@ -723,7 +723,7 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
                 marker.map = map;
                 UIImage *icon = [self.markerIcons objectForKey:item.categoryID];
                 if (!icon) {
-                    [UNMCategoryIcons getCategoryImageWithID:item.categoryID success:^(UNMCategoryIcons *catIcon) {
+                    [UNMCategoryIcons getCategoryImageWithCategoryProtocolItem:item success:^(UNMCategoryIcons *catIcon) {
                         marker.icon = catIcon.markerImage;
                         [self.markerIcons setObject:catIcon.markerImage forKey:item.categoryID];
                     }];
@@ -767,7 +767,7 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
                 marker.map = map;
                 UIImage *icon = [self.markerIcons objectForKey:item.categoryID];
                 if (!icon) {
-                    [UNMCategoryIcons getCategoryImageWithID:item.categoryID success:^(UNMCategoryIcons *catIcon) {
+                    [UNMCategoryIcons getCategoryImageWithCategoryProtocolItem:item success:^(UNMCategoryIcons *catIcon) {
                         marker.icon = catIcon.markerImage;
                         [self.markerIcons setObject:catIcon.markerImage forKey:item.categoryID];
                     }];
@@ -1023,7 +1023,7 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
     GMSMarker *marker = [GMSMarker markerWithPosition:location];
     marker.userData = mapItem;
     marker.map = self.mapView;
-    [UNMCategoryIcons getCategoryImageWithID:mapItem.categoryID success:^(UNMCategoryIcons *catIcon) {
+    [UNMCategoryIcons getCategoryImageWithCategoryProtocolItem:mapItem success:^(UNMCategoryIcons *catIcon) {
         marker.icon = catIcon.markerImage;
         [self.markerIcons setObject:catIcon.markerImage forKey:mapItem.categoryID];
     }];

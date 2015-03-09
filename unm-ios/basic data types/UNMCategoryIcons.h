@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UNMMapItemBasic.h"
 
 @interface UNMCategoryIcons : NSObject
 @property (strong, nonatomic) UIImage *activeImage;
@@ -18,4 +19,6 @@
 - (instancetype)initWithActiveReq:(NSURLRequest *)image andMarkerReq:(NSURLRequest *)markImage;
 + (void) getCategoryImageWithID:(NSNumber *)ID success:(void(^)(UNMCategoryIcons *))success;
 + (void) getCategoryImageWithID:(NSNumber *)ID success:(void(^)(UNMCategoryIcons *))success failure:(void(^)())failure;
++ (void) getCategoryImageWithCategoryProtocolItem:(id<UNMCategoryIconProtocol>)item success:(void(^)(UNMCategoryIcons *))success;
++ (void) getCategoryImageWithCategoryProtocolItem:(id<UNMCategoryIconProtocol>)item success:(void(^)(UNMCategoryIcons *))success failure:(void(^)())failure;
 @end

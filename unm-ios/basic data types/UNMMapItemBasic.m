@@ -14,7 +14,7 @@
 
 @implementation UNMMapItemBasic
 
-- (instancetype)initWithID:(NSNumber *)ID andName:(NSString*)name andDescription:(NSString *)desc andLat:(CGFloat)lat andLon:(CGFloat)lon andAddress:(NSString *)address andPhone:(NSString *)phone andEmail:(NSString *)email andRestorauntID:(NSString *)restoID andRuedesfacs:(BOOL)ruedesfacs andCategoryID:(NSNumber *)catID andWebsite:(NSString *)website andWelcome:(NSString *)welcome andDisciplines:(NSString *)disciplines andOpeningHours:(NSString *)openingHours andClosingHours:(NSString *)closingHours andFloor:(NSString *)floor andItinerary:(NSString *)itinerary
+- (instancetype)initWithID:(NSNumber *)ID andName:(NSString*)name andDescription:(NSString *)desc andLat:(CGFloat)lat andLon:(CGFloat)lon andAddress:(NSString *)address andPhone:(NSString *)phone andEmail:(NSString *)email andRestorauntID:(NSString *)restoID andRuedesfacs:(BOOL)ruedesfacs andCategoryID:(NSNumber *)catID andWebsite:(NSString *)website andWelcome:(NSString *)welcome andDisciplines:(NSString *)disciplines andOpeningHours:(NSString *)openingHours andClosingHours:(NSString *)closingHours andFloor:(NSString *)floor andItinerary:(NSString *)itinerary andActiveIcon:(NSString *)active andMarkerIcon:(NSString *)marker
 {
     self = [super init];
     if (self) {
@@ -36,6 +36,8 @@
         _closingHours = closingHours;
         _floor = floor;
         _itinerary = itinerary;
+        _activeIconName = active;
+        _markerIconName = marker;
     }
     return self;
 }
@@ -60,6 +62,8 @@
     newItem->_closingHours = [_closingHours copyWithZone:zone];
     newItem->_floor = [_floor copyWithZone:zone];
     newItem->_itinerary = [_itinerary copyWithZone:zone];
+    newItem->_activeIconName = [_activeIconName copyWithZone:zone];
+    newItem->_markerIconName = [_markerIconName copyWithZone:zone];
     return newItem;
 }
 
@@ -104,6 +108,10 @@
             return NO;
         } else if ([self itinerary] != [other itinerary] && ![(id)[self itinerary] isEqual:[other itinerary]]) {
             return NO;
+        } else if ([self activeIconName] != [other activeIconName] && ![(id)[self activeIconName] isEqual:[other activeIconName]]) {
+            return NO;
+        } else if ([self markerIconName] != [other markerIconName] && ![(id)[self markerIconName] isEqual:[other markerIconName]]) {
+            return NO;
         } else {
             return YES;
         }
@@ -138,6 +146,8 @@
     result = prime * result + [self objectsHash:[self floor]];
     result = prime * result + [self objectsHash:[self itinerary]];
     result = prime * result + [self objectsHash:[self disciplines]];
+    result = prime * result + [self objectsHash:[self activeIconName]];
+    result = prime * result + [self objectsHash:[self markerIconName]];
     result = prime * result + ((self.ruedesfacs)?1231:1237);
     return result;
 }
@@ -256,11 +266,13 @@
                         NSString *floor = object[@"floor"];
                         NSString *itinerary = object[@"itinerary"];
                         NSNumber *categoryID = object[@"categoryId"];
+                        NSString *markerIconName = object[@"categoryMarkerIcon"];
+                        NSString *activeIconName = object[@"categoryActiveIcon"];
                         BOOL ruedesfacs = [[object objectForKey:@"iconRuedesfacs"] boolValue];
                         BOOL active = [[object objectForKey:@"active"] boolValue];
                         if (active && ID != nil && name != nil && desc != nil && lat != nil && lon != nil && restoID != nil && categoryID != nil && [ID class] != [NSNull class] && [lat class] != [NSNull class] && [lon class] != [NSNull class] && [categoryID class] != [NSNull class]) {
                             
-                            UNMMapItemBasic *markerData = [[UNMMapItemBasic alloc]initWithID:ID andName:name andDescription:desc andLat:[lat floatValue] andLon:[lon floatValue] andAddress:address andPhone:phones andEmail:email andRestorauntID:restoID andRuedesfacs:ruedesfacs andCategoryID:categoryID andWebsite:website andWelcome:welcome andDisciplines:disciplines andOpeningHours:openingHours andClosingHours:closingHours andFloor:floor andItinerary:itinerary];
+                            UNMMapItemBasic *markerData = [[UNMMapItemBasic alloc]initWithID:ID andName:name andDescription:desc andLat:[lat floatValue] andLon:[lon floatValue] andAddress:address andPhone:phones andEmail:email andRestorauntID:restoID andRuedesfacs:ruedesfacs andCategoryID:categoryID andWebsite:website andWelcome:welcome andDisciplines:disciplines andOpeningHours:openingHours andClosingHours:closingHours andFloor:floor andItinerary:itinerary andActiveIcon:activeIconName andMarkerIcon:markerIconName];
                             if (array != nil) {
                                 if (!limit || [array count] < [limit intValue]) {
                                     [array addObject:markerData];
@@ -321,11 +333,13 @@
                 NSString *closingHours = object[@"closingHours"];
                 NSString *floor = object[@"floor"];
                 NSString *itinerary = object[@"itinerary"];
+                NSString *markerIconName = object[@"categoryMarkerIcon"];
+                NSString *activeIconName = object[@"categoryActiveIcon"];
                 NSNumber *categoryID = object[@"categoryId"];
                 BOOL ruedesfacs = [[object objectForKey:@"iconRuedesfacs"] boolValue];
                 BOOL active = [[object objectForKey:@"active"] boolValue];
                 if (active && ID != nil && name != nil && desc != nil && lat != nil && lon != nil && restoID != nil && categoryID != nil && [ID class] != [NSNull class] && [lat class] != [NSNull class] && [lon class] != [NSNull class] && [categoryID class] != [NSNull class]) {
-                    UNMMapItemBasic *markerData = [[UNMMapItemBasic alloc]initWithID:ID andName:name andDescription:desc andLat:[lat floatValue] andLon:[lon floatValue] andAddress:address andPhone:phones andEmail:email andRestorauntID:restoID andRuedesfacs:ruedesfacs andCategoryID:categoryID andWebsite:website andWelcome:welcome andDisciplines:disciplines andOpeningHours:openingHours andClosingHours:closingHours andFloor:floor andItinerary:itinerary];
+                    UNMMapItemBasic *markerData = [[UNMMapItemBasic alloc]initWithID:ID andName:name andDescription:desc andLat:[lat floatValue] andLon:[lon floatValue] andAddress:address andPhone:phones andEmail:email andRestorauntID:restoID andRuedesfacs:ruedesfacs andCategoryID:categoryID andWebsite:website andWelcome:welcome andDisciplines:disciplines andOpeningHours:openingHours andClosingHours:closingHours andFloor:floor andItinerary:itinerary andActiveIcon:activeIconName andMarkerIcon:markerIconName];
                     callback(markerData);
                 } else {
                     failure();

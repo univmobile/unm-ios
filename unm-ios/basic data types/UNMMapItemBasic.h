@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import "UNMCategoryIconProtocol.h"
 
-@interface UNMMapItemBasic : NSObject<NSCopying>
+@interface UNMMapItemBasic : NSObject<NSCopying,UNMCategoryIconProtocol>
 @property (strong, nonatomic) NSNumber *ID;
 @property (strong, nonatomic) NSNumber *categoryID;
 @property (strong, nonatomic) NSString *name;
@@ -28,8 +29,10 @@
 @property (strong, nonatomic) NSString *floor;
 @property (strong, nonatomic) NSString *itinerary;
 @property (strong, nonatomic) NSString *restoID;
+@property (strong, nonatomic) NSString *activeIconName;
+@property (strong, nonatomic) NSString *markerIconName;
 @property (nonatomic) BOOL ruedesfacs;
-- (instancetype)initWithID:(NSNumber *)ID andName:(NSString*)name andDescription:(NSString *)desc andLat:(CGFloat)lat andLon:(CGFloat)lon andAddress:(NSString *)address andPhone:(NSString *)phone andEmail:(NSString *)email andRestorauntID:(NSString *)restoID andRuedesfacs:(BOOL)ruedesfacs andCategoryID:(NSNumber *)catID andWebsite:(NSString *)website andWelcome:(NSString *)welcome andDisciplines:(NSString *)disciplines andOpeningHours:(NSString *)openingHours andClosingHours:(NSString *)closingHours andFloor:(NSString *)floor andItinerary:(NSString *)itinerary;
+- (instancetype)initWithID:(NSNumber *)ID andName:(NSString*)name andDescription:(NSString *)desc andLat:(CGFloat)lat andLon:(CGFloat)lon andAddress:(NSString *)address andPhone:(NSString *)phone andEmail:(NSString *)email andRestorauntID:(NSString *)restoID andRuedesfacs:(BOOL)ruedesfacs andCategoryID:(NSNumber *)catID andWebsite:(NSString *)website andWelcome:(NSString *)welcome andDisciplines:(NSString *)disciplines andOpeningHours:(NSString *)openingHours andClosingHours:(NSString *)closingHours andFloor:(NSString *)floor andItinerary:(NSString *)itinerary andActiveIcon:(NSString *)active andMarkerIcon:(NSString *)marker;
 + (void)fetchMarkersWithMap:(GMSMapView *)map categoryIds:(NSArray *)categoryIDs success:(void(^)(NSArray *))callback failure:(void(^)())failure;
 + (void)fetchMarkersWithSuccess:(void(^)())callback failure:(void(^)())failure;
 + (void)fetchMarkersWithCategoryIds:(NSArray *)categoryIDs success:(void(^)(NSArray *))callback failure:(void(^)())failure;

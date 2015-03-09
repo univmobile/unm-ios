@@ -110,7 +110,7 @@
                         NSString *lngDest = [NSString stringWithFormat:@"%f",aPlacemark.location.coordinate.longitude];
                         NSDictionary *params = @{ @"active":@YES,
                                                   @"name":self.nameField.text,
-                                                  @"category":[NSString stringWithFormat:@"%@categories/%d",kBaseApiURLStr,[self.selectedCategory.ID intValue]],
+                                                  @"category":[NSString stringWithFormat:@"%@categories/%d",kBaseApiURLStr,[[self.selectedCategory categoryID] intValue]],
                                                   @"university":[NSString stringWithFormat:@"%@universities/%d",kBaseApiURLStr,[user.univID intValue]],
                                                   @"address":self.addressField.text,
                                                   @"phones":self.phoneField.text,
