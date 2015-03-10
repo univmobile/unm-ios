@@ -102,13 +102,13 @@
 		3731A0281AA70373007B1A0D /* UNMProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3731A0201AA70373007B1A0D /* UNMProfileViewController.m */; };
 		3731A0291AA70373007B1A0D /* UNMUniversitySelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3731A0221AA70373007B1A0D /* UNMUniversitySelectionViewController.m */; };
 		3731A02A1AA70373007B1A0D /* UNMUnivSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3731A0241AA70373007B1A0D /* UNMUnivSelectTableViewCell.m */; };
-		3758EFC21A7776560021F0E8 /* UNMBookmarksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3758EFC11A7776560021F0E8 /* UNMBookmarksTableViewController.m */; };
 		377197531A641DF8005D50DA /* UNMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 377197521A641DF8005D50DA /* UNMAppDelegate.m */; };
 		377197561A641DF8005D50DA /* unm_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 377197541A641DF8005D50DA /* unm_ios.xcdatamodeld */; };
 		3771975C1A641DF8005D50DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3771975A1A641DF8005D50DA /* Main.storyboard */; };
 		3771975E1A641DF8005D50DA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3771975D1A641DF8005D50DA /* Images.xcassets */; };
 		377197611A641DF8005D50DA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3771975F1A641DF8005D50DA /* LaunchScreen.xib */; };
 		3771976D1A641DF8005D50DA /* unm_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771976C1A641DF8005D50DA /* unm_iosTests.m */; };
+		37761F511AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37761F501AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.m */; };
 		37B946ED1A69683C002BBB73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37B946EC1A69683C002BBB73 /* CoreLocation.framework */; };
 		63801F4F5DAD791F0A91CE92 /* libPods-unm-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8018100A1727F436B984CB9 /* libPods-unm-ios.a */; };
 /* End PBXBuildFile section */
@@ -293,8 +293,6 @@
 		3731A0221AA70373007B1A0D /* UNMUniversitySelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMUniversitySelectionViewController.m; path = "profile view/UNMUniversitySelectionViewController.m"; sourceTree = "<group>"; };
 		3731A0231AA70373007B1A0D /* UNMUnivSelectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMUnivSelectTableViewCell.h; path = "profile view/UNMUnivSelectTableViewCell.h"; sourceTree = "<group>"; };
 		3731A0241AA70373007B1A0D /* UNMUnivSelectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMUnivSelectTableViewCell.m; path = "profile view/UNMUnivSelectTableViewCell.m"; sourceTree = "<group>"; };
-		3758EFC01A7776560021F0E8 /* UNMBookmarksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNMBookmarksTableViewController.h; sourceTree = "<group>"; };
-		3758EFC11A7776560021F0E8 /* UNMBookmarksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNMBookmarksTableViewController.m; sourceTree = "<group>"; };
 		3771974A1A641DF8005D50DA /* UnivMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnivMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		377197511A641DF8005D50DA /* UNMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNMAppDelegate.h; sourceTree = "<group>"; };
 		377197521A641DF8005D50DA /* UNMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNMAppDelegate.m; sourceTree = "<group>"; };
@@ -305,7 +303,9 @@
 		377197661A641DF8005D50DA /* unm-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "unm-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3771976B1A641DF8005D50DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3771976C1A641DF8005D50DA /* unm_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = unm_iosTests.m; sourceTree = "<group>"; };
-		37761F4D1AADFE4100CD2DC0 /* UNMCategoryIconProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNMCategoryIconProtocol.h; sourceTree = "<group>"; };
+		37761F4E1AAEE46500CD2DC0 /* UNMCategoryIconProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMCategoryIconProtocol.h; path = "basic data types/UNMCategoryIconProtocol.h"; sourceTree = "<group>"; };
+		37761F4F1AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMBookmarksTableViewController.h; path = "bookmarks view/UNMBookmarksTableViewController.h"; sourceTree = "<group>"; };
+		37761F501AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMBookmarksTableViewController.m; path = "bookmarks view/UNMBookmarksTableViewController.m"; sourceTree = "<group>"; };
 		37B946EC1A69683C002BBB73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A75FE80334BDC50C94769D65 /* Pods-unm-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unm-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-unm-ios/Pods-unm-ios.release.xcconfig"; sourceTree = "<group>"; };
 		A8018100A1727F436B984CB9 /* libPods-unm-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-unm-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -461,8 +461,8 @@
 		3758EFC31A7776790021F0E8 /* bookmarks view */ = {
 			isa = PBXGroup;
 			children = (
-				3758EFC01A7776560021F0E8 /* UNMBookmarksTableViewController.h */,
-				3758EFC11A7776560021F0E8 /* UNMBookmarksTableViewController.m */,
+				37761F4F1AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.h */,
+				37761F501AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.m */,
 			);
 			name = "bookmarks view";
 			sourceTree = "<group>";
@@ -703,7 +703,7 @@
 				37319F8F1AA70239007B1A0D /* UNMCategoryBasic.m */,
 				37319F901AA70239007B1A0D /* UNMCategoryIcons.h */,
 				37319F911AA70239007B1A0D /* UNMCategoryIcons.m */,
-				37761F4D1AADFE4100CD2DC0 /* UNMCategoryIconProtocol.h */,
+				37761F4E1AAEE46500CD2DC0 /* UNMCategoryIconProtocol.h */,
 				37319F921AA70239007B1A0D /* UNMCommentBasic.h */,
 				37319F931AA70239007B1A0D /* UNMCommentBasic.m */,
 				37319F941AA70239007B1A0D /* UNMImageMap.h */,
@@ -972,6 +972,7 @@
 				3731A0111AA70336007B1A0D /* UNMLibraryTableViewCell.m in Sources */,
 				37319FFA1AA702CB007B1A0D /* UNMBaseViewController.m in Sources */,
 				37319F581AA70081007B1A0D /* UNMWelcomeViewController.m in Sources */,
+				37761F511AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.m in Sources */,
 				3731A0271AA70373007B1A0D /* UNMProfileTBVSectionHeaderView.m in Sources */,
 				37319FBA1AA70239007B1A0D /* UNMUserBasic.m in Sources */,
 				37319F5C1AA700AC007B1A0D /* main.m in Sources */,
@@ -989,7 +990,6 @@
 				3731A02A1AA70373007B1A0D /* UNMUnivSelectTableViewCell.m in Sources */,
 				3731A0051AA702FD007B1A0D /* UIBarButtonItem+Badge.m in Sources */,
 				37319FF91AA702CB007B1A0D /* UIScrollView+ScrollIndicator.m in Sources */,
-				3758EFC21A7776560021F0E8 /* UNMBookmarksTableViewController.m in Sources */,
 				37319FB51AA70239007B1A0D /* UNMNotificationBasic.m in Sources */,
 				3731A0251AA70373007B1A0D /* UNMBookmarksTableViewCell.m in Sources */,
 				37319FDE1AA702AE007B1A0D /* UNMDescriptionViewController.m in Sources */,

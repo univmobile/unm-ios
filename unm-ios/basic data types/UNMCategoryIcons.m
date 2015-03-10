@@ -56,7 +56,10 @@ static NSCache *requests;
             [self fetchImagesWithActiveName:activeName andMarkerName:markerName categoryID:[item categoryID] success:success failure:failure];
         });
     } else {
-        [self getCachedIconsWithCategoryIcon:icons success:success failure:failure];
+        [self getCachedIconsWithCategoryIcon:icons success:success failure:^{
+            [requests removeObjectForKey:[item categoryID]];
+            [self getCategoryImageWithCategoryProtocolItem:item success:success failure:failure];
+        }];
     }
 }
 
@@ -96,7 +99,10 @@ static NSCache *requests;
             }
         }];
     } else {
-        [self getCachedIconsWithCategoryIcon:icons success:success failure:failure];
+        [self getCachedIconsWithCategoryIcon:icons success:success failure:^{
+            [requests removeObjectForKey:ID];
+            [self getCategoryImageWithID:ID success:success failure:failure];
+        }];
     }
 }
 

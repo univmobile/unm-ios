@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "triangleIcon.png"
+      "filename" : "triangleIconHomeView.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "triangleIcon-1.png"
+      "filename" : "triangleIconHomeView@2x.png"
     },
     {
       "idiom" : "universal",
