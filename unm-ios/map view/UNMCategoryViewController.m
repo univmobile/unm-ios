@@ -189,11 +189,14 @@
         [self setImageForView:cell.imageView withCategory:category];
         if ([self.selectedIndexes indexOfObject:indexPath] != NSNotFound) {
             cell.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
+            cell.backgroundImageView.hidden = NO;
         } else if(self.preselectedCategory && [category.categoryID isEqualToNumber:self.preselectedCategory]) {
             cell.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
             [self.selectedIndexes addObject:indexPath];
+            cell.backgroundImageView.hidden = NO;
         } else {
             cell.backgroundColor = [UIColor clearColor];
+            cell.backgroundImageView.hidden = YES;
         }
     } else {
         cell.titleLabel.text = @"";
@@ -257,7 +260,6 @@
     _categoryId = categoryId;
     if (_categoryId != nil) {
         [self.selectedIndexes removeAllObjects];
-        [self.cellIcons removeAllObjects];
         [self fetchCategories];
     }
 }
