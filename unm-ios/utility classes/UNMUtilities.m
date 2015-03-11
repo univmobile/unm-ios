@@ -281,17 +281,22 @@ static AFHTTPRequestOperationManager *postManager;
 
 + (void)postToApiWithPath:(NSString *)path andParams:(NSDictionary *)params success:(void(^)(AFHTTPRequestOperation*,id))success failure:(void(^)(AFHTTPRequestOperation*,NSError*))failure {
     [self postManager];
-    postManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"application/json",nil];
-    postManager.requestSerializer = [AFJSONRequestSerializer serializer];
-    NSString *url = [kBaseApiURLStr stringByAppendingString:path];
     UNMAuthDataBasic *auth = [UNMAuthDataBasic getSavedObject];
     if (auth && auth.accessToken && [auth class] != [NSNull class] && [auth.accessToken class] != [NSNull class]) {
         [postManager.requestSerializer setValue:auth.accessToken forHTTPHeaderField:@"Authentication-Token"];
-        [postManager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        [postManager POST:url parameters:params success:success failure:failure];
+        [self postToApiNoAuthWithPath:path andParams:params success:success failure:failure];
     } else {
         [self showErrorWithTitle:@"Merci de vous connecter" andMessage:@"Merci de cliquer sur le lien \"connectez-vous\" dans le haut de page" andDelegate:nil];
     }
+}
+
++ (void)postToApiNoAuthWithPath:(NSString *)path andParams:(NSDictionary *)params success:(void(^)(AFHTTPRequestOperation*,id))success failure:(void(^)(AFHTTPRequestOperation*,NSError*))failure {
+    [self postManager];
+    postManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"application/json",nil];
+    postManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    NSString *url = [kBaseApiURLStr stringByAppendingString:path];
+    [postManager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [postManager POST:url parameters:params success:success failure:failure];
 }
 
 + (void)deleteToApiWithPath:(NSString *)path andParams:(NSDictionary *)params success:(void(^)(AFHTTPRequestOperation*,id))success failure:(void(^)(AFHTTPRequestOperation*,NSError*))failure {

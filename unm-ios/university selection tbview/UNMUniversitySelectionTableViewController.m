@@ -51,11 +51,6 @@
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -84,6 +79,7 @@
     
     [university saveToUserDefaults];
     [self.region saveToUserDefaults];
+    [university postAsUsageStat];
     
     [tableView deselectRowAtIndexPath:indexPath animated:true];
     [self.navigationController popToRootViewControllerAnimated:YES];

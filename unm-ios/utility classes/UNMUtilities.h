@@ -35,4 +35,5 @@
 + (void)setCenterControllerToWebViewWithURL:(NSString *)urlStr andContent:(NSString *)content;
 + (void)fetchFromBackendWithPath:(NSString *)path success:(void(^)(AFHTTPRequestOperation*,id))success failure:(void(^)(AFHTTPRequestOperation*,NSError*))failure;
 + (void)deleteToApiWithPath:(NSString *)path andParams:(NSDictionary *)params success:(void(^)(AFHTTPRequestOperation*,id))success failure:(void(^)(AFHTTPRequestOperation*,NSError*))failure;
++ (void)postToApiNoAuthWithPath:(NSString *)path andParams:(NSDictionary *)params success:(void(^)(AFHTTPRequestOperation*,id))success failure:(void(^)(AFHTTPRequestOperation*,NSError*))failure;
 @end

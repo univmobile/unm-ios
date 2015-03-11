@@ -20,4 +20,5 @@
 + (UNMUniversityBasic *)getSavedObject;
 + (void)fetchUniversitiesWithSuccess:(void(^)(NSArray *))callback failure:(void(^)())failure;
 + (void)fetchUniversitiesWithPath:(NSString *)path andSuccess:(void(^)(NSArray *))callback failure:(void(^)())failure;
+- (void)postAsUsageStat;
 @end

@@ -84,7 +84,6 @@
 		37319FF81AA702CB007B1A0D /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FEA1AA702CB007B1A0D /* UIColor+Extension.m */; };
 		37319FF91AA702CB007B1A0D /* UIScrollView+ScrollIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FEC1AA702CB007B1A0D /* UIScrollView+ScrollIndicator.m */; };
 		37319FFA1AA702CB007B1A0D /* UNMBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FEE1AA702CB007B1A0D /* UNMBaseViewController.m */; };
-		37319FFB1AA702CB007B1A0D /* UNMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FF11AA702CB007B1A0D /* UNMConstants.m */; };
 		37319FFC1AA702CB007B1A0D /* UNMScrollIndicatorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FF31AA702CB007B1A0D /* UNMScrollIndicatorHelper.m */; };
 		37319FFD1AA702CB007B1A0D /* UNMUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FF51AA702CB007B1A0D /* UNMUtilities.m */; };
 		3731A0001AA702E3007B1A0D /* UNMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37319FFF1AA702E3007B1A0D /* UNMSearchViewController.m */; };
@@ -110,6 +109,7 @@
 		3771976D1A641DF8005D50DA /* unm_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771976C1A641DF8005D50DA /* unm_iosTests.m */; };
 		37761F511AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37761F501AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.m */; };
 		37B946ED1A69683C002BBB73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37B946EC1A69683C002BBB73 /* CoreLocation.framework */; };
+		37F3790E1AB0DC2B00D8F865 /* UNMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F3790D1AB0DC2B00D8F865 /* UNMConstants.m */; };
 		63801F4F5DAD791F0A91CE92 /* libPods-unm-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8018100A1727F436B984CB9 /* libPods-unm-ios.a */; };
 /* End PBXBuildFile section */
 
@@ -257,8 +257,6 @@
 		37319FED1AA702CB007B1A0D /* UNMBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMBaseViewController.h; path = "utility classes/UNMBaseViewController.h"; sourceTree = "<group>"; };
 		37319FEE1AA702CB007B1A0D /* UNMBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMBaseViewController.m; path = "utility classes/UNMBaseViewController.m"; sourceTree = "<group>"; };
 		37319FEF1AA702CB007B1A0D /* UNMBaseViewController+univLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UNMBaseViewController+univLabel.h"; path = "utility classes/UNMBaseViewController+univLabel.h"; sourceTree = "<group>"; };
-		37319FF01AA702CB007B1A0D /* UNMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMConstants.h; path = "utility classes/UNMConstants.h"; sourceTree = "<group>"; };
-		37319FF11AA702CB007B1A0D /* UNMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMConstants.m; path = "utility classes/UNMConstants.m"; sourceTree = "<group>"; };
 		37319FF21AA702CB007B1A0D /* UNMScrollIndicatorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMScrollIndicatorHelper.h; path = "utility classes/UNMScrollIndicatorHelper.h"; sourceTree = "<group>"; };
 		37319FF31AA702CB007B1A0D /* UNMScrollIndicatorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMScrollIndicatorHelper.m; path = "utility classes/UNMScrollIndicatorHelper.m"; sourceTree = "<group>"; };
 		37319FF41AA702CB007B1A0D /* UNMUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMUtilities.h; path = "utility classes/UNMUtilities.h"; sourceTree = "<group>"; };
@@ -307,6 +305,8 @@
 		37761F4F1AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMBookmarksTableViewController.h; path = "bookmarks view/UNMBookmarksTableViewController.h"; sourceTree = "<group>"; };
 		37761F501AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMBookmarksTableViewController.m; path = "bookmarks view/UNMBookmarksTableViewController.m"; sourceTree = "<group>"; };
 		37B946EC1A69683C002BBB73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		37F3790C1AB0DC2B00D8F865 /* UNMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNMConstants.h; sourceTree = "<group>"; };
+		37F3790D1AB0DC2B00D8F865 /* UNMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNMConstants.m; sourceTree = "<group>"; };
 		A75FE80334BDC50C94769D65 /* Pods-unm-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unm-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-unm-ios/Pods-unm-ios.release.xcconfig"; sourceTree = "<group>"; };
 		A8018100A1727F436B984CB9 /* libPods-unm-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-unm-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -406,8 +406,8 @@
 				37319FED1AA702CB007B1A0D /* UNMBaseViewController.h */,
 				37319FEE1AA702CB007B1A0D /* UNMBaseViewController.m */,
 				37319FEF1AA702CB007B1A0D /* UNMBaseViewController+univLabel.h */,
-				37319FF01AA702CB007B1A0D /* UNMConstants.h */,
-				37319FF11AA702CB007B1A0D /* UNMConstants.m */,
+				37F3790C1AB0DC2B00D8F865 /* UNMConstants.h */,
+				37F3790D1AB0DC2B00D8F865 /* UNMConstants.m */,
 				37319FF21AA702CB007B1A0D /* UNMScrollIndicatorHelper.h */,
 				37319FF31AA702CB007B1A0D /* UNMScrollIndicatorHelper.m */,
 				37319FF41AA702CB007B1A0D /* UNMUtilities.h */,
@@ -951,7 +951,6 @@
 				37319FFC1AA702CB007B1A0D /* UNMScrollIndicatorHelper.m in Sources */,
 				37319F6F1AA70125007B1A0D /* UNMNotificationsTableViewController.m in Sources */,
 				37319FAD1AA70239007B1A0D /* UNMCategoryBasic.m in Sources */,
-				37319FFB1AA702CB007B1A0D /* UNMConstants.m in Sources */,
 				37319FE31AA702AE007B1A0D /* UNMTabButton.m in Sources */,
 				37319FE11AA702AE007B1A0D /* UNMPlaceHolderTextView.m in Sources */,
 				37319F801AA701EF007B1A0D /* UNMSideMenuViewController.m in Sources */,
@@ -960,6 +959,7 @@
 				37319FF81AA702CB007B1A0D /* UIColor+Extension.m in Sources */,
 				37319FB31AA70239007B1A0D /* UNMMenuItemBasic.m in Sources */,
 				37319FF71AA702CB007B1A0D /* NSString+URLEncoding.m in Sources */,
+				37F3790E1AB0DC2B00D8F865 /* UNMConstants.m in Sources */,
 				37319FD71AA702AE007B1A0D /* UNMBonPlanScrollView.m in Sources */,
 				37319FB01AA70239007B1A0D /* UNMImageMap.m in Sources */,
 				37319FAF1AA70239007B1A0D /* UNMCommentBasic.m in Sources */,

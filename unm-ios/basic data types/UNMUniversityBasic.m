@@ -138,4 +138,9 @@
     }
     return NO;
 }
+
+- (void)postAsUsageStat {
+    NSDictionary *params = @{ @"source":@"I", @"university":[NSString stringWithFormat:@"%@universities/%d",kBaseApiURLStr,[[self univId] intValue]]};
+      [UNMUtilities postToApiNoAuthWithPath:@"usageStats" andParams:params success:^(AFHTTPRequestOperation *operation, id result) {} failure:^(AFHTTPRequestOperation *operation, NSError *error) {}];
+}
 @end

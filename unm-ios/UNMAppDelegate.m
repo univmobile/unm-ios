@@ -35,6 +35,7 @@
     UINavigationController *navController;
     if (univ && region) {
         navController = [[UINavigationController alloc]initWithRootViewController:[storyboard instantiateViewControllerWithIdentifier:@"home"]];
+        [univ postAsUsageStat];
     } else {
         navController = [storyboard instantiateViewControllerWithIdentifier:@"startingNavController"];
     }
