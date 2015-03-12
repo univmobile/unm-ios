@@ -47,7 +47,7 @@
         NSDictionary *embedded = responseObject[@"_embedded"];
         NSDictionary *links = responseObject[@"_links"];
         if (embedded != nil) {
-            [self parseDataFromDictionary:embedded toMutableArray:array];
+            [self parseDataFromDictionary:embedded toMutableArray:array withLimit:limit];
             NSString *nextPath = [self parseNextPathWithDictionary:links];
             if (nextPath) {
                 [self fetchNewsWithPath:nextPath array:array limit:limit success:callback failure:failure];
@@ -71,7 +71,7 @@
         NSDictionary *embedded = responseObject[@"_embedded"];
         NSDictionary *links = responseObject[@"_links"];
         if (embedded != nil) {
-            [self parseDataFromDictionary:embedded toMutableArray:array];
+            [self parseDataFromDictionary:embedded toMutableArray:array withLimit:nil];
             NSString *nextPath = [self parseNextPathWithDictionary:links];
             callback(array,nextPath);
         } else {
@@ -86,7 +86,7 @@
    }];
 }
 
-+ (void)parseDataFromDictionary:(NSDictionary *)dictionary toMutableArray:(NSMutableArray *)array {
++ (void)parseDataFromDictionary:(NSDictionary *)dictionary toMutableArray:(NSMutableArray *)array withLimit:(NSNumber *)limit {
     NSArray *objects = dictionary[@"news"];
     if (objects != nil) {
         for (NSDictionary *object in objects) {
@@ -99,6 +99,9 @@
             if (ID != nil && name != nil && desc != nil && date != nil && imageUrl != nil && articleUrl != nil && [ID class] != [NSNull class] && [name class] != [NSNull class] && [desc class] != [NSNull class] && [date class] != [NSNull class] && [articleUrl class] != [NSNull class]) {
                 UNMNewsBasic *newsItem = [[UNMNewsBasic alloc]initWithID:ID andName:name andDescription:desc andDate:date andThumbUrl:imageUrl andArticleUrl:articleUrl];
                 if (array != nil) {
+                    if (limit && array.count >= [limit intValue]) {
+                        return;
+                    }
                     [array addObject:newsItem];
                 }
             }
