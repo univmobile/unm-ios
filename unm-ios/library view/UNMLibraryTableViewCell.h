@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleTopConst;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *pinIconHeightConst;
 @property (weak, nonatomic) IBOutlet UIButton *pinIcon;
+@property (weak, nonatomic) IBOutlet UIImageView *rueLogo;
 - (void)removeLogo;
 - (void)centerLabelToPinIcon;
 - (void)addLogo;

@@ -2633,7 +2633,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="8dm-nJ-DE5" secondAttribute="bottom" constant="8" id="vnn-cS-HaC"/>
                                                 </constraints>
                                             </view>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-1" translatesAutoresizingMaskIntoConstraints="NO" id="7Sx-zD-bs2">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="7Sx-zD-bs2">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="300" id="kfF-ap-ZDT"/>
@@ -2849,19 +2849,19 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoLibrariesView" translatesAutoresizingMaskIntoConstraints="NO" id="qNE-Eg-gBs">
-                                                    <rect key="frame" x="14" y="8" width="174" height="27"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="27" id="EcL-kf-45x"/>
-                                                        <constraint firstAttribute="width" constant="174" id="h5l-ZB-cbh"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Vivre avec une personne âgée : une coloc' originale pour les étudiants" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="253" translatesAutoresizingMaskIntoConstraints="NO" id="9Q9-fL-ZuE">
                                                     <rect key="frame" x="14" y="43" width="253" height="68"/>
                                                     <fontDescription key="fontDescription" name="Exo-Regular" family="Exo" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoLibrariesView" highlightedImage="logoLibrariesViewHighlighted" translatesAutoresizingMaskIntoConstraints="NO" id="qNE-Eg-gBs">
+                                                    <rect key="frame" x="14" y="8" width="174" height="27"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="27" id="EcL-kf-45x"/>
+                                                        <constraint firstAttribute="width" constant="174" id="h5l-ZB-cbh"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="Hfz-9Z-2Pk" secondAttribute="bottom" id="3lB-IW-4E2"/>
@@ -2882,6 +2882,7 @@
                                             <outlet property="logoTopConst" destination="QoK-b0-9Bf" id="8mU-YS-lHh"/>
                                             <outlet property="pinIcon" destination="EYz-ud-sBD" id="hZe-SV-MVX"/>
                                             <outlet property="pinIconHeightConst" destination="ZSa-Bi-baH" id="ngJ-db-Hmq"/>
+                                            <outlet property="rueLogo" destination="qNE-Eg-gBs" id="2F5-Y1-bdN"/>
                                             <outlet property="separator" destination="Hfz-9Z-2Pk" id="bNx-Tz-RKp"/>
                                             <outlet property="titleLabel" destination="9Q9-fL-ZuE" id="jr8-gB-LcE"/>
                                             <outlet property="titleTopConst" destination="JSZ-Pk-Mdt" id="eDc-Eo-NXP"/>
@@ -3199,7 +3200,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoLibrariesView" translatesAutoresizingMaskIntoConstraints="NO" id="hYr-6B-vhA">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoLibrariesView" highlightedImage="logoLibrariesViewHighlighted" translatesAutoresizingMaskIntoConstraints="NO" id="hYr-6B-vhA">
                                                     <rect key="frame" x="14" y="8" width="174" height="27"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="174" id="jQd-qh-yoo"/>
@@ -3231,6 +3232,7 @@
                                             <outlet property="logoTopConst" destination="BQY-kU-CUy" id="3n7-wA-0gZ"/>
                                             <outlet property="pinIcon" destination="JFg-ke-fuM" id="yHr-1t-KNY"/>
                                             <outlet property="pinIconHeightConst" destination="QCb-fk-gOx" id="RNr-2j-4Bi"/>
+                                            <outlet property="rueLogo" destination="hYr-6B-vhA" id="1hz-Iu-WPO"/>
                                             <outlet property="separator" destination="agl-IR-orD" id="XjW-yK-1bB"/>
                                             <outlet property="titleLabel" destination="ZXV-v7-Mux" id="roW-Cr-eWV"/>
                                             <outlet property="titleTopConst" destination="bSk-k8-akb" id="fEH-8E-WG7"/>
@@ -3461,6 +3463,7 @@
         <image name="geoTabIcon" width="185" height="172"/>
         <image name="logoHomeView" width="610" height="370"/>
         <image name="logoLibrariesView" width="211" height="26"/>
+        <image name="logoLibrariesViewHighlighted" width="211" height="26"/>
         <image name="mapPinLibrariesView" width="70" height="70"/>
         <image name="menuTab" width="83" height="27"/>
         <image name="moreButtonNewsTBV" width="152" height="40"/>
@@ -3477,7 +3480,6 @@
         <image name="searchIcon" width="16" height="16"/>
         <image name="searchIconMapView" width="21" height="21"/>
         <image name="splash" width="1242" height="2208"/>
-        <image name="splash-1" width="1242" height="2208"/>
         <image name="triangleIconHomeView" width="26" height="13"/>
         <image name="universityLogo" width="143" height="43"/>
         <image name="validateButtonBg" width="138" height="41"/>
