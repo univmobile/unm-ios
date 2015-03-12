@@ -64,7 +64,12 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.libraryItems count];
+    if ([self.libraryItems count] == 0) {
+        return 1;
+    }
+    else {
+        return [self.libraryItems count];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -82,7 +87,7 @@
             item = self.libraryItems[indexPath.row];
             cell.titleLabel.text = item.poiName;
         } else {
-            cell.titleLabel.text = @"";
+            cell.titleLabel.text = @"Pas de bibliothèque";
         }
         
         
@@ -111,10 +116,16 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UNMLibraryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"libraryCell" forIndexPath:indexPath];
-    UNMUnivLibraryItem *item;
-    if (indexPath.row < [self.libraryItems count]) {
-        item = self.libraryItems[indexPath.row];
+    if ([self.libraryItems count] == 0) {
+        [cell removeLogo];
+        [cell centerLabelToPinIcon];
+        cell.titleLabel.text = @"Pas de bibliothèque";
+        cell.pinIcon.hidden = YES;
+    }
+    else if (indexPath.row < [self.libraryItems count]) {
+        UNMUnivLibraryItem *item = self.libraryItems[indexPath.row];
         cell.titleLabel.text = item.poiName;
+        cell.pinIcon.hidden = NO;
         if (!item.ruedesfacs) {
             [cell removeLogo];
             [cell centerLabelToPinIcon];

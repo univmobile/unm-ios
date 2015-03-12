@@ -44,7 +44,12 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.mediaItems count];
+    if ([self.mediaItems count] == 0) {
+        return 1;
+    }
+    else {
+        return [self.mediaItems count];
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -53,7 +58,10 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UNMMediaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mediaCell" forIndexPath:indexPath];
-    if (indexPath.row < [self.mediaItems count]) {
+    if ([self.mediaItems count] == 0) {
+        cell.titleLabel.text = @"Pas de lien";
+    }
+    else if (indexPath.row < [self.mediaItems count]) {
         UNMMediaItemBasic *item = self.mediaItems[indexPath.row];
         cell.titleLabel.text = item.label;
     }
@@ -61,6 +69,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row < [self.mediaItems count]) {
         UNMMediaItemBasic *item = self.mediaItems[indexPath.row];
         self.webviewURL = [NSURL URLWithString:item.urlStr];

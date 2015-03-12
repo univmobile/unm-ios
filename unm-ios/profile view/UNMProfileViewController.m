@@ -121,11 +121,23 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return [self.mediaItems count]+1;
+            if ([self.mediaItems count] > 0) {
+                return [self.mediaItems count]+1;
+            } else {
+                return 0;
+            }
         case 1:
-            return [self.libraries count]+1;
+            if ([self.libraries count] > 0) {
+                return [self.libraries count]+1;
+            } else {
+                return 0;
+            }
         case 2:
-            return [self.bookmarks count]+1;
+            if ([self.bookmarks count] > 0) {
+                return [self.bookmarks count]+1;
+            } else {
+                return 0;
+            }
         default:
             return 0;
     }

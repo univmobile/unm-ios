@@ -2454,7 +2454,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="4ND-wS-D2Q">
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="00e-V7-oqC">
+                        <barButtonItem key="rightBarButtonItem" title="Annuler" id="00e-V7-oqC">
                             <connections>
                                 <action selector="didSelectCancel:" destination="5zL-4H-QjS" id="9Z2-n6-7p0"/>
                             </connections>

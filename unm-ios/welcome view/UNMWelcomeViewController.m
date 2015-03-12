@@ -23,6 +23,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"Retour"
+                                                                 style:UIBarButtonItemStyleBordered
+                                                                target:nil
+                                                                action:nil];
+    
+    [self.navigationItem setBackBarButtonItem:backItem];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bgSideMenu"]];
     self.universitySelectionButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     self.universitySelectionButton.titleLabel.minimumScaleFactor = 0.5;

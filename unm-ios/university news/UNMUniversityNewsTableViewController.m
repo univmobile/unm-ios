@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSCache *offscreenCellHeights;
 @property (strong, nonatomic) NSURL *webviewURL;
 @property (strong, nonatomic) NSString *nextNewsPath;
+@property (strong, nonatomic) NSString *freshNextNewsPath;
 @end
 
 @implementation UNMUniversityNewsTableViewController {
@@ -45,6 +46,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     [self.navigationItem setHidesBackButton:YES];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -52,7 +55,42 @@
     [self.tableView addInfiniteScrollingWithActionHandler:^{
         [weakSelf addNewsItemsToBottom];
     }];
+    [self.tableView addPullToRefreshWithActionHandler:^{
+        [weakSelf addFreshNewsItems];
+    }];
     [self.tableView triggerInfiniteScrolling];
+}
+
+- (void)addFreshNewsItems {
+    __weak UNMUniversityNewsTableViewController *weakSelf = self;
+    [UNMNewsBasic fetchNewsWithPath:weakSelf.freshNextNewsPath andSuccess:^(NSArray *newsItems, NSString *nextPath) {
+        BOOL foundMatch = NO;
+        weakSelf.nextNewsPath = nextPath;
+        [weakSelf.tableView beginUpdates];
+        NSRange indexes = NSMakeRange(0,newsItems.count-1);
+        NSMutableArray *indexPaths = [NSMutableArray new];
+        NSUInteger idx;
+        for(idx = indexes.location; idx <= indexes.location + indexes.length; idx++ ){
+            UNMNewsBasic *item = [newsItems objectAtIndex:(idx-indexes.location)];
+            if ([self.newsItems containsObject:item]) {
+                foundMatch = YES;
+                break;
+            }
+            [weakSelf.newsItems addObject:item];
+            NSIndexPath *path = [NSIndexPath indexPathForRow:idx inSection:0];
+            [indexPaths addObject:path];
+        }
+        if ([indexPaths count] > 0) {
+            [weakSelf.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+        }
+        [weakSelf.tableView endUpdates];
+        [weakSelf.tableView.pullToRefreshView stopAnimating];
+        if (!foundMatch && nextPath) {
+            [weakSelf addFreshNewsItems];
+        }
+    } failure:^{
+        [weakSelf.tableView.pullToRefreshView stopAnimating];
+    }];
 }
 
 - (void)addNewsItemsToBottom {

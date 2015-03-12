@@ -26,6 +26,31 @@
     return self;
 }
 
+- (BOOL)isEqual:(id)object {
+    if (![object isMemberOfClass:[self class]]) {
+        return NO;
+    } else {
+        UNMNewsBasic *other = object;
+        if ([self name] != [other name] && ![(id)[self name] isEqual:[other name]]) {
+            return NO;
+        } else if ([self ID] != [other ID] && ![(id)[self ID] isEqual:[other ID]]) {
+            return NO;
+        } else if ([self desc] != [other desc] && ![(id)[self desc] isEqual:[other desc]]) {
+            return NO;
+        } else if ([self date] != [other date] && ![(id)[self date] isEqual:[other date]]) {
+            return NO;
+        } else if ([self desc] != [other desc] && ![(id)[self desc] isEqual:[other desc]]) {
+            return NO;
+        } else if ([self thumbURLStr] != [other thumbURLStr] && ![(id)[self thumbURLStr] isEqual:[other thumbURLStr]]) {
+            return NO;
+        } else if ([self articeURLStr] != [other articeURLStr] && ![(id)[self articeURLStr] isEqual:[other articeURLStr]]) {
+            return NO;
+        } else {
+            return YES;
+        }
+    }
+}
+
 + (void)fetchNewsWithPath:(NSString *)path andSuccess:(void(^)(NSArray *newsItems,NSString *nextPath))callback failure:(void(^)())failure {
     NSMutableArray *array = [NSMutableArray new];
     if (!path) {

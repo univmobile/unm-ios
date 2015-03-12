@@ -31,6 +31,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"Retour"
+                                                                 style:UIBarButtonItemStyleBordered
+                                                                target:nil
+                                                                action:nil];
+    
+    [self.navigationItem setBackBarButtonItem:backItem];
     [self createNavBarButtons];
     [self createNavBarButtonItems];
     [self setTintColor];

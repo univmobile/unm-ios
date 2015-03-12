@@ -23,7 +23,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"Retour"
+                                                                 style:UIBarButtonItemStyleBordered
+                                                                target:nil
+                                                                action:nil];
     
+    [self.navigationItem setBackBarButtonItem:backItem];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     self.regions = [NSMutableArray new];

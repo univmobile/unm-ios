@@ -45,7 +45,7 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
     [dateFormatter setLocale:enUSPOSIXLocale];
-    [dateFormatter setDateFormat:@"/dd/MM/yyyy"];
+    [dateFormatter setDateFormat:@"dd/MM/yyyy"];
     
     return [dateFormatter stringFromDate:self];
 }
