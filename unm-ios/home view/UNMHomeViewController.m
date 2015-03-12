@@ -68,7 +68,7 @@
     [super viewWillAppear:animated];
     [self initActivityIndicator];
 
-    [UNMNewsBasic fetchNewestNewsWithSuccess:^(NSArray *items) {
+    [UNMNewsBasic fetch4NewsWithSuccess:^(NSArray *items) {
         self.newsItems = items;
         UNMNewsBasic *first = [self.newsItems firstObject];
         if (first) {

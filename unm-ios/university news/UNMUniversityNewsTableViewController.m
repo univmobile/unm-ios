@@ -14,16 +14,18 @@
 #import "UIImageView+AFNetworking.h"
 #import "NSDate+notificationDate.h"
 #import "UNMUnivNewsWebViewController.h"
+#import "SVPullToRefresh.h"
 
 @interface UNMUniversityNewsTableViewController ()
 @property (strong, nonatomic) NSIndexPath *selectedCell;
 @property (strong, nonatomic) NSNumber *cellHeightClosed;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *newsItems;
+@property (strong, nonatomic) NSMutableArray *newsItems;
 @property (strong, nonatomic) UIView *activityIndicatorView;
 @property (strong, nonatomic) NSCache *offscreenCells;
 @property (strong, nonatomic) NSCache *offscreenCellHeights;
 @property (strong, nonatomic) NSURL *webviewURL;
+@property (strong, nonatomic) NSString *nextNewsPath;
 @end
 
 @implementation UNMUniversityNewsTableViewController {
@@ -34,7 +36,7 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        _newsItems = [NSArray new];
+        _newsItems = [NSMutableArray new];
         _offscreenCellHeights = [NSCache new];
         _offscreenCells = [NSCache new];
     }
@@ -46,18 +48,37 @@
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     [self.navigationItem setHidesBackButton:YES];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    __weak UNMUniversityNewsTableViewController *weakSelf = self;
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
+        [weakSelf addNewsItemsToBottom];
+    }];
+    [self.tableView triggerInfiniteScrolling];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self initActivityIndicator];
-    [UNMNewsBasic fetchNewsWithSuccess:^(NSArray *items) {
-        self.newsItems = items;
-        [self.tableView reloadData];
-        [self removeActivityIndicator];
-    } failure:^{
-        [self removeActivityIndicator];
-    }];
+- (void)addNewsItemsToBottom {
+    __weak UNMUniversityNewsTableViewController *weakSelf = self;
+    if (weakSelf.nextNewsPath != nil || [weakSelf.newsItems count] == 0) {
+        [UNMNewsBasic fetchNewsWithPath:weakSelf.nextNewsPath andSuccess:^(NSArray *newsItems, NSString *nextPath) {
+            weakSelf.nextNewsPath = nextPath;
+            [weakSelf.tableView beginUpdates];
+            NSUInteger currentCount = weakSelf.newsItems.count;
+            NSRange indexes = NSMakeRange(currentCount,newsItems.count-1);
+            [weakSelf.newsItems addObjectsFromArray:newsItems];
+            NSMutableArray *indexPaths = [NSMutableArray new];
+            NSUInteger idx;
+            for(idx = indexes.location; idx <= indexes.location + indexes.length; idx++ ){
+                NSIndexPath *path = [NSIndexPath indexPathForRow:idx inSection:0];
+                [indexPaths addObject:path];
+            }
+            [weakSelf.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+            [weakSelf.tableView endUpdates];
+            [weakSelf.tableView.infiniteScrollingView stopAnimating];
+        } failure:^{
+            [weakSelf.tableView.infiniteScrollingView stopAnimating];
+        }];
+    } else {
+        [weakSelf.tableView.infiniteScrollingView stopAnimating];
+    }
 }
 
 #pragma mark - Activity indicator
@@ -94,6 +115,7 @@
         cell.titleLabel.text = item.name;
         cell.detailLabel.text = item.desc;
         cell.dateLabel.text = [NSString stringWithFormat:@"Nom du flux %@",[item.date newsCellDateString]];
+        cell.thumbnailImageView.image = nil;
         if (item.thumbURLStr && [item.thumbURLStr class] != [NSNull class]) {
             NSURL *thumbURL = [NSURL URLWithString:item.thumbURLStr];
             if (thumbURL && thumbURL.scheme && thumbURL.host) {
