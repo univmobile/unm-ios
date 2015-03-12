@@ -7,6 +7,7 @@ pod 'MFSideMenu'
 pod 'SSKeychain'
 pod 'Google-Maps-iOS-SDK', '~> 1.9'
 pod 'ZBarSDK', '~> 1.3'
+pod 'SVPullToRefresh'
 end
 
 target 'unm-iosTests' do
