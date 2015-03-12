@@ -19,7 +19,7 @@
 
 @interface UNMSideMenuViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIImageView *logo;
+@property (weak, nonatomic) IBOutlet UIButton *logo;
 @property (strong, nonatomic) NSIndexPath *selectedCell;
 @property (strong, nonatomic) NSMutableDictionary *cellHeights;
 @property (strong, nonatomic) NSArray *cellTitles;
@@ -81,7 +81,7 @@
         self.selectedCell = nil;
         [self initActivityIndicator];
         if ([univ.logoUrl class] != [NSNull class]) {
-            [self.logo setImageWithURL:[NSURL URLWithString:univ.logoUrl]];
+            [self.logo.imageView setImageWithURL:[NSURL URLWithString:univ.logoUrl]];
         }
         [UNMMenuItemBasic fetchMenuItemsWithSuccess:^(NSArray *items) {
             self.menuItems = items;
@@ -270,4 +270,11 @@
         self.activityIndicatorView = nil;
     }
 }
+
+#pragma mark - UIButton delegate 
+
+- (IBAction)universityLogoTapped:(id)sender {
+    [UNMUtilities setCenterControllerWithViewControllerIdentifier:@"home"];
+}
+
 @end
