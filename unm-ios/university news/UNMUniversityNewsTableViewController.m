@@ -152,7 +152,13 @@
         UNMNewsBasic *item = self.newsItems[indexPath.row];
         cell.titleLabel.text = item.name;
         cell.detailLabel.text = item.desc;
-        cell.dateLabel.text = [NSString stringWithFormat:@"Nom du flux %@",[item.date newsCellDateString]];
+        if (item.feedName && [item.feedName class] != [NSNull class]) {
+            cell.dateLabel.text = [NSString stringWithFormat:@"%@ %@",[item feedName],[item.date newsCellDateString]];
+        }
+        else {
+            cell.dateLabel.text = [NSString stringWithFormat:@"%@",[item.date newsCellDateString]];
+        }
+        
         cell.thumbnailImageView.image = nil;
         if (item.thumbURLStr && [item.thumbURLStr class] != [NSNull class]) {
             NSURL *thumbURL = [NSURL URLWithString:item.thumbURLStr];
@@ -195,11 +201,16 @@
                 UNMNewsBasic *newsItem = self.newsItems[indexPath.row];
                 newsCell.titleLabel.text = [newsItem name];
                 NSDate *date = [newsItem date];
-                newsCell.dateLabel.text = [NSString stringWithFormat:@"Nom du flux %@",[date newsCellDateString]];
+                if (newsItem.feedName && [newsItem.feedName class] != [NSNull class]) {
+                    newsCell.dateLabel.text = [NSString stringWithFormat:@"%@ %@",[newsItem feedName],[date newsCellDateString]];
+                }
+                else {
+                    newsCell.dateLabel.text = [NSString stringWithFormat:@"%@",[date newsCellDateString]];
+                }
                 newsCell.detailLabel.text = [newsItem desc];
             } else {
                 newsCell.titleLabel.text    = @"name";
-                newsCell.dateLabel.text    = @"Nom du flux /1/1/2015";
+                newsCell.dateLabel.text    = @"1/1/2015";
                 newsCell.detailLabel.text = @"text text text text text text text text text text";
             }
             newsCell.detailLabel.preferredMaxLayoutWidth = CGRectGetWidth(tableView.bounds);

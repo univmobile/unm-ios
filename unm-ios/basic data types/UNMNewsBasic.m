@@ -13,7 +13,7 @@
 #import "NSDate+notificationDate.h"
 
 @implementation UNMNewsBasic
-- (instancetype)initWithID:(NSNumber *)ID andName:(NSString *)name andDescription:(NSString *)desc andDate:(NSDate *)date andThumbUrl:(NSString *)thumbUrl andArticleUrl:(NSString *)articleUrl {
+- (instancetype)initWithID:(NSNumber *)ID andName:(NSString *)name andDescription:(NSString *)desc andDate:(NSDate *)date andThumbUrl:(NSString *)thumbUrl andArticleUrl:(NSString *)articleUrl andFeedName:(NSString *)feedName {
     self = [super init];
     if (self) {
         _ID = ID;
@@ -22,6 +22,7 @@
         _date = date;
         _thumbURLStr = thumbUrl;
         _articeURLStr = articleUrl;
+        _feedName = feedName;
     }
     return self;
 }
@@ -44,6 +45,8 @@
         } else if ([self thumbURLStr] != [other thumbURLStr] && ![(id)[self thumbURLStr] isEqual:[other thumbURLStr]]) {
             return NO;
         } else if ([self articeURLStr] != [other articeURLStr] && ![(id)[self articeURLStr] isEqual:[other articeURLStr]]) {
+            return NO;
+        } else if ([self feedName] != [other feedName] && ![(id)[self feedName] isEqual:[other feedName]]) {
             return NO;
         } else {
             return YES;
@@ -121,8 +124,9 @@
             NSDate *date = [NSDate getDateFromISOString:object[@"publishedDate"]];
             NSString *imageUrl = object[@"imageUrl"];
             NSString *articleUrl = object[@"link"];
+            NSString *feedName = object[@"feedName"];
             if (ID != nil && name != nil && desc != nil && date != nil && imageUrl != nil && articleUrl != nil && [ID class] != [NSNull class] && [name class] != [NSNull class] && [desc class] != [NSNull class] && [date class] != [NSNull class] && [articleUrl class] != [NSNull class]) {
-                UNMNewsBasic *newsItem = [[UNMNewsBasic alloc]initWithID:ID andName:name andDescription:desc andDate:date andThumbUrl:imageUrl andArticleUrl:articleUrl];
+                UNMNewsBasic *newsItem = [[UNMNewsBasic alloc]initWithID:ID andName:name andDescription:desc andDate:date andThumbUrl:imageUrl andArticleUrl:articleUrl andFeedName:feedName];
                 if (array != nil) {
                     if (limit && array.count >= [limit intValue]) {
                         return;

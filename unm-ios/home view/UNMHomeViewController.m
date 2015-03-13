@@ -74,7 +74,12 @@
         if (first) {
             self.titleLabel.text = first.name;
             self.titleBodyLabel.text = first.desc;
-            self.dateLabel.text = [NSString stringWithFormat:@"Nom du flux %@",[first.date newsCellDateString]];
+            if (first.feedName && [first.feedName class] != [NSNull class]) {
+                self.dateLabel.text = [NSString stringWithFormat:@"%@ %@",[first feedName],[first.date newsCellDateString]];
+            }
+            else {
+                self.dateLabel.text = [NSString stringWithFormat:@"%@",[first.date newsCellDateString]];
+            }
             if ([first.thumbURLStr class] != [NSNull class]) {
                 [self.topImageView setImageWithURL:[NSURL URLWithString:first.thumbURLStr]];
             }
@@ -176,7 +181,12 @@
             UNMNewsBasic *item = self.newsItems[indexPath.row+1];
             cell.titleLabel.text = item.name;
             cell.detailLabel.text = item.desc;
-            cell.dateLabel.text = [NSString stringWithFormat:@"Nom du flux %@",[item.date newsCellDateString]];
+            if (item.feedName && [item.feedName class] != [NSNull class]) {
+                cell.dateLabel.text = [NSString stringWithFormat:@"%@ %@",[item feedName],[item.date newsCellDateString]];
+            }
+            else {
+                cell.dateLabel.text = [NSString stringWithFormat:@"%@",[item.date newsCellDateString]];
+            }
             if (item.thumbURLStr && [item.thumbURLStr class] != [NSNull class]) {
                 NSURL *thumbURL = [NSURL URLWithString:item.thumbURLStr];
                 if (thumbURL && thumbURL.scheme && thumbURL.host) {
@@ -223,11 +233,16 @@
                 UNMNewsBasic *newsItem = self.newsItems[indexPath.row+1];
                 newsCell.titleLabel.text = [newsItem name];
                 NSDate *date = [newsItem date];
-                newsCell.dateLabel.text = [NSString stringWithFormat:@"Nom du flux %@",[date newsCellDateString]];
+                if (newsItem.feedName && [newsItem.feedName class] != [NSNull class]) {
+                    newsCell.dateLabel.text = [NSString stringWithFormat:@"%@ %@",[newsItem feedName],[date newsCellDateString]];
+                }
+                else {
+                    newsCell.dateLabel.text = [NSString stringWithFormat:@"%@",[date newsCellDateString]];
+                }
                 newsCell.detailLabel.text = [newsItem desc];
             } else {
                 newsCell.titleLabel.text    = @"name";
-                newsCell.dateLabel.text    = @"Nom du flux /1/1/2015";
+                newsCell.dateLabel.text    = @"1/1/2015";
                 newsCell.detailLabel.text = @"text text text text text text text text text text";
             }
             newsCell.detailLabel.preferredMaxLayoutWidth = CGRectGetWidth(tableView.bounds);
