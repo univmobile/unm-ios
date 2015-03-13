@@ -974,11 +974,24 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
 - (void)didSelectQrCode:(id)sender {
     ZBarReaderViewController *reader = [ZBarReaderViewController new];
     reader.readerDelegate = self;
+    reader.showsHelpOnFail = NO;
+    reader.showsZBarControls = NO;
+    UIView *overlay = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame)-44, CGRectGetWidth(self.view.frame), 44)];
+    UIButton *cancel = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 80, 44)];
+    [cancel setTitle:@"Annuler" forState:UIControlStateNormal];
+    [cancel addTarget:self action:@selector(dismissOverlayView:) forControlEvents:UIControlEventTouchUpInside];
+    [overlay addSubview:cancel];
+    overlay.backgroundColor = [UIColor blackColor];
+    reader.cameraOverlayView = overlay;
     [reader.scanner setSymbology: ZBAR_QRCODE
                           config: ZBAR_CFG_ENABLE
                               to: 1];
     reader.readerView.zoom = 1.0;
     [self presentViewController:reader animated:YES completion:^{}];
+}
+
+- (void)dismissOverlayView:(id)sender{
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
