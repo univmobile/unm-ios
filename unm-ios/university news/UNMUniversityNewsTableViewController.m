@@ -58,6 +58,10 @@
     [self.tableView addPullToRefreshWithActionHandler:^{
         [weakSelf addFreshNewsItems];
     }];
+    [self.tableView.pullToRefreshView setTitle:@"Lâcher pour rafraichir" forState:SVPullToRefreshStateStopped];
+    [self.tableView.pullToRefreshView setTitle:@"Tirez pour rafraichir" forState:SVPullToRefreshStateTriggered];
+    [self.tableView.pullToRefreshView setTitle:@"Chargement" forState:SVPullToRefreshStateLoading];
+    
     [self.tableView triggerInfiniteScrolling];
 }
 
