@@ -79,7 +79,7 @@
 
 - (void)addSelectBarButton {
     if ([self.selectedIndexes count] == 1 && [self.parentViewController class] == [UINavigationController class]) {
-        UIBarButtonItem *selectBtn = [[UIBarButtonItem alloc]initWithTitle:@"select" style:UIBarButtonItemStyleDone target:self action:@selector(updateDelegateWithSelectedObject)];
+        UIBarButtonItem *selectBtn = [[UIBarButtonItem alloc]initWithTitle:@"Sélectionner" style:UIBarButtonItemStyleDone target:self action:@selector(updateDelegateWithSelectedObject)];
         self.navigationItem.rightBarButtonItem = selectBtn;
     }
 }
