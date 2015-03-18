@@ -79,6 +79,7 @@
 }
 
 - (IBAction)didSelectCategory:(id)sender {
+    [self resignResponders];
     UNMCategoryViewController *categoryVC = [self.storyboard instantiateViewControllerWithIdentifier:@"categorySlideOut"];
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:categoryVC];
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
@@ -93,7 +94,7 @@
     categoryVC.categoryId = [NSNumber numberWithInt:2];
     [self.navigationController pushViewController:categoryVC animated:YES];
 }
-- (IBAction)validateButton:(id)sender {
+- (IBAction)validateSelected:(id)sender {
     if (self.selectedCategory && self.nameField.text.length > 0 && self.addressField.text.length > 0 && self.descriptionField.text.length > 0) {
         UNMUniversityBasic *univ = [UNMUniversityBasic getSavedObject];
         UNMUserBasic *user = [UNMUserBasic getSavedObject]; //save users university id to send with bon plan

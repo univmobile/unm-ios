@@ -68,10 +68,6 @@
     self.openButton.titleEdgeInsets = UIEdgeInsetsMake(0,CGRectGetWidth(self.disclosureIcon.frame)+10, 0, 0);
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     if (self.skipOnce) {
