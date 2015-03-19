@@ -95,13 +95,13 @@
     [self.navigationController pushViewController:categoryVC animated:YES];
 }
 - (IBAction)validateSelected:(id)sender {
-    if (self.selectedCategory && self.nameField.text.length > 0 && self.addressField.text.length > 0 && self.descriptionField.text.length > 0) {
+    if (self.selectedCategory && self.nameField.text.length > 0 && self.cityField.text.length > 0 && self.addressField.text.length > 0 && self.descriptionField.text.length > 0) {
         UNMUniversityBasic *univ = [UNMUniversityBasic getSavedObject];
         UNMUserBasic *user = [UNMUserBasic getSavedObject]; //save users university id to send with bon plan
         if (univ) {
             if (user) {
                 CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-                [geocoder geocodeAddressString:self.addressField.text completionHandler:^(NSArray* placemarks, NSError* error){
+                [geocoder geocodeAddressString:[NSString stringWithFormat:@"%@, %@",self.addressField.text, self.cityField.text] completionHandler:^(NSArray* placemarks, NSError* error){
                     if ([placemarks count] == 0) {
                         [UNMUtilities showErrorWithTitle:@"Adresse inconnue" andMessage:@"Impossible de trouver les coordonnées GPS de cette adresse" andDelegate:nil];
                     }
@@ -123,10 +123,19 @@
                                                   @"createdon":[[NSDate date] bonPlanDateString],
                                                   @"updatedon":[[NSDate date] bonPlanDateString],
                                                   @"lat":latDest,
-                                                  @"lng":lngDest
+                                                  @"lng":lngDest,
+                                                  @"city":self.cityField.text
                                                   };
                         [UNMUtilities postToApiWithPath:@"pois" andParams:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             [self askDelegateToClose];
+                            self.selectedCategory = nil;
+                            [self.categoryButton setImage:[UIImage imageNamed:@"poisCategorySelectionImage"] forState:UIControlStateNormal];
+                            self.nameField.text = @"";
+                            self.cityField.text = @"";
+                            self.addressField.text = @"";
+                            self.descriptionField.text = @"";
+                            self.emailField.text = @"";
+                            self.phoneField.text = @"";
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                             [UNMUtilities showErrorWithTitle:@"Impossible d'ajouter le Bon Plan" andMessage:[error localizedDescription]andDelegate:nil];
                         }];
@@ -189,6 +198,8 @@
         return self.addressField;
     } else if (self.phoneField.isFirstResponder) {
         return self.phoneField;
+    } else if (self.cityField.isFirstResponder) {
+        return self.cityField;
     } else if (self.emailField.isFirstResponder) {
         return self.emailField;
     } else if (self.descriptionField.isFirstResponder) {
@@ -204,6 +215,8 @@
         [self.nameField resignFirstResponder];
     } else if (self.addressField.isFirstResponder) {
         [self.addressField resignFirstResponder];
+    } else if (self.cityField.isFirstResponder) {
+        [self.cityField resignFirstResponder];
     } else if (self.phoneField.isFirstResponder) {
         [self.phoneField resignFirstResponder];
     } else if (self.emailField.isFirstResponder) {
@@ -215,6 +228,8 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.nameField) {
+        [self.cityField becomeFirstResponder];
+    } else if (textField == self.cityField) {
         [self.addressField becomeFirstResponder];
     } else if (textField == self.addressField) {
         [self.phoneField becomeFirstResponder];
@@ -247,6 +262,7 @@
 }
 
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    self.nextResp = nil;
     [self resizeNameField];
     [self.scrollView scrollRectToVisible:self.descriptionField.frame animated:YES];
     return YES;

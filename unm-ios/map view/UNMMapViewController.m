@@ -21,6 +21,7 @@
 #import "UNMRegionBasic.h"
 #import "UNMCategoryIcons.h"
 #import "UNMBookmarkBasic.h"
+#import <AddressBook/ABPerson.h>
 
 typedef NS_ENUM(NSInteger, UNMSlideOut) {
     SlideOutCategory     = 1,
@@ -885,6 +886,17 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
         GMSCameraUpdate *update = [GMSCameraUpdate setTarget:location.coordinate];
         [self.mapView moveCamera:update];
         [manager stopUpdatingLocation];
+        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        
+        [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error){
+            CLPlacemark *place = [placemarks objectAtIndex:0];
+             if (place) {
+                 NSString *cityName = [place.addressDictionary objectForKey: (NSString *)kABPersonAddressCityKey];
+                 if (cityName && [self.bonPlanSlideOut.cityField.text isEqualToString:@""]) {
+                     self.bonPlanSlideOut.cityField.text = cityName;
+                 }
+             }
+        }];
     }
 }
 

@@ -198,7 +198,7 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
 
 - (void)fetchComments {
     if (self.mapItem) {
-        NSString *path = [NSString stringWithFormat:@"comments/search/findByPoiOrderByCreatedOnDesc?poiId=%d",[[[self mapItem] categoryID] intValue]];
+        NSString *path = [NSString stringWithFormat:@"comments/search/findByPoiOrderByCreatedOnDesc?poiId=%d",[[[self mapItem] ID] intValue]];
         [UNMUtilities fetchFromApiWithPath:path success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [self.comments removeAllObjects];
             NSDictionary *embedded = responseObject[@"_embedded"];
@@ -462,6 +462,7 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
             [self fetchComments];
             self.commentField.text = @"";
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            //Error
         }];
     } else {
         [UNMUtilities showErrorWithTitle:@"Pas de commentaire" andMessage:@"Merci de saisir votre commentaire" andDelegate:nil];
@@ -581,7 +582,12 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
         self.phoneLabel.text = @"";
     }
     if (mapItem.address && [mapItem.address class] != [NSNull class]) {
-        self.addressLabel.text = mapItem.address;
+        if (mapItem.cityName && [mapItem.cityName class] != [NSNull class]) {
+            self.addressLabel.text = [NSString stringWithFormat:@"%@, %@",mapItem.address,mapItem.cityName];
+        }
+        else {
+            self.addressLabel.text = mapItem.address;
+        }
     } else {
         self.addressLabel.text = @"";
     }
