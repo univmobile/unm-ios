@@ -582,7 +582,7 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
         self.phoneLabel.text = @"";
     }
     if (mapItem.address && [mapItem.address class] != [NSNull class]) {
-        if (mapItem.cityName && [mapItem.cityName class] != [NSNull class]) {
+        if (mapItem.cityName && [mapItem.cityName class] != [NSNull class] && mapItem.cityName.length > 0) {
             self.addressLabel.text = [NSString stringWithFormat:@"%@, %@",mapItem.address,mapItem.cityName];
         }
         else {
