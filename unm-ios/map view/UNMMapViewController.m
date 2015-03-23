@@ -86,13 +86,13 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
 
     } else {
         [self fetchUserBookmarks];
-        if (self.imageMapUrl) {
+        if (self.imageMapPath) {
             GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:CLLocationCoordinate2DMake(0, 0) zoom:100];
             self.mapView.delegate = self;
             [self.mapView setCamera:camera];
             self.mapView.mapType = kGMSTypeNone;
             [self removeAllTabs];
-            [self loadImageMapDataWithURL:self.imageMapUrl];
+            [self loadImageMapDataWithPath:self.imageMapPath];
             [self addDescriptionSlideOutForImageMap:YES];
             self.descSlideOut.viewColor = [UIColor leftTabYellow];
         } else {
@@ -790,8 +790,8 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
     }
 }
 
-- (void)loadImageMapDataWithURL:(NSString *)imageMapURL {
-    self.imageMap = [[UNMImageMap alloc]initWithURLStr:imageMapURL andCallback:^(UNMImageMap *imgMap){
+- (void)loadImageMapDataWithPath:(NSString *)imageMapPath {
+    self.imageMap = [[UNMImageMap alloc]initWithPathStr:imageMapPath andCallback:^(UNMImageMap *imgMap){
         [self loadImageMapWithURL:imgMap.imageUrl];
         [self initActivityIndicator];
         [self.mapView clear];
@@ -842,7 +842,7 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
 #pragma mark - Map view delegate
 
 - (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
-    if (self.imageMapUrl) {
+    if (self.imageMapPath) {
         if (![self.imageMapBounds containsCoordinate:position.target]) {
             GMSCameraUpdate *cameraUpdate = [GMSCameraUpdate setTarget:self.lastPosition];
             [self.mapView moveCamera:cameraUpdate];
@@ -1013,7 +1013,7 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
         NSString *ID = dict[@"ID"];
         if (ID != nil && ![ID isEqualToString:@"null"]) {
             [picker dismissViewControllerAnimated:YES completion:^{
-                [UNMUtilities setCenterControllerToImageMapWithURL:[NSString stringWithFormat:@"imageMaps/%d",[ID intValue]]];
+                [UNMUtilities setCenterControllerToImageMapWithPath:[NSString stringWithFormat:@"imageMaps/%d",[ID intValue]]];
             }];
         }
     }
