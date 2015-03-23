@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UNMLoginCallbackProtocol.h"
 
-@interface UNMLoginClassicViewController : UIViewController
+@interface UNMLoginClassicViewController : UIViewController<UITextFieldDelegate>
 @property (weak, nonatomic) id<UNMLoginCallbackProtocol> delegate;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;

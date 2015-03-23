@@ -111,4 +111,17 @@
     return UIStatusBarStyleLightContent;
 }
 
+#pragma mark uitextfield delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.nameField) {
+        [self.passwordField becomeFirstResponder];
+    }
+    else if (textField == self.passwordField) {
+        [self.passwordField resignFirstResponder];
+        [self login:nil];
+    }
+    return true;
+}
+
 @end

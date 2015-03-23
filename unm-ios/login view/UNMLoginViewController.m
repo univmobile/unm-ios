@@ -153,14 +153,6 @@
     return YES;
 }
 
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-    NSLog(@"did start %@",webView.request.URL.absoluteString);
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    NSLog(@"did finish %@",webView.request.URL.absoluteString);
-}
-
 - (void)saveShibbolethCookie {
     NSArray* allCookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
     for (NSHTTPCookie *cookie in allCookies) {
