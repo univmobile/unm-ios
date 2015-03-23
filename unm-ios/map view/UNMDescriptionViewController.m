@@ -431,12 +431,12 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
             }
         }
         [descCell.descriptionLabel setAttributedText:labelString];
-        descCell.descriptionLabel.preferredMaxLayoutWidth = CGRectGetWidth(tableView.bounds);
+        descCell.descriptionLabel.preferredMaxLayoutWidth = CGRectGetWidth(tableView.bounds)-16.0f;
     
         [cell setNeedsUpdateConstraints];
         [cell updateConstraintsIfNeeded];
         
-        cell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.view.bounds), CGRectGetHeight(cell.bounds));
+        cell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.view.bounds)-16.0f, CGRectGetHeight(cell.bounds));
         
         [cell setNeedsLayout];
         [cell layoutIfNeeded];
@@ -582,7 +582,7 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
         self.phoneLabel.text = @"";
     }
     if (mapItem.address && [mapItem.address class] != [NSNull class]) {
-        if (mapItem.cityName && [mapItem.cityName class] != [NSNull class] && mapItem.cityName.length > 0) {
+        if (mapItem.cityName && [mapItem.cityName class] != [NSNull class] && mapItem.address.length > 0 && mapItem.cityName.length > 0) {
             self.addressLabel.text = [NSString stringWithFormat:@"%@, %@",mapItem.address,mapItem.cityName];
         }
         else {
@@ -681,6 +681,7 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
                 }];
             } else {
                 [UNMUtilities showErrorWithTitle:@"Merci de vous connecter" andMessage:@"Seuls les utilisateurs connectés peuvent enregistrer des commentaires" andDelegate:nil];
+                self.bookmarkUnlocked = YES;
             }
         } else {
             if ([self.delegate respondsToSelector:@selector(bookmarkForMapItem:)]) {
@@ -701,6 +702,9 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
                     [UNMUtilities showErrorWithTitle:@"Merci de vous connecter" andMessage:@"Vous devez être connecté pour pouvoir ajouter un bookmark" andDelegate:nil];
                     self.bookmarkUnlocked = YES;
                 }
+            }
+            else {
+                self.bookmarkUnlocked = YES;
             }
         }
     }
