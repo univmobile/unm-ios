@@ -74,15 +74,15 @@ static AFHTTPRequestOperationManager *postManager;
     [appDelegate.container setMenuState:MFSideMenuStateClosed completion:^{}];
 }
 
-+ (void)setCenterControllerToImageMapWithURL:(NSString *)URL {
++ (void)setCenterControllerToImageMapWithPath:(NSString *)Path {
     UIStoryboard *storyboard = [self storyboard];
     UNMAppDelegate *appDelegate = [self appDelegate];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         UINavigationController *destNav = [storyboard instantiateViewControllerWithIdentifier:@"mapViewController"];
         UNMMapViewController *vc = [[destNav viewControllers] lastObject];
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (URL != nil) {
-                vc.imageMapUrl = URL;
+            if (Path != nil) {
+                vc.imageMapPath = Path;
             }
             [appDelegate.container setCenterViewController:destNav];
         });
@@ -154,7 +154,7 @@ static AFHTTPRequestOperationManager *postManager;
 }
 
 + (void)setCenterControllerToMapIgnoreCurrent {
-    [self setCenterControllerToImageMapWithURL:nil];
+    [self setCenterControllerToImageMapWithPath:nil];
 }
 
 + (void)setCenterControllerWithNavController:(UINavigationController *)destNav {

@@ -108,8 +108,8 @@ static NSCache *requests;
 
 + (void)fetchImagesWithActiveName:(NSString *)activeName andMarkerName:(NSString *)markerName categoryID:(NSNumber *)ID success:(void(^)(UNMCategoryIcons *))success failure:(void(^)())failure {
     if ([activeName class] != [NSNull class] && [markerName class] != [NSNull class] && activeName.length > 0 && markerName.length > 0) {
-        NSURLRequest *activeReq = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@files/categoriesicons/%@",kBaseApiURLStr,[activeName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30.0f];
-        NSURLRequest *markerReq = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@files/categoriesicons/%@",kBaseApiURLStr,[markerName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30.0f];
+        NSURLRequest *activeReq = [NSURLRequest requestWithURL:[NSURL URLWithString:[kCategoryLogoDomainStr stringByAppendingString:[activeName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30.0f];
+        NSURLRequest *markerReq = [NSURLRequest requestWithURL:[NSURL URLWithString:[kCategoryLogoDomainStr stringByAppendingString:[markerName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30.0f];
         UNMCategoryIcons *iconReq = [[UNMCategoryIcons alloc]initWithActiveReq:activeReq andMarkerReq:markerReq];
         [requests setObject:iconReq forKey:ID];
         

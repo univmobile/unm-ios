@@ -25,7 +25,7 @@
     return self;
 }
 
-- (instancetype)initWithURLStr:(NSString *)urlStr andCallback:(void(^)(UNMImageMap *))callback
+- (instancetype)initWithPathStr:(NSString *)urlStr andCallback:(void(^)(UNMImageMap *))callback
 {
     self = [super init];
     if (self) {
@@ -46,7 +46,7 @@
                             _ID = ID;
                             _name = name;
                             _desc = desc;
-                            _imageUrl = [NSURL URLWithString:[kImageDomainStr stringByAppendingString:imageURLStr]];
+                            _imageUrl = [NSURL URLWithString:[kImageMapDomainStr stringByAppendingString:imageURLStr]];
                             _poisURLStr = poisURLStr;
                             callback(self);
                         }

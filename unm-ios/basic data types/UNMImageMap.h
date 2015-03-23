@@ -15,5 +15,5 @@
 @property (strong, nonatomic) NSString *desc;
 @property (strong, nonatomic) NSString *poisURLStr;
 - (instancetype)initWithID:(NSNumber *)ID andName:(NSString *)name andDesc:(NSString *)desc andImageURLStr:(NSString *)imageURLStr andPOISURLStr:(NSString *)poisURLStr;
-- (instancetype)initWithURLStr:(NSString *)urlStr andCallback:(void(^)(UNMImageMap *))callback;
+- (instancetype)initWithPathStr:(NSString *)urlStr andCallback:(void(^)(UNMImageMap *))callback;
 @end

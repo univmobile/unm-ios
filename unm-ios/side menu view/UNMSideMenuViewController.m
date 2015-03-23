@@ -15,7 +15,8 @@
 #import "UNMMenuItemBasic.h"
 #import "UNMUniversityBasic.h"
 #import "UNMRegionBasic.h"
-#import <AFNetworking/UIImageView+AFNetworking.h>
+#import <AFNetworking/UIButton+AFNetworking.h>
+#import "UNMConstants.h"
 
 @interface UNMSideMenuViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -81,7 +82,9 @@
         self.selectedCell = nil;
         [self initActivityIndicator];
         if ([univ.logoUrl class] != [NSNull class]) {
-            [self.logo.imageView setImageWithURL:[NSURL URLWithString:univ.logoUrl]];
+            [self.logo setBackgroundImageForState:UIControlStateNormal withURL:[NSURL URLWithString:[kUniversityLogoDomainStr stringByAppendingString:univ.logoUrl]]];
+        } else {
+            [self.logo setBackgroundImage:[UIImage imageNamed:@"universityLogo"] forState:UIControlStateNormal];
         }
         [UNMMenuItemBasic fetchMenuItemsWithSuccess:^(NSArray *items) {
             self.menuItems = items;

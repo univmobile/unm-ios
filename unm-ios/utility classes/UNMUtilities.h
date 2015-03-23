@@ -19,7 +19,7 @@
 + (void)setCenterControllerWithViewControllerIdentifier:(NSString *)vcIdentifier;
 + (void)setCenterControllerWithNavControllerIdentifier:(NSString *)navIdentifier;
 + (void)setCenterControllerWithViewControllerIdentifier:(NSString *)vcIdentifier andCallback:(void (^)())callback;
-+ (void)setCenterControllerToImageMapWithURL:(NSString *)URL;
++ (void)setCenterControllerToImageMapWithPath:(NSString *)Path;
 + (void)setCenterControllerToMapIgnoreCurrent;
 + (void)setCenterControllerToMapWithSingleItem:(UNMMapItemBasic *)item andTabSelected:(UNMMapTabs)tab;
 + (void)setCenterControllerToMapWithTabSelected:(UNMMapTabs)tab;
