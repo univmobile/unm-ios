@@ -38,6 +38,7 @@ typedef NS_ENUM(NSInteger, UNMMapTabs) {
 @property (strong, nonatomic) UIControl *qrCodeButton;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) NSString *imageMapPath;
+@property (strong, nonatomic) NSNumber *imageMapSelectedID;
 @property (strong, nonatomic) UNMMapItemBasic *singleItem;
 @property (nonatomic) UNMMapTabs TabSelected;
 @property (nonatomic) BOOL forHomeView;

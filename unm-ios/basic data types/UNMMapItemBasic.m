@@ -180,8 +180,9 @@
     [self fetchMarkersWithMap:nil categoryIds:categoryIDs success:callback failure:failure];
 }
 
-+ (void)fetchMarkersWithMap:(GMSMapView *)map andPath:(NSString *)path success:(void(^)())callback failure:(void(^)())failure {
-    [self fetchMarkersWithMap:map path:path array:nil limit:nil success:callback failure:failure];
++ (void)fetchMarkersWithMap:(GMSMapView *)map andPath:(NSString *)path success:(void(^)(NSArray *))callback failure:(void(^)())failure {
+    NSMutableArray *array = [NSMutableArray new];
+    [self fetchMarkersWithMap:map path:path array:array limit:nil success:callback failure:failure];
 }
 
 + (void)fetchMarkersWithMap:(GMSMapView *)map categoryIds:(NSArray *)categoryIDs success:(void(^)(NSArray *))callback failure:(void(^)())failure {

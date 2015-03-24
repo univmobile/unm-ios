@@ -92,7 +92,7 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
             [self.mapView setCamera:camera];
             self.mapView.mapType = kGMSTypeNone;
             [self removeAllTabs];
-            [self loadImageMapDataWithPath:self.imageMapPath];
+            [self loadImageMapDataWithPath:self.imageMapPath andSelectedID:self.imageMapSelectedID];
             [self addDescriptionSlideOutForImageMap:YES];
             self.descSlideOut.viewColor = [UIColor leftTabYellow];
         } else {
@@ -122,23 +122,27 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
                 [self.mapView clear];
                 [[UNMUtilities mapManager].operationQueue cancelAllOperations];
                 [self removeActivityIndicator];
-                GMSMarker *marker = [GMSMarker new];
-                marker.position = CLLocationCoordinate2DMake(self.singleItem.lat, self.singleItem.lon);
-                marker.map = self.mapView;
-                marker.userData = self.singleItem;
-                [self mapView:self.mapView didTapMarker:marker];
-                [UNMCategoryIcons getCategoryImageWithCategoryProtocolItem:self.singleItem success:^(UNMCategoryIcons *catIcon) {
-                    marker.icon = catIcon.markerImage;
-                    [self.markerIcons setObject:catIcon.markerImage forKey:self.singleItem.categoryID];
-                }];
-                GMSCameraUpdate *update = [GMSCameraUpdate setTarget:marker.position];
-                [self.mapView moveCamera:update];
+                [self loadSingleItemToMap];
             }
         }
     }
     UNMAppDelegate *appDelegate = (UNMAppDelegate *)[[UIApplication sharedApplication] delegate];
     [self.view addGestureRecognizer:[appDelegate.container panGestureRecognizer]];
     self.viewLoaded = YES;
+}
+
+- (void)loadSingleItemToMap {
+    GMSMarker *marker = [GMSMarker new];
+    marker.position = CLLocationCoordinate2DMake(self.singleItem.lat, self.singleItem.lon);
+    marker.map = self.mapView;
+    marker.userData = self.singleItem;
+    [self mapView:self.mapView didTapMarker:marker];
+    [UNMCategoryIcons getCategoryImageWithCategoryProtocolItem:self.singleItem success:^(UNMCategoryIcons *catIcon) {
+        marker.icon = catIcon.markerImage;
+        [self.markerIcons setObject:catIcon.markerImage forKey:self.singleItem.categoryID];
+    }];
+    GMSCameraUpdate *update = [GMSCameraUpdate setTarget:marker.position];
+    [self.mapView moveCamera:update];
 }
 
 - (void)checkParisRegion {
@@ -790,17 +794,37 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
     }
 }
 
-- (void)loadImageMapDataWithPath:(NSString *)imageMapPath {
+- (void)loadImageMapDataWithPath:(NSString *)imageMapPath andSelectedID:(NSNumber *)selectedID {
     self.imageMap = [[UNMImageMap alloc]initWithPathStr:imageMapPath andCallback:^(UNMImageMap *imgMap){
         [self loadImageMapWithURL:imgMap.imageUrl];
         [self initActivityIndicator];
         [self.mapView clear];
         NSString *path = [imgMap.poisURLStr stringByReplacingOccurrencesOfString:kBaseApiURLStr withString:@""];
-        [UNMMapItemBasic fetchMarkersWithMap:self.mapView andPath:path success:^{
+        [UNMMapItemBasic fetchMarkersWithMap:self.mapView andPath:path success:^(NSArray *objects) {
+            for (UNMMapItemBasic *item in objects) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    GMSMarker *marker = [GMSMarker new];
+                    marker.position = CLLocationCoordinate2DMake(item.lat, item.lon);
+                    marker.userData = item;
+                    marker.map = self.mapView;
+                    if (selectedID && [item.ID isEqualToNumber:selectedID]) {
+                        [self mapView:self.mapView didTapMarker:marker];
+                    }
+                    UIImage *icon = [self.markerIcons objectForKey:item.categoryID];
+                    if (!icon) {
+                        [UNMCategoryIcons getCategoryImageWithCategoryProtocolItem:item success:^(UNMCategoryIcons *catIcon) {
+                            marker.icon = catIcon.markerImage;
+                            [self.markerIcons setObject:catIcon.markerImage forKey:item.categoryID];
+                        }];
+                    } else {
+                        marker.icon = icon;
+                    }
+                });
+            }
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self removeActivityIndicator];
             });
-        } failure:^{
+         } failure:^{
             [self removeActivityIndicator];
         }];
     }];
@@ -1012,9 +1036,10 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
     for(ZBarSymbol *symbol in results) {
         NSDictionary *dict = [UNMUtilities parseQueryString:[symbol data]];
         NSString *ID = dict[@"ID"];
+        NSNumber *selectedID = [NSNumber numberWithInt:[[dict valueForKey:@"poiID"] intValue]];
         if (ID != nil && ![ID isEqualToString:@"null"]) {
             [picker dismissViewControllerAnimated:YES completion:^{
-                [UNMUtilities setCenterControllerToImageMapWithPath:[NSString stringWithFormat:@"imageMaps/%d",[ID intValue]]];
+                [UNMUtilities setCenterControllerToImageMapWithPath:[NSString stringWithFormat:@"imageMaps/%d",[ID intValue]] andSelectedID:selectedID];
             }];
         }
     }

@@ -59,8 +59,9 @@
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     NSDictionary *dict = [UNMUtilities parseQueryString:[url query]];
     NSString *ID = dict[@"ID"];
+    NSNumber *selectedID = [NSNumber numberWithInt:[[dict valueForKey:@"poiID"] intValue]];
     if (ID != nil && ![ID isEqualToString:@"null"]) {
-        [UNMUtilities setCenterControllerToImageMapWithPath:[NSString stringWithFormat:@"imageMaps/%d",[ID intValue]]];
+        [UNMUtilities setCenterControllerToImageMapWithPath:[NSString stringWithFormat:@"imageMaps/%d",[ID intValue]] andSelectedID:selectedID];
     } else {
         [UNMUtilities showErrorWithTitle:@"Impossible d'ouvrir le QR code" andMessage:@"Le QR code n'est pas valide" andDelegate:nil];
     }

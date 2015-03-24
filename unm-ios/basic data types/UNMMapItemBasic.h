@@ -37,7 +37,7 @@
 + (void)fetchMarkersWithMap:(GMSMapView *)map categoryIds:(NSArray *)categoryIDs success:(void(^)(NSArray *))callback failure:(void(^)())failure;
 + (void)fetchMarkersWithSuccess:(void(^)())callback failure:(void(^)())failure;
 + (void)fetchMarkersWithCategoryIds:(NSArray *)categoryIDs success:(void(^)(NSArray *))callback failure:(void(^)())failure;
-+ (void)fetchMarkersWithMap:(GMSMapView *)map andPath:(NSString *)path success:(void(^)())callback failure:(void(^)())failure;
++ (void)fetchMarkersWithMap:(GMSMapView *)map andPath:(NSString *)path success:(void(^)(NSArray *))callback failure:(void(^)())failure;
 + (void)fetchMarkersWithUniversityID:(NSNumber *)univID andCategoryID:(NSNumber *)catID andSearchString:(NSString *)query success:(void(^)(NSArray *))callback failure:(void(^)())failure;
 + (void)fetchMarkersWithMap:(GMSMapView *)map WithRootIDs:(NSArray *)rootIDs success:(void(^)(NSArray *))callback failure:(void(^)())failure;
 + (void)fetchMarkerWithMap:(GMSMapView *)map withID:(NSNumber *)ID success:(void(^)(UNMMapItemBasic *))callback failure:(void(^)())failure;

@@ -74,7 +74,7 @@ static AFHTTPRequestOperationManager *postManager;
     [appDelegate.container setMenuState:MFSideMenuStateClosed completion:^{}];
 }
 
-+ (void)setCenterControllerToImageMapWithPath:(NSString *)Path {
++ (void)setCenterControllerToImageMapWithPath:(NSString *)Path andSelectedID:(NSNumber *)selectedID {
     UIStoryboard *storyboard = [self storyboard];
     UNMAppDelegate *appDelegate = [self appDelegate];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -83,6 +83,9 @@ static AFHTTPRequestOperationManager *postManager;
         dispatch_async(dispatch_get_main_queue(), ^{
             if (Path != nil) {
                 vc.imageMapPath = Path;
+                if (selectedID) {
+                    vc.imageMapSelectedID = selectedID;
+                }       
             }
             [appDelegate.container setCenterViewController:destNav];
         });
@@ -151,10 +154,6 @@ static AFHTTPRequestOperationManager *postManager;
         });
     });
     [appDelegate.container setMenuState:MFSideMenuStateClosed completion:^{}];
-}
-
-+ (void)setCenterControllerToMapIgnoreCurrent {
-    [self setCenterControllerToImageMapWithPath:nil];
 }
 
 + (void)setCenterControllerWithNavController:(UINavigationController *)destNav {
