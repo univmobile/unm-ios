@@ -76,14 +76,20 @@
         NSDictionary *links = responseObject[@"_links"];
         if (embedded != nil) {
             [self parseDataFromDictionary:embedded toMutableArray:array withLimit:limit];
+            if (limit && array.count >= limit.intValue) {
+                callback(array);
+                return;
+            }
             NSString *nextPath = [self parseNextPathWithDictionary:links];
             if (nextPath) {
                 [self fetchNewsWithPath:nextPath array:array limit:limit success:callback failure:failure];
             } else {
                 callback(array);
+                return;
             }
         } else {
             callback(array);
+            return;
         }
     }
     failure:^(AFHTTPRequestOperation *operation, NSError *error){
@@ -102,8 +108,10 @@
             [self parseDataFromDictionary:embedded toMutableArray:array withLimit:nil];
             NSString *nextPath = [self parseNextPathWithDictionary:links];
             callback(array,nextPath);
+            return;
         } else {
             callback(array, nil);
+            return;
         }
     }
    failure:^(AFHTTPRequestOperation *operation, NSError *error){

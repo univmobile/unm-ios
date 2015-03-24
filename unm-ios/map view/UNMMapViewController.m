@@ -856,6 +856,7 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
     [self toggleSlideOutWithType:SlideOutDescription];
     self.descSlideOut.mapItem = marker.userData;
     [self.descSlideOut setSelectedTab:0];
+    
     return YES;
 }
 

@@ -23,6 +23,7 @@
 #import "UNMConstants.h"
 #import "UNMCategoryIcons.h"
 #import "UNMBookmarkBasic.h"
+#import "UITableView+HeaderResize.h"
 
 
 typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
@@ -53,6 +54,13 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
 @property (nonatomic) BOOL bookmarkUnlocked;
 @property (strong, nonatomic) UNMUserBasic *user;
 @property (strong, nonatomic) NSCache *catIcons;
+@property (weak, nonatomic) IBOutlet UIImageView *addressIcon;
+@property (weak, nonatomic) IBOutlet UIImageView *phoneIcon;
+@property (weak, nonatomic) IBOutlet UIImageView *emailIcon;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *addressIconHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *phoneIconHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *emailIconHeight;
+@property (weak, nonatomic) IBOutlet UIView *tableHeaderView;
 @end
 
 @implementation UNMDescriptionViewController {
@@ -65,7 +73,7 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        _isLayouting = NO;
+        _isLayouting    = NO;
         _isImageMapDesc = NO;
         _offscreenCells = [NSCache new];
         _offscreenCellHeights = [NSCache new];
@@ -117,6 +125,65 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
     [super viewDidLayoutSubviews];
     [self.scrollHelper  setUpScrollIndicatorWithScrollView:self.tableView andColor:self.viewColor];
 }
+
+- (void)removeAddressElements {
+    self.addressIconHeight.constant = 0;
+    self.addressLabel.hidden = YES;
+    [self.addressIcon setNeedsLayout];
+}
+
+- (void)removePhoneElements {
+    self.phoneIconHeight.constant = 0;
+    self.phoneLabel.hidden = YES;
+    [self.phoneIcon setNeedsLayout];
+}
+
+- (void)removeEmailElements {
+    self.emailIconHeight.constant = 0;
+    self.emailLabel.hidden= YES;
+    [self.emailIcon setNeedsLayout];
+}
+
+- (void)addAddressElements {
+    self.addressIconHeight.constant = 24;
+    self.addressLabel.hidden = NO;
+    [self.addressIcon setNeedsLayout];
+}
+
+- (void)addPhoneElements {
+    self.phoneIconHeight.constant = 27;
+    self.phoneLabel.hidden = NO;
+    [self.phoneIcon setNeedsLayout];
+}
+
+- (void)addEmailElements {
+    self.emailIconHeight.constant = 15;
+    self.emailLabel.hidden = NO;
+    [self.emailIcon setNeedsLayout];
+}
+
+- (void)removeEmptyElements {
+    if ([self.addressLabel.text length] == 0) {
+        [self removeAddressElements];
+    }
+    else {
+        [self addAddressElements];
+    }
+    if ([self.phoneLabel.text length] == 0) {
+        [self removePhoneElements];
+    }
+    else {
+        [self addPhoneElements];
+    }
+    if ([self.emailLabel.text length] == 0) {
+        [self removeEmailElements];
+    }
+    else {
+        [self addEmailElements];
+    }
+    [self.tableView sizeHeaderToFit];
+}
+
 
 - (CPAnimationStep *)stepsForkeyboardWillShow:(NSNotification *)notification {
     CGFloat keyboardHeight = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey ] CGRectValue].size.height;
@@ -197,9 +264,9 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
 }
 
 - (void)fetchComments {
-    if (self.mapItem) {
+    if (self.mapItem && !self.commentTab.hidden) {
         NSString *path = [NSString stringWithFormat:@"comments/search/findByPoiOrderByCreatedOnDesc?poiId=%d",[[[self mapItem] ID] intValue]];
-        [UNMUtilities fetchFromApiWithPath:path success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [UNMUtilities fetchFromApiAuthenticatedWithPath:path success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [self.comments removeAllObjects];
             NSDictionary *embedded = responseObject[@"_embedded"];
             if (embedded != nil) {
@@ -576,6 +643,7 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
 
 - (void)setMapItem:(UNMMapItemBasic *)mapItem {
     _mapItem = mapItem;
+    
     if (mapItem.phone && [mapItem.phone class] != [NSNull class]) {
         self.phoneLabel.text = mapItem.phone;
     } else {
@@ -621,6 +689,7 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
     } else {
         self.categoryIcon.image = nil;
     }
+    [self removeEmptyElements];
     [self.tableView reloadData];
     [self fetchComments];
     [self checkIfBookmarked];

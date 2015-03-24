@@ -25,6 +25,7 @@
 + (void)setCenterControllerToMapWithTabSelected:(UNMMapTabs)tab;
 + (void)setCenterControllerToMapWithCategoryID:(NSNumber *)catID;
 + (void)fetchFromApiWithPath:(NSString *)path success:(void(^)(AFHTTPRequestOperation*,id))success failure:(void(^)(AFHTTPRequestOperation*,NSError*))failure;
++ (void)fetchFromApiAuthenticatedWithPath:(NSString *)path success:(void(^)(AFHTTPRequestOperation*,id))success failure:(void(^)(AFHTTPRequestOperation*,NSError*))failure;
 + (void)fetchFromApiForMapWithPath:(NSString *)path success:(void(^)(AFHTTPRequestOperation*,id))success failure:(void(^)(AFHTTPRequestOperation*,NSError*))failure;
 + (void)postToApiWithPath:(NSString *)path andParams:(NSDictionary *)params success:(void(^)(AFHTTPRequestOperation*,id))success failure:(void(^)(AFHTTPRequestOperation*,NSError*))failure;
 + (void)fetchFromOldApiWithPath:(NSString *)path success:(void(^)(AFHTTPRequestOperation*,id))success failure:(void(^)(AFHTTPRequestOperation*,NSError*))failure;

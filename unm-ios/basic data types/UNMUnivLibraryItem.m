@@ -80,12 +80,15 @@
                     [self fetchLibraryItemsWithPath:nextUrlPath array:array limit:limit success:callback failure:failure];
                 } else {
                     callback(array);
+                    return;
                 }
             } else {
                 callback(array);
+                return;
             }
         } else {
             callback(array);
+            return;
         }
     }
    failure:^(AFHTTPRequestOperation *operation, NSError *error){

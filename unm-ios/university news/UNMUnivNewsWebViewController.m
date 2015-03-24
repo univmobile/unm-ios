@@ -34,7 +34,7 @@
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     [self removeActivityIndicator];
-    [UNMUtilities showErrorWithTitle:@"Impossible de charger la page" andMessage:[error localizedDescription] andDelegate:nil];
+//    [UNMUtilities showErrorWithTitle:@"Impossible de charger la page" andMessage:[error localizedDescription] andDelegate:nil];
 }
 
 - (void)initActivityIndicator {

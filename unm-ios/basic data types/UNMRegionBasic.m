@@ -62,6 +62,7 @@
         if (ID != nil && title != nil && label != nil && [title class] != [NSNull class] && [label class] != [NSNull class] && [ID class] != [NSNull class]) {
             UNMRegionBasic *region = [[UNMRegionBasic alloc]initWithTitle:title andLabel:label andUniversitiesURL:universitiesURL andID:ID];
             callback(region);
+            return;
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error){
         [UNMUtilities showErrorWithTitle:@"Impossible d'accéder aux informations" andMessage:@"Merci de vérifier que vous êtes connecté à internet" andDelegate:nil];

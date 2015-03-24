@@ -1493,19 +1493,19 @@
                                                 <constraint firstAttribute="width" constant="24" id="dgs-3P-EL2"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="272" translatesAutoresizingMaskIntoConstraints="NO" id="mwT-QW-QmO">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="272" translatesAutoresizingMaskIntoConstraints="NO" id="mwT-QW-QmO" userLabel="address label">
                                             <rect key="frame" x="40" y="67" width="272" height="23"/>
                                             <fontDescription key="fontDescription" name="Exo-Medium" family="Exo" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="272" translatesAutoresizingMaskIntoConstraints="NO" id="mUd-7p-zi0">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="272" translatesAutoresizingMaskIntoConstraints="NO" id="mUd-7p-zi0" userLabel="phone label">
                                             <rect key="frame" x="40" y="97" width="272" height="23"/>
                                             <fontDescription key="fontDescription" name="Exo-Medium" family="Exo" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="272" translatesAutoresizingMaskIntoConstraints="NO" id="yfK-4U-hjo">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="272" translatesAutoresizingMaskIntoConstraints="NO" id="yfK-4U-hjo" userLabel="email label">
                                             <rect key="frame" x="40" y="128" width="272" height="23"/>
                                             <fontDescription key="fontDescription" name="Exo-Medium" family="Exo" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1886,6 +1886,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="ihB-LA-ZFM"/>
                     <connections>
+                        <outlet property="addressIcon" destination="K0f-Lh-thW" id="CBQ-LV-fA9"/>
+                        <outlet property="addressIconHeight" destination="ZMu-Fb-ER8" id="b8e-Ik-xWp"/>
                         <outlet property="addressLabel" destination="mwT-QW-QmO" id="j66-RG-FUK"/>
                         <outlet property="bookmarkButton" destination="xr1-Zj-pBt" id="IeY-eN-kDp"/>
                         <outlet property="bookmarkCheckmarkIcon" destination="Jwj-E1-ydc" id="POQ-lQ-l1A"/>
@@ -1898,11 +1900,16 @@
                         <outlet property="bottomSeparator" destination="rJC-uL-W4P" id="Vfh-83-q5m"/>
                         <outlet property="categoryIcon" destination="jgY-p6-pGR" id="7fy-9s-kja"/>
                         <outlet property="commentTab" destination="rJT-CW-BqZ" id="JWE-Rg-szr"/>
+                        <outlet property="emailIcon" destination="ppb-LQ-OmX" id="mZy-LQ-F7d"/>
+                        <outlet property="emailIconHeight" destination="bLv-Po-OAc" id="GG5-Rd-pNm"/>
                         <outlet property="emailLabel" destination="yfK-4U-hjo" id="POL-dd-ngu"/>
                         <outlet property="infoTab" destination="obR-Kc-xwS" id="43O-IP-Dhl"/>
                         <outlet property="menuTab" destination="DQB-2e-TQ8" id="Qbf-mL-D1H"/>
+                        <outlet property="phoneIcon" destination="p6e-62-IHh" id="CKw-Vg-A0N"/>
+                        <outlet property="phoneIconHeight" destination="7Z0-mV-ZQ3" id="hRg-4s-lZo"/>
                         <outlet property="phoneLabel" destination="mUd-7p-zi0" id="VBq-AE-JVe"/>
                         <outlet property="separatorHeightConst" destination="qGj-VH-aY9" id="4bO-ST-lvG"/>
+                        <outlet property="tableHeaderView" destination="HKH-g2-bx5" id="MmI-7h-ZgE"/>
                         <outlet property="tableView" destination="clM-1T-XVT" id="TVe-Ht-hQi"/>
                         <outlet property="tableViewBottomConst" destination="sbu-6I-hqp" id="r6q-H7-uin"/>
                         <outlet property="tableViewTop" destination="6OS-XJ-Ozi" id="qMo-Af-Dqg"/>

@@ -103,12 +103,15 @@
                     [self fetchUniversityItemsWithPath:nextUrlPath array:array success:callback failure:failure];
                 } else {
                     callback(array);
+                    return;
                 }
             } else {
                 callback(array);
+                return;
             }
         } else {
             callback(array);
+            return;
         }
     }
     failure:^(AFHTTPRequestOperation *operation, NSError *error){

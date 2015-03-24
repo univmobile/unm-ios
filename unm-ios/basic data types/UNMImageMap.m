@@ -49,6 +49,7 @@
                             _imageUrl = [NSURL URLWithString:[kImageMapDomainStr stringByAppendingString:imageURLStr]];
                             _poisURLStr = poisURLStr;
                             callback(self);
+                            return;
                         }
                     }
                 }

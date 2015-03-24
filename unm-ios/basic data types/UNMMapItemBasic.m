@@ -301,12 +301,15 @@
                         [self fetchMarkersWithMap:map path:nextUrlPath array:array limit:limit success:callback failure:failure];
                     } else {
                         callback(array);
+                        return;
                     }
                 } else {
                     callback(array);
+                    return;
                 }
             } else {
                 callback(array);
+                return;
             }
         });
     }
@@ -348,11 +351,14 @@
                 if (active && ID != nil && name != nil && desc != nil && lat != nil && lon != nil && restoID != nil && categoryID != nil && [ID class] != [NSNull class] && [lat class] != [NSNull class] && [lon class] != [NSNull class] && [categoryID class] != [NSNull class]) {
                     UNMMapItemBasic *markerData = [[UNMMapItemBasic alloc]initWithID:ID andName:name andDescription:desc andLat:[lat floatValue] andLon:[lon floatValue] andAddress:address andPhone:phones andEmail:email andRestorauntID:restoID andRuedesfacs:ruedesfacs andCategoryID:categoryID andWebsite:website andWelcome:welcome andDisciplines:disciplines andOpeningHours:openingHours andClosingHours:closingHours andFloor:floor andItinerary:itinerary andActiveIcon:activeIconName andMarkerIcon:markerIconName andCityName:cityName];
                     callback(markerData);
+                    return;
                 } else {
                     failure();
+                    return;
                 }
             } else {
                 failure();
+                return;
             }
         });
     }

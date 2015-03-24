@@ -239,6 +239,15 @@ static AFHTTPRequestOperationManager *postManager;
     [manager GET:url parameters:nil success:success failure:failure];
 }
 
++ (void)fetchFromApiAuthenticatedWithPath:(NSString *)path success:(void(^)(AFHTTPRequestOperation*,id))success failure:(void(^)(AFHTTPRequestOperation*,NSError*))failure {
+    UNMAuthDataBasic *auth = [UNMAuthDataBasic getSavedObject];
+    if (auth && auth.accessToken && [auth class] != [NSNull class] && [auth.accessToken class] != [NSNull class]) {
+        [self fetchFromApiWithPath:path success:success failure:failure];
+    } else {
+        [self showErrorWithTitle:@"Merci de vous connecter" andMessage:@"Merci de cliquer sur le lien \"connectez-vous\" dans le haut de page" andDelegate:nil];
+    }
+}
+
 + (void)fetchImageFromApiWithPath:(NSString *)path success:(void(^)(AFHTTPRequestOperation*,id))success failure:(void(^)(AFHTTPRequestOperation*,NSError*))failure {
     [self manager];
     manager.responseSerializer = [AFImageResponseSerializer serializer];

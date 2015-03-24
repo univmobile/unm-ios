@@ -108,6 +108,7 @@
 		377197611A641DF8005D50DA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3771975F1A641DF8005D50DA /* LaunchScreen.xib */; };
 		3771976D1A641DF8005D50DA /* unm_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771976C1A641DF8005D50DA /* unm_iosTests.m */; };
 		37761F511AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37761F501AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.m */; };
+		37A827361AC16A8100FBA01B /* UITableView+HeaderResize.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A827351AC16A8100FBA01B /* UITableView+HeaderResize.m */; };
 		37B946ED1A69683C002BBB73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37B946EC1A69683C002BBB73 /* CoreLocation.framework */; };
 		37F8BBA91AB18F610093A75B /* UNMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F8BBA81AB18F610093A75B /* UNMConstants.m */; };
 		63801F4F5DAD791F0A91CE92 /* libPods-unm-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8018100A1727F436B984CB9 /* libPods-unm-ios.a */; };
@@ -304,6 +305,8 @@
 		37761F4E1AAEE46500CD2DC0 /* UNMCategoryIconProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMCategoryIconProtocol.h; path = "basic data types/UNMCategoryIconProtocol.h"; sourceTree = "<group>"; };
 		37761F4F1AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMBookmarksTableViewController.h; path = "bookmarks view/UNMBookmarksTableViewController.h"; sourceTree = "<group>"; };
 		37761F501AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMBookmarksTableViewController.m; path = "bookmarks view/UNMBookmarksTableViewController.m"; sourceTree = "<group>"; };
+		37A827341AC16A8100FBA01B /* UITableView+HeaderResize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+HeaderResize.h"; sourceTree = "<group>"; };
+		37A827351AC16A8100FBA01B /* UITableView+HeaderResize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+HeaderResize.m"; sourceTree = "<group>"; };
 		37B946EC1A69683C002BBB73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		37F8BBA71AB18F610093A75B /* UNMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMConstants.h; path = "utility classes/UNMConstants.h"; sourceTree = "<group>"; };
 		37F8BBA81AB18F610093A75B /* UNMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMConstants.m; path = "utility classes/UNMConstants.m"; sourceTree = "<group>"; };
@@ -615,6 +618,8 @@
 				37319FD41AA702AE007B1A0D /* UNMTabButton.m */,
 				37319FD51AA702AE007B1A0D /* UNMViewWithUnclippedButton.h */,
 				37319FD61AA702AE007B1A0D /* UNMViewWithUnclippedButton.m */,
+				37A827341AC16A8100FBA01B /* UITableView+HeaderResize.h */,
+				37A827351AC16A8100FBA01B /* UITableView+HeaderResize.m */,
 			);
 			name = "map view";
 			sourceTree = "<group>";
@@ -986,6 +991,7 @@
 				37319FF61AA702CB007B1A0D /* NSDate+notificationDate.m in Sources */,
 				37319FD81AA702AE007B1A0D /* UNMBonPlanViewController.m in Sources */,
 				3731A0291AA70373007B1A0D /* UNMUniversitySelectionViewController.m in Sources */,
+				37A827361AC16A8100FBA01B /* UITableView+HeaderResize.m in Sources */,
 				3731A00B1AA70319007B1A0D /* UNMUniversityNewsTableViewController.m in Sources */,
 				3731A02A1AA70373007B1A0D /* UNMUnivSelectTableViewCell.m in Sources */,
 				3731A0051AA702FD007B1A0D /* UIBarButtonItem+Badge.m in Sources */,
