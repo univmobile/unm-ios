@@ -10,6 +10,7 @@
 #import "CPAnimationSequence.h"
 #import "UNMTabButton.h"
 #import "UNMMapItemBasic.h"
+#import "TTTAttributedLabel.h"
 
 @class UNMBookmarkBasic;
 
@@ -23,7 +24,7 @@
 - (void)removeUserBookmark:(UNMBookmarkBasic *)bookmark;
 @end
 
-@interface UNMDescriptionViewController : UIViewController<UITextViewDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface UNMDescriptionViewController : UIViewController<UITextViewDelegate,UITableViewDataSource,UITableViewDelegate,TTTAttributedLabelDelegate>
 @property (strong, nonatomic) UIColor *viewColor;
 @property (weak, nonatomic) id<UNMDescriptionViewDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIImageView *categoryIcon;
