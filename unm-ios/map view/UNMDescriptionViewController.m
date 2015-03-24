@@ -36,9 +36,9 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
 @property (strong, nonatomic) NSCache *offscreenCellHeights;
 @property (nonatomic) CGFloat commentFieldH;
 @property (nonatomic) BOOL customScrollIndicatorSet;
-@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-@property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
-@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UITextView *addressLabel;
+@property (weak, nonatomic) IBOutlet UITextView *phoneLabel;
+@property (weak, nonatomic) IBOutlet UITextView *emailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bottomButtonLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bottomButtonValidateLabel;
 @property (weak, nonatomic) IBOutlet UIControl *bookmarkButton;
@@ -309,7 +309,7 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
     }
 }
 
-- (void)stringWithTitle:(NSString *)title andBody:(NSString *)body appendTo:(NSMutableAttributedString *)attrStr {
+- (void)stringWithTitle:(NSString *)title andBody:(NSString *)body appendTo:(NSMutableAttributedString *)attrStr isLink:(BOOL)isLink {
     NSAttributedString *newLine = [[NSAttributedString alloc]initWithString:@"\n"];
     if ([attrStr length] > 0) {
         [attrStr appendAttributedString:newLine];
@@ -322,7 +322,14 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
     font = [UIFont fontWithName:@"Exo-Regular" size:16.0];
     attributes = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
     subString = [[NSAttributedString alloc] initWithString:body attributes:attributes];
-    [attrStr appendAttributedString:subString];
+    if (isLink) {
+        NSRange linkRange = NSMakeRange(attrStr.length, subString.length);
+        [attrStr appendAttributedString:subString];
+        [attrStr addAttribute:NSLinkAttributeName value:subString range:linkRange];
+    }
+    else {
+        [attrStr appendAttributedString:subString];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -360,28 +367,28 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
         NSMutableAttributedString *labelString = [[NSMutableAttributedString alloc] initWithString:@""];
         if (self.mapItem) {
             if (self.mapItem.desc && [self.mapItem.desc class] != [NSNull class] && [self.mapItem.desc length] > 0) {
-                [self stringWithTitle:@"Description:" andBody:self.mapItem.desc appendTo:labelString];
+                [self stringWithTitle:@"Description:" andBody:self.mapItem.desc appendTo:labelString isLink:NO];
             }
             if (self.mapItem.website && [self.mapItem.website class] != [NSNull class] && [self.mapItem.website length] > 0) {
-                [self stringWithTitle:@"Site web:" andBody:self.mapItem.website appendTo:labelString];
+                [self stringWithTitle:@"Site web:" andBody:self.mapItem.website appendTo:labelString isLink:YES];
             }
             if (self.mapItem.welcome && [self.mapItem.welcome class] != [NSNull class] && [self.mapItem.welcome length] > 0) {
-                [self stringWithTitle:@"Publics accueillis:" andBody:self.mapItem.welcome appendTo:labelString];
+                [self stringWithTitle:@"Publics accueillis:" andBody:self.mapItem.welcome appendTo:labelString isLink:NO];
             }
             if (self.mapItem.disciplines && [self.mapItem.disciplines class] != [NSNull class] && [self.mapItem.disciplines length] > 0) {
-                [self stringWithTitle:@"Disciplines:" andBody:self.mapItem.disciplines appendTo:labelString];
+                [self stringWithTitle:@"Disciplines:" andBody:self.mapItem.disciplines appendTo:labelString isLink:NO];
             }
             if (self.mapItem.openingHours && [self.mapItem.openingHours class] != [NSNull class] && [self.mapItem.openingHours length] > 0) {
-                [self stringWithTitle:@"Horaires et jours d'ouverture:" andBody:self.mapItem.openingHours appendTo:labelString];
+                [self stringWithTitle:@"Horaires et jours d'ouverture:" andBody:self.mapItem.openingHours appendTo:labelString isLink:NO];
             }
             if (self.mapItem.closingHours && [self.mapItem.closingHours class] != [NSNull class] && [self.mapItem.closingHours length] > 0) {
-                [self stringWithTitle:@"Horaires et jours de fermeture:" andBody:self.mapItem.closingHours appendTo:labelString];
+                [self stringWithTitle:@"Horaires et jours de fermeture:" andBody:self.mapItem.closingHours appendTo:labelString isLink:NO];
             }
             if (self.mapItem.floor && [self.mapItem.floor class] != [NSNull class] && [self.mapItem.floor length] > 0) {
-                [self stringWithTitle:@"Emplacement:" andBody:self.mapItem.floor appendTo:labelString];
+                [self stringWithTitle:@"Emplacement:" andBody:self.mapItem.floor appendTo:labelString isLink:NO];
             }
             if (self.mapItem.itinerary && [self.mapItem.itinerary class] != [NSNull class] && [self.mapItem.itinerary length] > 0) {
-                [self stringWithTitle:@"Accès:" andBody:self.mapItem.itinerary appendTo:labelString];
+                [self stringWithTitle:@"Accès:" andBody:self.mapItem.itinerary appendTo:labelString isLink:NO];
             }
         }
         [cell.descriptionLabel setAttributedText:labelString];
@@ -473,28 +480,28 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
         NSMutableAttributedString *labelString = [[NSMutableAttributedString alloc] initWithString:@""];
         if (self.mapItem) {
             if (self.mapItem.desc && [self.mapItem.desc class] != [NSNull class] && [self.mapItem.desc length] > 0) {
-                [self stringWithTitle:@"Description:" andBody:self.mapItem.desc appendTo:labelString];
+                [self stringWithTitle:@"Description:" andBody:self.mapItem.desc appendTo:labelString isLink:NO];
             }
             if (self.mapItem.website && [self.mapItem.website class] != [NSNull class] && [self.mapItem.website length] > 0) {
-                [self stringWithTitle:@"Website:" andBody:self.mapItem.website appendTo:labelString];
+                [self stringWithTitle:@"Website:" andBody:self.mapItem.website appendTo:labelString isLink:YES];
             }
             if (self.mapItem.welcome && [self.mapItem.welcome class] != [NSNull class] && [self.mapItem.welcome length] > 0) {
-                [self stringWithTitle:@"Welcome:" andBody:self.mapItem.welcome appendTo:labelString];
+                [self stringWithTitle:@"Welcome:" andBody:self.mapItem.welcome appendTo:labelString isLink:NO];
             }
             if (self.mapItem.disciplines && [self.mapItem.disciplines class] != [NSNull class] && [self.mapItem.disciplines length] > 0) {
-                [self stringWithTitle:@"Disciplines:" andBody:self.mapItem.disciplines appendTo:labelString];
+                [self stringWithTitle:@"Disciplines:" andBody:self.mapItem.disciplines appendTo:labelString isLink:NO];
             }
             if (self.mapItem.openingHours && [self.mapItem.openingHours class] != [NSNull class] && [self.mapItem.openingHours length] > 0) {
-                [self stringWithTitle:@"Opening hours:" andBody:self.mapItem.openingHours appendTo:labelString];
+                [self stringWithTitle:@"Opening hours:" andBody:self.mapItem.openingHours appendTo:labelString isLink:NO];
             }
             if (self.mapItem.closingHours && [self.mapItem.closingHours class] != [NSNull class] && [self.mapItem.closingHours length] > 0) {
-                [self stringWithTitle:@"Closing hours:" andBody:self.mapItem.closingHours appendTo:labelString];
+                [self stringWithTitle:@"Closing hours:" andBody:self.mapItem.closingHours appendTo:labelString isLink:NO];
             }
             if (self.mapItem.floor && [self.mapItem.floor class] != [NSNull class] && [self.mapItem.floor length] > 0) {
-                [self stringWithTitle:@"Floor:" andBody:self.mapItem.floor appendTo:labelString];
+                [self stringWithTitle:@"Floor:" andBody:self.mapItem.floor appendTo:labelString isLink:NO];
             }
             if (self.mapItem.itinerary && [self.mapItem.itinerary class] != [NSNull class] && [self.mapItem.itinerary length] > 0) {
-                [self stringWithTitle:@"Itinerary:" andBody:self.mapItem.itinerary appendTo:labelString];
+                [self stringWithTitle:@"Itinerary:" andBody:self.mapItem.itinerary appendTo:labelString isLink:NO];
             }
         }
         [descCell.descriptionLabel setAttributedText:labelString];

@@ -1153,7 +1153,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = UnivMobile;
-				PROVISIONING_PROFILE = "bb845a63-cbad-45ab-8771-5ccf9d9f1241";
+				PROVISIONING_PROFILE = "aa4d3cbf-9edc-4f06-a363-0440e1bb6254";
 			};
 			name = Debug;
 		};
@@ -1175,7 +1175,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = UnivMobile;
-				PROVISIONING_PROFILE = "bb845a63-cbad-45ab-8771-5ccf9d9f1241";
+				PROVISIONING_PROFILE = "aa4d3cbf-9edc-4f06-a363-0440e1bb6254";
 			};
 			name = Release;
 		};
