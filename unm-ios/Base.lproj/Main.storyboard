@@ -1612,9 +1612,10 @@
                                                 <action selector="bookmark:" destination="Uk9-t7-M88" eventType="touchUpInside" id="3ZE-R0-TKA"/>
                                             </connections>
                                         </view>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="label" translatesAutoresizingMaskIntoConstraints="NO" id="v0C-lI-ueZ">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="label" translatesAutoresizingMaskIntoConstraints="NO" id="v0C-lI-ueZ">
                                             <rect key="frame" x="40" y="59" width="272" height="29"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="29" id="p1f-Xp-j8E"/>
                                             </constraints>
@@ -1622,9 +1623,10 @@
                                             <fontDescription key="fontDescription" name="Exo-Medium" family="Exo" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="label" translatesAutoresizingMaskIntoConstraints="NO" id="fx9-Xf-U6q">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="label" translatesAutoresizingMaskIntoConstraints="NO" id="fx9-Xf-U6q">
                                             <rect key="frame" x="40" y="91" width="272" height="29"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="29" id="RXM-Wk-fzt"/>
                                             </constraints>
@@ -1633,11 +1635,12 @@
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             <dataDetectorType key="dataDetectorTypes" phoneNumber="YES"/>
                                         </textView>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="label" translatesAutoresizingMaskIntoConstraints="NO" id="g7n-4b-Y77">
-                                            <rect key="frame" x="40" y="120" width="272" height="29"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="label" translatesAutoresizingMaskIntoConstraints="NO" id="g7n-4b-Y77">
+                                            <rect key="frame" x="40" y="119" width="272" height="31"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="29" id="Yp0-dx-h4y"/>
+                                                <constraint firstAttribute="height" constant="31" id="Yp0-dx-h4y"/>
                                             </constraints>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" name="Exo-Medium" family="Exo" pointSize="17"/>

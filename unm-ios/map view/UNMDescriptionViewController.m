@@ -339,7 +339,6 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
     subString = [[NSAttributedString alloc] initWithString:body attributes:attributes];
     NSRange linkRange = NSMakeRange(attrStr.length, subString.length);
     [attrStr appendAttributedString:subString];
-    [attrStr addAttribute:NSLinkAttributeName value:subString range:linkRange];
     return linkRange;
 }
 
@@ -405,7 +404,7 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
                 [self stringWithTitle:@"Accès:" andBody:self.mapItem.itinerary appendTo:labelString];
             }
         }
-        [cell.descriptionLabel setAttributedText:labelString];
+        [cell.descriptionLabel setText:labelString];
         if (link) {
             cell.descriptionLabel.linkAttributes = @{ (id)kCTForegroundColorAttributeName: [UIColor blueColor],
                                                       (id)kCTUnderlineStyleAttributeName : [NSNumber numberWithInt:NSUnderlineStyleNone] };
