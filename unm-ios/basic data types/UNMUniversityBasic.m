@@ -80,6 +80,7 @@
                     NSString *regionUrlStr = object[@"_links"][@"region"][@"href"];
                     NSNumber *lat = object[@"centralLat"];
                     NSNumber *lon = object[@"centralLng"];
+                    BOOL crous = [[object objectForKey:@"crous"] boolValue];
                     CGPoint center;
                     if ([lat class] != [NSNull class] && [lon class] != [NSNull class]) {
                         center = CGPointMake([lat floatValue], [lon floatValue]);
@@ -87,7 +88,7 @@
                     else {
                         center = CGPointMake(kParisLat, kParisLon);
                     }
-                    if (ID && title && logoUrlStr && shibbolethUrlStr && regionUrlStr && [title class] != [NSNull class] && [ID class] != [NSNull class] && [regionUrlStr class] != [NSNull class]) {
+                    if (!crous && ID && title && logoUrlStr && shibbolethUrlStr && regionUrlStr && [title class] != [NSNull class] && [ID class] != [NSNull class] && [regionUrlStr class] != [NSNull class]) {
                         UNMUniversityBasic *item = [[UNMUniversityBasic alloc] initWithTitle:title andId:ID andLogoUrl:logoUrlStr andShibbolethUrl:shibbolethUrlStr andRegionUrl:regionUrlStr andCenter:center];
                         if (array != nil) {
                             [array addObject:item];

@@ -68,43 +68,48 @@
 }
 
 - (IBAction)login:(id)sender {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSDictionary *params = @{ @"login"     : self.nameField.text,
-                              @"password"  : self.passwordField.text,
-                              @"apiKey"    : kLoginClassicApiKey
-                              };
-    
-    [manager POST:kBaseLoginURLStr parameters:params
-          success:^(AFHTTPRequestOperation *operation, id responseObject)
-     {
-         NSString *authToken = responseObject[@"id"];
-         if (authToken && [authToken class] != [NSNull class]) {
-             UNMAuthDataBasic *authData = [[UNMAuthDataBasic alloc]initWithAccessToken:authToken];
-             [authData saveToUserDefaults];
+    if (self.nameField.text.length > 0 && self.passwordField.text.length > 0) {
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        NSDictionary *params = @{ @"login"     : self.nameField.text,
+                                  @"password"  : self.passwordField.text,
+                                  @"apiKey"    : kLoginClassicApiKey
+                                  };
+        
+        [manager POST:kBaseLoginURLStr parameters:params
+              success:^(AFHTTPRequestOperation *operation, id responseObject)
+         {
+             NSString *authToken = responseObject[@"id"];
+             if (authToken && [authToken class] != [NSNull class]) {
+                 UNMAuthDataBasic *authData = [[UNMAuthDataBasic alloc]initWithAccessToken:authToken];
+                 [authData saveToUserDefaults];
+             }
+             NSString *username = responseObject[@"user"][@"displayName"];
+             NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+             f.numberStyle = NSNumberFormatterDecimalStyle;
+             NSNumber *ID = [f numberFromString:responseObject[@"user"][@"uid"]];
+             if (username && ID && [username class] != [NSNull class] && [ID class] != [NSNull class]) {
+                 [UNMUserBasic fetchUserWithID:ID success:^(UNMUserBasic *user) {
+                     [user saveToUserDefaults];
+                     if ([self.delegate respondsToSelector:@selector(updateNavBarWithUser:)]) {
+                         [self.delegate updateNavBarWithUser:user];
+                     }
+                 } failure:^{
+                     
+                 }];
+             } else {
+                 [UNMUtilities showErrorWithTitle:@"L'authentification a échoué" andMessage:@"Mauvais nom d'utilisateur / mot de passe" andDelegate:nil];
+             }
+             [self.navigationController popViewControllerAnimated:YES];
          }
-         NSString *username = responseObject[@"user"][@"displayName"];
-         NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-         f.numberStyle = NSNumberFormatterDecimalStyle;
-         NSNumber *ID = [f numberFromString:responseObject[@"user"][@"uid"]];
-         if (username && ID && [username class] != [NSNull class] && [ID class] != [NSNull class]) {
-             [UNMUserBasic fetchUserWithID:ID success:^(UNMUserBasic *user) {
-                 [user saveToUserDefaults];
-                 if ([self.delegate respondsToSelector:@selector(updateNavBarWithUser:)]) {
-                     [self.delegate updateNavBarWithUser:user];
-                 }
-             } failure:^{
-                 
-             }];
-         } else {
-             [UNMUtilities showErrorWithTitle:@"L'authentification a échoué" andMessage:@"Mauvais nom d'utilisateur / mot de passe" andDelegate:nil];
-         }
-         [self.navigationController popViewControllerAnimated:YES];
-     }
-          failure:
-     ^(AFHTTPRequestOperation *operation, NSError *error) {
-         [UNMUtilities showErrorWithTitle:@"L'authentification a échoué" andMessage:[error localizedDescription] andDelegate:nil];
-         [self.navigationController popViewControllerAnimated:YES];
-     }];
+              failure:
+         ^(AFHTTPRequestOperation *operation, NSError *error) {
+             [UNMUtilities showErrorWithTitle:@"L'authentification a échoué" andMessage:[error localizedDescription] andDelegate:nil];
+             [self.navigationController popViewControllerAnimated:YES];
+         }];
+    }
+    else {
+        [UNMUtilities showErrorWithTitle:@"L'authentification a échoué" andMessage:@"Mauvais nom d'utilisateur / mot de passe" andDelegate:nil];
+    }
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle{

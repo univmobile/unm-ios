@@ -265,7 +265,7 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
 - (void)fetchComments {
     if (self.mapItem && !self.commentTab.hidden) {
         NSString *path = [NSString stringWithFormat:@"comments/search/findByPoiOrderByCreatedOnDesc?poiId=%d",[[[self mapItem] ID] intValue]];
-        [UNMUtilities fetchFromApiAuthenticatedWithPath:path success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [UNMUtilities fetchFromApiWithPath:path success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [self.comments removeAllObjects];
             NSDictionary *embedded = responseObject[@"_embedded"];
             if (embedded != nil) {

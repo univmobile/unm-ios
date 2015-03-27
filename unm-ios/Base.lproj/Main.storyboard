@@ -1281,7 +1281,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="159" height="180"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MNN-g5-d8p">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MNN-g5-d8p">
                                                             <rect key="frame" x="20" y="8" width="119" height="80"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="119" id="98A-Gg-HVd"/>
@@ -2126,6 +2126,9 @@
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UaY-jw-KZy" customClass="UNMPlaceHolderTextView">
                                                 <rect key="frame" x="8" y="221" width="304" height="103"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="72" id="aFY-Oq-W1y"/>
+                                                </constraints>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Exo-Regular" family="Exo" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>

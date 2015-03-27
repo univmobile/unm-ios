@@ -303,8 +303,13 @@
     self.topBtnHeightConst.constant = 0;
     self.discIconHeightConst.constant = 0;
     self.separatorHeightConst.constant = 0;
-    CGFloat navBarStatusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height;
-    self.collectionViewTopConst.constant = navBarStatusBarHeight;
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        CGFloat navBarStatusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height;
+        self.collectionViewTopConst.constant = navBarStatusBarHeight;
+    }
+    else {
+        self.collectionViewTopConst.constant = 0;
+    }
     self.openButton.hidden = YES;
     [self.view layoutIfNeeded];
 }

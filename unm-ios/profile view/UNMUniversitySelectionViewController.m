@@ -15,6 +15,7 @@
 #import "UNMUnivSelectTableViewCell.h"
 #import "UNMUtilities.h"
 #import "UNMRegionBasic.h"
+#import "UIColor+Extension.h"
 
 @interface UNMUniversitySelectionViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *curentUnivAnotLabel;
@@ -96,6 +97,7 @@
     if (indexPath.row < [self.universities count]) {
         UNMUniversityBasic *univ = self.universities[indexPath.row];
         cell.titleLabel.text = univ.title;
+        cell.backgroundColor = [UIColor middleTabPurple];
         cell.separator.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
     }
     return cell;

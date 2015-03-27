@@ -33,7 +33,7 @@
             
             NSDictionary *embedded = responseObject;
             if (embedded != nil) {
-                BOOL active = (BOOL)embedded[@"active"];
+                BOOL active = [[embedded objectForKey:@"active"] boolValue];
                 if (active) {
                     NSNumber *ID = embedded[@"id"];
                     NSString *name = embedded[@"name"];

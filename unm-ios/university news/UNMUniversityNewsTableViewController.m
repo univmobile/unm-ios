@@ -46,8 +46,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     [self.navigationItem setHidesBackButton:YES];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
