@@ -25,16 +25,15 @@
 }
 
 - (void)postAsRead {
+    [self.date saveNotificationDateToUserDefaults];
     UNMUserBasic *user = [UNMUserBasic getSavedObject];
     if (user) {
         NSString *path = [NSString stringWithFormat:@"notifications/lastRead?userId=%d&notificationId=%d",[user.ID intValue],[self.ID intValue]];
-        [UNMUtilities fetchFromApiWithPath:path success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [UNMUtilities fetchFromApiAuthenticatedWithPath:path success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [self.date saveNotificationDateToUserDefaults];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [UNMUtilities showErrorWithTitle:@"Impossible de notifier le serveur de la dernière notification lue" andMessage:[error localizedDescription] andDelegate:nil];
         }];
-    } else {
-        [self.date saveNotificationDateToUserDefaults];
     }
 }
 
