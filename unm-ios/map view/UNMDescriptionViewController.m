@@ -637,9 +637,7 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
 }
 
 - (void)addWebviewForRestaurantsWithRestoItems:(NSArray *)items {
-    if (self.htmlStr == nil) {
-        self.htmlStr = [NSString new];
-    }
+    self.htmlStr = [NSString new];
     BOOL addNextOne = NO;
     NSDate *now = [NSDate date];
     for (UNMRestoMenuItem *item in items) {
@@ -647,11 +645,13 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
         NSInteger months = [item.effectiveDate getMonthsBetweenDate:now];
         NSInteger years = [item.effectiveDate getYearsBetweenDate:now];
         if (addNextOne) {
+            self.htmlStr = [self.htmlStr stringByAppendingString:[NSString stringWithFormat:@"<br><h2>%@</h2>",[item.effectiveDate newsCellDateString]]];
             self.htmlStr = [self.htmlStr stringByAppendingString:item.desc];
             break;
         }
         else if (days == 0 && months == 0 && years == 0) {
             addNextOne = YES;
+            self.htmlStr = [self.htmlStr stringByAppendingString:[NSString stringWithFormat:@"<h2>%@</h2>",[item.effectiveDate newsCellDateString]]];
             self.htmlStr = [self.htmlStr stringByAppendingString:item.desc];
         }
     }
