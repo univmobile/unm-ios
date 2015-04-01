@@ -774,12 +774,12 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
                     }
                     self.bookmarkUnlocked = YES;
                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                    [UNMUtilities showErrorWithTitle:@"Impossible d'enregistrer votre commentaire" andMessage:[error localizedDescription] andDelegate:nil];
+                    [UNMUtilities showErrorWithTitle:@"Impossible d'obtenir les bookmarks" andMessage:[error localizedDescription] andDelegate:nil];
                     [self setBookmarkIconChecked:YES];
                     self.bookmarkUnlocked = YES;
                 }];
             } else {
-                [UNMUtilities showErrorWithTitle:@"Merci de vous connecter" andMessage:@"Seuls les utilisateurs connectés peuvent enregistrer des commentaires" andDelegate:nil];
+                [UNMUtilities showErrorWithTitle:@"Merci de vous connecter" andMessage:@"Merci de vous connecter. Seuls les utilisateurs peuvent bookmarker des points d'intérêt." andDelegate:nil];
                 self.bookmarkUnlocked = YES;
             }
         } else {
