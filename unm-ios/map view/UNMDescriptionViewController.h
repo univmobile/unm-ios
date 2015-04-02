@@ -24,7 +24,7 @@
 - (void)removeUserBookmark:(UNMBookmarkBasic *)bookmark;
 @end
 
-@interface UNMDescriptionViewController : UIViewController<UITextViewDelegate,UITableViewDataSource,UITableViewDelegate,TTTAttributedLabelDelegate>
+@interface UNMDescriptionViewController : UIViewController<UITextViewDelegate,UITableViewDataSource,UITableViewDelegate,TTTAttributedLabelDelegate,UIAlertViewDelegate>
 @property (strong, nonatomic) UIColor *viewColor;
 @property (weak, nonatomic) id<UNMDescriptionViewDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIImageView *categoryIcon;

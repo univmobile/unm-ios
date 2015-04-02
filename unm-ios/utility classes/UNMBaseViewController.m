@@ -25,6 +25,7 @@
 @property (strong, nonatomic) UIButton *loginButton;
 @property (strong, nonatomic) UIButton *universityButton;
 @property (strong, nonatomic) UIBarButtonItem *notificationsBadge;
+@property (strong, nonatomic) UIAlertView *confirmationAlert;
 @end
 
 @implementation UNMBaseViewController
@@ -164,24 +165,26 @@
 }
 
 - (void)didSelectUniversity {
-    UIAlertView *confirm = [[UIAlertView alloc] initWithTitle:@"Veuillez confirmer" message:@"Etes-vous sûr de vouloir sélectionner une autre Université ?" delegate:self cancelButtonTitle:@"Annuler" otherButtonTitles:@"Oui", nil];
-    [confirm show];
+    self.confirmationAlert = [[UIAlertView alloc] initWithTitle:@"Veuillez confirmer" message:@"Etes-vous sûr de vouloir sélectionner une autre Université ?" delegate:self cancelButtonTitle:@"Annuler" otherButtonTitles:@"Oui", nil];
+    [self.confirmationAlert show];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            UNMAppDelegate *appDelegate = (UNMAppDelegate *)[[UIApplication sharedApplication] delegate];
-            UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"startingNavController"];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [UIView transitionWithView:self.view.window
-                                  duration:0.5
-                                   options:UIViewAnimationOptionTransitionFlipFromLeft
-                                animations:^{ [appDelegate.container setCenterViewController:navController]; }
-                                completion:nil];
-                
+    if (alertView == self.confirmationAlert) {
+        if (buttonIndex == 1) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                UNMAppDelegate *appDelegate = (UNMAppDelegate *)[[UIApplication sharedApplication] delegate];
+                UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"startingNavController"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [UIView transitionWithView:self.view.window
+                                      duration:0.5
+                                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                                    animations:^{ [appDelegate.container setCenterViewController:navController]; }
+                                    completion:nil];
+                    
+                });
             });
-        });
+        }
     }
 }
 

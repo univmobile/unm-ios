@@ -60,6 +60,7 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *phoneIconHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *emailIconHeight;
 @property (weak, nonatomic) IBOutlet UIView *tableHeaderView;
+@property (strong, nonatomic) UIAlertView *confirmAlert;
 @end
 
 @implementation UNMDescriptionViewController {
@@ -553,16 +554,25 @@ typedef NS_ENUM(NSInteger, UNMDescriptionDisplayMode) {
     [self.commentField resignFirstResponder];
 }
 - (IBAction)submitComment:(id)sender {
-    if ([self.commentField.text length] > 0) {
-        NSDictionary *params = @{@"message":self.commentField.text,@"active":@"true",@"poi":[NSString stringWithFormat:@"%@pois/%d",kBaseApiURLStr,[self.mapItem.ID intValue]]};
-        [UNMUtilities postToApiWithPath:@"comments" andParams:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [self fetchComments];
-            self.commentField.text = @"";
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            //Error
-        }];
-    } else {
-        [UNMUtilities showErrorWithTitle:@"Pas de commentaire" andMessage:@"Merci de saisir votre commentaire" andDelegate:nil];
+    self.confirmAlert = [[UIAlertView alloc] initWithTitle:@"Veuillez confirmer" message:@"Êtes vous sûr de vouloir poster le commentaire ?" delegate:self cancelButtonTitle:@"Annuler" otherButtonTitles:@"Oui", nil];
+    [self.confirmAlert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (alertView == self.confirmAlert) {
+        if (buttonIndex == 1) {
+            if ([self.commentField.text length] > 0) {
+                NSDictionary *params = @{@"message":self.commentField.text,@"active":@"true",@"poi":[NSString stringWithFormat:@"%@pois/%d",kBaseApiURLStr,[self.mapItem.ID intValue]]};
+                [UNMUtilities postToApiWithPath:@"comments" andParams:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    [self fetchComments];
+                    self.commentField.text = @"";
+                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    //Error
+                }];
+            } else {
+                [UNMUtilities showErrorWithTitle:@"Pas de commentaire" andMessage:@"Merci de saisir votre commentaire" andDelegate:nil];
+            }
+        }
     }
 }
 

@@ -48,6 +48,7 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
 @property (nonatomic) BOOL viewLoaded;
 @property (strong, nonatomic) NSCache *markerIcons;
 @property (strong, nonatomic) NSArray *userBookmarks;
+@property (strong, nonatomic) UIAlertView *mapPermissionAlert;
 @end
 
 @implementation UNMMapViewController
@@ -934,21 +935,20 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
         NSString *title;
         title = @"Les services de géolocalisation sont désactivés";
         NSString *message = @"Pour utiliser la géolocalisation, vous devez activer leur utilisation dans le paramétrage des services de géolocalisation.";
-        UIAlertView *alertView;
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && &UIApplicationOpenSettingsURLString != NULL) {
-            alertView = [[UIAlertView alloc] initWithTitle:title
+            self.mapPermissionAlert = [[UIAlertView alloc] initWithTitle:title
                                                    message:message
                                                   delegate:self
                                          cancelButtonTitle:@"Annuler"
                                          otherButtonTitles:@"Paramètres", nil];
         } else {
-            alertView = [[UIAlertView alloc] initWithTitle:title
+            self.mapPermissionAlert = [[UIAlertView alloc] initWithTitle:title
                                                    message:message
                                                   delegate:self
                                          cancelButtonTitle:@"Annuler"
                                          otherButtonTitles:nil];
         }
-        [alertView show];
+        [self.mapPermissionAlert show];
         [self centerMapOnUniversity];
     }
     // The user has not enabled any location services. Request in use authorization.
@@ -973,12 +973,15 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        if (&UIApplicationOpenSettingsURLString != NULL) { //ios8 feature
-            if (buttonIndex == 1) {
-                // Send the user to the Settings for this app
-                NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-                [[UIApplication sharedApplication] openURL:settingsURL];
+    [super alertView:alertView clickedButtonAtIndex:buttonIndex];
+    if (alertView == self.mapPermissionAlert) {
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+            if (&UIApplicationOpenSettingsURLString != NULL) { //ios8 feature
+                if (buttonIndex == 1) {
+                    // Send the user to the Settings for this app
+                    NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                    [[UIApplication sharedApplication] openURL:settingsURL];
+                }
             }
         }
     }

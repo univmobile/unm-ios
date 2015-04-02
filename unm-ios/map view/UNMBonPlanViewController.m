@@ -20,6 +20,7 @@
 @property (strong, nonatomic) UNMScrollIndicatorHelper *scrollHelper;
 @property (strong, nonatomic) UNMCategoryBasic *selectedCategory;
 @property (strong, nonatomic) UITextField *nextResp;
+@property (strong, nonatomic) UIAlertView *confirmAlert;
 @end
 
 @implementation UNMBonPlanViewController {
@@ -95,63 +96,72 @@
     [self.navigationController pushViewController:categoryVC animated:YES];
 }
 - (IBAction)validateSelected:(id)sender {
-    if (self.selectedCategory && self.nameField.text.length > 0 && self.cityField.text.length > 0 && self.addressField.text.length > 0 && self.descriptionField.text.length > 0) {
-        UNMUniversityBasic *univ = [UNMUniversityBasic getSavedObject];
-        UNMUserBasic *user = [UNMUserBasic getSavedObject]; //save users university id to send with bon plan
-        if (univ) {
-            if (user) {
-                CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-                [geocoder geocodeAddressString:[NSString stringWithFormat:@"%@, %@",self.addressField.text, self.cityField.text] completionHandler:^(NSArray* placemarks, NSError* error){
-                    if ([placemarks count] == 0) {
-                        [UNMUtilities showErrorWithTitle:@"Adresse inconnue" andMessage:@"Impossible de trouver les coordonnées GPS de cette adresse" andDelegate:nil];
-                    }
-                    for (CLPlacemark* aPlacemark in placemarks)
-                    {
-                        NSString *latDest = [NSString stringWithFormat:@"%f",aPlacemark.location.coordinate.latitude];
-                        NSString *lngDest = [NSString stringWithFormat:@"%f",aPlacemark.location.coordinate.longitude];
-                        NSDictionary *params = @{ @"active":@YES,
-                                                  @"name":self.nameField.text,
-                                                  @"category":[NSString stringWithFormat:@"%@categories/%d",kBaseApiURLStr,[[self.selectedCategory categoryID] intValue]],
-                                                  @"university":[NSString stringWithFormat:@"%@universities/%d",kBaseApiURLStr,[user.univID intValue]],
-                                                  @"address":self.addressField.text,
-                                                  @"phones":self.phoneField.text,
-                                                  @"email":self.emailField.text,
-                                                  @"description":self.descriptionField.text,
-                                                  @"hasEthernet":@1,
-                                                  @"hasWifi":@1,
-                                                  @"iconRuedesfacs":@1,
-                                                  @"createdon":[[NSDate date] bonPlanDateString],
-                                                  @"updatedon":[[NSDate date] bonPlanDateString],
-                                                  @"lat":latDest,
-                                                  @"lng":lngDest,
-                                                  @"city":self.cityField.text
-                                                  };
-                        [UNMUtilities postToApiWithPath:@"pois" andParams:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            [self askDelegateToClose];
-                            self.selectedCategory = nil;
-                            [self.categoryButton setImage:[UIImage imageNamed:@"poisCategorySelectionImage"] forState:UIControlStateNormal];
-                            self.nameField.text = @"";
-                            self.cityField.text = @"";
-                            self.addressField.text = @"";
-                            self.descriptionField.text = @"";
-                            self.emailField.text = @"";
-                            self.phoneField.text = @"";
-                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            [UNMUtilities showErrorWithTitle:@"Impossible d'ajouter le Bon Plan" andMessage:[error localizedDescription]andDelegate:nil];
+    self.confirmAlert = [[UIAlertView alloc]initWithTitle:@"Veuillez confirmer" message:@"Êtes vous sûr de vouloir poster le bon plan ?" delegate:self cancelButtonTitle:@"Annuler" otherButtonTitles:@"Oui", nil];
+    [self.confirmAlert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (alertView == self.confirmAlert) {
+        if (buttonIndex == 1) {
+            if (self.selectedCategory && self.nameField.text.length > 0 && self.cityField.text.length > 0 && self.addressField.text.length > 0 && self.descriptionField.text.length > 0) {
+                UNMUniversityBasic *univ = [UNMUniversityBasic getSavedObject];
+                UNMUserBasic *user = [UNMUserBasic getSavedObject]; //save users university id to send with bon plan
+                if (univ) {
+                    if (user) {
+                        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+                        [geocoder geocodeAddressString:[NSString stringWithFormat:@"%@, %@",self.addressField.text, self.cityField.text] completionHandler:^(NSArray* placemarks, NSError* error){
+                            if ([placemarks count] == 0) {
+                                [UNMUtilities showErrorWithTitle:@"Adresse inconnue" andMessage:@"Impossible de trouver les coordonnées GPS de cette adresse" andDelegate:nil];
+                            }
+                            for (CLPlacemark* aPlacemark in placemarks)
+                            {
+                                NSString *latDest = [NSString stringWithFormat:@"%f",aPlacemark.location.coordinate.latitude];
+                                NSString *lngDest = [NSString stringWithFormat:@"%f",aPlacemark.location.coordinate.longitude];
+                                NSDictionary *params = @{ @"active":@YES,
+                                                          @"name":self.nameField.text,
+                                                          @"category":[NSString stringWithFormat:@"%@categories/%d",kBaseApiURLStr,[[self.selectedCategory categoryID] intValue]],
+                                                          @"university":[NSString stringWithFormat:@"%@universities/%d",kBaseApiURLStr,[user.univID intValue]],
+                                                          @"address":self.addressField.text,
+                                                          @"phones":self.phoneField.text,
+                                                          @"email":self.emailField.text,
+                                                          @"description":self.descriptionField.text,
+                                                          @"hasEthernet":@1,
+                                                          @"hasWifi":@1,
+                                                          @"iconRuedesfacs":@1,
+                                                          @"createdon":[[NSDate date] bonPlanDateString],
+                                                          @"updatedon":[[NSDate date] bonPlanDateString],
+                                                          @"lat":latDest,
+                                                          @"lng":lngDest,
+                                                          @"city":self.cityField.text
+                                                          };
+                                [UNMUtilities postToApiWithPath:@"pois" andParams:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                    [self askDelegateToClose];
+                                    self.selectedCategory = nil;
+                                    [self.categoryButton setImage:[UIImage imageNamed:@"poisCategorySelectionImage"] forState:UIControlStateNormal];
+                                    self.nameField.text = @"";
+                                    self.cityField.text = @"";
+                                    self.addressField.text = @"";
+                                    self.descriptionField.text = @"";
+                                    self.emailField.text = @"";
+                                    self.phoneField.text = @"";
+                                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                    [UNMUtilities showErrorWithTitle:@"Impossible d'ajouter le Bon Plan" andMessage:[error localizedDescription]andDelegate:nil];
+                                }];
+                                break;
+                            }
                         }];
-                        break;
+                    } else {
+                        [UNMUtilities showErrorWithTitle:@"Merci de vous connecter" andMessage:@"Merci de cliquer sur le lien \"connectez-vous\" dans le haut de page" andDelegate:nil];
                     }
-                }];
+                    
+                } else {
+                    [UNMUtilities showErrorWithTitle:@"Aucune université trouvée" andMessage:@"Merci de choisir une Université" andDelegate:nil];
+                }
+                
             } else {
-                [UNMUtilities showErrorWithTitle:@"Merci de vous connecter" andMessage:@"Merci de cliquer sur le lien \"connectez-vous\" dans le haut de page" andDelegate:nil];
+                [UNMUtilities showErrorWithTitle:@"Champs obligatoires manquants" andMessage:@"Les champs marqués par * doivent etre rensignés" andDelegate:nil];
             }
-            
-        } else {
-            [UNMUtilities showErrorWithTitle:@"Aucune université trouvée" andMessage:@"Merci de choisir une Université" andDelegate:nil];
         }
-        
-    } else {
-        [UNMUtilities showErrorWithTitle:@"Champs obligatoires manquants" andMessage:@"Les champs marqués par * doivent etre rensignés" andDelegate:nil];
     }
 }
 

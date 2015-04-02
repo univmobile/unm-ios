@@ -302,8 +302,8 @@
 
 - (void)moreSelectedFromCell:(UNMNewsTableViewCell *)cell {
     NSIndexPath *indexPath = [self.newsTableView indexPathForCell:cell];
-    if (indexPath.row < [self.newsItems count]) {
-        UNMNewsBasic *item = self.newsItems[indexPath.row];
+    if (indexPath.row+1 < [self.newsItems count]) {
+        UNMNewsBasic *item = self.newsItems[indexPath.row+1];
         NSURL *articleURL = [NSURL URLWithString:item.articeURLStr];
         if (articleURL && articleURL.scheme && articleURL.host) {
             self.webviewURL = articleURL;

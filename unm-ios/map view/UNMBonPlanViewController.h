@@ -16,7 +16,7 @@
 - (void)updateAfterBonPlan;
 @end
 
-@interface UNMBonPlanViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate,UIGestureRecognizerDelegate,UNMCategoryViewControllerDelegate>
+@interface UNMBonPlanViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate,UIGestureRecognizerDelegate,UNMCategoryViewControllerDelegate,UIAlertViewDelegate>
 @property (weak, nonatomic) id<UNMBonPlanViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIButton *categoryButton;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
