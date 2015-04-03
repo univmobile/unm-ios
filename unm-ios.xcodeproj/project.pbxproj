@@ -304,7 +304,7 @@
 		3771976C1A641DF8005D50DA /* unm_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = unm_iosTests.m; sourceTree = "<group>"; };
 		37721DAC1ACEB83A007C1353 /* UITableView+HeaderResize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+HeaderResize.h"; sourceTree = "<group>"; };
 		37721DAD1ACEB83A007C1353 /* UITableView+HeaderResize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+HeaderResize.m"; sourceTree = "<group>"; };
-		37761F4E1AAEE46500CD2DC0 /* UNMCategoryIconProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMCategoryIconProtocol.h; path = "basic data types/UNMCategoryIconProtocol.h"; sourceTree = "<group>"; };
+		37721DAF1ACEBA70007C1353 /* UNMCategoryIconProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMCategoryIconProtocol.h; path = "basic data types/UNMCategoryIconProtocol.h"; sourceTree = "<group>"; };
 		37761F4F1AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMBookmarksTableViewController.h; path = "bookmarks view/UNMBookmarksTableViewController.h"; sourceTree = "<group>"; };
 		37761F501AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMBookmarksTableViewController.m; path = "bookmarks view/UNMBookmarksTableViewController.m"; sourceTree = "<group>"; };
 		37B946EC1A69683C002BBB73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -708,7 +708,7 @@
 				37319F8F1AA70239007B1A0D /* UNMCategoryBasic.m */,
 				37319F901AA70239007B1A0D /* UNMCategoryIcons.h */,
 				37319F911AA70239007B1A0D /* UNMCategoryIcons.m */,
-				37761F4E1AAEE46500CD2DC0 /* UNMCategoryIconProtocol.h */,
+				37721DAF1ACEBA70007C1353 /* UNMCategoryIconProtocol.h */,
 				37319F921AA70239007B1A0D /* UNMCommentBasic.h */,
 				37319F931AA70239007B1A0D /* UNMCommentBasic.m */,
 				37319F941AA70239007B1A0D /* UNMImageMap.h */,
