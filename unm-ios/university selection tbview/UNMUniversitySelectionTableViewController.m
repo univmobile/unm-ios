@@ -41,7 +41,7 @@
 - (void)fetchDataFromAPI {
     if (self.region.universitiesURL != nil) {
         [self initActivityIndicator];
-        [UNMUniversityBasic fetchUniversitiesWithPath:self.region.universitiesURL andSuccess:^(NSArray *items) {
+        [UNMUniversityBasic fetchUniversitiesWithPath:[NSString stringWithFormat:@"universities/search/findAllActiveWithoutCrousByRegion?regionId=%d",[self.region.ID intValue]] andSuccess:^(NSArray *items) {
             self.universities = items;
             [self.tableView reloadData];
             [self removeActivityIndicator];

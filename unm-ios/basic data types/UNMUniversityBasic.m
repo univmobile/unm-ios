@@ -55,7 +55,7 @@
 }
 + (void)fetchUniversitiesWithSuccess:(void(^)(NSArray *))callback failure:(void(^)())failure {
     NSMutableArray *array = [NSMutableArray new];
-    NSString *path = @"universities";
+    NSString *path = @"universities/search/findAllActiveWithoutCrous";
     [self fetchUniversityItemsWithPath:path array:array success:callback failure:failure];
 }
 
