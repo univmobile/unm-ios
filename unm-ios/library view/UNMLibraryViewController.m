@@ -48,6 +48,7 @@
     [self initActivityIndicator];
     [UNMUnivLibraryItem fetchLibraryItemsWithSuccess:^(NSArray *items) {
         self.libraryItems = items;
+        [self.offscreenCellHeights removeAllObjects];
         [self.tableView reloadData];
         [self removeActivityIndicator];
     } failure:^{
@@ -110,7 +111,6 @@
         
         [self.offscreenCellHeights setObject:height forKey:indexPath];
     }
-    
     return [height floatValue];
 }
 
