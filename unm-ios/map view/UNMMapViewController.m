@@ -1038,8 +1038,8 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
     id<NSFastEnumeration> results = [info objectForKey: ZBarReaderControllerResults];
     for(ZBarSymbol *symbol in results) {
         NSDictionary *dict = [UNMUtilities parseQueryString:[symbol data]];
-        NSString *ID = dict[@"ID"];
-        NSNumber *selectedID = [NSNumber numberWithInt:[[dict valueForKey:@"poiID"] intValue]];
+        NSString *ID = dict[@"im"];
+        NSNumber *selectedID = [NSNumber numberWithInt:[[dict valueForKey:@"poi"] intValue]];
         if (ID != nil && ![ID isEqualToString:@"null"]) {
             [picker dismissViewControllerAnimated:YES completion:^{
                 [UNMUtilities setCenterControllerToImageMapWithPath:[NSString stringWithFormat:@"imageMaps/%d",[ID intValue]] andSelectedID:selectedID];

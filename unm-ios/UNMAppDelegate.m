@@ -58,8 +58,8 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     NSDictionary *dict = [UNMUtilities parseQueryString:[url query]];
-    NSString *ID = dict[@"ID"];
-    NSNumber *selectedID = [NSNumber numberWithInt:[[dict valueForKey:@"poiID"] intValue]];
+    NSString *ID = dict[@"im"];
+    NSNumber *selectedID = [NSNumber numberWithInt:[[dict valueForKey:@"poi"] intValue]];
     if (ID != nil && ![ID isEqualToString:@"null"]) {
         [UNMUtilities setCenterControllerToImageMapWithPath:[NSString stringWithFormat:@"imageMaps/%d",[ID intValue]] andSelectedID:selectedID];
     } else {
