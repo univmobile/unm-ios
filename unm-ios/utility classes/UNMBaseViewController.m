@@ -348,10 +348,6 @@
     return UIStatusBarStyleLightContent;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 - (void)updateNavBarWithUser:(UNMUserBasic *)user {
     [self setLoginButtonTitleWithName:user.username];
 }

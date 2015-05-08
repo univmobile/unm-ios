@@ -440,6 +440,25 @@
     [self setSlideOutOpen:YES animated:YES];
 }
 
+- (IBAction)logOut:(id)sender {
+    self.nameLabel.text = @"";
+    [self deleteCookies];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:@"user"];
+    [defaults removeObjectForKey:@"authData"];
+    [defaults synchronize];
+    [self createNavBarButtons];
+}
+
+- (void) deleteCookies {
+    NSHTTPCookie *cookie;
+    NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (cookie in [cookieJar cookies]) {
+        NSLog(@"DELETE cookie %@",cookie);
+        [cookieJar deleteCookie:cookie];
+    }
+}
+
 - (void)closeUnivSelect {
     [self setSlideOutOpen:NO animated:YES];
 }

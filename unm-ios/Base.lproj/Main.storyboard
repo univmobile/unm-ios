@@ -66,6 +66,7 @@
             <string>Exo-Regular</string>
             <string>Exo-Regular</string>
             <string>Exo-Regular</string>
+            <string>Exo-Regular</string>
         </mutableArray>
         <mutableArray key="Exo-SemiBold.otf">
             <string>Exo-DemiBold</string>
@@ -3142,7 +3143,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.87450980389999999" green="0.3803921569" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="xkF-6h-QWq">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="172"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="EdY-Z4-l4A">
@@ -3152,7 +3153,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8b-47-qgS">
-                                            <rect key="frame" x="92" y="108" width="202" height="44"/>
+                                            <rect key="frame" x="92" y="105" width="202" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="202" id="8Lq-59-gOX"/>
                                                 <constraint firstAttribute="height" constant="44" id="Ioi-F1-8am"/>
@@ -3166,15 +3167,30 @@
                                                 <action selector="changeUniversity:" destination="hRQ-rF-IF2" eventType="touchUpInside" id="2mj-MH-Cve"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwZ-jF-R4C">
+                                            <rect key="frame" x="102" y="152" width="202" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="202" id="8oA-G6-awf"/>
+                                                <constraint firstAttribute="height" constant="44" id="wrl-Et-qge"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Exo-Regular" family="Exo" pointSize="18"/>
+                                            <state key="normal" title="Se déconnecter">
+                                                <color key="titleColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="logOut:" destination="hRQ-rF-IF2" eventType="touchUpInside" id="8FZ-5a-u5J"/>
+                                            </connections>
+                                        </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileModifierIcon30Op" translatesAutoresizingMaskIntoConstraints="NO" id="uj7-Kx-uOD">
-                                            <rect key="frame" x="284" y="122" width="16" height="16"/>
+                                            <rect key="frame" x="284" y="119" width="16" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="bir-hC-CV4"/>
                                                 <constraint firstAttribute="width" secondItem="uj7-Kx-uOD" secondAttribute="height" multiplier="1:1" id="qkI-Tb-5Mr"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="83e-WW-JYx">
-                                            <rect key="frame" x="20" y="28" width="0.0" height="72"/>
+                                            <rect key="frame" x="20" y="28" width="0.0" height="69"/>
                                             <fontDescription key="fontDescription" name="Exo-Regular" family="Exo" pointSize="20"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -3187,9 +3203,11 @@
                                         <constraint firstItem="uj7-Kx-uOD" firstAttribute="centerY" secondItem="L8b-47-qgS" secondAttribute="centerY" id="99z-LD-bbW"/>
                                         <constraint firstItem="83e-WW-JYx" firstAttribute="leading" secondItem="xkF-6h-QWq" secondAttribute="leading" constant="20" id="AD9-pb-tzW"/>
                                         <constraint firstItem="L8b-47-qgS" firstAttribute="top" secondItem="83e-WW-JYx" secondAttribute="bottom" constant="8" id="CgJ-yA-BrS"/>
+                                        <constraint firstItem="hwZ-jF-R4C" firstAttribute="centerX" secondItem="L8b-47-qgS" secondAttribute="centerX" constant="10" id="Fkq-0p-Odt"/>
                                         <constraint firstAttribute="trailing" secondItem="EdY-Z4-l4A" secondAttribute="trailing" constant="20" id="KJx-ff-4Jv"/>
                                         <constraint firstItem="uj7-Kx-uOD" firstAttribute="leading" secondItem="L8b-47-qgS" secondAttribute="trailing" constant="-10" id="eTX-qf-WNf"/>
-                                        <constraint firstAttribute="bottom" secondItem="L8b-47-qgS" secondAttribute="bottom" constant="20" id="hOH-cV-FDf"/>
+                                        <constraint firstAttribute="bottom" secondItem="hwZ-jF-R4C" secondAttribute="bottom" constant="20" id="eWM-9R-uua"/>
+                                        <constraint firstItem="hwZ-jF-R4C" firstAttribute="top" secondItem="L8b-47-qgS" secondAttribute="bottom" constant="3" id="n17-a1-kXm"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="83e-WW-JYx" secondAttribute="trailing" constant="20" id="teo-6U-scV"/>
                                         <constraint firstItem="EdY-Z4-l4A" firstAttribute="top" secondItem="xkF-6h-QWq" secondAttribute="top" constant="20" id="vVZ-5B-5FE"/>
                                         <constraint firstAttribute="trailing" secondItem="uj7-Kx-uOD" secondAttribute="trailing" constant="20" id="wru-Xo-CGN"/>
@@ -3558,6 +3576,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="weQ-pu-uAh"/>
+        <segue reference="IGf-c6-IXe"/>
     </inferredMetricsTieBreakers>
 </document>
