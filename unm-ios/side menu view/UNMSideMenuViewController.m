@@ -17,6 +17,7 @@
 #import "UNMRegionBasic.h"
 #import <AFNetworking/UIButton+AFNetworking.h>
 #import "UNMConstants.h"
+#import "UNMHomeViewController.h"
 
 @interface UNMSideMenuViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -55,11 +56,6 @@
     [self fetchMenuItems];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -89,7 +85,7 @@
         [UNMMenuItemBasic fetchMenuItemsWithSuccess:^(NSArray *items) {
             self.menuItems = items;
             self.groups = [NSMutableArray new];
-            NSArray *order = @[@"MS",@"TT",@"MU"];
+            NSArray *order = @[@"MS",@"AU",@"TT",@"MU"];
             for (NSString *group in order) {
                 for (UNMMenuItemBasic *item in items) {
                     if ([item.grouping isEqualToString:group]) {
@@ -98,15 +94,18 @@
                     }
                 }
             }
-            if ([self.groups count] > 0) {
-                [self.groups insertObject:@"AU" atIndex:1];
-            } else {
-                [self.groups addObject:@"AU"];
-            }
             self.parentCellCount = [self.groups count];
             [self.tableView reloadData];
             [self removeActivityIndicator];
             self.fetchedUniv = univ;
+            NSObject *centerController = self.menuContainerViewController.centerViewController;
+            if (centerController && [centerController isKindOfClass:[UINavigationController class]]) {
+                UINavigationController *navController = (UINavigationController *)centerController;
+                NSObject *rootController = [navController.viewControllers firstObject];
+                if (rootController && [rootController isKindOfClass:[UNMHomeViewController class]]) {
+                    [(UNMHomeViewController *)rootController loadStaticMapImage];
+                }
+            }
         } failure:^{
             [self removeActivityIndicator];
         }];
@@ -186,19 +185,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UNMSideMenuCustomTableViewCell *currentCell = (UNMSideMenuCustomTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     UNMSideMenuCustomTableViewCell *lastCell = (UNMSideMenuCustomTableViewCell *)[tableView cellForRowAtIndexPath:self.selectedCell];
-    [self toggleSeparatorOnLastSelectedCell:lastCell andCurrentCell:currentCell];
+    if (indexPath.row < [self.groups count]) {
+        NSString *group = self.groups[indexPath.row];
+        if ([group isEqualToString:@"AU"]) {
+            [UNMUtilities setCenterControllerWithNavControllerIdentifier:@"universityNews"];
+            return;
+        }
+    }
     if (self.selectedCell != nil && [self.selectedCell compare:indexPath] == NSOrderedSame) {
         self.selectedCell = nil;
     } else {
         self.selectedCell = indexPath;
     }
+    [self toggleSeparatorOnLastSelectedCell:lastCell andCurrentCell:currentCell];
     [tableView beginUpdates];
     [tableView endUpdates];
     [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-    
-    if (indexPath.row == 1) {
-        [UNMUtilities setCenterControllerWithNavControllerIdentifier:@"universityNews"];
-    }
 }
 
 - (void)toggleSeparatorOnLastSelectedCell:(UNMSideMenuCustomTableViewCell *)lastCell andCurrentCell:(UNMSideMenuCustomTableViewCell *)currentCell {
@@ -214,18 +216,8 @@
     NSMutableArray *retValue = [NSMutableArray new];
     if (indexPath.row < [self.groups count]) {
         NSString *group = self.groups[indexPath.row];
-        UNMRegionBasic *currentRegion = [UNMRegionBasic getSavedObject];
         for (UNMMenuItemBasic *item in self.menuItems) {
-            if ([group isEqualToString:@"TT"]) {
-                if (![[currentRegion ID] isEqualToNumber:[NSNumber numberWithInt:1]]) {
-                    if ([item.grouping isEqualToString:group] && [item.name isEqualToString:@"GéoCampus"]) {
-                        [retValue addObject:item];
-                        break;
-                    }
-                } else if ([item.grouping isEqualToString:group]) {
-                    [retValue addObject:item];
-                }
-            } else if ([item.grouping isEqualToString:group]) {
+            if ([item.grouping isEqualToString:group]) {
                 [retValue addObject:item];
             }
         }
@@ -278,6 +270,16 @@
 
 - (IBAction)universityLogoTapped:(id)sender {
     [UNMUtilities setCenterControllerWithViewControllerIdentifier:@"home"];
+}
+
+
+- (BOOL)menuContainsGeoCampus {
+    for (NSString *group in self.groups) {
+        if ([group isEqualToString:@"TT"]) {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 @end

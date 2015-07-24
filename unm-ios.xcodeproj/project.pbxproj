@@ -109,6 +109,10 @@
 		3771976D1A641DF8005D50DA /* unm_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771976C1A641DF8005D50DA /* unm_iosTests.m */; };
 		37721DAE1ACEB83A007C1353 /* UITableView+HeaderResize.m in Sources */ = {isa = PBXBuildFile; fileRef = 37721DAD1ACEB83A007C1353 /* UITableView+HeaderResize.m */; };
 		37761F511AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37761F501AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.m */; };
+		377A8B001B622FA90066D464 /* UNMHomePageNewsHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377A8AFF1B622FA90066D464 /* UNMHomePageNewsHeader.xib */; };
+		377A8B021B622FD70066D464 /* UNMHomePageMapFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377A8B011B622FD70066D464 /* UNMHomePageMapFooter.xib */; };
+		377A8B051B6231E80066D464 /* UNMHomePageNewsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 377A8B041B6231E80066D464 /* UNMHomePageNewsHeader.m */; };
+		377A8B081B62372F0066D464 /* UNMHomePageMapFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 377A8B071B62372F0066D464 /* UNMHomePageMapFooter.m */; };
 		37B946ED1A69683C002BBB73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37B946EC1A69683C002BBB73 /* CoreLocation.framework */; };
 		37F8BBA91AB18F610093A75B /* UNMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F8BBA81AB18F610093A75B /* UNMConstants.m */; };
 		63801F4F5DAD791F0A91CE92 /* libPods-unm-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8018100A1727F436B984CB9 /* libPods-unm-ios.a */; };
@@ -307,6 +311,12 @@
 		37721DAF1ACEBA70007C1353 /* UNMCategoryIconProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMCategoryIconProtocol.h; path = "basic data types/UNMCategoryIconProtocol.h"; sourceTree = "<group>"; };
 		37761F4F1AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMBookmarksTableViewController.h; path = "bookmarks view/UNMBookmarksTableViewController.h"; sourceTree = "<group>"; };
 		37761F501AAEE4E200CD2DC0 /* UNMBookmarksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMBookmarksTableViewController.m; path = "bookmarks view/UNMBookmarksTableViewController.m"; sourceTree = "<group>"; };
+		377A8AFF1B622FA90066D464 /* UNMHomePageNewsHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UNMHomePageNewsHeader.xib; sourceTree = "<group>"; };
+		377A8B011B622FD70066D464 /* UNMHomePageMapFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UNMHomePageMapFooter.xib; sourceTree = "<group>"; };
+		377A8B031B6231E80066D464 /* UNMHomePageNewsHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNMHomePageNewsHeader.h; sourceTree = "<group>"; };
+		377A8B041B6231E80066D464 /* UNMHomePageNewsHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNMHomePageNewsHeader.m; sourceTree = "<group>"; };
+		377A8B061B62372F0066D464 /* UNMHomePageMapFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNMHomePageMapFooter.h; sourceTree = "<group>"; };
+		377A8B071B62372F0066D464 /* UNMHomePageMapFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNMHomePageMapFooter.m; sourceTree = "<group>"; };
 		37B946EC1A69683C002BBB73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		37F8BBA71AB18F610093A75B /* UNMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMConstants.h; path = "utility classes/UNMConstants.h"; sourceTree = "<group>"; };
 		37F8BBA81AB18F610093A75B /* UNMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMConstants.m; path = "utility classes/UNMConstants.m"; sourceTree = "<group>"; };
@@ -502,6 +512,12 @@
 				377197521A641DF8005D50DA /* UNMAppDelegate.m */,
 				37F9CBAB1A690AD900C0E14F /* welcome view */,
 				3771975A1A641DF8005D50DA /* Main.storyboard */,
+				377A8AFF1B622FA90066D464 /* UNMHomePageNewsHeader.xib */,
+				377A8B031B6231E80066D464 /* UNMHomePageNewsHeader.h */,
+				377A8B041B6231E80066D464 /* UNMHomePageNewsHeader.m */,
+				377A8B011B622FD70066D464 /* UNMHomePageMapFooter.xib */,
+				377A8B061B62372F0066D464 /* UNMHomePageMapFooter.h */,
+				377A8B071B62372F0066D464 /* UNMHomePageMapFooter.m */,
 				3771975D1A641DF8005D50DA /* Images.xcassets */,
 				3771975F1A641DF8005D50DA /* LaunchScreen.xib */,
 				37F9CBAC1A690AE500C0E14F /* core data */,
@@ -856,8 +872,10 @@
 				37319F471AA70035007B1A0D /* Exo-SemiBoldItalic.otf in Resources */,
 				377197611A641DF8005D50DA /* LaunchScreen.xib in Resources */,
 				37319F791AA701E3007B1A0D /* sideMenuCustomCell.xib in Resources */,
+				377A8B001B622FA90066D464 /* UNMHomePageNewsHeader.xib in Resources */,
 				37319F461AA70035007B1A0D /* Exo-SemiBold.otf in Resources */,
 				37319F421AA70035007B1A0D /* Exo-LightItalic.otf in Resources */,
+				377A8B021B622FD70066D464 /* UNMHomePageMapFooter.xib in Resources */,
 				3771975E1A641DF8005D50DA /* Images.xcassets in Resources */,
 				37319F5B1AA700AC007B1A0D /* Info.plist in Resources */,
 				37319F3E1AA70035007B1A0D /* Exo-ExtraLight.otf in Resources */,
@@ -944,6 +962,7 @@
 				37319FDC1AA702AE007B1A0D /* UNMCommentTableViewCell.m in Sources */,
 				37319FDF1AA702AE007B1A0D /* UNMDescriptionWebViewTBViewCell.m in Sources */,
 				37319FDB1AA702AE007B1A0D /* UNMCommentCreationTableViewCell.m in Sources */,
+				377A8B081B62372F0066D464 /* UNMHomePageMapFooter.m in Sources */,
 				37319FDD1AA702AE007B1A0D /* UNMDescriptionTableViewCell.m in Sources */,
 				37319FB21AA70239007B1A0D /* UNMMediaItemBasic.m in Sources */,
 				37319FB11AA70239007B1A0D /* UNMMapItemBasic.m in Sources */,
@@ -1008,6 +1027,7 @@
 				37319FE01AA702AE007B1A0D /* UNMMapViewController.m in Sources */,
 				3731A00C1AA70319007B1A0D /* UNMUnivNewsWebViewController.m in Sources */,
 				3731A0181AA70359007B1A0D /* UNMMediaViewController.m in Sources */,
+				377A8B051B6231E80066D464 /* UNMHomePageNewsHeader.m in Sources */,
 				37319F7A1AA701E3007B1A0D /* UNMSideMenuCustomTableViewCell.m in Sources */,
 				37319FB41AA70239007B1A0D /* UNMNewsBasic.m in Sources */,
 				37319FAC1AA70239007B1A0D /* UNMBookmarkBasic.m in Sources */,

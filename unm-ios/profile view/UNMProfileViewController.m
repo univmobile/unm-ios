@@ -454,7 +454,6 @@
     NSHTTPCookie *cookie;
     NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     for (cookie in [cookieJar cookies]) {
-        NSLog(@"DELETE cookie %@",cookie);
         [cookieJar deleteCookie:cookie];
     }
 }

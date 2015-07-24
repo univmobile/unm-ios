@@ -68,60 +68,63 @@
 }
 
 - (void)addFreshNewsItems {
-    __weak UNMUniversityNewsTableViewController *weakSelf = self;
-    [UNMNewsBasic fetchNewsWithPath:weakSelf.freshNextNewsPath andSuccess:^(NSArray *newsItems, NSString *nextPath) {
+    [UNMNewsBasic fetchNewsWithPath:self.freshNextNewsPath andSuccess:^(NSArray *newsItems, NSString *nextPath) {
         BOOL foundMatch = NO;
-        weakSelf.nextNewsPath = nextPath;
-        [weakSelf.tableView beginUpdates];
-        NSRange indexes = NSMakeRange(0,newsItems.count-1);
-        NSMutableArray *indexPaths = [NSMutableArray new];
-        NSUInteger idx;
-        for(idx = indexes.location; idx <= indexes.location + indexes.length; idx++ ){
-            UNMNewsBasic *item = [newsItems objectAtIndex:(idx-indexes.location)];
-            if ([self.newsItems containsObject:item]) {
-                foundMatch = YES;
-                break;
+        self.nextNewsPath = nextPath;
+        if ([newsItems count] > 0) {
+            [self.tableView beginUpdates];
+            NSRange indexes = NSMakeRange(0,newsItems.count-1);
+            NSMutableArray *indexPaths = [NSMutableArray new];
+            NSUInteger idx;
+            for(idx = indexes.location; idx <= indexes.location + indexes.length; idx++ ){
+                UNMNewsBasic *item = [newsItems objectAtIndex:(idx-indexes.location)];
+                if ([self.newsItems containsObject:item]) {
+                    foundMatch = YES;
+                    break;
+                }
+                [self.newsItems addObject:item];
+                NSIndexPath *path = [NSIndexPath indexPathForRow:idx inSection:0];
+                [indexPaths addObject:path];
             }
-            [weakSelf.newsItems addObject:item];
-            NSIndexPath *path = [NSIndexPath indexPathForRow:idx inSection:0];
-            [indexPaths addObject:path];
+            if ([indexPaths count] > 0) {
+                [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+            }
+            [self.tableView endUpdates];
         }
-        if ([indexPaths count] > 0) {
-            [weakSelf.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-        }
-        [weakSelf.tableView endUpdates];
-        [weakSelf.tableView.pullToRefreshView stopAnimating];
+        [self.tableView.pullToRefreshView stopAnimating];
         if (!foundMatch && nextPath) {
-            [weakSelf addFreshNewsItems];
+            [self addFreshNewsItems];
         }
     } failure:^{
-        [weakSelf.tableView.pullToRefreshView stopAnimating];
+        [self.tableView.pullToRefreshView stopAnimating];
     }];
 }
 
 - (void)addNewsItemsToBottom {
-    __weak UNMUniversityNewsTableViewController *weakSelf = self;
-    if (weakSelf.nextNewsPath != nil || [weakSelf.newsItems count] == 0) {
-        [UNMNewsBasic fetchNewsWithPath:weakSelf.nextNewsPath andSuccess:^(NSArray *newsItems, NSString *nextPath) {
-            weakSelf.nextNewsPath = nextPath;
-            [weakSelf.tableView beginUpdates];
-            NSUInteger currentCount = weakSelf.newsItems.count;
-            NSRange indexes = NSMakeRange(currentCount,newsItems.count-1);
-            [weakSelf.newsItems addObjectsFromArray:newsItems];
-            NSMutableArray *indexPaths = [NSMutableArray new];
-            NSUInteger idx;
-            for(idx = indexes.location; idx <= indexes.location + indexes.length; idx++ ){
-                NSIndexPath *path = [NSIndexPath indexPathForRow:idx inSection:0];
-                [indexPaths addObject:path];
+    if (self.nextNewsPath != nil || [self.newsItems count] == 0) {
+        [UNMNewsBasic fetchNewsWithPath:self.nextNewsPath andSuccess:^(NSArray *newsItems, NSString *nextPath) {
+            self.nextNewsPath = nextPath;
+            NSUInteger currentCount = self.newsItems.count;
+            if (currentCount > 0) {
+                [self.tableView beginUpdates];
+                NSRange indexes = NSMakeRange(currentCount,newsItems.count-1);
+                [self.newsItems addObjectsFromArray:newsItems];
+                NSMutableArray *indexPaths = [NSMutableArray new];
+                NSUInteger idx;
+                for(idx = indexes.location; idx <= indexes.location + indexes.length; idx++ ){
+                    NSIndexPath *path = [NSIndexPath indexPathForRow:idx inSection:0];
+                    [indexPaths addObject:path];
+                }
+                [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+                [self.tableView endUpdates];
             }
-            [weakSelf.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-            [weakSelf.tableView endUpdates];
-            [weakSelf.tableView.infiniteScrollingView stopAnimating];
+            [self.tableView.infiniteScrollingView stopAnimating];
+                
         } failure:^{
-            [weakSelf.tableView.infiniteScrollingView stopAnimating];
+            [self.tableView.infiniteScrollingView stopAnimating];
         }];
     } else {
-        [weakSelf.tableView.infiniteScrollingView stopAnimating];
+        [self.tableView.infiniteScrollingView stopAnimating];
     }
 }
 
