@@ -363,4 +363,88 @@ static AFHTTPRequestOperationManager *postManager;
     [activityIndicator startAnimating];
     return activityIndicatorView;
 }
+
++ (void)removeFirstTab:(BOOL)removeFirst secondTab:(BOOL)removeSecond thirdTab:(BOOL)removeThird firstTab:(UIView *)firstTab secondTab:(UIView *)secondTab thirdTab:(UIView *)thirdTab constrainToView:(UIView *)constraintView {
+    if (removeFirst) {
+        [firstTab removeFromSuperview];
+    }
+    if (removeSecond) {
+        [secondTab removeFromSuperview];
+    }
+    if (removeThird) {
+        [thirdTab removeFromSuperview];
+    }
+    if (!removeFirst) {
+        if (removeSecond && removeThird) {
+            NSDictionary *viewsDictionary = @{@"left":firstTab};
+            
+            NSArray *constraint_Vert = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[left]-0-|"
+                                                                               options:0
+                                                                               metrics:nil
+                                                                                 views:viewsDictionary];
+            
+            
+            [constraintView addConstraints:constraint_Vert];
+        }
+        else if (removeSecond && !removeThird) {
+            NSDictionary *viewsDictionary = @{@"left":firstTab,@"right":thirdTab};
+            
+            NSArray *constraint_Vert = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[left]-0-[right]"
+                                                                               options:0
+                                                                               metrics:nil
+                                                                                 views:viewsDictionary];
+            
+            
+            [constraintView addConstraints:constraint_Vert];
+        }
+        else if (!removeSecond && removeThird) {
+            NSDictionary *viewsDictionary = @{@"middle":secondTab};
+            
+            NSArray *constraint_Vert = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[middle]-0-|"
+                                                                               options:0
+                                                                               metrics:nil
+                                                                                 views:viewsDictionary];
+            
+            
+            [constraintView addConstraints:constraint_Vert];
+        }
+    }
+    if (!removeSecond) {
+        if (removeFirst && removeThird) {
+            NSDictionary *viewsDictionary = @{@"middle":secondTab};
+            
+            NSArray *constraint_Vert = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[middle]-0-|"
+                                                                               options:0
+                                                                               metrics:nil
+                                                                                 views:viewsDictionary];
+            
+            
+            [constraintView addConstraints:constraint_Vert];
+        }
+        else if (removeFirst && !removeThird) {
+            NSDictionary *viewsDictionary = @{@"middle":secondTab};
+            
+            NSArray *constraint_Vert = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[middle]"
+                                                                               options:0
+                                                                               metrics:nil
+                                                                                 views:viewsDictionary];
+            
+            
+            [constraintView addConstraints:constraint_Vert];
+        }
+    }
+    if (!removeThird) {
+        if (removeFirst && removeSecond) {
+            NSDictionary *viewsDictionary = @{@"right":thirdTab};
+            
+            NSArray *constraint_Vert = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[right]"
+                                                                               options:0
+                                                                               metrics:nil
+                                                                                 views:viewsDictionary];
+            
+            
+            [constraintView addConstraints:constraint_Vert];
+        }
+    }
+}
 @end

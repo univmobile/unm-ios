@@ -22,6 +22,7 @@
 #import "UNMHomePageNewsHeader.h"
 #import "UNMHomePageMapFooter.h"
 #import "UNMSideMenuViewController.h"
+#import "UNMMenuItemBasic.h"
 
 @interface UNMHomeViewController ()
 @property NSIndexPath *selectedCell;
@@ -56,29 +57,40 @@
     UNMAppDelegate *appDelegate = (UNMAppDelegate *)[[UIApplication sharedApplication] delegate];
     [self.view addGestureRecognizer:[appDelegate.container panGestureRecognizer]];
     self.newsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    UNMRegionBasic *region = [UNMRegionBasic getSavedObject];
-    if (![region.ID isEqualToNumber:[NSNumber numberWithInt:1]]) {
-        [self removeMiddleRightTabs];
-    }
-    if ([self sideMenuHasGeoCampus]) {
-        [self loadStaticMapImage];
-    }
+    [self showMap];
 }
 
-- (BOOL)sideMenuHasGeoCampus {
-    NSObject *left = self.menuContainerViewController.leftMenuViewController;
-    if (left && [left isKindOfClass:[UNMSideMenuViewController class]]) {
-        UNMSideMenuViewController *sideMenu = (UNMSideMenuViewController *)left;
-        return [sideMenu menuContainsGeoCampus];
+- (void)showMap {
+    [UNMMenuItemBasic fetchMenuItemsWithSuccess:^(NSArray *items) {
+        [self handleMenuItems:items];
+    } failure:^{}];
+}
+
+- (void)handleMenuItems:(NSArray *)items {
+    BOOL showFirstTab = NO;
+    BOOL showSecondTab = NO;
+    BOOL showThirdTab = NO;
+    for (UNMMenuItemBasic *item in items) {
+        if ([item.name isEqualToString:@"GéoCampus"]) {
+            showFirstTab = YES;
+        }
+        if ([item.name isEqualToString:@"Que faire à Paris"]) {
+            showSecondTab = YES;
+        }
+        if ([item.name isEqualToString:@"Les bons plans"]) {
+            showThirdTab = YES;
+        }
     }
-    return NO;
+    if (showFirstTab || showSecondTab || showThirdTab) {
+        [self loadStaticMapImageShowFirstTab:showFirstTab showSecondTab:showSecondTab showThirdTab:showThirdTab];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self initActivityIndicator];
 
-    [UNMNewsBasic fetch4NewsWithSuccess:^(NSArray *items) {
+    [UNMNewsBasic fetch4NewsItemsWithSuccess:^(NSArray *items) {
         self.newsItems = items;
         UNMNewsBasic *first = [self.newsItems firstObject];
         if (first) {
@@ -106,7 +118,7 @@
     }];
 }
 
-- (UNMMapViewController *)loadStaticMapImage {
+- (UNMMapViewController *)loadStaticMapImageShowFirstTab:(BOOL)showFirst showSecondTab:(BOOL)showSecond showThirdTab:(BOOL)showThird {
     if (self.mapView == nil) {
         UNMHomePageMapFooter *mapFooter = [[[NSBundle mainBundle] loadNibNamed:@"UNMHomePageMapFooter" owner:self options:nil] firstObject];
         if (mapFooter) {
@@ -144,8 +156,10 @@
             mapFooter.mapHeight.constant = self.view.bounds.size.height - 90 - topBarHeight; //90 = top geocampus bar and bottom tab button height
             [self sizeFooterToFit];
             [self.newsTableView sizeToFit];
+            [UNMUtilities removeFirstTab:!showFirst secondTab:!showSecond thirdTab:!showThird firstTab:mapFooter.leftTab secondTab:mapFooter.middleTab thirdTab:mapFooter.rightTab constrainToView:self.view];
         }
     }
+    
     return self.mapView;
 }
 
@@ -375,20 +389,93 @@
     [UNMUtilities setCenterControllerToMapWithTabSelected:3];
 }
 
-- (void)removeMiddleRightTabs {
+- (void)removeFirstTab:(BOOL)removeFirst secondTab:(BOOL)removeSecond thirdTab:(BOOL)removeThird {
     UNMHomePageMapFooter *mapFooter = (UNMHomePageMapFooter *)self.newsTableView.tableFooterView;
     if (mapFooter) {
-        [mapFooter.middleTab removeFromSuperview];
-        [mapFooter.rightTab removeFromSuperview];
-        NSDictionary *viewsDictionary = @{@"left":mapFooter.leftTab};
-        
-        NSArray *constraint_Vert = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[left]-0-|"
-                                                                           options:0
-                                                                           metrics:nil
-                                                                             views:viewsDictionary];
-        
-        
-        [self.view addConstraints:constraint_Vert];
+        if (removeFirst) {
+            [mapFooter.leftTab removeFromSuperview];
+            mapFooter.leftTab = nil;
+        }
+        if (removeSecond) {
+            [mapFooter.middleTab removeFromSuperview];
+            mapFooter.middleTab = nil;
+        }
+        if (removeThird) {
+            [mapFooter.rightTab removeFromSuperview];
+            mapFooter.rightTab = nil;
+        }
+        if (!removeFirst) {
+            if (removeSecond && removeThird) {
+                NSDictionary *viewsDictionary = @{@"left":mapFooter.leftTab};
+                
+                NSArray *constraint_Vert = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[left]-0-|"
+                                                                                   options:0
+                                                                                   metrics:nil
+                                                                                     views:viewsDictionary];
+                
+                
+                [self.view addConstraints:constraint_Vert];
+            }
+            else if (removeSecond && !removeThird) {
+                NSDictionary *viewsDictionary = @{@"left":mapFooter.leftTab,@"right":mapFooter.rightTab};
+                
+                NSArray *constraint_Vert = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[left]-0-[right]"
+                                                                                   options:0
+                                                                                   metrics:nil
+                                                                                     views:viewsDictionary];
+                
+                
+                [self.view addConstraints:constraint_Vert];
+            }
+            else if (!removeSecond && removeThird) {
+                NSDictionary *viewsDictionary = @{@"middle":mapFooter.middleTab};
+                
+                NSArray *constraint_Vert = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[middle]-0-|"
+                                                                                   options:0
+                                                                                   metrics:nil
+                                                                                     views:viewsDictionary];
+                
+                
+                [self.view addConstraints:constraint_Vert];
+            }
+        }
+        if (!removeSecond) {
+            if (removeFirst && removeThird) {
+                NSDictionary *viewsDictionary = @{@"middle":mapFooter.middleTab};
+                
+                NSArray *constraint_Vert = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[middle]-0-|"
+                                                                                   options:0
+                                                                                   metrics:nil
+                                                                                     views:viewsDictionary];
+                
+                
+                [self.view addConstraints:constraint_Vert];
+            }
+            else if (removeFirst && !removeThird) {
+                NSDictionary *viewsDictionary = @{@"middle":mapFooter.middleTab};
+                
+                NSArray *constraint_Vert = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[middle]"
+                                                                                   options:0
+                                                                                   metrics:nil
+                                                                                     views:viewsDictionary];
+                
+                
+                [self.view addConstraints:constraint_Vert];
+            }
+        }
+        if (!removeThird) {
+            if (removeFirst && removeSecond) {
+                NSDictionary *viewsDictionary = @{@"right":mapFooter.rightTab};
+                
+                NSArray *constraint_Vert = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[right]"
+                                                                                   options:0
+                                                                                   metrics:nil
+                                                                                     views:viewsDictionary];
+                
+                
+                [self.view addConstraints:constraint_Vert];
+            }
+        }
     }
 }
 

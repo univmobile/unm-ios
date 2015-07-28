@@ -15,5 +15,4 @@
 @interface UNMHomeViewController : UNMBaseViewController<UNMNewsTableViewCellDelegate,UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *newsTableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *newsTableViewHeightConst;
--(UNMMapViewController *) loadStaticMapImage;
 @end

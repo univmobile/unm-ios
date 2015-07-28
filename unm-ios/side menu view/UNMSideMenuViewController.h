@@ -10,5 +10,5 @@
 #import "UNMSideMenuCustomTableViewCell.h"
 
 @interface UNMSideMenuViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UNMSideMenuCustomTableViewCellDelegate>
-- (BOOL)menuContainsGeoCampus;
+@property (strong, nonatomic) NSArray *menuItems;
 @end

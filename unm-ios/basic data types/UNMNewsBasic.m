@@ -63,7 +63,7 @@
     [self fetchNewsWithPath:path array:array success:callback failure:failure];
 }
 
-+ (void)fetch4NewsWithSuccess:(void(^)(NSArray *newsItems))callback failure:(void(^)())failure {
++ (void)fetch4NewsItemsWithSuccess:(void(^)(NSArray *newsItems))callback failure:(void(^)())failure {
     NSMutableArray *array = [NSMutableArray new];
     NSNumber *univId = [[UNMUniversityBasic getSavedObject] univId];
     NSString *path = [NSString stringWithFormat:@"%@%d",@"news/search/findNewsForUniversity?universityId=",[univId intValue]];

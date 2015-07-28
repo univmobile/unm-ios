@@ -37,4 +37,5 @@
 + (void)fetchFromBackendWithPath:(NSString *)path success:(void(^)(AFHTTPRequestOperation*,id))success failure:(void(^)(AFHTTPRequestOperation*,NSError*))failure;
 + (void)deleteToApiWithPath:(NSString *)path andParams:(NSDictionary *)params success:(void(^)(AFHTTPRequestOperation*,id))success failure:(void(^)(AFHTTPRequestOperation*,NSError*))failure;
 + (void)postToApiNoAuthWithPath:(NSString *)path andParams:(NSDictionary *)params success:(void(^)(AFHTTPRequestOperation*,id))success failure:(void(^)(AFHTTPRequestOperation*,NSError*))failure;
++ (void)removeFirstTab:(BOOL)removeFirst secondTab:(BOOL)removeSecond thirdTab:(BOOL)removeThird firstTab:(UIView *)firstTab secondTab:(UIView *)secondTab thirdTab:(UIView *)thirdTab constrainToView:(UIView *)constraintView;
 @end

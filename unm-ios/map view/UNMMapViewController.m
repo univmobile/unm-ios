@@ -22,6 +22,8 @@
 #import "UNMCategoryIcons.h"
 #import "UNMBookmarkBasic.h"
 #import <AddressBook/ABPerson.h>
+#import "UNMSideMenuViewController.h"
+#import "UNMMenuItemBasic.h"
 
 typedef NS_ENUM(NSInteger, UNMSlideOut) {
     SlideOutCategory     = 1,
@@ -104,7 +106,7 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
             self.mapView.delegate = self;
             [self.mapView setMinZoom:6 maxZoom:kGMSMaxZoomLevel];
             [self.mapView setCamera:camera];
-            [self checkParisRegion];
+            [self tryToGetMenuItemsFromSideMenu];  //this removes bottom tabs
             [self categorySlideOut];
             [self addDescriptionSlideOutForImageMap:NO];
             if (self.TabSelected == MapTabNone) {
@@ -144,15 +146,6 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
     }];
     GMSCameraUpdate *update = [GMSCameraUpdate setTarget:marker.position];
     [self.mapView moveCamera:update];
-}
-
-- (void)checkParisRegion {
-    UNMRegionBasic *region = [UNMRegionBasic getSavedObject];
-    if (region) {
-        if ([region.ID intValue] != 1) {
-            [self removeMiddleRightTabs];
-        }
-    }
 }
 
 - (void)fetchUserBookmarks {
@@ -320,20 +313,6 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
 }
 
 #pragma mark - Layout constraint code
-
-- (void)removeMiddleRightTabs {
-    [self.middleTab removeFromSuperview];
-    [self.rightTab removeFromSuperview];
-    NSDictionary *viewsDictionary = @{@"left":self.leftTab};
-    
-    NSArray *constraint_Vert = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[left]-0-|"
-                                                                       options:0
-                                                                       metrics:nil
-                                                                         views:viewsDictionary];
-    
-    
-    [self.view addConstraints:constraint_Vert];
-}
 
 - (void)removeAllTabs {
     [self.leftTab removeFromSuperview];
@@ -1151,5 +1130,41 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
     self.userBookmarks = [NSArray arrayWithArray:newArray];
 }
 
+- (void)tryToGetMenuItemsFromSideMenu {
+    NSObject *menu = self.menuContainerViewController.leftMenuViewController;
+    if (menu && [menu isKindOfClass:[UNMSideMenuViewController class]]) {
+        UNMSideMenuViewController *sideMenu = (UNMSideMenuViewController *)menu;
+        [self removeTabsWithMenuItems:sideMenu.menuItems]; //will pass nil if not initialized
+    }
+}
+
+- (void)removeTabsWithMenuItems:(NSArray *)items {
+    if (items) {
+        [self handleMenuItems:items];
+    }
+    else {
+        [UNMMenuItemBasic fetchMenuItemsWithSuccess:^(NSArray *items) {
+            [self handleMenuItems:items];
+        } failure:^{}];
+    }
+}
+
+- (void)handleMenuItems:(NSArray *)items {
+    BOOL showFirstTab = NO;
+    BOOL showSecondTab = NO;
+    BOOL showThirdTab = NO;
+    for (UNMMenuItemBasic *item in items) {
+        if ([item.name isEqualToString:@"GéoCampus"]) {
+            showFirstTab = YES;
+        }
+        if ([item.name isEqualToString:@"Que faire à Paris"]) {
+            showSecondTab = YES;
+        }
+        if ([item.name isEqualToString:@"Les bons plans"]) {
+            showThirdTab = YES;
+        }
+    }
+    [UNMUtilities removeFirstTab:!showFirstTab secondTab:!showSecondTab thirdTab:!showThirdTab firstTab:self.leftTab secondTab:self.middleTab thirdTab:self.rightTab constrainToView:self.view];
+}
 
 @end

@@ -17,5 +17,5 @@
 @property (strong, nonatomic) NSNumber *ID;
 @property (strong, nonatomic) NSString *feedName;
 + (void)fetchNewsWithPath:(NSString *)path andSuccess:(void(^)(NSArray *newsItems,NSString *nextPath))callback failure:(void(^)())failure;
-+ (void)fetch4NewsWithSuccess:(void(^)(NSArray *newsItems))callback failure:(void(^)())failure;
++ (void)fetch4NewsItemsWithSuccess:(void(^)(NSArray *newsItems))callback failure:(void(^)())failure;
 @end

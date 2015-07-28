@@ -26,7 +26,6 @@
 @property (strong, nonatomic) NSMutableDictionary *cellHeights;
 @property (strong, nonatomic) NSArray *cellTitles;
 @property (nonatomic) NSInteger parentCellCount;
-@property (strong, nonatomic) NSArray *menuItems;
 @property (strong, nonatomic) NSMutableArray *groups;
 @property (strong, nonatomic) UNMUniversityBasic *fetchedUniv;
 @property (strong, nonatomic) UIView *activityIndicatorView;
@@ -98,19 +97,12 @@
             [self.tableView reloadData];
             [self removeActivityIndicator];
             self.fetchedUniv = univ;
-            NSObject *centerController = self.menuContainerViewController.centerViewController;
-            if (centerController && [centerController isKindOfClass:[UINavigationController class]]) {
-                UINavigationController *navController = (UINavigationController *)centerController;
-                NSObject *rootController = [navController.viewControllers firstObject];
-                if (rootController && [rootController isKindOfClass:[UNMHomeViewController class]]) {
-                    [(UNMHomeViewController *)rootController loadStaticMapImage];
-                }
-            }
         } failure:^{
             [self removeActivityIndicator];
         }];
     }
 }
+
 
 #pragma mark - Tableview
 
@@ -216,15 +208,19 @@
     NSMutableArray *retValue = [NSMutableArray new];
     if (indexPath.row < [self.groups count]) {
         NSString *group = self.groups[indexPath.row];
-        for (UNMMenuItemBasic *item in self.menuItems) {
-            if ([item.grouping isEqualToString:group]) {
-                [retValue addObject:item];
+        if (group) {
+            for (UNMMenuItemBasic *item in self.menuItems) {
+                if ([item.grouping isEqualToString:group]) {
+                    [retValue addObject:item];
+                }
             }
         }
     }
-    NSNumber *height = [self.cellHeights objectForKey:indexPath];
-    if (height == nil) {
-        [self.cellHeights setObject:[NSNumber numberWithFloat:retValue.count * 44.0 + cell.heightWithoutTableView] forKey:indexPath];
+    if (retValue) {
+        NSNumber *height = [self.cellHeights objectForKey:indexPath];
+        if (height == nil) {
+            [self.cellHeights setObject:[NSNumber numberWithFloat:retValue.count * 44.0 + cell.heightWithoutTableView] forKey:indexPath];
+        }
     }
     return retValue;
 }
@@ -270,16 +266,6 @@
 
 - (IBAction)universityLogoTapped:(id)sender {
     [UNMUtilities setCenterControllerWithViewControllerIdentifier:@"home"];
-}
-
-
-- (BOOL)menuContainsGeoCampus {
-    for (NSString *group in self.groups) {
-        if ([group isEqualToString:@"TT"]) {
-            return YES;
-        }
-    }
-    return NO;
 }
 
 @end
