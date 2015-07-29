@@ -104,9 +104,16 @@
                 else {
                     newsHeader.dateLabel.text = [NSString stringWithFormat:@"%@",[first.date newsCellDateString]];
                 }
-                if ([first.thumbURLStr class] != [NSNull class]) {
+                
+                if (first.thumbURLStr && [first.thumbURLStr class] != [NSNull class]) {
                     [newsHeader.topImageView setImageWithURL:[NSURL URLWithString:first.thumbURLStr]];
                 }
+                else {
+                    newsHeader.topImageHeight.constant = 0;
+                    [newsHeader setNeedsLayout];
+                    [newsHeader layoutIfNeeded];
+                }
+                
                 self.newsTableView.tableHeaderView = newsHeader;
                 [self sizeHeaderToFit];
             }
@@ -249,6 +256,9 @@
                     [cell.thumbnailImageView setImageWithURL:thumbURL];
                 }
             }
+            if (!item.articleURLStr || [item.articleURLStr class] == [NSNull class]) {
+                cell.showMoreButton = NO;
+            }
         }
         cell.clipsToBounds = YES;
         if (self.selectedCell != nil && [self.selectedCell isEqual:indexPath]) {
@@ -360,10 +370,12 @@
     NSIndexPath *indexPath = [self.newsTableView indexPathForCell:cell];
     if (indexPath.row+1 < [self.newsItems count]) {
         UNMNewsBasic *item = self.newsItems[indexPath.row+1];
-        NSURL *articleURL = [NSURL URLWithString:item.articeURLStr];
-        if (articleURL && articleURL.scheme && articleURL.host) {
-            self.webviewURL = articleURL;
-            [self performSegueWithIdentifier:@"webview" sender:self];
+        if (item.articleURLStr && [item.articleURLStr class] != [NSNull class]) {
+            NSURL *articleURL = [NSURL URLWithString:item.articleURLStr];
+            if (articleURL && articleURL.scheme && articleURL.host) {
+                self.webviewURL = articleURL;
+                [self performSegueWithIdentifier:@"webview" sender:self];
+            }
         }
     }
 }

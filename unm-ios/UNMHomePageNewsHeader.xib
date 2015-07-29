@@ -99,6 +99,7 @@
                 <outlet property="dateLabel" destination="524-h6-d0a" id="c0u-hv-UHp"/>
                 <outlet property="titleBodyLabel" destination="mK3-Gc-Mfy" id="pKz-R6-WI1"/>
                 <outlet property="titleLabel" destination="5qq-zw-89A" id="OKq-HN-Tgp"/>
+                <outlet property="topImageHeight" destination="kvO-gf-4YB" id="Hwh-qT-JXH"/>
                 <outlet property="topImageView" destination="ZxY-ne-Tlq" id="n4r-xk-DT5"/>
                 <outlet property="triangleIcon" destination="kP0-Ur-hcC" id="QiH-7B-PPQ"/>
             </connections>

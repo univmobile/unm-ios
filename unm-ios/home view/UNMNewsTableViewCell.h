@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIView *separator;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *disclosureTrailingConst;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonBottomConst;
+@property (nonatomic) BOOL showMoreButton;
 - (void)rotateDisclosureRight;
 - (void)rotateDisclosureDown;
 @end

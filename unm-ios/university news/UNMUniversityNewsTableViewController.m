@@ -105,19 +105,17 @@
         [UNMNewsBasic fetchNewsWithPath:self.nextNewsPath andSuccess:^(NSArray *newsItems, NSString *nextPath) {
             self.nextNewsPath = nextPath;
             NSUInteger currentCount = self.newsItems.count;
-            if (currentCount > 0) {
-                [self.tableView beginUpdates];
-                NSRange indexes = NSMakeRange(currentCount,newsItems.count-1);
-                [self.newsItems addObjectsFromArray:newsItems];
-                NSMutableArray *indexPaths = [NSMutableArray new];
-                NSUInteger idx;
-                for(idx = indexes.location; idx <= indexes.location + indexes.length; idx++ ){
-                    NSIndexPath *path = [NSIndexPath indexPathForRow:idx inSection:0];
-                    [indexPaths addObject:path];
-                }
-                [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-                [self.tableView endUpdates];
+            [self.tableView beginUpdates];
+            NSRange indexes = NSMakeRange(currentCount,newsItems.count-1);
+            [self.newsItems addObjectsFromArray:newsItems];
+            NSMutableArray *indexPaths = [NSMutableArray new];
+            NSUInteger idx;
+            for(idx = indexes.location; idx <= indexes.location + indexes.length; idx++ ){
+                NSIndexPath *path = [NSIndexPath indexPathForRow:idx inSection:0];
+                [indexPaths addObject:path];
             }
+            [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+            [self.tableView endUpdates];
             [self.tableView.infiniteScrollingView stopAnimating];
                 
         } failure:^{
@@ -174,6 +172,9 @@
             if (thumbURL && thumbURL.scheme && thumbURL.host) {
                 [cell.thumbnailImageView setImageWithURL:thumbURL];
             }
+        }
+        if (!item.articleURLStr || [item.articleURLStr class] == [NSNull class]) {
+            cell.showMoreButton = NO;
         }
     }
     cell.clipsToBounds = YES;
@@ -278,10 +279,12 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     if (indexPath.row < [self.newsItems count]) {
         UNMNewsBasic *item = self.newsItems[indexPath.row];
-        NSURL *articleURL = [NSURL URLWithString:item.articeURLStr];
-        if (articleURL && articleURL.scheme && articleURL.host) {
-            self.webviewURL = articleURL;
-            [self performSegueWithIdentifier:@"webview" sender:self];
+        if (item.articleURLStr && [item.articleURLStr class] != [NSNull class]) {
+            NSURL *articleURL = [NSURL URLWithString:item.articleURLStr];
+            if (articleURL && articleURL.scheme && articleURL.host) {
+                self.webviewURL = articleURL;
+                [self performSegueWithIdentifier:@"webview" sender:self];
+            }
         }
     }
 }

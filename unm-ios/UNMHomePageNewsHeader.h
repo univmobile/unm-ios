@@ -14,5 +14,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleBodyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *triangleIcon;
-
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topImageHeight;
 @end

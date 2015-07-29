@@ -15,13 +15,13 @@
 #import "UNMMenuItemBasic.h"
 #import "UNMUniversityBasic.h"
 #import "UNMRegionBasic.h"
-#import <AFNetworking/UIButton+AFNetworking.h>
+#import <AFNetworking/UIImageView+AFNetworking.h>
 #import "UNMConstants.h"
 #import "UNMHomeViewController.h"
 
 @interface UNMSideMenuViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIButton *logo;
+@property (weak, nonatomic) IBOutlet UIImageView *logo;
 @property (strong, nonatomic) NSIndexPath *selectedCell;
 @property (strong, nonatomic) NSMutableDictionary *cellHeights;
 @property (strong, nonatomic) NSArray *cellTitles;
@@ -52,6 +52,10 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bgSideMenuGray"]];
+    UITapGestureRecognizer *logoTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(universityLogoTapped:)];
+    logoTapRecognizer.numberOfTapsRequired = 1;
+    logoTapRecognizer.numberOfTouchesRequired = 1;
+    [self.logo addGestureRecognizer:logoTapRecognizer];
     [self fetchMenuItems];
 }
 
@@ -77,9 +81,10 @@
         self.selectedCell = nil;
         [self initActivityIndicator];
         if ([univ.logoUrl class] != [NSNull class]) {
-            [self.logo setBackgroundImageForState:UIControlStateNormal withURL:[NSURL URLWithString:[kUniversityLogoDomainStr stringByAppendingString:univ.logoUrl]]];
+            self.logo.hidden = NO;
+            [self.logo setImageWithURL:[NSURL URLWithString:[kUniversityLogoDomainStr stringByAppendingString:univ.logoUrl]]];
         } else {
-            [self.logo setBackgroundImage:[UIImage imageNamed:@"universityLogo"] forState:UIControlStateNormal];
+            self.logo.hidden = YES;
         }
         [UNMMenuItemBasic fetchMenuItemsWithSuccess:^(NSArray *items) {
             self.menuItems = items;

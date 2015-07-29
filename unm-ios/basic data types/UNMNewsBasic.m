@@ -21,7 +21,7 @@
         _desc = desc;
         _date = date;
         _thumbURLStr = thumbUrl;
-        _articeURLStr = articleUrl;
+        _articleURLStr = articleUrl;
         _feedName = feedName;
     }
     return self;
@@ -44,7 +44,7 @@
             return NO;
         } else if ([self thumbURLStr] != [other thumbURLStr] && ![(id)[self thumbURLStr] isEqual:[other thumbURLStr]]) {
             return NO;
-        } else if ([self articeURLStr] != [other articeURLStr] && ![(id)[self articeURLStr] isEqual:[other articeURLStr]]) {
+        } else if ([self articleURLStr] != [other articleURLStr] && ![(id)[self articleURLStr] isEqual:[other articleURLStr]]) {
             return NO;
         } else if ([self feedName] != [other feedName] && ![(id)[self feedName] isEqual:[other feedName]]) {
             return NO;
@@ -133,7 +133,7 @@
             NSString *imageUrl = object[@"imageUrl"];
             NSString *articleUrl = object[@"link"];
             NSString *feedName = object[@"feedName"];
-            if (ID != nil && name != nil && desc != nil && date != nil && imageUrl != nil && articleUrl != nil && [ID class] != [NSNull class] && [name class] != [NSNull class] && [desc class] != [NSNull class] && [date class] != [NSNull class] && [articleUrl class] != [NSNull class]) {
+            if (ID != nil && name != nil && desc != nil && date != nil && [ID class] != [NSNull class] && [name class] != [NSNull class] && [desc class] != [NSNull class] && [date class] != [NSNull class]) {
                 UNMNewsBasic *newsItem = [[UNMNewsBasic alloc]initWithID:ID andName:name andDescription:desc andDate:date andThumbUrl:imageUrl andArticleUrl:articleUrl andFeedName:feedName];
                 if (array != nil) {
                     if (limit && array.count >= [limit intValue]) {

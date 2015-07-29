@@ -17,6 +17,12 @@
 
 - (void)awakeFromNib {
     self.rotatedDown = NO;
+    self.showMoreButton = YES;
+}
+
+- (void)prepareForReuse {
+    self.rotatedDown = NO;
+    self.showMoreButton = YES;
 }
 
 - (IBAction)moreSelected:(id)sender {
@@ -74,6 +80,11 @@
                             self.moreButton.hidden = YES;
                         }];
     }
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.moreButton.hidden = !self.showMoreButton;
 }
 
 @end
