@@ -150,15 +150,21 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         UNMUniversityBasic *univ = [UNMUniversityBasic getSavedObject];
         UIViewController *destNav;
-        if (univ.shibbolethUrl && [univ.shibbolethUrl class] != [NSNull class]) {
-            destNav = [self.storyboard instantiateViewControllerWithIdentifier:@"loginController"];
-            ((UNMLoginViewController *)destNav).delegate = self;
-        } else {
+        if ([univ shibbolethUrl] && [univ.shibbolethUrl class] != [NSNull class]) {
+            NSString *shibbolethUrl = [univ.shibbolethUrl stringByReplacingOccurrencesOfString:@" " withString:@""];
+            if ([shibbolethUrl length] > 0) {
+                destNav = [self.storyboard instantiateViewControllerWithIdentifier:@"loginController"];
+                ((UNMLoginViewController *)destNav).delegate = self;
+            }
+        }
+        if (!destNav) {
             destNav = [self.storyboard instantiateViewControllerWithIdentifier:@"loginClassicController"];
             ((UNMLoginClassicViewController *)destNav).delegate = self;
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.navigationController pushViewController:destNav animated:YES];
+            if (destNav) {
+                [self.navigationController pushViewController:destNav animated:YES];
+            }
         });
     });
     

@@ -104,20 +104,21 @@
     if (self.nextNewsPath != nil || [self.newsItems count] == 0) {
         [UNMNewsBasic fetchNewsWithPath:self.nextNewsPath andSuccess:^(NSArray *newsItems, NSString *nextPath) {
             self.nextNewsPath = nextPath;
-            NSUInteger currentCount = self.newsItems.count;
-            [self.tableView beginUpdates];
-            NSRange indexes = NSMakeRange(currentCount,newsItems.count-1);
-            [self.newsItems addObjectsFromArray:newsItems];
-            NSMutableArray *indexPaths = [NSMutableArray new];
-            NSUInteger idx;
-            for(idx = indexes.location; idx <= indexes.location + indexes.length; idx++ ){
-                NSIndexPath *path = [NSIndexPath indexPathForRow:idx inSection:0];
-                [indexPaths addObject:path];
+            if (newsItems && [newsItems count] > 0) {
+                NSUInteger currentCount = self.newsItems.count;
+                [self.tableView beginUpdates];
+                NSRange indexes = NSMakeRange(currentCount,newsItems.count-1);
+                [self.newsItems addObjectsFromArray:newsItems];
+                NSMutableArray *indexPaths = [NSMutableArray new];
+                NSUInteger idx;
+                for(idx = indexes.location; idx <= indexes.location + indexes.length; idx++ ){
+                    NSIndexPath *path = [NSIndexPath indexPathForRow:idx inSection:0];
+                    [indexPaths addObject:path];
+                }
+                [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+                [self.tableView endUpdates];
+                [self.tableView.infiniteScrollingView stopAnimating];
             }
-            [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-            [self.tableView endUpdates];
-            [self.tableView.infiniteScrollingView stopAnimating];
-                
         } failure:^{
             [self.tableView.infiniteScrollingView stopAnimating];
         }];
@@ -159,11 +160,14 @@
         UNMNewsBasic *item = self.newsItems[indexPath.row];
         cell.titleLabel.text = item.name;
         cell.detailLabel.text = item.desc;
-        if (item.feedName && [item.feedName class] != [NSNull class]) {
+        if ([item feedName] && [item.feedName class] != [NSNull class] && [item date]) {
             cell.dateLabel.text = [NSString stringWithFormat:@"%@ %@",[item feedName],[item.date newsCellDateString]];
         }
-        else {
+        else if ([item date]) {
             cell.dateLabel.text = [NSString stringWithFormat:@"%@",[item.date newsCellDateString]];
+        }
+        else if ([item feedName] && [item.feedName class] != [NSNull class]) {
+            cell.dateLabel.text = [NSString stringWithFormat:@"%@",[item feedName]];
         }
         
         cell.thumbnailImageView.image = nil;

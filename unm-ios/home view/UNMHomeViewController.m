@@ -98,11 +98,14 @@
             if (newsHeader) {
                 newsHeader.titleLabel.text = first.name;
                 newsHeader.titleBodyLabel.text = first.desc;
-                if (first.feedName && [first.feedName class] != [NSNull class]) {
+                if ([first feedName] && [first.feedName class] != [NSNull class] && [first date]) {
                     newsHeader.dateLabel.text = [NSString stringWithFormat:@"%@ %@",[first feedName],[first.date newsCellDateString]];
                 }
-                else {
+                else if ([first date]) {
                     newsHeader.dateLabel.text = [NSString stringWithFormat:@"%@",[first.date newsCellDateString]];
+                }
+                else if ([first feedName] && [first.feedName class] != [NSNull class]) {
+                    newsHeader.dateLabel.text = [NSString stringWithFormat:@"%@",[first feedName]];
                 }
                 
                 if (first.thumbURLStr && [first.thumbURLStr class] != [NSNull class]) {
@@ -244,11 +247,14 @@
             UNMNewsBasic *item = self.newsItems[indexPath.row+1];
             cell.titleLabel.text = item.name;
             cell.detailLabel.text = item.desc;
-            if (item.feedName && [item.feedName class] != [NSNull class]) {
+            if ([item feedName] && [item.feedName class] != [NSNull class] && [item date]) {
                 cell.dateLabel.text = [NSString stringWithFormat:@"%@ %@",[item feedName],[item.date newsCellDateString]];
             }
-            else {
+            else if ([item date]) {
                 cell.dateLabel.text = [NSString stringWithFormat:@"%@",[item.date newsCellDateString]];
+            }
+            else if ([item feedName] && [item.feedName class] != [NSNull class]) {
+                cell.dateLabel.text = [NSString stringWithFormat:@"%@",[item feedName]];
             }
             if (item.thumbURLStr && [item.thumbURLStr class] != [NSNull class]) {
                 NSURL *thumbURL = [NSURL URLWithString:item.thumbURLStr];

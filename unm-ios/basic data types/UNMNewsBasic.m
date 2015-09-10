@@ -133,7 +133,7 @@
             NSString *imageUrl = object[@"imageUrl"];
             NSString *articleUrl = object[@"link"];
             NSString *feedName = object[@"feedName"];
-            if (ID != nil && name != nil && desc != nil && date != nil && [ID class] != [NSNull class] && [name class] != [NSNull class] && [desc class] != [NSNull class] && [date class] != [NSNull class]) {
+            if (ID != nil && name != nil && desc != nil && [ID class] != [NSNull class] && [name class] != [NSNull class] && [desc class] != [NSNull class]) {
                 UNMNewsBasic *newsItem = [[UNMNewsBasic alloc]initWithID:ID andName:name andDescription:desc andDate:date andThumbUrl:imageUrl andArticleUrl:articleUrl andFeedName:feedName];
                 if (array != nil) {
                     if (limit && array.count >= [limit intValue]) {

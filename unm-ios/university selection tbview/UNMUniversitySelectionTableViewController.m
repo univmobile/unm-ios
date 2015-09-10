@@ -12,6 +12,8 @@
 #import "UNMUtilities.h"
 #import "UNMConstants.h"
 #import "UIColor+Extension.h"
+#import "MFSideMenu.h"
+#import "UNMSideMenuViewController.h"
 
 @interface UNMUniversitySelectionTableViewController ()
 @property (strong, nonatomic) NSArray *universities;
@@ -80,6 +82,12 @@
     [university saveToUserDefaults];
     [self.region saveToUserDefaults];
     [university postAsUsageStat];
+    
+    NSObject *leftMenu = [self.menuContainerViewController leftMenuViewController];
+    if ([leftMenu isKindOfClass:[UNMSideMenuViewController class]]) {
+        UNMSideMenuViewController *sideMenu = (UNMSideMenuViewController *)leftMenu;
+        sideMenu.menuItems = nil;
+    }
     
     [tableView deselectRowAtIndexPath:indexPath animated:true];
     [self.navigationController popToRootViewControllerAnimated:YES];

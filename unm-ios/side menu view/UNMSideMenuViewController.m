@@ -20,6 +20,7 @@
 #import "UNMHomeViewController.h"
 
 @interface UNMSideMenuViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *homeButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *logo;
 @property (strong, nonatomic) NSIndexPath *selectedCell;
@@ -83,7 +84,9 @@
         if ([univ.logoUrl class] != [NSNull class]) {
             self.logo.hidden = NO;
             [self.logo setImageWithURL:[NSURL URLWithString:[kUniversityLogoDomainStr stringByAppendingString:univ.logoUrl]]];
+            self.homeButton.hidden = YES;
         } else {
+            self.homeButton.hidden = NO;
             self.logo.hidden = YES;
         }
         [UNMMenuItemBasic fetchMenuItemsWithSuccess:^(NSArray *items) {

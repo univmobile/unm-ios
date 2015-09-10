@@ -68,18 +68,6 @@
     [self setNeedsDisplay];
 }
 
-- (void)drawRect:(CGRect)rect {
-    [super drawRect:rect];
-    
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:self.corner cornerRadii:CGSizeMake(self.cornerRadius, self.cornerRadius)];
-    
-    CAShapeLayer *maskLayer = [CAShapeLayer layer];
-    maskLayer.frame = self.bounds;
-    maskLayer.path = maskPath.CGPath;
-    
-    self.layer.mask = maskLayer;
-}
-
 - (void)setIconImageWithName:(NSString *)imageName {
     self.iconImage = [UIImage imageNamed:imageName];
     self.selectedIconImage = [UIImage imageNamed:[imageName stringByAppendingString:@"Selected"]];

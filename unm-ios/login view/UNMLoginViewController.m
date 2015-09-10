@@ -40,6 +40,7 @@
         self.loginToken = loginToken;
         self.key = key;
         UNMUniversityBasic *univ = [UNMUniversityBasic getSavedObject];
+        NSString *shibbolethUrl = [univ.shibbolethUrl stringByReplacingOccurrencesOfString:@" " withString:@""];
         NSString* const target = [NSString stringWithFormat:
                                   @"%@?loginToken=%@&callback=%@.sso",
                                   kBaseURLStr,
@@ -49,7 +50,7 @@
         [NSString stringWithFormat:@"%@Shibboleth.sso/Login?target=%@&entityID=%@",
                                      kBaseDomainUrlStr,
                                      [target urlEncodeUsingEncoding:NSUTF8StringEncoding],
-                                     [[univ shibbolethUrl] urlEncodeUsingEncoding:NSUTF8StringEncoding]];
+                                     [shibbolethUrl urlEncodeUsingEncoding:NSUTF8StringEncoding]];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:ssoURL]];
         [self.webView loadRequest:request];
     }];

@@ -1145,6 +1145,9 @@ typedef NS_ENUM(NSInteger, UNMSlideOut) {
     else {
         [UNMMenuItemBasic fetchMenuItemsWithSuccess:^(NSArray *items) {
             [self handleMenuItems:items];
+            [self.view setNeedsDisplay];
+            [self.view setNeedsLayout];
+            [self.view layoutIfNeeded];
         } failure:^{}];
     }
 }
