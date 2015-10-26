@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Exo-LightItalic.otf">
@@ -25,6 +25,7 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dernières actualités" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="157" translatesAutoresizingMaskIntoConstraints="NO" id="MS1-Nl-sGL">
                     <rect key="frame" x="8" y="569" width="584" height="23"/>
+                    <animations/>
                     <fontDescription key="fontDescription" name="Exo-DemiBold" family="Exo" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -33,19 +34,22 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="561"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="248" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="mK3-Gc-Mfy">
-                            <rect key="frame" x="10" y="231" width="582" height="322"/>
+                            <rect key="frame" x="10" y="231" width="582" height="270"/>
+                            <animations/>
                             <fontDescription key="fontDescription" name="Exo-Regular" family="Exo" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="171" translatesAutoresizingMaskIntoConstraints="NO" id="524-h6-d0a">
                             <rect key="frame" x="10" y="215" width="582" height="0.0"/>
+                            <animations/>
                             <fontDescription key="fontDescription" name="Exo-LightItalic" family="Exo" pointSize="14"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangleIconHomeView" translatesAutoresizingMaskIntoConstraints="NO" id="kP0-Ur-hcC">
                             <rect key="frame" x="40" y="198" width="26" height="13"/>
+                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="26" id="8lh-Kp-lMQ"/>
                                 <constraint firstAttribute="height" constant="13" id="IGF-7d-mFT"/>
@@ -53,6 +57,7 @@
                         </imageView>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZxY-ne-Tlq">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="198"/>
+                            <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="198" id="kvO-gf-4YB"/>
@@ -60,23 +65,39 @@
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="284" translatesAutoresizingMaskIntoConstraints="NO" id="5qq-zw-89A">
                             <rect key="frame" x="10" y="223" width="582" height="0.0"/>
+                            <animations/>
                             <fontDescription key="fontDescription" name="Exo-DemiBold" family="Exo" pointSize="17"/>
                             <color key="textColor" red="0.96127158720000005" green="0.69310238489999998" blue="0.20178865130000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ID-ie-I1a" userLabel="more button">
+                            <rect key="frame" x="490" y="509" width="102" height="44"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="PKe-0A-iKg"/>
+                                <constraint firstAttribute="width" constant="102" id="aWC-Jg-B6t"/>
+                            </constraints>
+                            <state key="normal" image="moreButtonNewsTBV">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
                     </subviews>
+                    <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="ZxY-ne-Tlq" firstAttribute="leading" secondItem="gp4-1f-YAp" secondAttribute="leading" id="0y3-sb-xQI"/>
                         <constraint firstItem="5qq-zw-89A" firstAttribute="top" secondItem="524-h6-d0a" secondAttribute="bottom" constant="8" id="7OP-Dw-2m1"/>
-                        <constraint firstAttribute="bottom" secondItem="mK3-Gc-Mfy" secondAttribute="bottom" constant="8" id="7TV-pQ-yeJ"/>
+                        <constraint firstAttribute="bottom" secondItem="1ID-ie-I1a" secondAttribute="bottom" constant="8" id="DRy-Ap-Oal"/>
                         <constraint firstItem="ZxY-ne-Tlq" firstAttribute="top" secondItem="gp4-1f-YAp" secondAttribute="top" id="G5P-RN-asR"/>
+                        <constraint firstAttribute="trailing" secondItem="1ID-ie-I1a" secondAttribute="trailing" constant="8" id="Hfd-CV-5xK"/>
                         <constraint firstItem="5qq-zw-89A" firstAttribute="leading" secondItem="gp4-1f-YAp" secondAttribute="leading" constant="10" id="Ohs-Xw-mC5"/>
+                        <constraint firstItem="1ID-ie-I1a" firstAttribute="top" secondItem="mK3-Gc-Mfy" secondAttribute="bottom" constant="8" id="Oqq-Uv-UB0"/>
                         <constraint firstAttribute="trailing" secondItem="5qq-zw-89A" secondAttribute="trailing" constant="8" id="Uag-5g-JJt"/>
                         <constraint firstAttribute="trailing" secondItem="524-h6-d0a" secondAttribute="trailing" constant="8" id="Xbx-S3-sxx"/>
                         <constraint firstAttribute="trailing" secondItem="mK3-Gc-Mfy" secondAttribute="trailing" constant="8" id="bVr-EC-ACN"/>
                         <constraint firstItem="kP0-Ur-hcC" firstAttribute="leading" secondItem="gp4-1f-YAp" secondAttribute="leading" constant="40" id="bcG-GU-jXs"/>
                         <constraint firstItem="mK3-Gc-Mfy" firstAttribute="leading" secondItem="gp4-1f-YAp" secondAttribute="leading" constant="10" id="cel-Mm-NKP"/>
+                        <constraint firstAttribute="bottom" secondItem="1ID-ie-I1a" secondAttribute="bottom" constant="8" id="i6c-FX-3f3"/>
                         <constraint firstItem="524-h6-d0a" firstAttribute="leading" secondItem="gp4-1f-YAp" secondAttribute="leading" constant="10" id="kIa-Wh-Rq4"/>
                         <constraint firstItem="524-h6-d0a" firstAttribute="top" secondItem="kP0-Ur-hcC" secondAttribute="bottom" constant="4" id="mf6-fr-CUe"/>
                         <constraint firstItem="kP0-Ur-hcC" firstAttribute="top" secondItem="ZxY-ne-Tlq" secondAttribute="bottom" id="oab-L2-NwX"/>
@@ -85,6 +106,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <animations/>
             <color key="backgroundColor" red="0.99215686270000003" green="0.63529411759999999" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="MS1-Nl-sGL" secondAttribute="bottom" constant="8" id="2HD-SE-6WG"/>
@@ -97,6 +119,7 @@
             </constraints>
             <connections>
                 <outlet property="dateLabel" destination="524-h6-d0a" id="c0u-hv-UHp"/>
+                <outlet property="moreButton" destination="1ID-ie-I1a" id="6lP-d7-1t9"/>
                 <outlet property="titleBodyLabel" destination="mK3-Gc-Mfy" id="pKz-R6-WI1"/>
                 <outlet property="titleLabel" destination="5qq-zw-89A" id="OKq-HN-Tgp"/>
                 <outlet property="topImageHeight" destination="kvO-gf-4YB" id="Hwh-qT-JXH"/>
@@ -106,6 +129,7 @@
         </view>
     </objects>
     <resources>
+        <image name="moreButtonNewsTBV" width="152" height="40"/>
         <image name="triangleIconHomeView" width="26" height="13"/>
     </resources>
 </document>

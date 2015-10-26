@@ -96,6 +96,7 @@
         if (first) {
             UNMHomePageNewsHeader *newsHeader = [[[NSBundle mainBundle] loadNibNamed:@"UNMHomePageNewsHeader" owner:self options:nil] firstObject];
             if (newsHeader) {
+                [newsHeader.moreButton addTarget:self action:@selector(headerMoreSelected) forControlEvents:UIControlEventTouchUpInside];
                 newsHeader.titleLabel.text = first.name;
                 newsHeader.titleBodyLabel.text = first.desc;
                 if ([first feedName] && [first.feedName class] != [NSNull class] && [first date]) {
@@ -126,6 +127,17 @@
     } failure:^{
         [self removeActivityIndicator];
     }];
+}
+
+- (void)headerMoreSelected {
+    UNMNewsBasic *item = self.newsItems[0];
+    if (item.articleURLStr && [item.articleURLStr class] != [NSNull class]) {
+        NSURL *articleURL = [NSURL URLWithString:item.articleURLStr];
+        if (articleURL && articleURL.scheme && articleURL.host) {
+            self.webviewURL = articleURL;
+            [self performSegueWithIdentifier:@"webview" sender:self];
+        }
+    }
 }
 
 - (UNMMapViewController *)loadStaticMapImageShowFirstTab:(BOOL)showFirst showSecondTab:(BOOL)showSecond showThirdTab:(BOOL)showThird {
