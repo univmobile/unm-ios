@@ -1096,6 +1096,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1139,6 +1140,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1165,6 +1167,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Universite Numerique Paris Ile-de-France (TJX4382XYW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Universite Numerique Paris Ile-de-France (TJX4382XYW)";
 				COMPRESS_PNG_FILES = NO;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1174,7 +1177,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = UnivMobile;
-				PROVISIONING_PROFILE = "5d203109-dfdc-4597-8eb8-457f6cfdae61";
+				PROVISIONING_PROFILE = "e3aaaa74-6333-4cf2-823f-009f1d6ec135";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1188,6 +1191,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Universite Numerique Paris Ile-de-France (TJX4382XYW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Universite Numerique Paris Ile-de-France (TJX4382XYW)";
 				COMPRESS_PNG_FILES = NO;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1197,7 +1201,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = UnivMobile;
-				PROVISIONING_PROFILE = "5d203109-dfdc-4597-8eb8-457f6cfdae61";
+				PROVISIONING_PROFILE = "e3aaaa74-6333-4cf2-823f-009f1d6ec135";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
