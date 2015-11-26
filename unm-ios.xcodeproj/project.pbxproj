@@ -114,6 +114,7 @@
 		377A8B051B6231E80066D464 /* UNMHomePageNewsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 377A8B041B6231E80066D464 /* UNMHomePageNewsHeader.m */; };
 		377A8B081B62372F0066D464 /* UNMHomePageMapFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 377A8B071B62372F0066D464 /* UNMHomePageMapFooter.m */; };
 		37B946ED1A69683C002BBB73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37B946EC1A69683C002BBB73 /* CoreLocation.framework */; };
+		37DD8E061C073F300064D01D /* UNMNewsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 37DD8E051C073F300064D01D /* UNMNewsFeed.m */; };
 		37F8BBA91AB18F610093A75B /* UNMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F8BBA81AB18F610093A75B /* UNMConstants.m */; };
 		63801F4F5DAD791F0A91CE92 /* libPods-unm-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8018100A1727F436B984CB9 /* libPods-unm-ios.a */; };
 /* End PBXBuildFile section */
@@ -318,6 +319,8 @@
 		377A8B061B62372F0066D464 /* UNMHomePageMapFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNMHomePageMapFooter.h; sourceTree = "<group>"; };
 		377A8B071B62372F0066D464 /* UNMHomePageMapFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNMHomePageMapFooter.m; sourceTree = "<group>"; };
 		37B946EC1A69683C002BBB73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		37DD8E041C073F300064D01D /* UNMNewsFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMNewsFeed.h; path = "basic data types/UNMNewsFeed.h"; sourceTree = "<group>"; };
+		37DD8E051C073F300064D01D /* UNMNewsFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMNewsFeed.m; path = "basic data types/UNMNewsFeed.m"; sourceTree = "<group>"; };
 		37F8BBA71AB18F610093A75B /* UNMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMConstants.h; path = "utility classes/UNMConstants.h"; sourceTree = "<group>"; };
 		37F8BBA81AB18F610093A75B /* UNMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMConstants.m; path = "utility classes/UNMConstants.m"; sourceTree = "<group>"; };
 		A75FE80334BDC50C94769D65 /* Pods-unm-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unm-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-unm-ios/Pods-unm-ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -749,6 +752,8 @@
 				37319FA71AA70239007B1A0D /* UNMUnivLibraryItem.m */,
 				37319FA81AA70239007B1A0D /* UNMUserBasic.h */,
 				37319FA91AA70239007B1A0D /* UNMUserBasic.m */,
+				37DD8E041C073F300064D01D /* UNMNewsFeed.h */,
+				37DD8E051C073F300064D01D /* UNMNewsFeed.m */,
 			);
 			name = "basic data types";
 			sourceTree = "<group>";
@@ -1011,6 +1016,7 @@
 				37319FD81AA702AE007B1A0D /* UNMBonPlanViewController.m in Sources */,
 				3731A0291AA70373007B1A0D /* UNMUniversitySelectionViewController.m in Sources */,
 				37721DAE1ACEB83A007C1353 /* UITableView+HeaderResize.m in Sources */,
+				37DD8E061C073F300064D01D /* UNMNewsFeed.m in Sources */,
 				3731A00B1AA70319007B1A0D /* UNMUniversityNewsTableViewController.m in Sources */,
 				3731A02A1AA70373007B1A0D /* UNMUnivSelectTableViewCell.m in Sources */,
 				3731A0051AA702FD007B1A0D /* UIBarButtonItem+Badge.m in Sources */,

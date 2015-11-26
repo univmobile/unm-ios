@@ -15,8 +15,10 @@
 #import "NSDate+notificationDate.h"
 #import "UNMUnivNewsWebViewController.h"
 #import "SVPullToRefresh.h"
+#import "UNMNewsFeed.h"
 
 @interface UNMUniversityNewsTableViewController ()
+@property (weak, nonatomic) IBOutlet UIScrollView *headerScrollView;
 @property (strong, nonatomic) NSIndexPath *selectedCell;
 @property (strong, nonatomic) NSNumber *cellHeightClosed;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -27,10 +29,10 @@
 @property (strong, nonatomic) NSURL *webviewURL;
 @property (strong, nonatomic) NSString *nextNewsPath;
 @property (strong, nonatomic) NSString *freshNextNewsPath;
+@property (strong, nonatomic) NSArray *newsFeedItems;
 @end
 
 @implementation UNMUniversityNewsTableViewController {
-    
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
@@ -65,6 +67,30 @@
     [self.tableView.pullToRefreshView setTitle:@"Chargement" forState:SVPullToRefreshStateLoading];
     
     [self.tableView triggerInfiniteScrolling];
+    
+    NSNumber *univId = [[UNMUniversityBasic getSavedObject] univId];
+    [UNMNewsFeed fetchUniversityNewsFeedsWithUniversityID:univId success:^(NSArray *newsFeeds) {
+        self.newsFeedItems = newsFeeds;
+        [self addNewsFeedButtons:newsFeeds];
+    }];
+}
+
+- (void)addNewsFeedButtons:(NSArray *)newsFeeds {
+    CGFloat lastX = 0;
+    for (UNMNewsFeed *newsFeed in newsFeeds) {
+        UIButton *button = [[UIButton alloc] init];
+        [button setTitle:newsFeed.title forState:UIControlStateNormal];
+        [button sizeToFit];
+        CGRect buttonFrame = [button frame];
+        buttonFrame.origin.x = lastX + 10;
+        lastX = buttonFrame.origin.x + buttonFrame.size.width;
+        button.frame = buttonFrame;
+        [self.headerScrollView addSubview:button];
+    }
+    CGRect scrollFrame = self.headerScrollView.frame;
+    scrollFrame.size.width = lastX + 10;
+    scrollFrame.size.height = scrollFrame.size.height - 2;
+    self.headerScrollView.contentSize = scrollFrame.size;
 }
 
 - (void)addFreshNewsItems {

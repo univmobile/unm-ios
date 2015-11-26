@@ -234,7 +234,6 @@ static AFHTTPRequestOperationManager *postManager;
     if (auth) {
         [manager.requestSerializer setValue:auth.accessToken forHTTPHeaderField:@"Authentication-Token"];
     }
-    
     [manager GET:url parameters:nil success:success failure:failure];
 }
 
