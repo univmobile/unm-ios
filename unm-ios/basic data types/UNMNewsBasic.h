@@ -16,6 +16,6 @@
 @property (strong, nonatomic) NSString *articleURLStr;
 @property (strong, nonatomic) NSNumber *ID;
 @property (strong, nonatomic) NSString *feedName;
-+ (void)fetchNewsWithPath:(NSString *)path andSuccess:(void(^)(NSArray *newsItems,NSString *nextPath))callback failure:(void(^)())failure;
-+ (void)fetch4NewsItemsWithSuccess:(void(^)(NSArray *newsItems))callback failure:(void(^)())failure;
++ (void)fetchNewsWithPath:(NSString *)path withFeedString:(NSString *)feedsString andSuccess:(void(^)(NSArray *newsItems,NSString *nextPath))callback failure:(void(^)())failure;
++ (void)fetch4NewsItemsWithSuccess:(void(^)(NSArray *newsItems))callback withFeedString:(NSString *)feedsString failure:(void(^)())failure;
 @end

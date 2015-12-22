@@ -8,6 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@class UNMNewsFeed;
+
+@interface UNMNewsFeedSelectable : NSObject
+@property (nonatomic, strong) UNMNewsFeed *item;
+@property BOOL selected;
+
+- (instancetype)initWithNewsFeed:(UNMNewsFeed *)newsFeed andSelected:(BOOL)selected;
++ (NSDictionary<NSString *, UNMNewsFeedSelectable *> *)selectableNewsFeeds:(NSArray *)newsFeeds;
+@end
+
 @interface UNMNewsFeed : NSObject
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSNumber *ID;

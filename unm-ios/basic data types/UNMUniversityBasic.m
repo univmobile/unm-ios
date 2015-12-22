@@ -48,6 +48,10 @@
     return self;
 }
 - (void)saveToUserDefaults {
+    NSMutableArray *newArray = [[NSMutableArray alloc] init];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:newArray forKey:@"savedFeeds"];
+    [defaults synchronize];
     [super saveToUserDefaultsWithKey:@"university"];
 }
 + (UNMUniversityBasic *)getSavedObject {

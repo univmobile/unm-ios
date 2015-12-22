@@ -23,6 +23,8 @@
 #import "UNMHomePageMapFooter.h"
 #import "UNMSideMenuViewController.h"
 #import "UNMMenuItemBasic.h"
+#import "UNMUniversityBasic.h"
+#import "UNMNewsFeed.h"
 
 @interface UNMHomeViewController ()
 @property NSIndexPath *selectedCell;
@@ -86,47 +88,72 @@
     }
 }
 
+-(NSString*)getCurrentFeedsString:(NSArray*) newsFeeds {
+    NSMutableArray *savedFeeds = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"savedFeeds"]];
+    NSMutableString*  returnString = [NSMutableString stringWithCapacity:1];
+    if(savedFeeds.count>0 && savedFeeds.count<newsFeeds.count){
+        for (UNMNewsFeed *item in newsFeeds) {
+            for (NSNumber *number in savedFeeds) {
+                if ([number isEqualToNumber: item.ID]){
+                    [returnString appendFormat:@"&feedIds=%@ ", number];
+                    break;
+                }
+            }
+        }
+    }
+    else{
+        for (UNMNewsFeed *item in newsFeeds) {
+            
+            [returnString appendFormat:@"&feedIds=%@ ", item.ID];
+                }
+
+    }
+    return [returnString stringByReplacingOccurrencesOfString:@" " withString:@""];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self initActivityIndicator];
-
-    [UNMNewsBasic fetch4NewsItemsWithSuccess:^(NSArray *items) {
-        self.newsItems = items;
-        UNMNewsBasic *first = [self.newsItems firstObject];
-        if (first) {
-            UNMHomePageNewsHeader *newsHeader = [[[NSBundle mainBundle] loadNibNamed:@"UNMHomePageNewsHeader" owner:self options:nil] firstObject];
-            if (newsHeader) {
-                [newsHeader.moreButton addTarget:self action:@selector(headerMoreSelected) forControlEvents:UIControlEventTouchUpInside];
-                newsHeader.titleLabel.text = first.name;
-                newsHeader.titleBodyLabel.text = first.desc;
-                if ([first feedName] && [first.feedName class] != [NSNull class] && [first date]) {
-                    newsHeader.dateLabel.text = [NSString stringWithFormat:@"%@ %@",[first feedName],[first.date newsCellDateString]];
+    
+    NSNumber *univId = [[UNMUniversityBasic getSavedObject] univId];
+    [UNMNewsFeed fetchUniversityNewsFeedsWithUniversityID:univId success:^(NSArray *newsFeeds) {
+        [UNMNewsBasic fetch4NewsItemsWithSuccess:^(NSArray *items) {
+            self.newsItems = items;
+            UNMNewsBasic *first = [self.newsItems firstObject];
+            if (first) {
+                UNMHomePageNewsHeader *newsHeader = [[[NSBundle mainBundle] loadNibNamed:@"UNMHomePageNewsHeader" owner:self options:nil] firstObject];
+                if (newsHeader) {
+                    [newsHeader.moreButton addTarget:self action:@selector(headerMoreSelected) forControlEvents:UIControlEventTouchUpInside];
+                    newsHeader.titleLabel.text = first.name;
+                    newsHeader.titleBodyLabel.text = first.desc;
+                    if ([first feedName] && [first.feedName class] != [NSNull class] && [first date]) {
+                        newsHeader.dateLabel.text = [NSString stringWithFormat:@"%@ %@",[first feedName],[first.date newsCellDateString]];
+                    }
+                    else if ([first date]) {
+                        newsHeader.dateLabel.text = [NSString stringWithFormat:@"%@",[first.date newsCellDateString]];
+                    }
+                    else if ([first feedName] && [first.feedName class] != [NSNull class]) {
+                        newsHeader.dateLabel.text = [NSString stringWithFormat:@"%@",[first feedName]];
+                    }
+                    
+                    if (first.thumbURLStr && [first.thumbURLStr class] != [NSNull class]) {
+                        [newsHeader.topImageView setImageWithURL:[NSURL URLWithString:first.thumbURLStr]];
+                    }
+                    else {
+                        newsHeader.topImageHeight.constant = 0;
+                        [newsHeader setNeedsLayout];
+                        [newsHeader layoutIfNeeded];
+                    }
+                    
+                    self.newsTableView.tableHeaderView = newsHeader;
+                    [self sizeHeaderToFit];
                 }
-                else if ([first date]) {
-                    newsHeader.dateLabel.text = [NSString stringWithFormat:@"%@",[first.date newsCellDateString]];
-                }
-                else if ([first feedName] && [first.feedName class] != [NSNull class]) {
-                    newsHeader.dateLabel.text = [NSString stringWithFormat:@"%@",[first feedName]];
-                }
-                
-                if (first.thumbURLStr && [first.thumbURLStr class] != [NSNull class]) {
-                    [newsHeader.topImageView setImageWithURL:[NSURL URLWithString:first.thumbURLStr]];
-                }
-                else {
-                    newsHeader.topImageHeight.constant = 0;
-                    [newsHeader setNeedsLayout];
-                    [newsHeader layoutIfNeeded];
-                }
-                
-                self.newsTableView.tableHeaderView = newsHeader;
-                [self sizeHeaderToFit];
             }
-        }
-        [self.newsTableView reloadData];
-        [self removeActivityIndicator];
-    } failure:^{
-        [self removeActivityIndicator];
-    }];
+            [self.newsTableView reloadData];
+            [self removeActivityIndicator];
+        } withFeedString: [self getCurrentFeedsString:newsFeeds] failure:^{
+            [self removeActivityIndicator];
+        }];}];
 }
 
 - (void)headerMoreSelected {

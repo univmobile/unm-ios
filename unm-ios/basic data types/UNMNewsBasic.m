@@ -54,19 +54,19 @@
     }
 }
 
-+ (void)fetchNewsWithPath:(NSString *)path andSuccess:(void(^)(NSArray *newsItems,NSString *nextPath))callback failure:(void(^)())failure {
++ (void)fetchNewsWithPath:(NSString *)path withFeedString:(NSString *)feedsString andSuccess:(void(^)(NSArray *newsItems,NSString *nextPath))callback failure:(void(^)())failure {
     NSMutableArray *array = [NSMutableArray new];
     if (!path) {
         NSNumber *univId = [[UNMUniversityBasic getSavedObject] univId];
-        path = [NSString stringWithFormat:@"%@%d",@"news/search/findNewsForUniversity?universityId=",[univId intValue]];
+        path = [NSString stringWithFormat:@"%@%d%@",@"news/search/findNewsForUniversityAndFeeds?universityId=",[univId intValue], feedsString];
     }
     [self fetchNewsWithPath:path array:array success:callback failure:failure];
 }
 
-+ (void)fetch4NewsItemsWithSuccess:(void(^)(NSArray *newsItems))callback failure:(void(^)())failure {
++ (void)fetch4NewsItemsWithSuccess:(void(^)(NSArray *newsItems))callback withFeedString:(NSString *)feedsString failure:(void(^)())failure {
     NSMutableArray *array = [NSMutableArray new];
     NSNumber *univId = [[UNMUniversityBasic getSavedObject] univId];
-    NSString *path = [NSString stringWithFormat:@"%@%d",@"news/search/findNewsForUniversity?universityId=",[univId intValue]];
+    NSString *path = [NSString stringWithFormat:@"%@%d%@",@"news/search/findNewsForUniversityAndFeeds?universityId=",[univId intValue], feedsString];
     [self fetchNewsWithPath:path array:array limit:[NSNumber numberWithInt:4] success:callback failure:failure];
 }
 

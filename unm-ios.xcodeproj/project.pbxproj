@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0994512A1C085E7000D57307 /* UNMNewsFeedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 099451291C085E7000D57307 /* UNMNewsFeedButton.m */; };
 		37319F221AA61822007B1A0D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37319F201AA61822007B1A0D /* Crashlytics.framework */; };
 		37319F231AA61822007B1A0D /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37319F211AA61822007B1A0D /* Fabric.framework */; };
 		37319F391AA70035007B1A0D /* Exo-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37319F281AA70035007B1A0D /* Exo-Black.otf */; };
@@ -130,6 +131,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		099451281C085E7000D57307 /* UNMNewsFeedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UNMNewsFeedButton.h; path = "university news/UNMNewsFeedButton.h"; sourceTree = "<group>"; };
+		099451291C085E7000D57307 /* UNMNewsFeedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UNMNewsFeedButton.m; path = "university news/UNMNewsFeedButton.m"; sourceTree = "<group>"; };
 		232E84F48F2A23516118D17E /* Pods-unm-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unm-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-unm-ios/Pods-unm-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		37319F201AA61822007B1A0D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		37319F211AA61822007B1A0D /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -448,6 +451,8 @@
 				3731A0081AA70319007B1A0D /* UNMUniversityNewsTableViewController.m */,
 				3731A0091AA70319007B1A0D /* UNMUnivNewsWebViewController.h */,
 				3731A00A1AA70319007B1A0D /* UNMUnivNewsWebViewController.m */,
+				099451281C085E7000D57307 /* UNMNewsFeedButton.h */,
+				099451291C085E7000D57307 /* UNMNewsFeedButton.m */,
 			);
 			name = "university news";
 			sourceTree = "<group>";
@@ -732,8 +737,8 @@
 				37319F931AA70239007B1A0D /* UNMCommentBasic.m */,
 				37319F941AA70239007B1A0D /* UNMImageMap.h */,
 				37319F951AA70239007B1A0D /* UNMImageMap.m */,
-				37319F961AA70239007B1A0D /* UNMMapItemBasic.h */,
 				37319F971AA70239007B1A0D /* UNMMapItemBasic.m */,
+				37319F961AA70239007B1A0D /* UNMMapItemBasic.h */,
 				37319F981AA70239007B1A0D /* UNMMediaItemBasic.h */,
 				37319F991AA70239007B1A0D /* UNMMediaItemBasic.m */,
 				37319F9A1AA70239007B1A0D /* UNMMenuItemBasic.h */,
@@ -842,6 +847,7 @@
 				TargetAttributes = {
 					377197491A641DF8005D50DA = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = TJX4382XYW;
 					};
 					377197651A641DF8005D50DA = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -1021,6 +1027,7 @@
 				3731A02A1AA70373007B1A0D /* UNMUnivSelectTableViewCell.m in Sources */,
 				3731A0051AA702FD007B1A0D /* UIBarButtonItem+Badge.m in Sources */,
 				37319FF91AA702CB007B1A0D /* UIScrollView+ScrollIndicator.m in Sources */,
+				0994512A1C085E7000D57307 /* UNMNewsFeedButton.m in Sources */,
 				37319FB51AA70239007B1A0D /* UNMNotificationBasic.m in Sources */,
 				3731A0251AA70373007B1A0D /* UNMBookmarksTableViewCell.m in Sources */,
 				37319FDE1AA702AE007B1A0D /* UNMDescriptionViewController.m in Sources */,
@@ -1099,7 +1106,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
@@ -1121,6 +1129,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "e3aaaa74-6333-4cf2-823f-009f1d6ec135";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1143,7 +1152,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_BITCODE = NO;
@@ -1158,6 +1168,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "e3aaaa74-6333-4cf2-823f-009f1d6ec135";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1170,8 +1181,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Universite Numerique Paris Ile-de-France (TJX4382XYW)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Universite Numerique Paris Ile-de-France (TJX4382XYW)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1194,8 +1205,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Universite Numerique Paris Ile-de-France (TJX4382XYW)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Universite Numerique Paris Ile-de-France (TJX4382XYW)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
